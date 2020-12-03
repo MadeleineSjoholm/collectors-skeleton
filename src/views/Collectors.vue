@@ -30,6 +30,12 @@
       <div class="cardslots">
         <CollectorsCard v-for="(card, index) in skillsOnSale" :card="card" :key="index"/>
       </div>
+      <div class="buttons2">                 <!-- denna är tillagd -->
+                <button @click="drawCard">
+          {{ labels.draw }}
+        </button>
+      </div>
+
       Auction
       <div class="cardslots">
         <CollectorsCard v-for="(card, index) in auctionCards" :card="card" :key="index"/>
@@ -62,12 +68,14 @@
 
 import CollectorsCard from '@/components/CollectorsCard.vue'
 import CollectorsBuyActions from '@/components/CollectorsBuyActions.vue'
+import CollectorsSkillActions from '@/components/CollectorsSkillActions.vue'
 
 export default {
   name: 'Collectors',
   components: {
     CollectorsCard,
-    CollectorsBuyActions
+    CollectorsBuyActions,
+    CollectorsSkillActions
   },
   data: function () {
     return {
