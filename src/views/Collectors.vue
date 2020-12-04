@@ -299,7 +299,7 @@
         }
 
         .energiflaska {
-          background-image: url("/images/nedladdning.jpeg");
+          background-image: url("/images/flaska.png");
           height: 70px;
           width: 70px;
 
