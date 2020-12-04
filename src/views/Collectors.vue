@@ -1,6 +1,22 @@
 <template>
   <div>
     <main>
+
+
+<div class="table">
+<div class="board">
+<div class="skillPool"></div>
+class = energiflaask
+<div class="auctionPool"></div>
+<div class="itemPool"></div>
+<div class="marketPool"></div>
+<div class="workPool"></div>
+
+
+
+  </div>
+</div>
+
       {{buyPlacement}} {{chosenPlacementCost}}
 
       <CollectorsBuyActions v-if="players[playerId]"
@@ -9,7 +25,7 @@
         :itemsOnSale="itemsOnSale"
         :marketValues="marketValues"
         :placement="buyPlacement"
-        @buyCard="buyCard($event)"
+        @buyCard=buyCard($event)
         @placeBottle="placeBottle('buy', $event)"/>
 
         <CollectorsSkillActions v-if="players[playerId]"
@@ -220,6 +236,26 @@ export default {
   main {
     user-select: none;
   }
+
+
+
+.table{
+padding-left: 50px;
+padding-right: 50px;
+  }
+
+.board{
+
+  display:grid;
+
+
+}
+
+.woorkpool
+
+
+
+
   footer {
     margin-top: 5em auto;
   }
