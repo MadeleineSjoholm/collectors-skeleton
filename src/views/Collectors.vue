@@ -1,7 +1,7 @@
 <template>
   <div>
     <main>
-
+hej
       <div class="table">
         <div class="board">
           <div class="skillPool">
