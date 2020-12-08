@@ -5,7 +5,7 @@
       <div class="table">
         <div class="board">
           <div class="skillPool">
-            skill
+            hello
             <div class="energiflaska">
             </div>
             <div class="energiflaska">
@@ -17,14 +17,10 @@
             <div class="energiflaska">
             </div>
           </div>
-          <div class="auctionPool"> auction</div>
-         
-          <div class="itemPool">item</div>
-          
-          <div class="marketPool">market</div>
-          
-          <div class="workPool">work</div>
-          
+          <div class="auctionPool"></div>
+          <div class="itemPool"></div>
+          <div class="marketPool"></div>
+          <div class="workPool"></div>
 
 
 
@@ -98,6 +94,109 @@
 </template>
 
 <script>
+<<<<<<< HEAD
+/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "[iI]gnored" }]*/
+
+import CollectorsCard from '@/components/CollectorsCard.vue'
+
+export default {
+  name: 'Collectors',
+  components: {
+    CollectorsCard
+  },
+  data: function () {
+    return {
+      publicPath: "localhost:8080/#", //"collectors-groupxx.herokuapp.com/#",
+      touchScreen: false,
+      myCards: [],
+      maxSizes: { x: 0,
+                  y: 0 },
+      labels: {},
+      points: {}
+    }
+  },
+  created: function () {
+    this.$store.commit('SET_PLAYER_ID', this.$route.query.id)
+    //TODO! Fix this ugly hack
+    //background: https://github.com/quasarframework/quasar/issues/5672
+    const newRoute = this.$route.params.id + "?id=" + this.$store.state.playerId;
+    if (this.$route.params.id + "?id=" + this.$route.query.id !== newRoute)
+      this.$router.push(newRoute);
+    this.$store.state.socket.emit('collectorsLoaded',
+      { roomId: this.$route.params.id,
+        playerId: this.$store.state.playerId } );
+    this.$store.state.socket.on('collectorsInitialize',
+      function(d) {
+        this.labels = d.labels;
+        this.myCards = d.hand;
+      }.bind(this));
+    this.$store.state.socket.on('collectorsPointsUpdated', (d) => this.points = d );
+
+    this.$store.state.socket.on('collectorsCardDrawn',
+      function(d) {
+        console.log(d);
+        if(d.playerId === this.$route.query.id) {
+          this.myCards = d.cards;
+        }
+        else {
+          console.log("another player drew a card");
+        }
+      }.bind(this)
+    );
+  },
+  methods: {
+    selectAll: function (n) {
+      n.target.select();
+    },
+    drawCard: function () {
+      this.$store.state.socket.emit('collectorsDrawCard', { roomId: this.$route.params.id,
+           playerId: this.$store.state.playerId });
+    }
+  },
+}
+</script>
+<style scoped>
+  header {
+    user-select: none;
+    position: fixed;
+    width:100%;
+    pointer-events: none;
+  }
+  main {
+    user-select: none;
+  }
+  footer {
+    margin-top: 5em auto;
+  }
+  footer a {
+    text-decoration: none;
+    border-bottom: 2px dotted ivory;
+  }
+  footer a:visited {
+    color:ivory;
+  }
+  .my-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 130px);
+    grid-template-rows: repeat(auto-fill, 180px);
+  }
+  .my-cards div {
+    transform: scale(0.5)translate(-50%,-50%);
+    transition:0.2s;
+    transition-timing-function: ease-out;
+    z-index: 0;
+  }
+  .my-cards div:hover {
+    transform: scale(1)translate(-25%,0);
+    z-index: 1;
+  }
+  @media screen and (max-width: 800px) {
+    main {
+      width:90vw;
+    }
+  }
+</style>
+=======
 
   import CollectorsCard from '@/components/CollectorsCard.vue'
   import CollectorsBuyActions from '@/components/CollectorsBuyActions.vue'
@@ -257,66 +356,62 @@
 
 
         .table{
-          padding-left: 20px;
-          padding-right: 20px;
-          background-color:yellow;
+          padding-left: 50px;
+          padding-right: 50px;
+          background-color: #0033cc;
         }
 
         .board{
 
         display: grid;
         background-color: #0099ff;
-        width: auto;
-        height: 100vh;
 
 
         }
-        .itemPool {
-          grid-column: 2 /span 4;
+
+        .woorkpool {
+          grid-column: 1 / span 3;
           grid-row: 1;
-background-color: red; 
 
-        }
-
-        .skillPool{
-          grid-column:1;
-          grid-row: 1 / span 5;
-background-color: green; 
-
-        }
-
-        .workPool {
-          grid-column: 2 / span 2;
-          grid-row: 2 / span 3 ;
-background-color: yellow;
 
 
         }
 
         .marketPool{
-          grid-column:2 /span 4;
-          grid-row: 5;
-background-color: blue;
+          grid-column:2 /span 1;
+          grid-row: 1;
+
         }
 
-        
+        .itemPool {
+          grid-column:2 /span 2;
+          grid-row: 1;
+
+        }
 
         .auctionPool{
-          grid-column: 4 /span 2;
-          grid-row: 2 / span 3;
-background-color: gray;
+          grid-column:2 /span 1;
+          grid-row: 1;
+
 
         }
 
-        
+        .skillPool{
+          grid-column:2 /span 1;
+          grid-row: 1;
+
+
+        }
 
         .energiflaska {
-          background-image: url("/images/flaska.png");
-          height: 10vh;
-          width: 10vw;
-          background-size: cover;
+          background-image: url("/images/flaska.PNG");
+          height: 100px;
+          width: 100px;
+
 
         }
+
+
 
 
         footer {
@@ -351,3 +446,4 @@ background-color: gray;
           }
         }
       </style>
+>>>>>>> 2f4f10ed2dcbb19131a7aa24f7369931a0ffc21a
