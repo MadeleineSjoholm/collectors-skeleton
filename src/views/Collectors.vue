@@ -301,7 +301,7 @@
         }
 
         .energiflaska {
-          background-image: url("/images/flaska.PNG");
+          background-image: url("/images/flaska.png");
           height: 100px;
           width: 100px;
 
