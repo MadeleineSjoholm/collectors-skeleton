@@ -10,6 +10,14 @@
             <div class="energiflaska"></div>
             <div class="energiflaska"></div>
             <div class="energiflaska"></div>
+            Skills
+            <div class="cardslots">
+              <CollectorsCard
+                v-for="(card, index) in skillsOnSale"
+                :card="card"
+                :key="index"
+              />
+            </div>
           </div>
           <div class="auctionPool">auction</div>
 
@@ -280,43 +288,52 @@ main {
 .table {
   padding-left: 20px;
   padding-right: 20px;
-  background-color: yellow;
+  background-color: white;
 }
 
 .board {
   display: grid;
-  background-color: #0099ff;
+  /*padding: 10px;*/
+  background-color: white;
   width: auto;
   height: 100vh;
+  column-gap: 0.5rem; 
+  row-gap: 0.5rem;
 }
 .itemPool {
+  padding-right: 10px;
   grid-column: 2 / span 4;
   grid-row: 1;
-  background-color: red;
+  background-color: #ccb3ff;
 }
 
 .skillPool {
   grid-column: 1;
   grid-row: 1 / span 5;
-  background-color: green;
+  background-color: #3399ff;
+  display: grid;
+  /* grid-gap: 0.5rem; */
+  column-gap: 0.5rem; 
+  row-gap: 0.5rem;
 }
 
 .workPool {
   grid-column: 2 / span 2;
   grid-row: 2 / span 3;
-  background-color: yellow;
+  background-color: #80ffff;
 }
 
 .marketPool {
   grid-column: 2 / span 4;
   grid-row: 5;
-  background-color: blue;
+  background-color: #4d4dff;
+
 }
 
 .auctionPool {
   grid-column: 4 / span 2;
   grid-row: 2 / span 3;
-  background-color: gray;
+  background-color: #99ccff;
 }
 
 .energiflaska {
