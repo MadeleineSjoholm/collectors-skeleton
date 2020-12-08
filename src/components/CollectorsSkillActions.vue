@@ -1,29 +1,30 @@
 <template>
-    <div>
-      <h1>{{ labels.buyCard }}</h1>
-      <div class="buy-cards">
-        <div v-for="(card, index) in skillsOnSale" :key="index">
-          <CollectorsCard
-            :card="card"
-            :availableAction="card.available"
-            @doAction="buyCard(card)"/>
-          {{ cardCost(card) }}
-        </div>
-      </div>
-      <div>
-        <div class="buttons2" v-for="(p, index) in placement" :key="index"> <!-- döpt om denna till  button2 -->
-          <button
-            v-if="p.playerId===null"
-            :disabled="cannotAfford(p.cost)"
-            @click="placeBottle(p)" >
-            ${{p.cost}}
-          </button>
-          <div v-if="p.playerId !== null">
-            {{p.playerId}}
-          </div>
-        </div>
+  <div>
+    <h1>{{ labels.buyCard }}</h1>
+    <div class="buy-cards">
+      <div v-for="(card, index) in skillsOnSale" :key="index">
+        <CollectorsCard
+        :card="card"
+        :availableAction="card.available"
+        @doAction="buyCard(card)"/>
+        {{ cardCost(card) }}
       </div>
     </div>
+    <div>
+      <div class="buttons2" v-for="(p, index) in placement" :key="index"> <!-- döpt om denna till  button2 -->
+        <button
+        v-if="p.playerId===null"
+        :disabled="cannotAfford(p.cost)"
+        @click="placeBottle(p)" >
+        ${{p.cost}}
+      </button>
+      <div v-if="p.playerId !== null">
+        {{p.playerId}}
+      </div>
+    </div>
+  </div>
+</div>
+
 </template>
 
 <script>
@@ -41,7 +42,7 @@ export default {
     placement: Array
   },
   methods: {
-      placeBottle: function (p) {
+    placeBottle: function (p) {
       this.$emit('placeBottle', p.cost);
       this.highlightAvailableCards(p.cost);
     },
@@ -78,8 +79,9 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .buy-cards, .buttons {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 130px);
-  }
+.buy-cards, .buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 130px);
+}
+
 </style>

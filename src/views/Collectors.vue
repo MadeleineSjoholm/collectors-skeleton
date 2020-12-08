@@ -1,15 +1,18 @@
 <template>
   <div>
     <main>
+
       <div class="table">
         <div class="board">
           <div class="skillPool">
             skill
-            <div class="energiflaska"></div>
-            <div class="energiflaska"></div>
-            <div class="energiflaska"></div>
-            <div class="energiflaska"></div>
-            <div class="energiflaska"></div>
+            <div class="bottlePlacement">
+              <div class="energiflaska"></div>
+              <div class="energiflaska"></div>
+              <div class="energiflaska"></div>
+              <div class="energiflaska"></div>
+              <div class="energiflaska"></div>
+            </div>
             Skills
             <div class="cardslots">
               <CollectorsCard
@@ -31,6 +34,7 @@
 
       {{ buyPlacement }} {{ chosenPlacementCost }}
 
+<!--Den här -->
       <CollectorsBuyActions
         v-if="players[playerId]"
         :labels="labels"
@@ -65,7 +69,9 @@
           :key="index"
         />
       </div>
+
       <div class="buttons2">
+
         <!-- denna är tillagd -->
 
         <button @click="drawCard">
@@ -285,6 +291,7 @@ main {
   user-select: none;
 }
 
+
 .table {
   padding-left: 20px;
   padding-right: 20px;
@@ -296,7 +303,7 @@ main {
   background-color: ##6699ff;
   width: auto;
   height: 100vh;
-  column-gap: 0.5rem; 
+  column-gap: 0.5rem;
   row-gap: 0.5rem;
 }
 .itemPool {
@@ -312,9 +319,12 @@ main {
   background-color: #3399ff;
   display: grid;
   /* grid-gap: 0.5rem; */
-  column-gap: 0.5rem; 
+
+
+  column-gap: 0.5rem;
   row-gap: 0.5rem;
 }
+
 
 .workPool {
   grid-column: 2 / span 2;
@@ -340,6 +350,7 @@ main {
   width: 10vw;
   background-size: cover;
 }
+
 
 footer {
   margin-top: 5em auto;
