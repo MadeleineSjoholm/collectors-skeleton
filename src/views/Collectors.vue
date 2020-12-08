@@ -288,13 +288,12 @@ main {
 .table {
   padding-left: 20px;
   padding-right: 20px;
-  background-color: white;
+  background-color: #b3ffff;
 }
 
 .board {
   display: grid;
-  /*padding: 10px;*/
-  background-color: white;
+  background-color: ##6699ff;
   width: auto;
   height: 100vh;
   column-gap: 0.5rem; 
@@ -327,7 +326,6 @@ main {
   grid-column: 2 / span 4;
   grid-row: 5;
   background-color: #4d4dff;
-
 }
 
 .auctionPool {
