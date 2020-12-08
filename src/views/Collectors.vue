@@ -5,7 +5,7 @@
       <div class="table">
         <div class="board">
           <div class="skillPool">
-            hello
+            skill
             <div class="energiflaska">
             </div>
             <div class="energiflaska">
@@ -17,10 +17,14 @@
             <div class="energiflaska">
             </div>
           </div>
-          <div class="auctionPool"></div>
-          <div class="itemPool"></div>
-          <div class="marketPool"></div>
-          <div class="workPool"></div>
+          <div class="auctionPool"> auction</div>
+         
+          <div class="itemPool">item</div>
+          
+          <div class="marketPool">market</div>
+          
+          <div class="workPool">work</div>
+          
 
 
 
@@ -253,62 +257,66 @@
 
 
         .table{
-          padding-left: 50px;
-          padding-right: 50px;
-          background-color: #0033cc;
+          padding-left: 20px;
+          padding-right: 20px;
+          background-color:yellow;
         }
 
         .board{
 
         display: grid;
         background-color: #0099ff;
+        width: auto;
+        height: 100vh;
 
 
         }
-
-        .woorkpool {
-          grid-column: 1 / span 3;
+        .itemPool {
+          grid-column: 2 /span 4;
           grid-row: 1;
+background-color: red; 
 
+        }
+
+        .skillPool{
+          grid-column:1;
+          grid-row: 1 / span 5;
+background-color: green; 
+
+        }
+
+        .workPool {
+          grid-column: 2 / span 2;
+          grid-row: 2 / span 3 ;
+background-color: yellow;
 
 
         }
 
         .marketPool{
-          grid-column:2 /span 1;
-          grid-row: 1;
-
+          grid-column:2 /span 4;
+          grid-row: 5;
+background-color: blue;
         }
 
-        .itemPool {
-          grid-column:2 /span 2;
-          grid-row: 1;
-
-        }
+        
 
         .auctionPool{
-          grid-column:2 /span 1;
-          grid-row: 1;
-
-
-        }
-
-        .skillPool{
-          grid-column:2 /span 1;
-          grid-row: 1;
-
+          grid-column: 4 /span 2;
+          grid-row: 2 / span 3;
+background-color: gray;
 
         }
+
+        
 
         .energiflaska {
           background-image: url("/images/flaska.png");
-          height: 100px;
-          width: 100px;
-
+          height: 10vh;
+          width: 10vw;
+          background-size: cover;
 
         }
-
-
 
 
         footer {
