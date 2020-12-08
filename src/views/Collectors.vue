@@ -5,7 +5,7 @@
       <div class="table">
         <div class="board">
           <div class="skillPool">
-            hej
+            hello
             <div class="energiflaska">
             </div>
             <div class="energiflaska">
