@@ -1,51 +1,48 @@
 <template>
   <div>
     <main>
-
       <div class="table">
         <div class="board">
           <div class="skillPool">
-            hello
-            <div class="energiflaska">
-            </div>
-            <div class="energiflaska">
-            </div>
-            <div class="energiflaska">
-            </div>
-            <div class="energiflaska">
-            </div>
-            <div class="energiflaska">
-            </div>
+            skill
+            <div class="energiflaska"></div>
+            <div class="energiflaska"></div>
+            <div class="energiflaska"></div>
+            <div class="energiflaska"></div>
+            <div class="energiflaska"></div>
           </div>
-          <div class="auctionPool"></div>
-          <div class="itemPool"></div>
-          <div class="marketPool"></div>
-          <div class="workPool"></div>
+          <div class="auctionPool">auction</div>
 
+          <div class="itemPool">item</div>
 
+          <div class="marketPool">market</div>
 
+          <div class="workPool">work</div>
         </div>
       </div>
 
-      {{buyPlacement}} {{chosenPlacementCost}}
+      {{ buyPlacement }} {{ chosenPlacementCost }}
 
-      <CollectorsBuyActions v-if="players[playerId]"
-      :labels="labels"
-      :player="players[playerId]"
-      :itemsOnSale="itemsOnSale"
-      :marketValues="marketValues"
-      :placement="buyPlacement"
-      @buyCard=buyCard($event)
-      @placeBottle="placeBottle('buy', $event)"/>
+      <CollectorsBuyActions
+        v-if="players[playerId]"
+        :labels="labels"
+        :player="players[playerId]"
+        :itemsOnSale="itemsOnSale"
+        :marketValues="marketValues"
+        :placement="buyPlacement"
+        @buyCard="buyCard($event)"
+        @placeBottle="placeBottle('buy', $event)"
+      />
 
-      <CollectorsSkillActions v-if="players[playerId]"
-      :labels="labels"
-      :player="players[playerId]"
-      :skillsOnSale="skillsOnSale"
-      :placement="skillPlacement"
-      @buyCard="buyCard($event)"
-      @placeBottle="placeBottle('skill', $event)"/>
-
+      <CollectorsSkillActions
+        v-if="players[playerId]"
+        :labels="labels"
+        :player="players[playerId]"
+        :skillsOnSale="skillsOnSale"
+        :placement="skillPlacement"
+        @buyCard="buyCard($event)"
+        @placeBottle="placeBottle('skill', $event)"
+      />
 
       <div class="buttons">
         <button @click="drawCard">
@@ -54,93 +51,187 @@
       </div>
       Skills
       <div class="cardslots">
-        <CollectorsCard v-for="(card, index) in skillsOnSale" :card="card" :key="index"/>
+        <CollectorsCard
+          v-for="(card, index) in skillsOnSale"
+          :card="card"
+          :key="index"
+        />
       </div>
-      <div class="buttons2">                 <!-- denna är tillagd -->
+      <div class="buttons2">
+        <!-- denna är tillagd -->
 
         <button @click="drawCard">
-
           {{ labels.draw }}
         </button>
       </div>
 
       Auction
       <div class="cardslots">
-        <CollectorsCard v-for="(card, index) in auctionCards" :card="card" :key="index"/>
+        <CollectorsCard
+          v-for="(card, index) in auctionCards"
+          :card="card"
+          :key="index"
+        />
       </div>
       Hand
       <div class="cardslots" v-if="players[playerId]">
-        <CollectorsCard v-for="(card, index) in players[playerId].hand" :card="card" :availableAction="card.available" @doAction="buyCard(card)" :key="index"/>
+        <CollectorsCard
+          v-for="(card, index) in players[playerId].hand"
+          :card="card"
+          :availableAction="card.available"
+          @doAction="buyCard(card)"
+          :key="index"
+        />
       </div>
       Items
       <div class="cardslots" v-if="players[playerId]">
-        <CollectorsCard v-for="(card, index) in players[playerId].items" :card="card" :key="index"/>
+        <CollectorsCard
+          v-for="(card, index) in players[playerId].items"
+          :card="card"
+          :key="index"
+        />
       </div>
     </main>
-    {{players}}
-    {{marketValues}}
+    {{ players }}
+    {{ marketValues }}
     <button v-if="players[playerId]" @click="players[playerId].money += 1">
       fake more money
     </button>
     <footer>
-
       <p>
         {{ labels.invite }}
-        <input type="text" :value="publicPath + $route.path" @click="selectAll" readonly="readonly">
+        <input
+          type="text"
+          :value="publicPath + $route.path"
+          @click="selectAll"
+          readonly="readonly"
+        />
       </p>
-
     </footer>
   </div>
 </template>
 
 <script>
-<<<<<<< HEAD
-/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "[iI]gnored" }]*/
-
-import CollectorsCard from '@/components/CollectorsCard.vue'
+import CollectorsCard from "@/components/CollectorsCard.vue";
+import CollectorsBuyActions from "@/components/CollectorsBuyActions.vue";
+import CollectorsSkillActions from "@/components/CollectorsSkillActions.vue";
 
 export default {
-  name: 'Collectors',
+  name: "Collectors",
   components: {
-    CollectorsCard
+    CollectorsCard,
+    CollectorsBuyActions,
+    CollectorsSkillActions,
   },
   data: function () {
     return {
       publicPath: "localhost:8080/#", //"collectors-groupxx.herokuapp.com/#",
       touchScreen: false,
-      myCards: [],
-      maxSizes: { x: 0,
-                  y: 0 },
+      maxSizes: { x: 0, y: 0 },
       labels: {},
-      points: {}
-    }
+      players: {},
+      // playerId: {
+      //   hand: [],
+      //   money: 1,
+      //   points: 0,
+      //   skills: [],
+      //   items: [],
+      //   income: [],
+      //   secret: []
+      // }
+      buyPlacement: [],
+      skillPlacement: [],
+      auctionPlacement: [],
+      marketPlacement: [],
+      chosenPlacementCost: null,
+      marketValues: {
+        fastaval: 0,
+        movie: 0,
+        technology: 0,
+        figures: 0,
+        music: 0,
+      },
+      itemsOnSale: [],
+      skillsOnSale: [],
+      auctionCards: [],
+      playerid: 0,
+    };
+  },
+  computed: {
+    playerId: function () {
+      return this.$store.state.playerId;
+    },
+  },
+  watch: {
+    players: function (newP, oldP) {
+      console.log(newP, oldP);
+      for (let p in this.players) {
+        for (let c = 0; c < this.players[p].hand.length; c += 1) {
+          if (typeof this.players[p].hand[c].item !== "undefined")
+            this.$set(this.players[p].hand[c], "available", false);
+        }
+      }
+    },
   },
   created: function () {
-    this.$store.commit('SET_PLAYER_ID', this.$route.query.id)
+    this.$store.commit("SET_PLAYER_ID", this.$route.query.id);
     //TODO! Fix this ugly hack
     //background: https://github.com/quasarframework/quasar/issues/5672
-    const newRoute = this.$route.params.id + "?id=" + this.$store.state.playerId;
+    const newRoute = this.$route.params.id + "?id=" + this.playerId;
     if (this.$route.params.id + "?id=" + this.$route.query.id !== newRoute)
       this.$router.push(newRoute);
-    this.$store.state.socket.emit('collectorsLoaded',
-      { roomId: this.$route.params.id,
-        playerId: this.$store.state.playerId } );
-    this.$store.state.socket.on('collectorsInitialize',
-      function(d) {
-        this.labels = d.labels;
-        this.myCards = d.hand;
-      }.bind(this));
-    this.$store.state.socket.on('collectorsPointsUpdated', (d) => this.points = d );
 
-    this.$store.state.socket.on('collectorsCardDrawn',
-      function(d) {
-        console.log(d);
-        if(d.playerId === this.$route.query.id) {
-          this.myCards = d.cards;
-        }
-        else {
-          console.log("another player drew a card");
-        }
+    this.$store.state.socket.emit("collectorsLoaded", {
+      roomId: this.$route.params.id,
+      playerId: this.playerId,
+    });
+
+    this.$store.state.socket.on(
+      "collectorsInitialize",
+      function (d) {
+        this.labels = d.labels;
+        this.players = d.players;
+        this.itemsOnSale = d.itemsOnSale;
+        this.marketValues = d.marketValues;
+        this.skillsOnSale = d.skillsOnSale;
+        this.auctionCards = d.auctionCards;
+        this.buyPlacement = d.placements.buyPlacement;
+        this.skillPlacement = d.placements.skillPlacement;
+        this.marketPlacement = d.placements.marketPlacement;
+        this.auctionPlacement = d.placements.auctionPlacement;
+      }.bind(this)
+    );
+
+    this.$store.state.socket.on(
+      "collectorsBottlePlaced",
+      function (d) {
+        this.buyPlacement = d.buyPlacement;
+        this.skillPlacement = d.skillPlacement;
+        this.marketPlacement = d.marketPlacement;
+        this.auctionPlacement = d.auctionPlacement;
+      }.bind(this)
+    );
+
+    this.$store.state.socket.on(
+      "collectorsPointsUpdated",
+      (d) => (this.points = d)
+    );
+
+    this.$store.state.socket.on(
+      "collectorsCardDrawn",
+      function (d) {
+        //this has been refactored to not single out one player's cards
+        //better to update the state of all cards
+        this.players = d;
+      }.bind(this)
+    );
+
+    this.$store.state.socket.on(
+      "collectorsCardBought",
+      function (d) {
+        console.log(d.playerId, "bought a card");
+        this.players = d.players;
+        this.itemsOnSale = d.itemsOnSale;
       }.bind(this)
     );
   },
@@ -148,302 +239,122 @@ export default {
     selectAll: function (n) {
       n.target.select();
     },
-    drawCard: function () {
-      this.$store.state.socket.emit('collectorsDrawCard', { roomId: this.$route.params.id,
-           playerId: this.$store.state.playerId });
-    }
-  },
-}
-</script>
-<style scoped>
-  header {
-    user-select: none;
-    position: fixed;
-    width:100%;
-    pointer-events: none;
-  }
-  main {
-    user-select: none;
-  }
-  footer {
-    margin-top: 5em auto;
-  }
-  footer a {
-    text-decoration: none;
-    border-bottom: 2px dotted ivory;
-  }
-  footer a:visited {
-    color:ivory;
-  }
-  .my-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 130px);
-    grid-template-rows: repeat(auto-fill, 180px);
-  }
-  .my-cards div {
-    transform: scale(0.5)translate(-50%,-50%);
-    transition:0.2s;
-    transition-timing-function: ease-out;
-    z-index: 0;
-  }
-  .my-cards div:hover {
-    transform: scale(1)translate(-25%,0);
-    z-index: 1;
-  }
-  @media screen and (max-width: 800px) {
-    main {
-      width:90vw;
-    }
-  }
-</style>
-=======
-
-  import CollectorsCard from '@/components/CollectorsCard.vue'
-  import CollectorsBuyActions from '@/components/CollectorsBuyActions.vue'
-  import CollectorsSkillActions from '@/components/CollectorsSkillActions.vue'
-
-  export default {
-    name: 'Collectors',
-    components: {
-      CollectorsCard,
-      CollectorsBuyActions,
-      CollectorsSkillActions
+    placeBottle: function (action, cost) {
+      this.chosenPlacementCost = cost;
+      this.$store.state.socket.emit("collectorsPlaceBottle", {
+        roomId: this.$route.params.id,
+        playerId: this.playerId,
+        action: action,
+        cost: cost,
+      });
     },
-    data: function () {
-      return {
-        publicPath: "localhost:8080/#", //"collectors-groupxx.herokuapp.com/#",
-        touchScreen: false,
-        maxSizes: { x: 0,
-          y: 0 },
-          labels: {},
-          players: {},
-          // playerId: {
-          //   hand: [],
-          //   money: 1,
-          //   points: 0,
-          //   skills: [],
-          //   items: [],
-          //   income: [],
-          //   secret: []
-          // }
-          buyPlacement: [],
-          skillPlacement: [],
-          auctionPlacement: [],
-          marketPlacement: [],
-          chosenPlacementCost: null,
-          marketValues: { fastaval: 0,
-            movie: 0,
-            technology: 0,
-            figures: 0,
-            music: 0 },
-            itemsOnSale: [],
-            skillsOnSale: [],
-            auctionCards: [],
-            playerid: 0
-          }
-        },
-        computed: {
-          playerId: function() { return this.$store.state.playerId}
-        },
-        watch: {
-          players: function(newP, oldP) {
-            console.log(newP, oldP)
-            for (let p in this.players) {
-              for(let c = 0; c < this.players[p].hand.length; c += 1) {
-                if (typeof this.players[p].hand[c].item !== "undefined")
-                this.$set(this.players[p].hand[c], "available", false);
-              }
-            }
-          }
-        },
-        created: function () {
-          this.$store.commit('SET_PLAYER_ID', this.$route.query.id)
-          //TODO! Fix this ugly hack
-          //background: https://github.com/quasarframework/quasar/issues/5672
-          const newRoute = this.$route.params.id + "?id=" + this.playerId;
-          if (this.$route.params.id + "?id=" + this.$route.query.id !== newRoute)
-          this.$router.push(newRoute);
-
-          this.$store.state.socket.emit('collectorsLoaded',
-          { roomId: this.$route.params.id,
-            playerId: this.playerId } );
-
-            this.$store.state.socket.on('collectorsInitialize',
-            function(d) {
-              this.labels = d.labels;
-              this.players = d.players;
-              this.itemsOnSale = d.itemsOnSale;
-              this.marketValues = d.marketValues;
-              this.skillsOnSale = d.skillsOnSale;
-              this.auctionCards = d.auctionCards;
-              this.buyPlacement = d.placements.buyPlacement;
-              this.skillPlacement = d.placements.skillPlacement;
-              this.marketPlacement = d.placements.marketPlacement;
-              this.auctionPlacement = d.placements.auctionPlacement;
-            }.bind(this));
-
-            this.$store.state.socket.on('collectorsBottlePlaced',
-            function(d) {
-              this.buyPlacement = d.buyPlacement;
-              this.skillPlacement = d.skillPlacement;
-              this.marketPlacement = d.marketPlacement;
-              this.auctionPlacement = d.auctionPlacement;
-            }.bind(this));
-
-            this.$store.state.socket.on('collectorsPointsUpdated', (d) => this.points = d );
-
-            this.$store.state.socket.on('collectorsCardDrawn',
-            function(d) {
-              //this has been refactored to not single out one player's cards
-              //better to update the state of all cards
-              this.players = d;
-            }.bind(this)
-            );
-
-            this.$store.state.socket.on('collectorsCardBought',
-            function(d) {
-              console.log(d.playerId, "bought a card");
-              this.players = d.players;
-              this.itemsOnSale = d.itemsOnSale;
-            }.bind(this)
-            );
-          },
-          methods: {
-            selectAll: function (n) {
-              n.target.select();
-            },
-            placeBottle: function (action, cost) {
-              this.chosenPlacementCost = cost;
-              this.$store.state.socket.emit('collectorsPlaceBottle', {
-                roomId: this.$route.params.id,
-                playerId: this.playerId,
-                action: action,
-                cost: cost,
-              }
-              );
-            },
-            drawCard: function () {
-              this.$store.state.socket.emit('collectorsDrawCard', {
-                roomId: this.$route.params.id,
-                playerId: this.playerId
-              }
-              );
-            },
-            buyCard: function (card) {
-              console.log("buyCard", card);
-              this.$store.state.socket.emit('collectorsBuyCard', {
-                roomId: this.$route.params.id,
-                playerId: this.playerId,
-                card: card,
-                cost: this.marketValues[card.market] + this.chosenPlacementCost
-              }
-              );
-            }
-          },
-        }
-      </script>
+    drawCard: function () {
+      this.$store.state.socket.emit("collectorsDrawCard", {
+        roomId: this.$route.params.id,
+        playerId: this.playerId,
+      });
+    },
+    buyCard: function (card) {
+      console.log("buyCard", card);
+      this.$store.state.socket.emit("collectorsBuyCard", {
+        roomId: this.$route.params.id,
+        playerId: this.playerId,
+        card: card,
+        cost: this.marketValues[card.market] + this.chosenPlacementCost,
+      });
+    },
+  },
+};
+</script>
       <style scoped>
-        header {
-          user-select: none;
-          position: fixed;
-          width:100%;
-          pointer-events: none;
-        }
-        main {
-          user-select: none;
-        }
+header {
+  user-select: none;
+  position: fixed;
+  width: 100%;
+  pointer-events: none;
+}
+main {
+  user-select: none;
+}
 
+.table {
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: yellow;
+}
 
+.board {
+  display: grid;
+  background-color: #0099ff;
+  width: auto;
+  height: 100vh;
+}
+.itemPool {
+  grid-column: 2 / span 4;
+  grid-row: 1;
+  background-color: red;
+}
 
-        .table{
-          padding-left: 50px;
-          padding-right: 50px;
-          background-color: #0033cc;
-        }
+.skillPool {
+  grid-column: 1;
+  grid-row: 1 / span 5;
+  background-color: green;
+}
 
-        .board{
+.workPool {
+  grid-column: 2 / span 2;
+  grid-row: 2 / span 3;
+  background-color: yellow;
+}
 
-        display: grid;
-        background-color: #0099ff;
+.marketPool {
+  grid-column: 2 / span 4;
+  grid-row: 5;
+  background-color: blue;
+}
 
+.auctionPool {
+  grid-column: 4 / span 2;
+  grid-row: 2 / span 3;
+  background-color: gray;
+}
 
-        }
+.energiflaska {
+  background-image: url("/images/flaska.png");
+  height: 10vh;
+  width: 10vw;
+  background-size: cover;
+}
 
-        .woorkpool {
-          grid-column: 1 / span 3;
-          grid-row: 1;
+footer {
+  margin-top: 5em auto;
+}
+footer a {
+  text-decoration: none;
+  border-bottom: 2px dotted ivory;
+}
+footer a:visited {
+  color: ivory;
+}
+.cardslots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 130px);
+  grid-template-rows: repeat(auto-fill, 180px);
+}
+.cardslots div {
+  transform: scale(0.5) translate(-50%, -50%);
+  transition: 0.2s;
+  transition-timing-function: ease-out;
+  z-index: 0;
+}
+.cardslots div:hover {
+  transform: scale(1) translate(-25%, 0);
+  z-index: 1;
+}
 
-
-
-        }
-
-        .marketPool{
-          grid-column:2 /span 1;
-          grid-row: 1;
-
-        }
-
-        .itemPool {
-          grid-column:2 /span 2;
-          grid-row: 1;
-
-        }
-
-        .auctionPool{
-          grid-column:2 /span 1;
-          grid-row: 1;
-
-
-        }
-
-        .skillPool{
-          grid-column:2 /span 1;
-          grid-row: 1;
-
-
-        }
-
-        .energiflaska {
-          background-image: url("/images/flaska.PNG");
-          height: 100px;
-          width: 100px;
-
-
-        }
-
-
-
-
-        footer {
-          margin-top: 5em auto;
-        }
-        footer a {
-          text-decoration: none;
-          border-bottom: 2px dotted ivory;
-        }
-        footer a:visited {
-          color:ivory;
-        }
-        .cardslots {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, 130px);
-          grid-template-rows: repeat(auto-fill, 180px);
-        }
-        .cardslots div {
-          transform: scale(0.5)translate(-50%,-50%);
-          transition:0.2s;
-          transition-timing-function: ease-out;
-          z-index: 0;
-        }
-        .cardslots div:hover {
-          transform: scale(1)translate(-25%,0);
-          z-index: 1;
-        }
-
-        @media screen and (max-width: 800px) {
-          main {
-            width:90vw;
-          }
-        }
-      </style>
->>>>>>> 2f4f10ed2dcbb19131a7aa24f7369931a0ffc21a
+@media screen and (max-width: 800px) {
+  main {
+    width: 90vw;
+  }
+}
+</style>
