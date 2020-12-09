@@ -1,11 +1,10 @@
 <template>
   <div>
     <main>
-
       <div class="table">
         <div class="board">
           <div class="skillPool">
-            skill
+            Skill
             <div class="bottlePlacement">
               <div class="energiflaska"></div>
               <div class="energiflaska"></div>
@@ -13,8 +12,7 @@
               <div class="energiflaska"></div>
               <div class="energiflaska"></div>
             </div>
-            Skills
-            <div class="cardslots">
+            <div class="skillCards">
               <CollectorsCard
                 v-for="(card, index) in skillsOnSale"
                 :card="card"
@@ -22,19 +20,51 @@
               />
             </div>
           </div>
-          <div class="auctionPool">auction</div>
 
-          <div class="itemPool">item</div>
+          <div class="auctionPool">
+            auction
+            <div class="auctionCards">
+              <CollectorsCard
+                v-for="(card, index) in auctionCards"
+                :card="card"
+                :key="index"
+              />
+            </div>
+          </div>
+          <div class="itemPool">
+            item
+          <CollectorsBuyActions
+        v-if="players[playerId]"
+        :labels="labels"
+        :player="players[playerId]"
+        :itemsOnSale="itemsOnSale"
+        :marketValues="marketValues"
+        :placement="buyPlacement"
+        @buyCard="buyCard($event)"
+        @placeBottle="placeBottle('buy', $event)"
+      />
+            </div>
+         
 
           <div class="marketPool">market</div>
 
           <div class="workPool">work</div>
+
+          <div class="PlayerBoard">
+            <div class="PlayerBoardCards" v-if="players[playerId]">
+                <CollectorsCard
+                  v-for="(card, index) in players[playerId].items"
+                  :card="card"
+                  :key="index"
+                />
+          </div>
         </div>
+      </div>
       </div>
 
       {{ buyPlacement }} {{ chosenPlacementCost }}
 
-<!--Den här -->
+      
       <CollectorsBuyActions
         v-if="players[playerId]"
         :labels="labels"
@@ -71,7 +101,6 @@
       </div>
 
       <div class="buttons2">
-
         <!-- denna är tillagd -->
 
         <button @click="drawCard">
@@ -291,7 +320,6 @@ main {
   user-select: none;
 }
 
-
 .table {
   padding-left: 20px;
   padding-right: 20px;
@@ -300,7 +328,7 @@ main {
 
 .board {
   display: grid;
-  background-color: ##6699ff;
+  background-color: #6699ff;
   width: auto;
   height: 100vh;
   column-gap: 0.5rem;
@@ -317,14 +345,12 @@ main {
   grid-column: 1;
   grid-row: 1 / span 5;
   background-color: #3399ff;
-  display: grid;
+  display: flex;
   /* grid-gap: 0.5rem; */
-
-
-  column-gap: 0.5rem;
-  row-gap: 0.5rem;
+  /* column-gap: 0.5rem;*/
+  /* row-gap: 0.5rem;*/
+  /*grid-template-columns: repeat(auto-fill, 50px);*/
 }
-
 
 .workPool {
   grid-column: 2 / span 2;
@@ -343,15 +369,63 @@ main {
   grid-row: 2 / span 3;
   background-color: #99ccff;
 }
-
+.auctionCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 130px);
+  grid-template-rows: repeat(auto-fill, 180px);
+}
+.auctionCards div {
+  transform: scale(0.5) translate(-50%, -50%);
+  transition: 0.2s;
+  transition-timing-function: ease-out;
+  z-index: 0;
+}
+.auctionCards div:hover {
+  transform: scale(1) translate(-25%, 0);
+  z-index: 1;
+}
 .energiflaska {
   background-image: url("/images/flaska.png");
   height: 10vh;
   width: 10vw;
   background-size: cover;
 }
+.bottlePlacement {
+  float: left;
+  display: inline;
+  width: 49%;
+}
+.skillCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 130px);
+  grid-template-rows: repeat(auto-fill, 180px);
+}
 
-
+.skillCards div {
+  transform: scale(0.5) translate(-50%, -50%);
+  transition: 0.2s;
+  transition-timing-function: ease-out;
+  z-index: 0;
+}
+.skillCards div:hover {
+  transform: scale(1) translate(-25%, 0);
+  z-index: 1;
+}
+.PlayerBoardCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 130px);
+  grid-template-rows: repeat(auto-fill, 180px);
+}
+.PlayerBoardCards div {
+  transform: scale(0.5) translate(-50%, -50%);
+  transition: 0.2s;
+  transition-timing-function: ease-out;
+  z-index: 0;
+}
+.PlayerBoardCards div:hover {
+  transform: scale(1) translate(-25%, 0);
+  z-index: 1;
+}
 footer {
   margin-top: 5em auto;
 }
@@ -366,6 +440,7 @@ footer a:visited {
   display: grid;
   grid-template-columns: repeat(auto-fill, 130px);
   grid-template-rows: repeat(auto-fill, 180px);
+  /*column-gap: 10px;*/
 }
 .cardslots div {
   transform: scale(0.5) translate(-50%, -50%);
