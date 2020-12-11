@@ -6,11 +6,11 @@
           <div class="skillPool">
             Skill
             <div class="bottlePlacement">
-              <div class="energiflaska"></div>
-              <div class="energiflaska"></div>
-              <div class="energiflaska"></div>
-              <div class="energiflaska"></div>
-              <div class="energiflaska"></div>
+              <div class="greenEnergy"></div>
+              <div class="greenEnergy"></div>
+              <div class="greenEnergy"></div>
+              <div class="dollarEnergy"></div>
+              <div class="dollarEnergy"></div>
             </div>
             <div class="skillCards">
               <CollectorsCard
@@ -390,12 +390,19 @@
     transform: scale(1) translate(-25%, 0);
     z-index: 1;
   }
-  .energiflaska {
-    background-image: url("/images/flaska.png");
-    height: 10vh;
+  .greenEnergy {
+    background-image: url("/images/grönflaska.png");
+    height: 20vh;
     width: 10vw;
     background-size: cover;
   }
+  .dollarEnergy {
+    background-image: url("/images/dollar.png");
+    height: 20vh;
+    width: 9.5vw;
+    background-size: cover;
+  }
+
   .bottlePlacement {
     float: left;
     display: inline;
