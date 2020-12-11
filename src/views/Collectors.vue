@@ -53,14 +53,14 @@
           <div class="footer">
 
             <div class="playerHand">
-              PLAYERHAND
+              PLAYERHAND {{ playerId }}
 
 
             </div>
 
 
             <div class="playerItem">
-              PLAYERITEM
+              PLAYERITEM 
 
               <div class="PlayerBoardCards" v-if="players[playerId]">
                 <CollectorsCard
@@ -425,9 +425,6 @@
     z-index: 1;
   }
 
-
-
-
   .PlayerBoardCards {
     display: grid;
     grid-template-columns: repeat(auto-fill, 130px);
@@ -467,8 +464,6 @@
     margin-right: 40%;
 
   }
-
-
   footer {
     margin-top: 5em auto;
   }
