@@ -49,10 +49,19 @@
 
           <div class="workPool">work</div>
 
+
+          <div class="footer">
+
             <div class="playerHand">
+              PLAYERHAND
+
+
             </div>
 
+
             <div class="playerItem">
+              PLAYERITEM
+
               <div class="PlayerBoardCards" v-if="players[playerId]">
                 <CollectorsCard
                 v-for="(card, index) in players[playerId].items"
@@ -60,6 +69,7 @@
                 :key="index"
                 />
               </div>
+            </div>
             </div>
         </div>
       </div>
@@ -435,14 +445,27 @@
   }
 
   .playerItem  {
-    grid-column: 1 / span 4;
-    grid-row: 6;
-    background-color: white;
+    grid-column: 2 / span 2;
+    grid-row: 15 / span 3;
+    background-color: #99ccff;
+
+
   }
   .playerHand {
-    grid-column: 2 / span 5;
+    grid-column: 2 / span 2;
     grid-row: 6;
-    background-color: red;
+    background-color: #b366ff;
+    height: 100%;
+  }
+
+  .footer {
+
+    position: fixed;
+    bottom: 0;
+    left: 80%;
+    width:20%;
+    margin-right: 40%;
+
   }
 
 
