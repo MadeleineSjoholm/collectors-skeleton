@@ -394,7 +394,7 @@
     background-image: url("/images/grönflaska.png");
     height: 20vh;
     width: 10vw;
-    background-size: auto;
+    background-size: cover;
   }
   .dollarEnergy {
     background-image: url("/images/dollar.png");
