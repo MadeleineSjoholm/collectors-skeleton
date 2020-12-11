@@ -51,6 +51,7 @@
           <div class="workPool">work</div>
 
           <div class="PlayerBoard">
+            Player {{ playerID }} 
             <div class="PlayerBoardCards" v-if="players[playerId]">
                 <CollectorsCard
                   v-for="(card, index) in players[playerId].items"
