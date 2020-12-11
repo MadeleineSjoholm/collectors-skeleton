@@ -53,7 +53,7 @@
           <div class="footer">
 
             <div class="playerHand">
-              PLAYERHAND {{ playerId }}
+              PLAYERHAND for player: {{ playerId }}
 
 
             </div>
