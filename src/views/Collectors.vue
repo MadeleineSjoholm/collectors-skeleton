@@ -30,6 +30,12 @@
               :key="index"
               />
             </div>
+            <div class="bottlePlacement">
+                <div class="doubleDollarEnergy"></div>
+                <div class="dollarEnergy"></div>
+                <div class="orangeEnergy"></div>
+                <div class="orangeEnergy"></div>
+            </div>
           </div>
         <div class="itemPool">
             item
@@ -45,7 +51,14 @@
             />
           </div>
 
-          <div class="marketPool">market</div>
+          <div class="marketPool">market
+            <div class="bottlePlacement">
+                <div class="doubleblueEnergy"></div>
+                <div class="marketDollar"></div>
+                <div class="blueEnergy"></div>
+            </div>
+
+          </div>
 
           <div class="workPool">work</div>
 
@@ -398,6 +411,42 @@
   }
   .dollarEnergy {
     background-image: url("/images/dollar.png");
+    height: 20vh;
+    width: 9.5vw;
+    background-size: cover;
+  }
+  .doubleblueEnergy{
+    background-image: url("/images/marketbluee.png");
+    height: 20vh;
+    width: 9.5vw;
+    background-size: cover;
+  }
+  .marketDollar{
+    background-image: url("/images/marketdollar.png");
+    height: 20vh;
+    width: 9.5vw;
+    background-size: cover;
+  }
+  .blueEnergy{
+    background-image: url("/images/marketblå.png");
+    height: 20vh;
+    width: 9.5vw;
+    background-size: cover;
+  }
+  .doubleDollarEnergy{
+    background-image: url("/images/auctiondollar2.png");
+    height: 20vh;
+    width: 9.5vw;
+    background-size: cover;
+  }
+  .dollarEnergy{
+    background-image: url("/images/auctiondollar.png");
+    height: 20vh;
+    width: 9.5vw;
+    background-size: cover;
+  }
+  .orangeEnergy{
+    background-image: url("/images/auctionorange.png");
     height: 20vh;
     width: 9.5vw;
     background-size: cover;
