@@ -1,5 +1,24 @@
 <template>
   <div>
+  <!--  <div class="skillPool">
+      Skill
+      <div class="bottlePlacement">
+        <div class="energiflaska"></div>
+        <div class="energiflaska"></div>
+        <div class="energiflaska"></div>
+        <div class="energiflaska"></div>
+        <div class="energiflaska"></div>
+      </div>
+      <div class="skillCards">
+        <CollectorsCard
+        v-for="(card, index) in skillsOnSale"
+        :card="card"
+        :key="index"
+        />
+      </div>
+    </div>
+-->
+
     <h1>{{ labels.buyCard }}</h1>
     <div class="buy-cards">
       <div v-for="(card, index) in skillsOnSale" :key="index">
@@ -83,5 +102,47 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fill, 130px);
 }
+
+.skillPool {
+  grid-column: 1;
+  grid-row: 1 / span 5;
+  background-color: #3399ff;
+  display: flex;
+  /* grid-gap: 0.5rem; */
+  /* column-gap: 0.5rem;*/
+  /* row-gap: 0.5rem;*/
+  /*grid-template-columns: repeat(auto-fill, 50px);*/
+}
+ /*
+.energiflaska {
+  background-image: url("/images/flaska.png");
+  height: 10vh;
+  width: 10vw;
+  background-size: cover;
+}
+.bottlePlacement {
+  float: left;
+  display: inline;
+  width: 49%;
+}
+.skillCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 130px);
+  grid-template-rows: repeat(auto-fill, 180px);
+}
+
+.skillCards div {
+  transform: scale(0.5) translate(-50%, -50%);
+  transition: 0.2s;
+  transition-timing-function: ease-out;
+  z-index: 0;
+}
+.skillCards div:hover {
+  transform: scale(1) translate(-25%, 0);
+  z-index: 1;
+}
+
+
+*/
 
 </style>

@@ -60,7 +60,7 @@
 
 
             <div class="playerItem">
-              PLAYERITEM 
+              PLAYERITEM
 
               <div class="PlayerBoardCards" v-if="players[playerId]">
                 <CollectorsCard
@@ -171,7 +171,6 @@
   import CollectorsCard from "@/components/CollectorsCard.vue";
   import CollectorsBuyActions from "@/components/CollectorsBuyActions.vue";
   import CollectorsSkillActions from "@/components/CollectorsSkillActions.vue";
-
   export default {
     name: "Collectors",
     components: {
@@ -236,12 +235,10 @@
       const newRoute = this.$route.params.id + "?id=" + this.playerId;
       if (this.$route.params.id + "?id=" + this.$route.query.id !== newRoute)
       this.$router.push(newRoute);
-
       this.$store.state.socket.emit("collectorsLoaded", {
         roomId: this.$route.params.id,
         playerId: this.playerId,
       });
-
       this.$store.state.socket.on(
       "collectorsInitialize",
       function (d) {
@@ -257,7 +254,6 @@
         this.auctionPlacement = d.placements.auctionPlacement;
       }.bind(this)
       );
-
       this.$store.state.socket.on(
       "collectorsBottlePlaced",
       function (d) {
@@ -267,12 +263,10 @@
         this.auctionPlacement = d.auctionPlacement;
       }.bind(this)
       );
-
       this.$store.state.socket.on(
       "collectorsPointsUpdated",
       (d) => (this.points = d)
       );
-
       this.$store.state.socket.on(
       "collectorsCardDrawn",
       function (d) {
@@ -281,7 +275,6 @@
         this.players = d;
       }.bind(this)
       );
-
       this.$store.state.socket.on(
       "collectorsCardBought",
       function (d) {
@@ -332,13 +325,11 @@
   main {
     user-select: none;
   }
-
   .table {
     padding-left: 20px;
     padding-right: 20px;
     background-color: #b3ffff;
   }
-
   .board {
     display: grid;
     background-color: #6699ff;
@@ -353,7 +344,6 @@
     grid-row: 1;
     background-color: #ccb3ff;
   }
-
   .skillPool {
     grid-column: 1;
     grid-row: 1 / span 5;
@@ -364,19 +354,16 @@
     /* row-gap: 0.5rem;*/
     /*grid-template-columns: repeat(auto-fill, 50px);*/
   }
-
   .workPool {
     grid-column: 2 / span 2;
     grid-row: 2 / span 3;
     background-color: #80ffff;
   }
-
   .marketPool {
     grid-column: 2 / span 4;
     grid-row: 5;
     background-color: #4d4dff;
   }
-
   .auctionPool {
     grid-column: 4 / span 2;
     grid-row: 2 / span 3;
@@ -413,7 +400,6 @@
     grid-template-columns: repeat(auto-fill, 130px);
     grid-template-rows: repeat(auto-fill, 180px);
   }
-
   .skillCards div {
     transform: scale(0.5) translate(-50%, -50%);
     transition: 0.2s;
@@ -440,13 +426,10 @@
     transform: scale(1) translate(-25%, 0);
     z-index: 1;
   }
-
   .playerItem  {
     grid-column: 2 / span 2;
     grid-row: 15 / span 3;
     background-color: #99ccff;
-
-
   }
   .playerHand {
     grid-column: 2 / span 2;
@@ -454,15 +437,12 @@
     background-color: #b366ff;
     height: 100%;
   }
-
   .footer {
-
     position: fixed;
     bottom: 0;
     left: 80%;
     width:20%;
     margin-right: 40%;
-
   }
   footer {
     margin-top: 5em auto;
@@ -490,7 +470,6 @@
     transform: scale(1) translate(-25%, 0);
     z-index: 1;
   }
-
   @media screen and (max-width: 800px) {
     main {
       width: 90vw;

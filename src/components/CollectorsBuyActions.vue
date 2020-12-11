@@ -1,5 +1,22 @@
 <template>
-    <div>
+
+<div>
+
+<!--
+    <div class="itemPool">
+      item
+      <CollectorsBuyActions
+      v-if="players[playerId]"
+      :labels="labels"
+      :player="players[playerId]"
+      :itemsOnSale="itemsOnSale"
+      :marketValues="marketValues"
+      :placement="buyPlacement"
+      @buyCard="buyCard($event)"
+      @placeBottle="placeBottle('buy', $event)"
+      />
+    </div>
+-->
       <h1>{{ labels.buyCard }}</h1>
       <div class="buy-cards">
         <div v-for="(card, index) in itemsOnSale" :key="index">
@@ -92,4 +109,14 @@ export default {
     display: grid;
     grid-template-columns: repeat(auto-fill, 130px);
   }
+
+
+  /*
+  .itemPool {
+    padding-right: 10px;
+    grid-column: 2 / span 4;
+    grid-row: 1;
+    background-color: #ccb3ff;
+  }
+*/
 </style>
