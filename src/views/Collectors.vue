@@ -53,7 +53,7 @@
           <div class="footer">
 
             <div class="playerHand">
-              PLAYERHAND
+              PLAYERHAND {{ playerId }}
 
 
             </div>
@@ -410,6 +410,7 @@
     transform: scale(1) translate(-25%, 0);
     z-index: 1;
   }
+
   .PlayerBoardCards {
     display: grid;
     grid-template-columns: repeat(auto-fill, 130px);
