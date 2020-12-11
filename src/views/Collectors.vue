@@ -392,9 +392,10 @@
   }
   .energiflaska {
     background-image: url("/images/flaska.png");
+
     height: 10vh;
     width: 10vw;
-    background-size: cover;
+    background-size: auto;
   }
   .bottlePlacement {
     float: left;
