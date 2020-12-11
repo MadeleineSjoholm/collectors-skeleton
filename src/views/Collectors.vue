@@ -31,7 +31,7 @@
               />
             </div>
           </div>
-          <div class="itemPool">
+        <div class="itemPool">
             item
             <CollectorsBuyActions
             v-if="players[playerId]"
@@ -53,7 +53,7 @@
           <div class="footer">
 
             <div class="playerHand">
-              PLAYERHAND for player: {{ playerId }}
+              PLAYERHAND {{ playerId }}
 
 
             </div>
@@ -77,7 +77,7 @@
 
       {{ buyPlacement }} {{ chosenPlacementCost }}
 
-
+<!--
       <CollectorsBuyActions
       v-if="players[playerId]"
       :labels="labels"
@@ -89,6 +89,7 @@
       @placeBottle="placeBottle('buy', $event)"
       />
 
+-->
       <CollectorsSkillActions
       v-if="players[playerId]"
       :labels="labels"
@@ -98,6 +99,7 @@
       @buyCard="buyCard($event)"
       @placeBottle="placeBottle('skill', $event)"
       />
+
 
       <div class="buttons">
         <button @click="drawCard">
@@ -338,12 +340,16 @@
     column-gap: 0.5rem;
     row-gap: 0.5rem;
   }
+
+
   .itemPool {
     padding-right: 10px;
     grid-column: 2 / span 4;
     grid-row: 1;
     background-color: #ccb3ff;
   }
+
+
   .skillPool {
     grid-column: 1;
     grid-row: 1 / span 5;
