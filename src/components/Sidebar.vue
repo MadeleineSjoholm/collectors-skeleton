@@ -1,4 +1,4 @@
-<template>
+<!--<template>
   <div class="container" :class="{ show: showSidebar }">
     <div class="control">
       <i class="fas fa-angle-double-right" @click="showNav"></i>
@@ -134,3 +134,4 @@ this.showSidebar = true;
 }
 </style>
 
+-->

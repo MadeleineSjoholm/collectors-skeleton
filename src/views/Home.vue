@@ -58,9 +58,6 @@ export default {
 }
 </script>
 <style>
-<<<<<<< HEAD
-  .center {
-=======
   .information{
     display: grid;
     width: auto;
@@ -85,7 +82,6 @@ export default {
     width: 100px;
   }
   .collectors{
->>>>>>> 756f112cd90938932ae6bce823931c6b34b02e42
     display: flex;
     align-items: center;
     justify-content: center;

@@ -167,10 +167,6 @@
       </div>
       -->
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 756f112cd90938932ae6bce823931c6b34b02e42
     </main>
 
     {{ players }}
@@ -198,7 +194,7 @@
 import CollectorsCard from "@/components/CollectorsCard.vue";
 import CollectorsBuyActions from "@/components/CollectorsBuyActions.vue";
 import CollectorsSkillActions from "@/components/CollectorsSkillActions.vue";
-import Sidebar from "@/components/Sidebar.vue";
+//import Sidebar from "@/components/Sidebar.vue";
 export default {
   name: "Collectors",
   components: {
