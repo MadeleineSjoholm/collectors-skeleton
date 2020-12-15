@@ -4,27 +4,16 @@
       <div class="table">
         <div class="board">
           <div class="skillPool">
-            Skill
-            <div class="bottlePlacement">
-              <div class="greenEnergy"></div>
-              <div class="greenEnergy"></div>
-              <div class="greenEnergy"></div>
-              <div class="dollarEnergy"></div>
-              <div class="dollarEnergy"></div>
-            </div>
-
-            <div class="skillCards">
-              <div class="buttons">
-                <button @click="drawCard">
-                  {{ labels.draw }}
-                </button>
-              </div>
-              <CollectorsCard
-                v-for="(card, index) in skillsOnSale"
-                :card="card"
-                :key="index"
-              />
-            </div>
+            <CollectorsSkillActions
+              v-if="players[playerId]"
+              :labels="labels"
+              :player="players[playerId]"
+              :skillsOnSale="skillsOnSale"
+              :marketValues="marketValues"
+              :placement="skillPlacement"
+              @skillsCard="skillsCard($event)"
+              @placeBottle="placeBottle('skill', $event)"
+            />
           </div>
 
           <div class="auctionPool">
@@ -88,6 +77,14 @@
                   :key="index"
                 />
               </div>
+              player skills
+               <div class="PlayerBoardCards" v-if="players[playerId]">
+                <CollectorsCard
+                  v-for="(card, index) in players[playerId].skills"
+                  :card="card"
+                  :key="index"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -108,15 +105,7 @@
       />
 
 -->
-      <CollectorsSkillActions
-        v-if="players[playerId]"
-        :labels="labels"
-        :player="players[playerId]"
-        :skillsOnSale="skillsOnSale"
-        :placement="skillPlacement"
-        @buyCard="buyCard($event)"
-        @placeBottle="placeBottle('skill', $event)"
-      />
+     
       <!--
       <div class="buttons">
         <button @click="drawCard">
@@ -308,6 +297,14 @@ export default {
         this.itemsOnSale = d.itemsOnSale;
       }.bind(this)
     );
+  this.$store.state.socket.on(
+      "collectorsSkillBought",
+      function (d) {
+        console.log(d.playerId, "bought a skill");
+        this.players = d.players;
+        this.skillsOnSale = d.skillsOnSale;
+      }.bind(this)
+    ); 
   },
   methods: {
     selectAll: function (n) {
@@ -335,6 +332,15 @@ export default {
         playerId: this.playerId,
         card: card,
         cost: this.marketValues[card.market] + this.chosenPlacementCost,
+      });
+    },
+    skillsCard: function (card) {
+      console.log("skillsCard", card);
+      this.$store.state.socket.emit("collectorsSkillsCard", {
+        roomId: this.$route.params.id,
+        playerId: this.playerId,
+        card: card,
+        cost: this.chosenPlacementCost,
       });
     },
   },
@@ -371,16 +377,16 @@ main {
   background-color: #ccb3ff;
 }
 
-.skillPool {
+/*.skillPool {
   grid-column: 1;
   grid-row: 1 / span 5;
   background-color: #3399ff;
-  display: flex;
+  display: flex; */
   /* grid-gap: 0.5rem; */
   /* column-gap: 0.5rem;*/
   /* row-gap: 0.5rem;*/
-  /*grid-template-columns: repeat(auto-fill, 50px);*/
-}
+  /*grid-template-columns: repeat(auto-fill, 50px);
+} */
 .workPool {
   grid-column: 2 / span 2;
   grid-row: 2 / span 3;
@@ -411,7 +417,7 @@ main {
   transform: scale(1) translate(-25%, 0);
   z-index: 1;
 }
-.greenEnergy {
+/*.greenEnergy {
   background-image: url("/images/greenflaska.png");
   height: 20vh;
   width: 10vw;
@@ -422,7 +428,7 @@ main {
   height: 20vh;
   width: 9.5vw;
   background-size: cover;
-}
+} */
 .doubleblueEnergy {
   background-image: url("/images/marketbluee.png");
   height: 20vh;
@@ -465,7 +471,7 @@ main {
   display: inline;
   width: 49%;
 }
-.skillCards {
+/*.skillCards {
   display: grid;
   grid-template-columns: repeat(auto-fill, 130px);
   grid-template-rows: repeat(auto-fill, 180px);
@@ -480,6 +486,7 @@ main {
   transform: scale(1) translate(-25%, 0);
   z-index: 1;
 }
+*/
 
 .PlayerBoardCards {
   display: grid;
