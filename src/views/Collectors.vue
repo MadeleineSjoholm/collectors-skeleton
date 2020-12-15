@@ -123,7 +123,7 @@
           {{ labels.draw }}
         </button>
       </div>
-    
+
       Skills
       <div class="cardslots">
         <CollectorsCard
@@ -167,7 +167,7 @@
       </div>
       -->
 
-      
+
     </main>
 
     {{ players }}
