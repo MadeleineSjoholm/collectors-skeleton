@@ -4,7 +4,7 @@
       <div class="table">
         <div class="board">
           <div class="skillPool">
-            Skill
+          <h1> Skill</h1>
             <div class="bottlePlacement">
               <div class="greenEnergy"></div>
               <div class="greenEnergy"></div>
@@ -28,7 +28,7 @@
           </div>
 
           <div class="auctionPool">
-            auction
+            <h1> Auction </h1>
             <div class="buttons2">
               <!-- denna är tillagd -->
 
@@ -45,13 +45,14 @@
             </div>
             <div class="bottlePlacement">
               <div class="doubleDollarEnergy"></div>
-              <div class="dollarEnergy"></div>
+              <div class="dollarAuction"></div>
               <div class="orangeEnergy"></div>
               <div class="orangeEnergy"></div>
             </div>
           </div>
           <div class="itemPool">
-            item
+            <div class="itemPoolcontent">
+            <h1> Item </h1>
             <CollectorsBuyActions
               v-if="players[playerId]"
               :labels="labels"
@@ -62,18 +63,34 @@
               @buyCard="buyCard($event)"
               @placeBottle="placeBottle('buy', $event)"
             />
+            </div>
+            <div class="itemdollar"></div>
+            <div class="itemdollarone"></div>
+            <div class="itemdollartwo"></div>
+            <div class="itemdollar2"></div>
+            <div class="itemdollarthree"></div>
+
           </div>
 
+
+
+
           <div class="marketPool">
-            market
+            <h1> Market </h1>
             <div class="bottlePlacement">
-              <div class="doubleblueEnergy"></div>
-              <div class="marketDollar"></div>
-              <div class="blueEnergy"></div>
+            <div class="doubleblueEnergy"></div>
+            <div class="marketDollar"></div>
+            <div class="blueEnergy"></div>
+
+
             </div>
           </div>
 
-          <div class="workPool">work</div>
+          <div class="workPool">
+            <h1> Work </h1>
+
+
+          </div>
 
           <div class="footer">
             <div class="playerHand">PLAYERHAND {{ playerId }}</div>
@@ -350,28 +367,96 @@ main {
 .table {
   padding-left: 20px;
   padding-right: 20px;
-  background-color: #b3ffff;
+  background-color: #6699ff;
+
 }
 .board {
   display: grid;
   background-color: #6699ff;
   width: auto;
-  height: 100vh;
+  height: auto;
   column-gap: 0.5rem;
   row-gap: 0.5rem;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 80%;
+  text-align: center;
 }
 
 .itemPool {
+  display: grid;
   padding-right: 10px;
   grid-column: 2 / span 4;
   grid-row: 1;
   background-color: #ccb3ff;
 }
 
+.itemPoolcontent {
+grid-column:1 / span 5;
+grid-row: 1 ;
+
+
+}
+
+.itemdollar{
+  grid-column:1;
+  grid-row:2;
+  flex: 20%;
+
+  background-image: url("/images/itemdollar.png");
+  height: 20vh;
+  width: 10vw;
+  background-size: cover;
+
+}
+
+.itemdollarone{
+  grid-column:2 ;
+  flex: 20%;
+
+  background-image: url("/images/itemdollar.png");
+  height: 20vh;
+  width: 10vw;
+  background-size: cover;
+}
+
+.itemdollartwo{
+  grid-column: 3;
+  flex: 20%;
+
+  background-image: url("/images/itemdollar2.png");
+  height: 20vh;
+  width: 10vw;
+  background-size: cover;
+
+}
+
+.itemdollar2{
+  grid-column: 4;
+  flex: 20%;
+
+  background-image: url("/images/itemdollar2.png");
+  height: 20vh;
+  width: 10vw;
+  background-size: cover;
+
+}
+
+.itemdollarthree{
+  grid-column:5;
+  flex: 20%;
+
+  background-image: url("/images/itemdollar3.png");
+  height: 20vh;
+  width: 10vw;
+  background-size: cover;
+
+}
+
+
 .skillPool {
   grid-column: 1;
   grid-row: 1 / span 5;
-  background-color: #3399ff;
+  background-color: #bb99ff;
   display: flex;
   /* grid-gap: 0.5rem; */
   /* column-gap: 0.5rem;*/
@@ -384,9 +469,9 @@ main {
   background-color: #80ffff;
 }
 .marketPool {
-  grid-column: 2 / span 4;
+  grid-column: 2 / span 6;
   grid-row: 5;
-  background-color: #4d4dff;
+  background-color: #4da6ff;
 }
 .auctionPool {
   grid-column: 4 / span 2;
@@ -398,7 +483,7 @@ main {
   grid-template-columns: repeat(auto-fill, 130px);
   grid-template-rows: repeat(auto-fill, 180px);
 }
-.auctionCards div {
+.auctionCards div {                               /*Skill korten*/
   transform: scale(0.5) translate(-50%, -50%);
   transition: 0.2s;
   transition-timing-function: ease-out;
@@ -415,27 +500,33 @@ main {
   background-size: cover;
 }
 .dollarEnergy {
-  background-image: url("/images/dollar.png");
+  background-image: url("/images/dollarr.png");
   height: 20vh;
   width: 9.5vw;
   background-size: cover;
 }
 .doubleblueEnergy {
-  background-image: url("/images/marketbluee.png");
+  grid-column: 1;
+  grid-row: 1;
+  background-image: url("/images/markeblue.png");
   height: 20vh;
   width: 12vw;
   background-size: cover;
 }
 .marketDollar {
+  grid-column:2;
+  grid-row: 1;
   background-image: url("/images/dollarmarket.png");
   height: 20vh;
   width: 12vw;
   background-size: cover;
 }
 .blueEnergy {
-  background-image: url("/images/markeblue.png");
+  grid-column:3;
+  grid-row: 1;
+  background-image: url("/images/markebluee.png");
   height: 20vh;
-  width: 10vw;
+  width: 10.5vw;
   background-size: cover;
 }
 .doubleDollarEnergy {
@@ -444,16 +535,25 @@ main {
   width: 9.5vw;
   background-size: cover;
 }
-.dollarEnergy {
+
+.dollarAuction {
   background-image: url("/images/auctiondollar.png");
   height: 20vh;
   width: 9.5vw;
+  background-size: cover;
+
+}
+
+.dollarEnergy {
+  background-image: url("/images/dollarr.png");
+  height: 20vh;
+  width: 10vw;
   background-size: cover;
 }
 .orangeEnergy {
   background-image: url("/images/auctionorange.png");
   height: 20vh;
-  width: 9.5vw;
+  width: 11vw;
   background-size: cover;
 }
 
@@ -472,6 +572,7 @@ main {
   transition: 0.2s;
   transition-timing-function: ease-out;
   z-index: 0;
+
 }
 .skillCards div:hover {
   transform: scale(1) translate(-25%, 0);

@@ -2,8 +2,6 @@
 
 <div>
 
-
-
       <h1>{{ labels.buyCard }}</h1>
       <div class="buy-cards">
         <div v-for="(card, index) in itemsOnSale" :key="index">
@@ -95,6 +93,7 @@ export default {
   .buy-cards, .buttons {
     display: grid;
     grid-template-columns: repeat(auto-fill, 130px);
+    grid-template-rows: 20px 20px 20px;
   }
 
 
