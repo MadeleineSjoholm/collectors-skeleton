@@ -34,7 +34,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style>
   .center {
     display: flex;
     align-items: center;

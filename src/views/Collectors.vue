@@ -167,7 +167,6 @@
       </div>
       -->
 
-      
     </main>
 
     {{ players }}
@@ -187,18 +186,22 @@
       </p>
     </footer>
   </div>
+
+  
 </template>
 
 <script>
 import CollectorsCard from "@/components/CollectorsCard.vue";
 import CollectorsBuyActions from "@/components/CollectorsBuyActions.vue";
 import CollectorsSkillActions from "@/components/CollectorsSkillActions.vue";
+import Sidebar from "@/components/Sidebar.vue";
 export default {
   name: "Collectors",
   components: {
     CollectorsCard,
     CollectorsBuyActions,
     CollectorsSkillActions,
+   // Sidebar,
   },
   data: function () {
     return {
