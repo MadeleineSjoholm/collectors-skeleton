@@ -123,7 +123,7 @@
           {{ labels.draw }}
         </button>
       </div>
-    
+
       Skills
       <div class="cardslots">
         <CollectorsCard
@@ -167,6 +167,10 @@
       </div>
       -->
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 756f112cd90938932ae6bce823931c6b34b02e42
     </main>
 
     {{ players }}
@@ -412,7 +416,7 @@ main {
   z-index: 1;
 }
 .greenEnergy {
-  background-image: url("/images/grönflaska.png");
+  background-image: url("/images/greenflaska.png");
   height: 20vh;
   width: 10vw;
   background-size: cover;
@@ -426,19 +430,19 @@ main {
 .doubleblueEnergy {
   background-image: url("/images/marketbluee.png");
   height: 20vh;
-  width: 9.5vw;
+  width: 12vw;
   background-size: cover;
 }
 .marketDollar {
-  background-image: url("/images/marketdollar.png");
+  background-image: url("/images/dollarmarket.png");
   height: 20vh;
-  width: 9.5vw;
+  width: 12vw;
   background-size: cover;
 }
 .blueEnergy {
-  background-image: url("/images/marketblå.png");
+  background-image: url("/images/markeblue.png");
   height: 20vh;
-  width: 9.5vw;
+  width: 10vw;
   background-size: cover;
 }
 .doubleDollarEnergy {
