@@ -4,29 +4,6 @@
       <div class="table">
         <div class="board">
           <div class="skillPool">
-<<<<<<< HEAD
-          <h1> Skill</h1>
-            <div class="bottlePlacement">
-              <div class="greenEnergy"></div>
-              <div class="greenEnergy"></div>
-              <div class="greenEnergy"></div>
-              <div class="dollarEnergy"></div>
-              <div class="dollarEnergy"></div>
-            </div>
-
-            <div class="skillCards">
-              <div class="buttons">
-                <button @click="drawCard">
-                  {{ labels.draw }}
-                </button>
-              </div>
-              <CollectorsCard
-                v-for="(card, index) in skillsOnSale"
-                :card="card"
-                :key="index"
-              />
-            </div>
-=======
             <CollectorsSkillActions
               v-if="players[playerId]"
               :labels="labels"
@@ -37,7 +14,6 @@
               @skillsCard="skillsCard($event)"
               @placeBottle="placeBottle('skill', $event)"
             />
->>>>>>> 3e6d8e0f3871c951e3a3609a532f809379f42bd5
           </div>
 
           <div class="auctionPool">
@@ -400,105 +376,29 @@ main {
 .table {
   padding-left: 20px;
   padding-right: 20px;
-  background-color: #6699ff;
-
+  background-color: #b3ffff;
 }
 .board {
   display: grid;
   background-color: #6699ff;
   width: auto;
-  height: auto;
+  height: 100vh;
   column-gap: 0.5rem;
   row-gap: 0.5rem;
-  font-family: "Times New Roman", Times, serif;
-  font-size: 80%;
-  text-align: center;
 }
 
 .itemPool {
-  display: grid;
   padding-right: 10px;
   grid-column: 2 / span 4;
   grid-row: 1;
   background-color: #ccb3ff;
 }
 
-<<<<<<< HEAD
-.itemPoolcontent {
-grid-column:1 / span 5;
-grid-row: 1 ;
-
-
-}
-
-.itemdollar{
-  grid-column:1;
-  grid-row:2;
-  flex: 20%;
-
-  background-image: url("/images/itemdollar.png");
-  height: 20vh;
-  width: 10vw;
-  background-size: cover;
-
-}
-
-.itemdollarone{
-  grid-column:2 ;
-  flex: 20%;
-
-  background-image: url("/images/itemdollar.png");
-  height: 20vh;
-  width: 10vw;
-  background-size: cover;
-}
-
-.itemdollartwo{
-  grid-column: 3;
-  flex: 20%;
-
-  background-image: url("/images/itemdollar2.png");
-  height: 20vh;
-  width: 10vw;
-  background-size: cover;
-
-}
-
-.itemdollar2{
-  grid-column: 4;
-  flex: 20%;
-
-  background-image: url("/images/itemdollar2.png");
-  height: 20vh;
-  width: 10vw;
-  background-size: cover;
-
-}
-
-.itemdollarthree{
-  grid-column:5;
-  flex: 20%;
-
-  background-image: url("/images/itemdollar3.png");
-  height: 20vh;
-  width: 10vw;
-  background-size: cover;
-
-}
-
-
-.skillPool {
-  grid-column: 1;
-  grid-row: 1 / span 5;
-  background-color: #bb99ff;
-  display: flex;
-=======
 /*.skillPool {
   grid-column: 1;
   grid-row: 1 / span 5;
   background-color: #3399ff;
   display: flex; */
->>>>>>> 3e6d8e0f3871c951e3a3609a532f809379f42bd5
   /* grid-gap: 0.5rem; */
   /* column-gap: 0.5rem;*/
   /* row-gap: 0.5rem;*/
@@ -510,9 +410,9 @@ grid-row: 1 ;
   background-color: #80ffff;
 }
 .marketPool {
-  grid-column: 2 / span 6;
+  grid-column: 2 / span 4;
   grid-row: 5;
-  background-color: #4da6ff;
+  background-color: #4d4dff;
 }
 .auctionPool {
   grid-column: 4 / span 2;
@@ -524,7 +424,7 @@ grid-row: 1 ;
   grid-template-columns: repeat(auto-fill, 130px);
   grid-template-rows: repeat(auto-fill, 180px);
 }
-.auctionCards div {                               /*Skill korten*/
+.auctionCards div {
   transform: scale(0.5) translate(-50%, -50%);
   transition: 0.2s;
   transition-timing-function: ease-out;
@@ -541,33 +441,27 @@ grid-row: 1 ;
   background-size: cover;
 }
 .dollarEnergy {
-  background-image: url("/images/dollarr.png");
+  background-image: url("/images/dollar.png");
   height: 20vh;
   width: 9.5vw;
   background-size: cover;
 } */
 .doubleblueEnergy {
-  grid-column: 1;
-  grid-row: 1;
-  background-image: url("/images/markeblue.png");
+  background-image: url("/images/marketbluee.png");
   height: 20vh;
   width: 12vw;
   background-size: cover;
 }
 .marketDollar {
-  grid-column:2;
-  grid-row: 1;
   background-image: url("/images/dollarmarket.png");
   height: 20vh;
   width: 12vw;
   background-size: cover;
 }
 .blueEnergy {
-  grid-column:3;
-  grid-row: 1;
-  background-image: url("/images/markebluee.png");
+  background-image: url("/images/markeblue.png");
   height: 20vh;
-  width: 10.5vw;
+  width: 10vw;
   background-size: cover;
 }
 .doubleDollarEnergy {
@@ -576,25 +470,16 @@ grid-row: 1 ;
   width: 9.5vw;
   background-size: cover;
 }
-
-.dollarAuction {
+.dollarEnergy {
   background-image: url("/images/auctiondollar.png");
   height: 20vh;
   width: 9.5vw;
-  background-size: cover;
-
-}
-
-.dollarEnergy {
-  background-image: url("/images/dollarr.png");
-  height: 20vh;
-  width: 10vw;
   background-size: cover;
 }
 .orangeEnergy {
   background-image: url("/images/auctionorange.png");
   height: 20vh;
-  width: 11vw;
+  width: 9.5vw;
   background-size: cover;
 }
 
@@ -613,13 +498,11 @@ grid-row: 1 ;
   transition: 0.2s;
   transition-timing-function: ease-out;
   z-index: 0;
-
 }
 .skillCards div:hover {
   transform: scale(1) translate(-25%, 0);
   z-index: 1;
 }
-fortsatt nåt här
 */
 
 .PlayerBoardCards {
