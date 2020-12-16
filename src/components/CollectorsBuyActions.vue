@@ -4,13 +4,7 @@
 
       <h1>{{ labels.buyCard }}</h1>
       <div class="buy-cards">
-        <!--
-        <div class="itemdollar"></div>
-            <div class="itemdollarone"></div>
-            <div class="itemdollartwo"></div>
-            <div class="itemdollar2"></div>
-            <div class="itemdollarthree"></div>
-            -->
+
         <div v-for="(card, index) in itemsOnSale" :key="index">
           <CollectorsCard
             :card="card"
@@ -23,21 +17,27 @@
         <div class="buttons" v-for="(p, index) in placement" :key="index">
           <button
             v-if="p.playerId===null"
+            :class="[
+              { itemdollar: p.cost == 1 },
+              { itemdollartwo: p.cost == 2 },
+              { itemdollarthree: p.cost == 3 },
+            ]"
             :disabled="cannotAfford(p.cost)"
             @click="placeBottle(p)" >
+
             ${{p.cost}}
           </button>
           <div v-if="p.playerId !== null">
             {{p.playerId}}
           </div>
         </div>
-        <div class="placeBottle">
+        <!-- <div class="placeBottle">
             <div class="itemdollar"></div>
             <div class="itemdollarone"></div>
             <div class="itemdollartwo"></div>
             <div class="itemdollar2"></div>
             <div class="itemdollarthree"></div>
-        </div>
+        </div> -->
       </div>
     </div>
 </template>
@@ -104,22 +104,31 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .buy-cards, .buttons {
+  .buy-cards{
     display: grid;
     grid-template-columns: repeat(auto-fill, 130px);
-    grid-template-rows: 20px 20px 20px;
+    grid-template-rows: 30px -20px;
   }
 
-  .itemPool {
+  .buttons {
+    display:inline-block;
+    grid-template-columns: repeat(0px, 130px);
+    grid-template-rows: 0px -20px;
+  }
+
+  /*.itemPool {
+
   padding-right: 10px;
   grid-column: 2 / span 4;
   grid-row: 1;
   background-color: #ccb3ff;
 }
 
+*/
+
 .itemdollar {
-  grid-column: 1;
-  grid-row: 2;
+  grid-column: 2;
+  grid-row: 1;
   flex: 20%;
 
   background-image: url("/images/itemdollar.png");
@@ -128,8 +137,10 @@ export default {
   background-size: cover;
 }
 
+/*
 .itemdollarone {
   grid-column: 2;
+  grid-row:2;
   flex: 20%;
 
   background-image: url("/images/itemdollar.png");
@@ -137,9 +148,12 @@ export default {
   width: 10vw;
   background-size: cover;
 }
+
+*/
 
 .itemdollartwo {
   grid-column: 3;
+  grid-row:2;
   flex: 20%;
 
   background-image: url("/images/itemdollar2.png");
@@ -147,9 +161,9 @@ export default {
   width: 10vw;
   background-size: cover;
 }
-
+ /*
 .itemdollar2 {
-  grid-column: 4;
+  grid-column: 2;
   flex: 20%;
 
   background-image: url("/images/itemdollar2.png");
@@ -157,6 +171,7 @@ export default {
   width: 10vw;
   background-size: cover;
 }
+*/
 
 .itemdollarthree {
   grid-column: 5;

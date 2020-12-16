@@ -84,7 +84,7 @@
         <div class="footer">
           <div class="playerHand">
             PLAYERHAND {{ playerId }}
-            <!-- 
+            <!--
       Hand
       <div class="cardslots" v-if="players[playerId]">
         <CollectorsCard
@@ -345,17 +345,31 @@ main {
   row-gap: 0.5rem;
 }
 
+
 .itemPool {
-  padding-right: 10px;
-  grid-column: 2 / span 4;
-  grid-row: 1;
+
+  grid-column: 5 / span 3;
+  grid-row: 1 / span 2;
+  height: 50%;
+
   background-color: #ccb3ff;
 }
+
 
 .itemPoolcontent {
   grid-column: 1 / span 5;
   grid-row: 1;
 }
+
+
+.skillPool {
+  grid-column: 1 / span 4;
+  grid-row: 1;
+  height: 80%;
+  background-color: #3399ff;
+  display: flex;
+}
+
 /*
 .itemdollar {
   grid-column: 1;

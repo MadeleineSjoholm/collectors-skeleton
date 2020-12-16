@@ -2,7 +2,7 @@
   <div>
     <div class="skillPool">
       <h3>{{ labels.skillLabel }}</h3>
-      
+
       <div class="bottlePlacement">
         <div class="buttons" v-for="(p, index) in placement" :key="index">
           <button
@@ -83,7 +83,7 @@ export default {
       }
     },
   },
- 
+
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -94,9 +94,11 @@ export default {
   grid-template-columns: repeat(auto-fill, 130px);
 }
 
+
 .skillPool {
   grid-column: 1;
-  grid-row: 1 / span 5;
+  grid-row: 1;
+  height: 50%;
   background-color: #3399ff;
   display: flex;
 }
@@ -108,7 +110,7 @@ export default {
   background-size: cover;
 }
 .dollarEnergy {
-  background-image: url("/images/dollar.png");
+  background-image: url("/images/dollarr.png");
   height: 20vh;
   width: 9.5vw;
   background-size: cover;
