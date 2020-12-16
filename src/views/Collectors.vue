@@ -39,6 +39,7 @@
               <div class="orangeEnergy"></div>
             </div>
           </div>
+          
           <div class="itemPool">
             <div class="itemPoolcontent">
             <h1> Item </h1>
@@ -61,24 +62,24 @@
 
           </div>
 
-
-
-
           <div class="marketPool">
-            <h1> Market </h1>
-            <div class="bottlePlacement">
-            <div class="doubleblueEnergy"></div>
-            <div class="marketDollar"></div>
-            <div class="blueEnergy"></div>
-
+            <CollectorsMarket
+              v-if="players[playerId]"
+              :labels="labels"
+              :player="players[playerId]"
+          
+              :marketValues="marketValues"
+              :placement="marketPlacement"
+              @placeCard="placeCard($event)"
+              @placeBottle="placeBottle('market', $event)"
+            />
+<!--:itemsOnSale="itemsOnSale" -->
 
             </div>
-          </div>
 
           <div class="workPool">
             <h1> Work </h1>
-
-
+          </div>
           </div>
 
           <div class="footer">
@@ -105,23 +106,11 @@
             </div>
           </div>
         </div>
-      </div>
+      
 
       {{ buyPlacement }} {{ chosenPlacementCost }}
 
-      <!--
-      <CollectorsBuyActions
-      v-if="players[playerId]"
-      :labels="labels"
-      :player="players[playerId]"
-      :itemsOnSale="itemsOnSale"
-      :marketValues="marketValues"
-      :placement="buyPlacement"
-      @buyCard="buyCard($event)"
-      @placeBottle="placeBottle('buy', $event)"
-      />
-
--->
+      
 
       <!--
       <div class="buttons">
@@ -130,14 +119,6 @@
         </button>
       </div>
 
-      Skills
-      <div class="cardslots">
-        <CollectorsCard
-        v-for="(card, index) in skillsOnSale"
-        :card="card"
-        :key="index"
-        />
-      </div>
       -->
 <!--
       <div class="buttons2">
@@ -160,14 +141,6 @@
         :card="card"
         :availableAction="card.available"
         @doAction="buyCard(card)"
-        :key="index"
-        />
-      </div>
-      Items
-      <div class="cardslots" v-if="players[playerId]">
-        <CollectorsCard
-        v-for="(card, index) in players[playerId].items"
-        :card="card"
         :key="index"
         />
       </div>
@@ -199,6 +172,8 @@
 import CollectorsCard from "@/components/CollectorsCard.vue";
 import CollectorsBuyActions from "@/components/CollectorsBuyActions.vue";
 import CollectorsSkillActions from "@/components/CollectorsSkillActions.vue";
+//import CollectorsMarketActions from "@/components/CollectorsMarketActions.vue";
+
 //import Sidebar from "@/components/Sidebar.vue";
 export default {
   name: "Collectors",
@@ -206,6 +181,7 @@ export default {
     CollectorsCard,
     CollectorsBuyActions,
     CollectorsSkillActions,
+   // CollectorsMarketActions,
    // Sidebar,
   },
   data: function () {
