@@ -122,7 +122,7 @@
       />
 
 -->
-     
+
       <!--
       <div class="buttons">
         <button @click="drawCard">
@@ -193,7 +193,6 @@
     </footer>
   </div>
 
-  
 </template>
 
 <script>
@@ -321,7 +320,7 @@ export default {
         this.players = d.players;
         this.skillsOnSale = d.skillsOnSale;
       }.bind(this)
-    ); 
+    );
   },
   methods: {
     selectAll: function (n) {
@@ -394,6 +393,75 @@ main {
   background-color: #ccb3ff;
 }
 
+.itemPoolcontent {
+grid-column:1 / span 5;
+grid-row: 1 ;
+
+
+}
+
+.itemdollar{
+  grid-column:1;
+  grid-row:2;
+  flex: 20%;
+
+  background-image: url("/images/itemdollar.png");
+  height: 20vh;
+  width: 10vw;
+  background-size: cover;
+
+}
+
+.itemdollarone{
+  grid-column:2 ;
+  flex: 20%;
+
+  background-image: url("/images/itemdollar.png");
+  height: 20vh;
+  width: 10vw;
+  background-size: cover;
+}
+
+.itemdollartwo{
+  grid-column: 3;
+  flex: 20%;
+
+  background-image: url("/images/itemdollar2.png");
+  height: 20vh;
+  width: 10vw;
+  background-size: cover;
+
+}
+
+.itemdollar2{
+  grid-column: 4;
+  flex: 20%;
+
+  background-image: url("/images/itemdollar2.png");
+  height: 20vh;
+  width: 10vw;
+  background-size: cover;
+
+}
+
+.itemdollarthree{
+  grid-column:5;
+  flex: 20%;
+
+  background-image: url("/images/itemdollar3.png");
+  height: 20vh;
+  width: 10vw;
+  background-size: cover;
+
+}
+
+
+.skillPool {
+  grid-column: 1;
+  grid-row: 1 / span 5;
+  background-color: #bb99ff;
+  display: flex;
+}
 /*.skillPool {
   grid-column: 1;
   grid-row: 1 / span 5;
