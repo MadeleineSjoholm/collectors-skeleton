@@ -29,7 +29,7 @@
         </div>
       </ul>
 
-
+<!--
       <div id="test">
         <label for="recipient">Select number of players</label><br>
           <select id="numberOfPlayers" name="nop" v-model="numberOfPlayers">
@@ -38,6 +38,7 @@
             <option value="three">3</option>
           </select>
       </div>
+-->
 
       <div v-for="i in 3" :key="i">
         <button id="startGame" type="start" @click="setupCollectors(i+1, 'en')">Start Game!</button>

@@ -4,7 +4,6 @@
       <div class="table">
         <div class="board">
           <div class="skillPool">
-<<<<<<< HEAD
           <h1> Skill</h1>
             <div class="bottlePlacement">
               <div class="greenEnergy"></div>
@@ -26,7 +25,6 @@
                 :key="index"
               />
             </div>
-=======
             <CollectorsSkillActions
               v-if="players[playerId]"
               :labels="labels"
@@ -37,7 +35,6 @@
               @skillsCard="skillsCard($event)"
               @placeBottle="placeBottle('skill', $event)"
             />
->>>>>>> 3e6d8e0f3871c951e3a3609a532f809379f42bd5
           </div>
 
           <div class="auctionPool">
@@ -146,7 +143,7 @@
       />
 
 -->
-     
+
       <!--
       <div class="buttons">
         <button @click="drawCard">
@@ -217,7 +214,6 @@
     </footer>
   </div>
 
-  
 </template>
 
 <script>
@@ -345,7 +341,7 @@ export default {
         this.players = d.players;
         this.skillsOnSale = d.skillsOnSale;
       }.bind(this)
-    ); 
+    );
   },
   methods: {
     selectAll: function (n) {
@@ -423,7 +419,6 @@ main {
   background-color: #ccb3ff;
 }
 
-<<<<<<< HEAD
 .itemPoolcontent {
 grid-column:1 / span 5;
 grid-row: 1 ;
@@ -492,7 +487,7 @@ grid-row: 1 ;
   grid-row: 1 / span 5;
   background-color: #bb99ff;
   display: flex;
-=======
+}
 /*.skillPool {
   grid-column: 1;
   grid-row: 1 / span 5;
