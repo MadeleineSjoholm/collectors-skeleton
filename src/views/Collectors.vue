@@ -486,6 +486,7 @@ main {
   transform: scale(1) translate(-25%, 0);
   z-index: 1;
 }
+fortsatt nåt här
 */
 
 .PlayerBoardCards {
