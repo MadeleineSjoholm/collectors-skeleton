@@ -1,4 +1,4 @@
-<!--<template>
+<template>
   <div>
     <div class="marketPool">
       <h1>Market</h1>
@@ -10,7 +10,7 @@
     </div>
   </div>
 </template>
-
+<!--
 <script>
 import CollectorsCard from "@/components/CollectorsCard.vue";
 export default {
@@ -58,9 +58,11 @@ export default {
     },
   },
 };
+
+
 </script> -->
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<!--
+
 
 <style scoped>
 .marketPool {

@@ -17,7 +17,7 @@
           </div>
 
           <div class="auctionPool">
-            <h1> Auction </h1>
+            <h1>Auction</h1>
             <div class="buttons2">
               <!-- denna är tillagd -->
 
@@ -39,27 +39,28 @@
               <div class="orangeEnergy"></div>
             </div>
           </div>
-          
+
           <div class="itemPool">
             <div class="itemPoolcontent">
-            <h1> Item </h1>
-            <CollectorsBuyActions
-              v-if="players[playerId]"
-              :labels="labels"
-              :player="players[playerId]"
-              :itemsOnSale="itemsOnSale"
-              :marketValues="marketValues"
-              :placement="buyPlacement"
-              @buyCard="buyCard($event)"
-              @placeBottle="placeBottle('buy', $event)"
-            />
+              <h1>Item</h1>
+              <CollectorsBuyActions
+                v-if="players[playerId]"
+                :labels="labels"
+                :player="players[playerId]"
+                :itemsOnSale="itemsOnSale"
+                :marketValues="marketValues"
+                :placement="buyPlacement"
+                @buyCard="buyCard($event)"
+                @placeBottle="placeBottle('buy', $event)"
+              />
             </div>
+            <!--
             <div class="itemdollar"></div>
             <div class="itemdollarone"></div>
             <div class="itemdollartwo"></div>
             <div class="itemdollar2"></div>
             <div class="itemdollarthree"></div>
-
+            -->
           </div>
 
           <div class="marketPool">
@@ -67,73 +68,23 @@
               v-if="players[playerId]"
               :labels="labels"
               :player="players[playerId]"
-          
               :marketValues="marketValues"
               :placement="marketPlacement"
               @placeCard="placeCard($event)"
               @placeBottle="placeBottle('market', $event)"
             />
-<!--:itemsOnSale="itemsOnSale" -->
-
-            </div>
+            <!--:itemsOnSale="itemsOnSale" -->
+          </div>
 
           <div class="workPool">
-            <h1> Work </h1>
-          </div>
-          </div>
-
-          <div class="footer">
-            <div class="playerHand">PLAYERHAND {{ playerId }}</div>
-
-            <div class="playerItem">
-              PLAYERITEM
-
-              <div class="PlayerBoardCards" v-if="players[playerId]">
-                <CollectorsCard
-                  v-for="(card, index) in players[playerId].items"
-                  :card="card"
-                  :key="index"
-                />
-              </div>
-              player skills
-               <div class="PlayerBoardCards" v-if="players[playerId]">
-                <CollectorsCard
-                  v-for="(card, index) in players[playerId].skills"
-                  :card="card"
-                  :key="index"
-                />
-              </div>
-            </div>
+            <h1>Work</h1>
           </div>
         </div>
-      
 
-      {{ buyPlacement }} {{ chosenPlacementCost }}
-
-      
-
-      <!--
-      <div class="buttons">
-        <button @click="drawCard">
-          {{ labels.draw }}
-        </button>
-      </div>
-
-      -->
-<!--
-      <div class="buttons2">
-          <button @click="drawCard">
-          {{ labels.draw }}
-        </button>
-      </div>
-      Auction
-      <div class="cardslots">
-        <CollectorsCard
-        v-for="(card, index) in auctionCards"
-        :card="card"
-        :key="index"
-        />
-      </div>
+        <div class="footer">
+          <div class="playerHand">
+            PLAYERHAND {{ playerId }}
+            <!-- 
       Hand
       <div class="cardslots" v-if="players[playerId]">
         <CollectorsCard
@@ -145,7 +96,40 @@
         />
       </div>
       -->
+          </div>
 
+          <div class="playerItem">
+            PLAYERITEM
+
+            <div class="PlayerBoardCards" v-if="players[playerId]">
+              <CollectorsCard
+                v-for="(card, index) in players[playerId].items"
+                :card="card"
+                :key="index"
+              />
+            </div>
+            player skills
+            <div class="PlayerBoardCards" v-if="players[playerId]">
+              <CollectorsCard
+                v-for="(card, index) in players[playerId].skills"
+                :card="card"
+                :key="index"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{ buyPlacement }} {{ chosenPlacementCost }}
+
+      <!--
+      <div class="buttons">
+        <button @click="drawCard">
+          {{ labels.draw }}
+        </button>
+      </div>
+
+      -->
     </main>
 
     {{ players }}
@@ -165,7 +149,6 @@
       </p>
     </footer>
   </div>
-
 </template>
 
 <script>
@@ -181,8 +164,8 @@ export default {
     CollectorsCard,
     CollectorsBuyActions,
     CollectorsSkillActions,
-   // CollectorsMarketActions,
-   // Sidebar,
+    //  CollectorsMarketActions,
+    // Sidebar,
   },
   data: function () {
     return {
@@ -289,7 +272,7 @@ export default {
         this.itemsOnSale = d.itemsOnSale;
       }.bind(this)
     );
-  this.$store.state.socket.on(
+    this.$store.state.socket.on(
       "collectorsSkillBought",
       function (d) {
         console.log(d.playerId, "bought a skill");
@@ -370,26 +353,13 @@ main {
 }
 
 .itemPoolcontent {
-grid-column:1 / span 5;
-grid-row: 1 ;
-
-
+  grid-column: 1 / span 5;
+  grid-row: 1;
 }
-
-.itemdollar{
-  grid-column:1;
-  grid-row:2;
-  flex: 20%;
-
-  background-image: url("/images/itemdollar.png");
-  height: 20vh;
-  width: 10vw;
-  background-size: cover;
-
-}
-
-.itemdollarone{
-  grid-column:2 ;
+/*
+.itemdollar {
+  grid-column: 1;
+  grid-row: 2;
   flex: 20%;
 
   background-image: url("/images/itemdollar.png");
@@ -398,7 +368,17 @@ grid-row: 1 ;
   background-size: cover;
 }
 
-.itemdollartwo{
+.itemdollarone {
+  grid-column: 2;
+  flex: 20%;
+
+  background-image: url("/images/itemdollar.png");
+  height: 20vh;
+  width: 10vw;
+  background-size: cover;
+}
+
+.itemdollartwo {
   grid-column: 3;
   flex: 20%;
 
@@ -406,10 +386,9 @@ grid-row: 1 ;
   height: 20vh;
   width: 10vw;
   background-size: cover;
-
 }
 
-.itemdollar2{
+.itemdollar2 {
   grid-column: 4;
   flex: 20%;
 
@@ -417,37 +396,18 @@ grid-row: 1 ;
   height: 20vh;
   width: 10vw;
   background-size: cover;
-
 }
 
-.itemdollarthree{
-  grid-column:5;
+.itemdollarthree {
+  grid-column: 5;
   flex: 20%;
 
   background-image: url("/images/itemdollar3.png");
   height: 20vh;
   width: 10vw;
   background-size: cover;
-
 }
-
-
-.skillPool {
-  grid-column: 1;
-  grid-row: 1 / span 5;
-  background-color: #bb99ff;
-  display: flex;
-}
-/*.skillPool {
-  grid-column: 1;
-  grid-row: 1 / span 5;
-  background-color: #3399ff;
-  display: flex; */
-  /* grid-gap: 0.5rem; */
-  /* column-gap: 0.5rem;*/
-  /* row-gap: 0.5rem;*/
-  /*grid-template-columns: repeat(auto-fill, 50px);
-} */
+*/
 .workPool {
   grid-column: 2 / span 2;
   grid-row: 2 / span 3;
@@ -478,18 +438,7 @@ grid-row: 1 ;
   transform: scale(1) translate(-25%, 0);
   z-index: 1;
 }
-/*.greenEnergy {
-  background-image: url("/images/greenflaska.png");
-  height: 20vh;
-  width: 10vw;
-  background-size: cover;
-}
-.dollarEnergy {
-  background-image: url("/images/dollar.png");
-  height: 20vh;
-  width: 9.5vw;
-  background-size: cover;
-} */
+
 .doubleblueEnergy {
   background-image: url("/images/marketbluee.png");
   height: 20vh;
@@ -532,22 +481,6 @@ grid-row: 1 ;
   display: inline;
   width: 49%;
 }
-/*.skillCards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 130px);
-  grid-template-rows: repeat(auto-fill, 180px);
-}
-.skillCards div {
-  transform: scale(0.5) translate(-50%, -50%);
-  transition: 0.2s;
-  transition-timing-function: ease-out;
-  z-index: 0;
-}
-.skillCards div:hover {
-  transform: scale(1) translate(-25%, 0);
-  z-index: 1;
-}
-*/
 
 .PlayerBoardCards {
   display: grid;

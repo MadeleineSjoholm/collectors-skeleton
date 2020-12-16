@@ -99,10 +99,6 @@ export default {
   grid-row: 1 / span 5;
   background-color: #3399ff;
   display: flex;
-  /* grid-gap: 0.5rem; */
-  /* column-gap: 0.5rem;*/
-  /* row-gap: 0.5rem;*/
-  /*grid-template-columns: repeat(auto-fill, 50px);*/
 }
 
 .greenEnergy {

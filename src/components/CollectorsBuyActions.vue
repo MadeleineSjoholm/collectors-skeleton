@@ -4,6 +4,13 @@
 
       <h1>{{ labels.buyCard }}</h1>
       <div class="buy-cards">
+        <!--
+        <div class="itemdollar"></div>
+            <div class="itemdollarone"></div>
+            <div class="itemdollartwo"></div>
+            <div class="itemdollar2"></div>
+            <div class="itemdollarthree"></div>
+            -->
         <div v-for="(card, index) in itemsOnSale" :key="index">
           <CollectorsCard
             :card="card"
@@ -23,6 +30,13 @@
           <div v-if="p.playerId !== null">
             {{p.playerId}}
           </div>
+        </div>
+        <div class="placeBottle">
+            <div class="itemdollar"></div>
+            <div class="itemdollarone"></div>
+            <div class="itemdollartwo"></div>
+            <div class="itemdollar2"></div>
+            <div class="itemdollarthree"></div>
         </div>
       </div>
     </div>
@@ -95,6 +109,65 @@ export default {
     grid-template-columns: repeat(auto-fill, 130px);
     grid-template-rows: 20px 20px 20px;
   }
+
+  .itemPool {
+  padding-right: 10px;
+  grid-column: 2 / span 4;
+  grid-row: 1;
+  background-color: #ccb3ff;
+}
+
+.itemdollar {
+  grid-column: 1;
+  grid-row: 2;
+  flex: 20%;
+
+  background-image: url("/images/itemdollar.png");
+  height: 20vh;
+  width: 10vw;
+  background-size: cover;
+}
+
+.itemdollarone {
+  grid-column: 2;
+  flex: 20%;
+
+  background-image: url("/images/itemdollar.png");
+  height: 20vh;
+  width: 10vw;
+  background-size: cover;
+}
+
+.itemdollartwo {
+  grid-column: 3;
+  flex: 20%;
+
+  background-image: url("/images/itemdollar2.png");
+  height: 20vh;
+  width: 10vw;
+  background-size: cover;
+}
+
+.itemdollar2 {
+  grid-column: 4;
+  flex: 20%;
+
+  background-image: url("/images/itemdollar2.png");
+  height: 20vh;
+  width: 10vw;
+  background-size: cover;
+}
+
+.itemdollarthree {
+  grid-column: 5;
+  flex: 20%;
+
+  background-image: url("/images/itemdollar3.png");
+  height: 20vh;
+  width: 10vw;
+  background-size: cover;
+}
+
 
 
 
