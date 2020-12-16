@@ -29,8 +29,19 @@
         </div>
       </ul>
 
-      <button id="startGame" type="start">Start Game!</button>
 
+      <div id="test">
+        <label for="recipient">Select number of players</label><br>
+          <select id="numberOfPlayers" name="nop" v-model="numberOfPlayers">
+            <option value="one">1 </option>
+            <option value="two">2</option>
+            <option value="three">3</option>
+          </select>
+      </div>
+
+      <div v-for="i in 3" :key="i">
+        <button id="startGame" type="start" @click="setupCollectors(i+1, 'en')">Start Game!</button>
+      </div>
     </div>
   </div>
 </template>
@@ -50,10 +61,9 @@ export default {
         lang: lang });
       this.$router.push("/room/" + this.$store.state.roomId);
     },
-    /*
+/*
     setupLanguage: function(lang) {
-
-    } */
+    }*/
   }
 }
 </script>
@@ -93,4 +103,7 @@ export default {
     height: 100vh;
     padding: 1em;
   }
+  button:hover {
+  background-color: #B9B4B3;
+}
 </style>
