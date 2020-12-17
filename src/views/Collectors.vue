@@ -64,6 +64,7 @@
           </div>
 
           <div class="marketPool">
+            <h1>Market</h1>
             <CollectorsMarket
               v-if="players[playerId]"
               :labels="labels"
@@ -74,10 +75,20 @@
               @placeBottle="placeBottle('market', $event)"
             />
             <!--:itemsOnSale="itemsOnSale" -->
+            <div class="doubleblueEnergy"></div>
+            <div class="marketDollar"></div>
+            <div class="blueEnergy"></div>
+
           </div>
 
           <div class="workPool">
             <h1>Work</h1>
+                <div class="quarterTiles" align="center">
+                </div>
+                <div class="workDollarWhite"></div>
+                <div class="workDollarBlack"></div>
+                <div class="energyBottle"></div>
+                <div class="energyBottle"></div>
           </div>
         </div>
 
@@ -334,13 +345,11 @@ main {
 .table {
   padding-left: 20px;
   padding-right: 20px;
-  background-color: black;
+  background-color: #b3ffff;
 }
 .board {
   display: grid;
-  background-color: black;
-  font-family: "Times New Roman", Times, serif;
-  text-align: center;
+  background-color: #6699ff;
   width: auto;
   height: 100vh;
   column-gap: 0.5rem;
@@ -352,7 +361,8 @@ main {
 
   grid-column: 5 / span 3;
   grid-row: 1 / span 2;
-  height: 60%;
+  height: 50%;
+
   background-color: #ccb3ff;
 }
 
@@ -366,7 +376,7 @@ main {
 .skillPool {
   grid-column: 1 / span 4;
   grid-row: 1;
-  height: 90%;
+  height: 80%;
   background-color: #3399ff;
   display: flex;
 }
@@ -424,9 +434,8 @@ main {
 }
 */
 .workPool {
-  grid-column: 5 / span 2;
+  grid-column: 2 / span 2;
   grid-row: 2 / span 3;
-  height: 30%;
   background-color: #80ffff;
 }
 .marketPool {
@@ -456,7 +465,7 @@ main {
 }
 
 .doubleblueEnergy {
-  background-image: url("/images/marketbluee.png");
+  background-image: url("/images/markebluee.png");
   height: 20vh;
   width: 12vw;
   background-size: cover;
@@ -496,6 +505,14 @@ main {
   float: left;
   display: inline;
   width: 49%;
+}
+
+.quarterTiles{
+    border-style: dotted;
+    border-color: black;
+    background-color: #ffffcc;
+    width: 50%;
+    height: 10%;
 }
 
 .PlayerBoardCards {
