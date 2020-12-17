@@ -29,17 +29,6 @@
         </div>
       </ul>
 
-<!--
-      <div id="test">
-        <label for="recipient">Select number of players</label><br>
-          <select id="numberOfPlayers" name="nop" v-model="numberOfPlayers">
-            <option value="one">1 </option>
-            <option value="two">2</option>
-            <option value="three">3</option>
-          </select>
-      </div>
--->
-
       <div v-for="i in 3" :key="i">
         <button id="startGame" type="start" @click="setupCollectors(i+1, 'en')">Start Game!</button>
       </div>
@@ -49,6 +38,9 @@
 
 <script>
 // @ is an alias to /src
+/*
+import collectors-en from "@/data/collectors-en.json";
+import collectors-se from "@/data/collectors-se.json"; */
 
 export default {
   name: 'Home',
@@ -61,10 +53,13 @@ export default {
         playerCount: playerCount,
         lang: lang });
       this.$router.push("/room/" + this.$store.state.roomId);
-    },
-/*
+    },/*
     setupLanguage: function(lang) {
-    }*/
+        var languageText = collectors-en
+        if (lang === 'se') {
+        languageText = collectors-se
+      }
+    } */
   }
 }
 </script>
