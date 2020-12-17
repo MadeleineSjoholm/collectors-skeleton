@@ -334,11 +334,13 @@ main {
 .table {
   padding-left: 20px;
   padding-right: 20px;
-  background-color: #b3ffff;
+  background-color: black;
 }
 .board {
   display: grid;
-  background-color: #6699ff;
+  background-color: black;
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
   width: auto;
   height: 100vh;
   column-gap: 0.5rem;
@@ -350,8 +352,7 @@ main {
 
   grid-column: 5 / span 3;
   grid-row: 1 / span 2;
-  height: 50%;
-
+  height: 60%;
   background-color: #ccb3ff;
 }
 
@@ -365,7 +366,7 @@ main {
 .skillPool {
   grid-column: 1 / span 4;
   grid-row: 1;
-  height: 80%;
+  height: 90%;
   background-color: #3399ff;
   display: flex;
 }
@@ -423,8 +424,9 @@ main {
 }
 */
 .workPool {
-  grid-column: 2 / span 2;
+  grid-column: 5 / span 2;
   grid-row: 2 / span 3;
+  height: 30%;
   background-color: #80ffff;
 }
 .marketPool {

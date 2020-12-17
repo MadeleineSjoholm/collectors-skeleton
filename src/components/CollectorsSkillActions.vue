@@ -96,9 +96,8 @@ export default {
 
 
 .skillPool {
-  grid-column: 1;
-  grid-row: 1;
-  height: 50%;
+  grid-column: 1 / span 2;
+  height: 70%;
   background-color: #3399ff;
   display: flex;
 }
@@ -123,8 +122,9 @@ export default {
 }
 .skillCards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 130px);
-  grid-template-rows: repeat(auto-fill, 180px);
+  grid-column: 2;
+  grid-template-columns: repeat(auto-fill, 80px);
+  grid-template-rows: repeat(10, 120px);
 }
 .skillCards div {
   transform: scale(0.5) translate(-50%, -50%);
