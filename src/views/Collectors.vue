@@ -515,6 +515,26 @@ main {
     height: 10%;
 }
 
+.workDollarWhite{
+  background-image: url("/images/auctionvit.png");
+  height: 20vh;
+  width: 9.5vw;
+  background-size: cover;
+
+}
+.workDollarBlack{
+  background-image: url("/images/auctionblack.png");
+  height: 20vh;
+  width: 9.5vw;
+  background-size: cover;
+}
+.energyBottle{
+  background-image: url("/images/flaska.png");
+  height: 20vh;
+  width: 9.5vw;
+  background-size: cover;
+}
+
 .PlayerBoardCards {
   display: grid;
   grid-template-columns: repeat(auto-fill, 130px);
