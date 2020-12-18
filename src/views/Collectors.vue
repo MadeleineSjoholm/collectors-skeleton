@@ -3,6 +3,7 @@
     <main>
       <div class="table">
         <div class="board">
+
           <div class="skillPool">
             <CollectorsSkillActions
               v-if="players[playerId]"
@@ -54,31 +55,20 @@
                 @placeBottle="placeBottle('buy', $event)"
               />
             </div>
-            <!--
-            <div class="itemdollar"></div>
-            <div class="itemdollarone"></div>
-            <div class="itemdollartwo"></div>
-            <div class="itemdollar2"></div>
-            <div class="itemdollarthree"></div>
-            -->
           </div>
 
           <div class="marketPool">
-            <h1>Market</h1>
-            <CollectorsMarket
+            <CollectorsMarketActions
               v-if="players[playerId]"
               :labels="labels"
               :player="players[playerId]"
               :marketValues="marketValues"
               :placement="marketPlacement"
-              @placeCard="placeCard($event)"
+              :market="market"
+              @marketEvent="marketEvent($event)"
               @placeBottle="placeBottle('market', $event)"
             />
             <!--:itemsOnSale="itemsOnSale" -->
-            <div class="doubleblueEnergy"></div>
-            <div class="marketDollar"></div>
-            <div class="blueEnergy"></div>
-
           </div>
 
           <div class="workPool">
@@ -130,6 +120,7 @@
           </div>
         </div>
       </div>
+      
 
       {{ buyPlacement }} {{ chosenPlacementCost }}
 
@@ -166,7 +157,8 @@
 import CollectorsCard from "@/components/CollectorsCard.vue";
 import CollectorsBuyActions from "@/components/CollectorsBuyActions.vue";
 import CollectorsSkillActions from "@/components/CollectorsSkillActions.vue";
-//import CollectorsMarketActions from "@/components/CollectorsMarketActions.vue";
+import CollectorsMarketActions from "@/components/CollectorsMarketActions.vue";
+
 
 //import Sidebar from "@/components/Sidebar.vue";
 export default {
@@ -175,7 +167,7 @@ export default {
     CollectorsCard,
     CollectorsBuyActions,
     CollectorsSkillActions,
-    //  CollectorsMarketActions,
+    CollectorsMarketActions,
     // Sidebar,
   },
   data: function () {

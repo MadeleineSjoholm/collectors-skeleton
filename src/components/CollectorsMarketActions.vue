@@ -1,27 +1,46 @@
 <template>
-  <div>
     <div class="marketPool">
-      <h1>Market</h1>
+      <h3>{{ labels.marketLabel }}</h3>
       <div class="bottlePlacement">
-        <div class="doubleblueEnergy"></div>
-        <div class="marketDollar"></div>
-        <div class="blueEnergy"></div>
+        <div class="buttons" v-for="(p, index) in placement" :key="index">
+          <button
+            v-if="p.playerId === null"
+            :class="[
+              { doubleblueEnergy: p.cost == 0 },
+              { marketDollar: p.cost == -2 },
+              { blueEnergy: p.cost == 0 },
+            ]"
+            :disabled="cannotAfford(p.cost)"
+            @click="placeBottle(p)"
+          >
+            ${{ p.cost }}
+          </button>
+          <div v-if="p.playerId !== null">
+            {{ p.playerId }}
+          </div>
+        </div>
+      </div>
+      <div class="chategoryVal" v-for="(value,chategory) in marketValues" :key = "chategory">
+      <div>
+        {{chategory}}: <br>
+        {{value}}
       </div>
     </div>
-  </div>
+    </div>
 </template>
-<!--
+
 <script>
-import CollectorsCard from "@/components/CollectorsCard.vue";
+//import CollectorsCard from "@/components/CollectorsCard.vue";
 export default {
   name: "CollectorsMarketActions",
-  components: {
-    CollectorsCard,
-  },
+  /*components: {
+    CollectorsCard, //kommentera bort hela?
+  }, */
   props: {
     labels: Object,
     player: Object,
-    //skillsOnSale: Array,
+    market: Array,
+    skillsOnSale: Array, //?? + auction??
     marketValues: Object,
     placement: Array,
   },
@@ -42,24 +61,19 @@ export default {
       this.highlightAvailableCards();
     },
     highlightAvailableCards: function () {
-      for (let i = 0; i < this.marketOnSale.length; i += 1) {
+      for (let i = this.skillsOnSale.length -1; i >= 0; i -= 1) {
         this.$set(this.marketOnSale[i], "available", true);
       }
-      for (let i = 0; i < this.player.hand.length; i += 1) {
+      /*for (let i = 0; i < this.player.hand.length; i += 1) {
         this.$set(this.player.hand[i], "available", true);
       }
-      //  this.chosenPlacementCost = cost;
-    },
-    marketCard: function (card) {
-      if (card.available) {
-        this.$emit("marketCard", card);
-        this.highlightAvailableCards();
-      }
+        this.chosenPlacementCost = cost;
+    },  */
+        
+   
     },
   },
 };
-
-
 </script> -->
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
@@ -70,7 +84,6 @@ export default {
   grid-row: 5;
   background-color: #4d4dff;
 }
-
 .doubleblueEnergy {
   background-image: url("/images/marketbluee.png");
   height: 20vh;
@@ -89,25 +102,6 @@ export default {
   width: 10vw;
   background-size: cover;
 }
-.doubleDollarEnergy {
-  background-image: url("/images/auctiondollar2.png");
-  height: 20vh;
-  width: 9.5vw;
-  background-size: cover;
-}
-.dollarEnergy {
-  background-image: url("/images/auctiondollar.png");
-  height: 20vh;
-  width: 9.5vw;
-  background-size: cover;
-}
-.orangeEnergy {
-  background-image: url("/images/auctionorange.png");
-  height: 20vh;
-  width: 9.5vw;
-  background-size: cover;
-}
-
 .bottlePlacement {
   float: left;
   display: inline;

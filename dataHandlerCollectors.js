@@ -262,14 +262,24 @@ Data.prototype.getItemsOnSale = function(roomId){
 Data.prototype.getMarketValues = function(roomId){
   let room = this.rooms[roomId];
   if (typeof room !== 'undefined') {
-    return room.market.reduce(function(acc, curr) {
-      acc[curr.market] += 1;
-    }, 
-    { fastaval: 0, 
-      movie: 0, 
-      technology: 0, 
-      figures: 0, 
-      music: 0 });
+    let mv = { fastaval: 0, 
+              movie: 0, 
+              technology: 0, 
+              figures: 0, 
+              music: 0 };
+
+    for (let cardIndex in room.market) {
+      mv[room.market[cardIndex].market] += 1;
+    }
+    return mv;
+  }
+  else return [];
+}
+//komm bort under? 
+Data.prototype.getMarket = function(roomId){
+  let room = this.rooms[roomId];
+  if (typeof room !== 'undefined') {
+    return room.market;
   }
   else return [];
 }

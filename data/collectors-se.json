@@ -3,5 +3,7 @@
 	"invite": "Bjud in andra spelare med den här länken:",
 	"endTurn": "Avsluta runda",
 	"buyCard": "Köp ett kort",
-	"skillLabel": "Skicklighet"
+	"skillLabel": "Skicklighet",
+	"marketLabel": "Marknad",
+	"setUpGame": "Spela Collectors med"
 }

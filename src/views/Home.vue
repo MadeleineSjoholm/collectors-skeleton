@@ -2,8 +2,8 @@
   <div>
     <div class="information">
       <div class="languageSelector">
-          <div class="english"><img src="/images/english.png" width="40"></div>
-          <div class="swedish>"><img src="/images/swedish.png" width="40"></div>
+          <div class="english" @click="language('en')"><img src="/images/english.png" width="40"></div>
+          <div class="swedish" @click="language('se')"><img src="/images/swedish.png" width="40"></div>
       </div>
       <div class="infoButton" id="info" align="right">
           <img src="/images/question.png" width= "60"><br>
@@ -21,11 +21,6 @@
         <div v-for="i in 3" :key="i">
           <a @click="setupCollectors(i+1, 'en')">Set up a game of Collectors for {{i+1}} players
           </a>.
-        </div>
-      </ul>
-      <ul>
-        <div v-for="i in 3" :key="i">
-          <a @click="setupCollectors(i+1, 'se')">Spela Collectors med {{i+1}} spelare</a>.
         </div>
       </ul>
 
@@ -53,13 +48,10 @@ export default {
         playerCount: playerCount,
         lang: lang });
       this.$router.push("/room/" + this.$store.state.roomId);
-    },/*
-    setupLanguage: function(lang) {
-        var languageText = collectors-en
-        if (lang === 'se') {
-        languageText = collectors-se
-      }
-    } */
+    },
+    language: function (lang) {
+      this.$store.commit('SET_LANG', lang);
+    },
   }
 }
 </script>
@@ -75,9 +67,7 @@ export default {
     float: left;
 
   }
-  .swedish{
-    float: right;
-  }
+  
   .infoButton{
     position: absolute;
     margin-top: 5px;

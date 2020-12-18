@@ -2,7 +2,6 @@
   <div>
     <div class="skillPool">
       <h3>{{ labels.skillLabel }}</h3>
-
       <div class="bottlePlacement">
         <div class="buttons" v-for="(p, index) in placement" :key="index">
           <button

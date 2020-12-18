@@ -40,6 +40,16 @@ function sockets(io, socket, data) {
         }
       );
     });
+    socket.on('collectorsMarketCard', function(d) {
+      data.marketEvent(d.roomId, d.playerId, d.card, d.cost) //d.cost bort?
+      io.to(d.roomId).emit('collectorsMarketStarted', { 
+          playerId: d.playerId,
+          players: data.getPlayers(d.roomId),
+          marketValues: data.getMarketValues(d.roomId),
+          skillsCard: data.getSkillsOnSale(d.roomId)
+        }
+      );
+    });
     socket.on('collectorsPlaceBottle', function(d) {
       data.placeBottle(d.roomId, d.playerId, d.action, d.cost);
       io.to(d.roomId).emit('collectorsBottlePlaced', data.getPlacements(d.roomId)

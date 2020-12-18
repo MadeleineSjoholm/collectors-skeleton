@@ -3,5 +3,7 @@
 	"invite": "Invite other players with this link:",
 	"endTurn": "End turn",
 	"buyCard": "Buy a card",
-	"skillLabel": "Skills"
+	"skillLabel": "Skills",
+	"marketLabel": "Market",
+	"setUpGame": "Set up game of Collectors for"
 }
