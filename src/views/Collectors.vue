@@ -288,13 +288,13 @@ export default {
     selectAll: function (n) {
       n.target.select();
     },
-    placeBottle: function (action, cost) {
-      this.chosenPlacementCost = cost;
+    placeBottle: function (action, p) {
+      this.chosenPlacementCost = p.cost;
       this.$store.state.socket.emit("collectorsPlaceBottle", {
         roomId: this.$route.params.id,
         playerId: this.playerId,
         action: action,
-        cost: cost,
+        id: p.id,
       });
     },
     drawCard: function () {
@@ -345,26 +345,19 @@ main {
   width: auto;
   height: 100vh;
   column-gap: 0.5rem;
-  row-gap: 0.5rem;
+  row-gap: 0.5rem; 
 }
-
-
-.itemPool {
-
+/*.itemPool {
   grid-column: 5 / span 3;
   grid-row: 1 / span 2;
   height: 50%;
-
   background-color: #ccb3ff;
 }
-
-
 .itemPoolcontent {
   grid-column: 1 / span 5;
   grid-row: 1;
 }
-
-
+*/
 .skillPool {
   grid-column: 1 / span 4;
   grid-row: 1;
@@ -372,72 +365,19 @@ main {
   background-color: #3399ff;
   display: flex;
 }
-
-/*
-.itemdollar {
-  grid-column: 1;
-  grid-row: 2;
-  flex: 20%;
-
-  background-image: url("/images/itemdollar.png");
-  height: 20vh;
-  width: 10vw;
-  background-size: cover;
-}
-
-.itemdollarone {
-  grid-column: 2;
-  flex: 20%;
-
-  background-image: url("/images/itemdollar.png");
-  height: 20vh;
-  width: 10vw;
-  background-size: cover;
-}
-
-.itemdollartwo {
-  grid-column: 3;
-  flex: 20%;
-
-  background-image: url("/images/itemdollar2.png");
-  height: 20vh;
-  width: 10vw;
-  background-size: cover;
-}
-
-.itemdollar2 {
-  grid-column: 4;
-  flex: 20%;
-
-  background-image: url("/images/itemdollar2.png");
-  height: 20vh;
-  width: 10vw;
-  background-size: cover;
-}
-
-.itemdollarthree {
-  grid-column: 5;
-  flex: 20%;
-
-  background-image: url("/images/itemdollar3.png");
-  height: 20vh;
-  width: 10vw;
-  background-size: cover;
-}
-*/
 .workPool {
   grid-column: 2 / span 2;
-  grid-row: 2 / span 3;
+  grid-row: 2 / span 3; 
   background-color: #80ffff;
 }
 .marketPool {
   grid-column: 2 / span 4;
-  grid-row: 5;
+  grid-row: 5; 
   background-color: #4d4dff;
 }
 .auctionPool {
   grid-column: 4 / span 2;
-  grid-row: 2 / span 3;
+  grid-row: 2 / span 3; 
   background-color: #99ccff;
 }
 .auctionCards {

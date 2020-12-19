@@ -1,14 +1,21 @@
 <template>
     <div class="marketPool">
       <h3>{{ labels.marketLabel }}</h3>
+       <div class="iconPlacement">
+      <div class="iconFastaval"></div>
+      <div class="iconMovie"></div>
+      <div class="iconTech"></div>
+      <div class="iconFigures"></div>
+      <div class="iconMusic"></div>
+      </div>
       <div class="bottlePlacement">
         <div class="buttons" v-for="(p, index) in placement" :key="index">
           <button
             v-if="p.playerId === null"
             :class="[
-              { doubleblueEnergy: p.cost == 0 },
-              { marketDollar: p.cost == -2 },
-              { blueEnergy: p.cost == 0 },
+              { doubleblueEnergy: p.id == 14 },
+              { marketDollar: p.id == 15 },
+              { blueEnergy: p.id == 16 },
             ]"
             :disabled="cannotAfford(p.cost)"
             @click="placeBottle(p)"
@@ -21,10 +28,10 @@
         </div>
       </div>
       <div class="chategoryVal" v-for="(value,chategory) in marketValues" :key = "chategory">
-      <div>
+      
         {{chategory}}: <br>
         {{value}}
-      </div>
+      
     </div>
     </div>
 </template>
@@ -57,14 +64,16 @@ export default {
       return this.marketValues[card.market];
     },
     placeBottle: function (p) {
-      this.$emit("placeBottle", p.cost);
+      this.$emit("placeBottle", p);
       this.highlightAvailableCards();
     },
     highlightAvailableCards: function () {
       for (let i = this.skillsOnSale.length -1; i >= 0; i -= 1) {
-        this.$set(this.marketOnSale[i], "available", true);
+        this.$set(this.skillsOnSale[i], "available", true); 
+        break;
       }
-      /*for (let i = 0; i < this.player.hand.length; i += 1) {
+      /* kolla att x attribut finns innan for
+      for (let i = 0; i < this.player.hand.length; i += 1) {
         this.$set(this.player.hand[i], "available", true);
       }
         this.chosenPlacementCost = cost;
@@ -89,7 +98,7 @@ export default {
   height: 20vh;
   width: 12vw;
   background-size: cover;
-}
+} 
 .marketDollar {
   background-image: url("/images/dollarmarket.png");
   height: 20vh;
@@ -106,6 +115,41 @@ export default {
   float: left;
   display: inline;
   width: 49%;
+}
+.iconPlacement {
+  float: right;
+  display: inline;
+  width: 49%;
+}
+.iconFastaval {
+  background-image: url("/images/market2.png");
+  height: 20vh;
+  width: 9.5vw;
+  background-size: cover;
+}
+.iconMovie {
+  background-image: url("/images/market3.png");
+  height: 20vh;
+  width: 9.5vw;
+  background-size: cover;
+}
+.iconTech {
+  background-image: url("/images/market1.png");
+  height: 20vh;
+  width: 9.5vw;
+  background-size: cover;
+}
+.iconFigures {
+  background-image: url("/images/market5.png");
+  height: 20vh;
+  width: 9.5vw;
+  background-size: cover;
+}
+.iconMusic {
+  background-image: url("/images/market4.png");
+  height: 20vh;
+  width: 9.5vw;
+  background-size: cover;
 }
 </style>
 

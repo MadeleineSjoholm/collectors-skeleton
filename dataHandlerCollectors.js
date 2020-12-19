@@ -64,23 +64,23 @@ Data.prototype.createRoom = function(roomId, playerCount, lang="en") {
   room.skillsOnSale = room.deck.splice(0, 5);
   room.auctionCards = room.deck.splice(0, 4);
   room.market = [];
-  room.buyPlacement = [ {cost:1, playerId: null},
-                        {cost:1, playerId: null},
-                        {cost:2, playerId: null},
-                        {cost:2, playerId: null},
-                        {cost:3, playerId: null} ];
-  room.skillPlacement = [ {cost:0, playerId: null},
-                          {cost:0, playerId: null},
-                          {cost:0, playerId: null},
-                          {cost:1, playerId: null},
-                          {cost:1, playerId: null} ];
-  room.auctionPlacement = [ {cost:-2, playerId: null},
-                            {cost:-1, playerId: null},
-                            {cost:0, playerId: null},
-                            {cost:0, playerId: null} ];
-  room.marketPlacement = [ {cost:0, playerId: null},
-                           {cost:-2, playerId: null},
-                           {cost:0, playerId: null} ];
+  room.buyPlacement = [ {cost:1, playerId: null, id:0 },
+                        {cost:1, playerId: null, id:1},
+                        {cost:2, playerId: null, id:2},
+                        {cost:2, playerId: null, id:3},
+                        {cost:3, playerId: null, id:4} ];
+  room.skillPlacement = [ {cost:0, playerId: null, id:5},
+                          {cost:0, playerId: null, id:6},
+                          {cost:0, playerId: null, id:7},
+                          {cost:1, playerId: null, id:8},
+                          {cost:1, playerId: null, id:9} ];
+  room.auctionPlacement = [ {cost:-2, playerId: null, id:10},
+                            {cost:-1, playerId: null, id:11},
+                            {cost:0, playerId: null, id:12},
+                            {cost:0, playerId: null, id:13} ];
+  room.marketPlacement = [ {cost:0, playerId: null, id:14},
+                           {cost:-2, playerId: null, id:15},
+                           {cost:0, playerId: null, id:16} ];
   this.rooms[roomId] = room;
 }
 
@@ -205,7 +205,7 @@ Data.prototype.skillsCard = function (roomId, playerId, card, cost) {
   }
 }
 
-Data.prototype.placeBottle = function (roomId, playerId, action, cost) {
+Data.prototype.placeBottle = function (roomId, playerId, action, id) {
   let room = this.rooms[roomId];
   if (typeof room !== 'undefined') {
     let activePlacement = [];
@@ -222,7 +222,7 @@ Data.prototype.placeBottle = function (roomId, playerId, action, cost) {
       activePlacement = room.marketPlacement;
     }
     for(let i = 0; i < activePlacement.length; i += 1) {
-        if( activePlacement[i].cost === cost && 
+        if( activePlacement[i].id === id && 
             activePlacement[i].playerId === null ) {
           activePlacement[i].playerId = playerId;
           break;
