@@ -361,50 +361,6 @@ main {
   grid-row: 2 / span 3; 
   background-color: #99ccff;
 }
-
-.auctionCards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 130px);
-  grid-template-rows: repeat(auto-fill, 180px);
-}
-.auctionCards div {
-  transform: scale(0.5) translate(-50%, -50%);
-  transition: 0.2s;
-  transition-timing-function: ease-out;
-  z-index: 0;
-}
-.auctionCards div:hover {
-  transform: scale(1) translate(-25%, 0);
-  z-index: 1;
-}
-
-.doubleblueEnergy {
-  background-image: url("/images/markebluee.png");
-  height: 20vh;
-  width: 12vw;
-  background-size: cover;
-}
-.marketDollar {
-  background-image: url("/images/dollarmarket.png");
-  height: 20vh;
-  width: 12vw;
-  background-size: cover;
-}
-.blueEnergy {
-  background-image: url("/images/markeblue.png");
-  height: 20vh;
-  width: 10vw;
-  background-size: cover;
-}
-
-.dollarEnergy {
-  background-image: url("/images/auctiondollar.png");
-  height: 20vh;
-  width: 9.5vw;
-  background-size: cover;
-}
-
-
 .bottlePlacement {
   float: left;
   display: inline;
@@ -438,7 +394,6 @@ main {
   width: 9.5vw;
   background-size: cover;
 }
-
 .PlayerBoardCards {
   display: grid;
   grid-template-columns: repeat(auto-fill, 130px);

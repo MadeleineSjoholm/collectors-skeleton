@@ -38,7 +38,7 @@
         />
       </div>
       <div class="cardToAuction"> 
-         <CollectorsCard :card="cardsUpForAuction"/>
+         <CollectorsCard :card="upForAuction"/>
       </div>
     </div>
 </div>
@@ -56,7 +56,7 @@ export default {
     labels: Object,
     player: Object,
     auctionCards: Array,
-    cardsUpForAuction: Array, 
+    upForAuction: Array, 
     marketValues: Object,
     placement: Array,
   },

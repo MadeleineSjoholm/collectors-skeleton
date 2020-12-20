@@ -56,7 +56,7 @@ function sockets(io, socket, data) {
         playerId: d.playerId,
         players: data.getPlayers(d.roomId),
         auctionCards: data.getAuctionCards(d.roomId),
-        cardsUpForAuction: data.getCardsUpForAuction(d.roomId)
+        upForAuction: data.getUpForAuction(d.roomId)
         }
       );
     });

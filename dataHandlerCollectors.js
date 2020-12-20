@@ -63,7 +63,7 @@ Data.prototype.createRoom = function(roomId, playerCount, lang="en") {
   room.itemsOnSale = room.deck.splice(0, 5);
   room.skillsOnSale = room.deck.splice(0, 5);
   room.auctionCards = room.deck.splice(0, 4);
-  room.cardsUpForAuction = {};
+  room.upForAuction = {};
   room.market = [];
   room.buyPlacement = [ {cost:1, playerId: null, id:0 },
                         {cost:1, playerId: null, id:0},
@@ -212,17 +212,17 @@ Data.prototype.initiateAuction = function (roomId, playerId, card, auctionCard) 
       if (room.auctionCards[i].x === card.x &&
           room.auctionCards[i].y === card.y) {
             let auc = room.auctionCards.splice(i,1, {});
-            room.cardsUpForAuction = auc[0];
+            room.upForAuction = auc[0];
         break;
       }
     }
   }
 }
 
-Data.prototype.getCardsUpForAuction = function(roomId){
+Data.prototype.getUpForAuction = function(roomId){
   let room = this.rooms[roomId];
   if (typeof room !== 'undefined') {
-    return room.cardsUpForAuction;
+    return room.upForAuction;
   }
   else return {};
 }
@@ -297,6 +297,39 @@ Data.prototype.getMarketValues = function(roomId){
     return mv;
   }
   else return [];
+}
+
+Data.prototype.cardValue = function (roomId) {
+  var fastaval=0;
+  var figures=0;
+  var music=0;
+  var movie=0;
+  var technology=0;
+  let room = this.rooms[roomId];
+  if (typeof room !== 'undefined') { 
+    for (let i = 0; i < room.marketValues.length; i += 1) {
+    if (room.marketValues[i].market == "fastaval") {
+      fastaval+=1;
+    } else if (room.marketValues[i].market == "figures") {
+      figures+=1;
+    } else if (room.marketValues[i].market == "music") {
+      music+=1;
+    } else if (room.marketValues[i].market == "movie") {
+      movie+=1;
+    }else if (room.marketValues[i].market == "technology") {
+      technology+=1;
+    }
+  }
+    return{
+      fastaval:fastaval,
+      figures:figures,
+      music:music,
+      movie:movie,
+      technology:technology,
+    }
+}else {
+  return [];
+}
 }
 //komm bort under? 
 Data.prototype.getMarket = function(roomId){
