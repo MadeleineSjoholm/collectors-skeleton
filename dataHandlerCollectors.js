@@ -65,22 +65,22 @@ Data.prototype.createRoom = function(roomId, playerCount, lang="en") {
   room.auctionCards = room.deck.splice(0, 4);
   room.market = [];
   room.buyPlacement = [ {cost:1, playerId: null, id:0 },
-                        {cost:1, playerId: null, id:1},
-                        {cost:2, playerId: null, id:2},
-                        {cost:2, playerId: null, id:3},
-                        {cost:3, playerId: null, id:4} ];
-  room.skillPlacement = [ {cost:0, playerId: null, id:5},
-                          {cost:0, playerId: null, id:6},
-                          {cost:0, playerId: null, id:7},
-                          {cost:1, playerId: null, id:8},
-                          {cost:1, playerId: null, id:9} ];
-  room.auctionPlacement = [ {cost:-2, playerId: null, id:10},
-                            {cost:-1, playerId: null, id:11},
-                            {cost:0, playerId: null, id:12},
-                            {cost:0, playerId: null, id:13} ];
-  room.marketPlacement = [ {cost:0, playerId: null, id:14},
-                           {cost:-2, playerId: null, id:15},
-                           {cost:0, playerId: null, id:16} ];
+                        {cost:1, playerId: null, id:0},
+                        {cost:2, playerId: null, id:1},
+                        {cost:2, playerId: null, id:1},
+                        {cost:3, playerId: null, id:2} ];
+  room.skillPlacement = [ {cost:0, playerId: null, id:3},
+                          {cost:0, playerId: null, id:3},
+                          {cost:0, playerId: null, id:3},
+                          {cost:1, playerId: null, id:4},
+                          {cost:1, playerId: null, id:4} ];
+  room.auctionPlacement = [ {cost:-2, playerId: null, id:5,
+                            {cost:-1, playerId: null, id:6},
+                            {cost:0, playerId: null, id:7},
+                            {cost:0, playerId: null, id:7} ];
+  room.marketPlacement = [ {cost:0, playerId: null, id:8},
+                           {cost:-2, playerId: null, id:9},
+                           {cost:0, playerId: null, id:10} ];
   this.rooms[roomId] = room;
 }
 

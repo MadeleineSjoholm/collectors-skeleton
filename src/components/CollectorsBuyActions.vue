@@ -18,9 +18,9 @@
           <button
             v-if="p.playerId===null"
             :class="[
-              { itemdollar: p.cost == 1 },
-              { itemdollartwo: p.cost == 2 },
-              { itemdollarthree: p.cost == 3 },
+              { itemdollar: p.cost == 0 },
+              { itemdollartwo: p.cost == 1 },
+              { itemdollarthree: p.cost == 2 },
             ]"
             :disabled="cannotAfford(p.cost)"
             @click="placeBottle(p)" >

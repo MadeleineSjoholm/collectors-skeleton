@@ -7,8 +7,8 @@
           <button
             v-if="p.playerId === null"
             :class="[
-              { greenEnergy: p.cost == 0 },
-              { dollarEnergy: p.cost == 1 },
+              { greenEnergy: p.cost == 3 },
+              { dollarEnergy: p.cost == 4 },
             ]"
             :disabled="cannotAfford(p.cost)"
             @click="placeBottle(p)"

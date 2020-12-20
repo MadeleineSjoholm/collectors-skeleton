@@ -13,9 +13,9 @@
           <button
             v-if="p.playerId === null"
             :class="[
-              { doubleblueEnergy: p.id == 14 },
-              { marketDollar: p.id == 15 },
-              { blueEnergy: p.id == 16 },
+              { doubleblueEnergy: p.id == 8 },
+              { marketDollar: p.id == 9 },
+              { blueEnergy: p.id == 10 },
             ]"
             :disabled="cannotAfford(p.cost)"
             @click="placeBottle(p)"
