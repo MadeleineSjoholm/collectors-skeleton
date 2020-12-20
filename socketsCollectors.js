@@ -50,6 +50,16 @@ function sockets(io, socket, data) {
         }
       );
     });
+    socket.on('collectorsAuctionCard', function(d){
+      data.initiateAuction(d.roomId, d.playerId, d.card, d.auctionCard)
+      io.to(d.roomId).emit('collectorsAuctionStarted', {
+        playerId: d.playerId,
+        players: data.getPlayers(d.roomId),
+        auctionCards: data.getAuctionCards(d.roomId),
+        cardsUpForAuction: data.getCardsUpForAuction(d.roomId)
+        }
+      );
+    });
     socket.on('collectorsPlaceBottle', function(d) {
       data.placeBottle(d.roomId, d.playerId, d.action, d.id);
       io.to(d.roomId).emit('collectorsBottlePlaced', data.getPlacements(d.roomId)

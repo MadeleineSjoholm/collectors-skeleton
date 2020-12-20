@@ -7,8 +7,8 @@
           <button
             v-if="p.playerId === null"
             :class="[
-              { greenEnergy: p.cost == 3 },
-              { dollarEnergy: p.cost == 4 },
+              { greenEnergy: p.id == 3 },
+              { dollarEnergy: p.id == 4 },
             ]"
             :disabled="cannotAfford(p.cost)"
             @click="placeBottle(p)"
@@ -87,20 +87,16 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.skill-cards,
 .buttons {
   display: grid;
   grid-template-columns: repeat(auto-fill, 130px);
 }
-
-
 .skillPool {
   grid-column: 1 / span 2;
   height: 70%;
   background-color: #3399ff;
   display: flex;
 }
-
 .greenEnergy {
   background-image: url("/images/greenflaska.png");
   height: 20vh;
@@ -113,7 +109,6 @@ export default {
   width: 9.5vw;
   background-size: cover;
 }
-
 .bottlePlacement {
   float: left;
   display: inline;

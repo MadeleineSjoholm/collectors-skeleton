@@ -1,29 +1,15 @@
 <template>
-  <div class="marketPool">
+<div>
     <div class="auctionPool">
-      <h1>Auction</h1>
-      <div class="buttons2">
-        <!-- denna är tillagd -->
-
-        <button @click="drawCard">
-          {{ labels.draw }}
-        </button>
-      </div>
-      <div class="auctionCards">
-        <CollectorsCard
-          v-for="(card, index) in auctionCards"
-          :card="card"
-          :key="index"
-        />
-      </div>
+      <h3>{{ labels.auctionLabel }}</h3>
       <div class="bottlePlacement">
         <div class="buttons" v-for="(p, index) in placement" :key="index">
           <button
             v-if="p.playerId === null"
             :class="[
-              { doubleDollarEnergy: p.cost == 0 },
-              { dollarAuction: p.cost == 2 },
-              { orangeEnergy: p.cost == 0 },
+              { doubleDollarEnergy: p.id == 5 },
+              { dollarAuction: p.id == 6 },
+              { orangeEnergy: p.id == 7 },
             ]"
             :disabled="cannotAfford(p.cost)"
             @click="placeBottle(p)"
@@ -35,22 +21,42 @@
           </div>
         </div>
       </div>
+
+      <div class="buttons2">
+        <button @click="drawCard">
+          {{ labels.draw }}
+        </button>
+      </div>
+      <div class="auctionCards">
+        <CollectorsCard
+          v-for="(card, index) in auctionCards"
+          :card="card"
+          :key="index"
+          :availableAction="card.available"
+          @doAction="initiateAuction(card)"
+        />
+        />
+      </div>
+      <div class="cardToAuction"> 
+         <CollectorsCard :card="cardsUpForAuction"/>
+      </div>
     </div>
-  </div>
+</div>
 </template>
 
 <script>
-//import CollectorsCard from "@/components/CollectorsCard.vue";
+import CollectorsCard from "@/components/CollectorsCard.vue";
+
 export default {
   name: "CollectorsMarketActions",
-  /*components: {
-    CollectorsCard, //kommentera bort hela?
-  }, */
+  components: {
+    CollectorsCard, 
+  }, 
   props: {
     labels: Object,
     player: Object,
-    market: Array,
-    skillsOnSale: Array, //?? + auction??
+    auctionCards: Array,
+    cardsUpForAuction: Array, 
     marketValues: Object,
     placement: Array,
   },
@@ -71,14 +77,20 @@ export default {
       this.highlightAvailableCards();
     },
     highlightAvailableCards: function () {
-      for (let i = this.skillsOnSale.length - 1; i >= 0; i -= 1) {
-        this.$set(this.marketOnSale[i], "available", true);
+     for (let i = 0; i < this.auctionCards.length; i += 1) {
+        this.$set(this.auctionCards[i], "available", true);
+        /* if marketvalues 
+        if (this.skillsOnSale[i].x > 0) {                  
+          this.$set(this.skillsOnSale[i], "available", true);
+          break;
+        }    */
       }
-      /*for (let i = 0; i < this.player.hand.length; i += 1) {
-        this.$set(this.player.hand[i], "available", true);
+    },
+    initiateAuction: function(card) {
+      if (card.available) {
+        this.$emit('initiateAuction', card);
+        this.highlightAvailableCards()
       }
-        this.chosenPlacementCost = cost;
-    },  */
     },
   },
 };
@@ -87,27 +99,49 @@ export default {
 
 
 <style scoped>
-.marketPool {
-  grid-column: 2 / span 4;
-  grid-row: 5;
-  background-color: #4d4dff;
+.auctionPool {
+  grid-column: 4 / span 2;
+  grid-row: 2 / span 3; 
+  background-color: #99ccff;
 }
-.doubleblueEnergy {
-  background-image: url("/images/marketbluee.png");
+.auctionCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 130px);
+  grid-template-rows: repeat(auto-fill, 180px);
+}
+.auctionCards div {
+  transform: scale(0.5) translate(-50%, -50%);
+  transition: 0.2s;
+  transition-timing-function: ease-out;
+  z-index: 0;
+}
+.auctionCards div:hover {
+  transform: scale(1) translate(-25%, 0);
+  z-index: 1;
+}
+.cardToAuction {
+    border-style: dotted;
+    border-color: black;
+    background-color: #ffffcc;
+    width: 150px;
+    height: 200px;
+}
+.doubleDollarEnergy {
+  background-image: url("/images/auctiondollar2.png");
   height: 20vh;
-  width: 12vw;
+  width: 9.5vw;
   background-size: cover;
 }
-.marketDollar {
-  background-image: url("/images/dollarmarket.png");
+.dollarAuction {
+  background-image: url("/images/auctiondollar.png");
   height: 20vh;
-  width: 12vw;
+  width: 9.5vw;
   background-size: cover;
 }
-.blueEnergy {
-  background-image: url("/images/markeblue.png");
+.orangeEnergy {
+  background-image: url("/images/auctionorange.png");
   height: 20vh;
-  width: 10vw;
+  width: 9.5vw;
   background-size: cover;
 }
 .bottlePlacement {
@@ -115,41 +149,4 @@ export default {
   display: inline;
   width: 49%;
 }
-.iconPlacement {
-  float: right;
-  display: inline;
-  width: 49%;
-}
-.iconFastaval {
-  background-image: url("/images/market2.png");
-  height: 20vh;
-  width: 9.5vw;
-  background-size: cover;
-}
-.iconMovie {
-  background-image: url("/images/market3.png");
-  height: 20vh;
-  width: 9.5vw;
-  background-size: cover;
-}
-.iconTech {
-  background-image: url("/images/market1.png");
-  height: 20vh;
-  width: 9.5vw;
-  background-size: cover;
-}
-.iconFigures {
-  background-image: url("/images/market5.png");
-  height: 20vh;
-  width: 9.5vw;
-  background-size: cover;
-}
-.iconMusic {
-  background-image: url("/images/market4.png");
-  height: 20vh;
-  width: 9.5vw;
-  background-size: cover;
-}
 </style>
-
--->

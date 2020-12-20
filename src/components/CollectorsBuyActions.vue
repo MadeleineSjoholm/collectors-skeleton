@@ -2,7 +2,7 @@
 
 <div>
 
-      <h1>{{ labels.buyCard }}</h1>
+      <h3>{{ labels.buyCard }}</h3>
       <div class="buy-cards">
 
         <div v-for="(card, index) in itemsOnSale" :key="index">
@@ -18,9 +18,9 @@
           <button
             v-if="p.playerId===null"
             :class="[
-              { itemdollar: p.cost == 0 },
-              { itemdollartwo: p.cost == 1 },
-              { itemdollarthree: p.cost == 2 },
+              { itemdollar: p.id == 0 },
+              { itemdollartwo: p.id == 1 },
+              { itemdollarthree: p.id == 2 },
             ]"
             :disabled="cannotAfford(p.cost)"
             @click="placeBottle(p)" >

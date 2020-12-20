@@ -18,32 +18,21 @@
           </div>
 
           <div class="auctionPool">
-            <h1>Auction</h1>
-            <div class="buttons2">
-              <!-- denna är tillagd -->
-
-              <button @click="drawCard">
-                {{ labels.draw }}
-              </button>
-            </div>
-            <div class="auctionCards">
-              <CollectorsCard
-                v-for="(card, index) in auctionCards"
-                :card="card"
-                :key="index"
+           <!-- lägg till vems tur -->
+            <CollectorsAuctionActions
+                v-if="players[playerId]"
+                :labels="labels"
+                :player="players[playerId]"
+                :auctionCards="auctionCards"
+                :marketValues="marketValues"
+                :placement="auctionPlacement"
+                @initiateAuction="initiateAuction($event)"
+                @placeBottle="placeBottle('auction', $event)"
               />
-            </div>
-            <div class="bottlePlacement">
-              <div class="doubleDollarEnergy"></div>
-              <div class="dollarAuction"></div>
-              <div class="orangeEnergy"></div>
-              <div class="orangeEnergy"></div>
-            </div>
           </div>
 
           <div class="itemPool">
             <div class="itemPoolcontent">
-              <h1>Item</h1>
               <CollectorsBuyActions
                 v-if="players[playerId]"
                 :labels="labels"
@@ -158,6 +147,7 @@ import CollectorsCard from "@/components/CollectorsCard.vue";
 import CollectorsBuyActions from "@/components/CollectorsBuyActions.vue";
 import CollectorsSkillActions from "@/components/CollectorsSkillActions.vue";
 import CollectorsMarketActions from "@/components/CollectorsMarketActions.vue";
+import CollectorsAuctionActions from "@/components/CollectorsAuctionActions.vue";
 
 
 //import Sidebar from "@/components/Sidebar.vue";
@@ -168,6 +158,7 @@ export default {
     CollectorsBuyActions,
     CollectorsSkillActions,
     CollectorsMarketActions,
+    CollectorsAuctionActions
     // Sidebar,
   },
   data: function () {
@@ -347,17 +338,7 @@ main {
   column-gap: 0.5rem;
   row-gap: 0.5rem; 
 }
-/*.itemPool {
-  grid-column: 5 / span 3;
-  grid-row: 1 / span 2;
-  height: 50%;
-  background-color: #ccb3ff;
-}
-.itemPoolcontent {
-  grid-column: 1 / span 5;
-  grid-row: 1;
-}
-*/
+
 .skillPool {
   grid-column: 1 / span 4;
   grid-row: 1;
@@ -380,6 +361,7 @@ main {
   grid-row: 2 / span 3; 
   background-color: #99ccff;
 }
+
 .auctionCards {
   display: grid;
   grid-template-columns: repeat(auto-fill, 130px);
@@ -414,24 +396,14 @@ main {
   width: 10vw;
   background-size: cover;
 }
-.doubleDollarEnergy {
-  background-image: url("/images/auctiondollar2.png");
-  height: 20vh;
-  width: 9.5vw;
-  background-size: cover;
-}
+
 .dollarEnergy {
   background-image: url("/images/auctiondollar.png");
   height: 20vh;
   width: 9.5vw;
   background-size: cover;
 }
-.orangeEnergy {
-  background-image: url("/images/auctionorange.png");
-  height: 20vh;
-  width: 9.5vw;
-  background-size: cover;
-}
+
 
 .bottlePlacement {
   float: left;

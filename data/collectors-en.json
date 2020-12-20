@@ -5,5 +5,7 @@
 	"buyCard": "Buy a card",
 	"skillLabel": "Skills",
 	"marketLabel": "Market",
+	"auctionLabel": "Auction",
+	"itemLabel": "Item",
 	"setUpGame": "Set up game of Collectors for"
 }
