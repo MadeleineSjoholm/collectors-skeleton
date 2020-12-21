@@ -53,6 +53,11 @@ Data.prototype.getUILabels = function (roomId) {
   }
   else return {};
 }
+Data.prototype.getUILabelsLang = function (lang="en") {
+    var ui = require("./data/collectors-" + lang + ".json");
+    return ui;
+}
+
 
 Data.prototype.createRoom = function(roomId, playerCount, lang="en") {
   let room = {};
@@ -102,7 +107,7 @@ Data.prototype.joinGame = function (roomId, playerId) {
     }
     else if (Object.keys(room.players).length < room.playerCount) {
       console.log("Player", playerId, "joined for the first time");
-      room.players[playerId] = { hand: [], 
+      room.players[playerId] = { hand: [],
                                  money: 1,
                                  points: 0,
                                  skills: [],
@@ -152,8 +157,8 @@ Data.prototype.buyCard = function (roomId, playerId, card, cost) {
     /// check first if the card is among the items on sale
     for (let i = 0; i < room.itemsOnSale.length; i += 1) {
       // since card comes from the client, it is NOT the same object (reference)
-      // so we need to compare properties for determining equality      
-      if (room.itemsOnSale[i].x === card.x && 
+      // so we need to compare properties for determining equality
+      if (room.itemsOnSale[i].x === card.x &&
           room.itemsOnSale[i].y === card.y) {
         c = room.itemsOnSale.splice(i,1, {});
         break;
@@ -162,8 +167,8 @@ Data.prototype.buyCard = function (roomId, playerId, card, cost) {
     // ...then check if it is in the hand. It cannot be in both so it's safe
     for (let i = 0; i < room.players[playerId].hand.length; i += 1) {
       // since card comes from the client, it is NOT the same object (reference)
-      // so we need to compare properties for determining equality      
-      if (room.players[playerId].hand[i].x === card.x && 
+      // so we need to compare properties for determining equality
+      if (room.players[playerId].hand[i].x === card.x &&
           room.players[playerId].hand[i].y === card.y) {
         c = room.players[playerId].hand.splice(i,1);
         break;
@@ -171,7 +176,7 @@ Data.prototype.buyCard = function (roomId, playerId, card, cost) {
     }
     room.players[playerId].items.push(...c);
     room.players[playerId].money -= cost;
-    
+
   }
 }
 
@@ -183,8 +188,8 @@ Data.prototype.skillsCard = function (roomId, playerId, card, cost) {
     /// check first if the card is among the items on sale
     for (let i = 0; i < room.skillsOnSale.length; i += 1) {
       // since card comes from the client, it is NOT the same object (reference)
-      // so we need to compare properties for determining equality      
-      if (room.skillsOnSale[i].x === card.x && 
+      // so we need to compare properties for determining equality
+      if (room.skillsOnSale[i].x === card.x &&
           room.skillsOnSale[i].y === card.y) {
         c = room.skillsOnSale.splice(i,1, {});
         break;
@@ -193,8 +198,8 @@ Data.prototype.skillsCard = function (roomId, playerId, card, cost) {
     // ...then check if it is in the hand. It cannot be in both so it's safe
     for (let i = 0; i < room.players[playerId].hand.length; i += 1) {
       // since card comes from the client, it is NOT the same object (reference)
-      // so we need to compare properties for determining equality      
-      if (room.players[playerId].hand[i].x === card.x && 
+      // so we need to compare properties for determining equality
+      if (room.players[playerId].hand[i].x === card.x &&
           room.players[playerId].hand[i].y === card.y) {
         c = room.players[playerId].hand.splice(i,1);
         break;
@@ -202,7 +207,7 @@ Data.prototype.skillsCard = function (roomId, playerId, card, cost) {
     }
     room.players[playerId].skills.push(...c);
     room.players[playerId].money -= cost;
-    
+
   }
 }
 Data.prototype.initiateAuction = function (roomId, playerId, card, auctionCard) {
@@ -245,7 +250,7 @@ Data.prototype.placeBottle = function (roomId, playerId, action, id) {
       activePlacement = room.marketPlacement;
     }
     for(let i = 0; i < activePlacement.length; i += 1) {
-        if( activePlacement[i].id === id && 
+        if( activePlacement[i].id === id &&
             activePlacement[i].playerId === null ) {
           activePlacement[i].playerId = playerId;
           break;
@@ -285,10 +290,10 @@ Data.prototype.getItemsOnSale = function(roomId){
 Data.prototype.getMarketValues = function(roomId){
   let room = this.rooms[roomId];
   if (typeof room !== 'undefined') {
-    let mv = { fastaval: 0, 
-              movie: 0, 
-              technology: 0, 
-              figures: 0, 
+    let mv = { fastaval: 0,
+              movie: 0,
+              technology: 0,
+              figures: 0,
               music: 0 };
 
     for (let cardIndex in room.market) {
@@ -306,7 +311,7 @@ Data.prototype.cardValue = function (roomId) {
   var movie=0;
   var technology=0;
   let room = this.rooms[roomId];
-  if (typeof room !== 'undefined') { 
+  if (typeof room !== 'undefined') {
     for (let i = 0; i < room.marketValues.length; i += 1) {
     if (room.marketValues[i].market == "fastaval") {
       fastaval+=1;
@@ -331,7 +336,7 @@ Data.prototype.cardValue = function (roomId) {
   return [];
 }
 }
-//komm bort under? 
+//komm bort under?
 Data.prototype.getMarket = function(roomId){
   let room = this.rooms[roomId];
   if (typeof room !== 'undefined') {
@@ -357,6 +362,3 @@ Data.prototype.getAuctionCards = function(roomId){
 }
 
 module.exports = Data;
-
-
-
