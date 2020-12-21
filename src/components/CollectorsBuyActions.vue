@@ -1,5 +1,4 @@
 <template>
-
 <div>
 
       <h3>{{ labels.buyCard }}</h3>
@@ -112,7 +111,7 @@ export default {
 
   .buttons {
     display:inline-block;
-    grid-template-columns: repeat(0px, 130px);
+    grid-template-columns: repeat(auto-fill, 15vw);
     grid-template-rows: 0px -20px;
   }
 
@@ -132,8 +131,9 @@ export default {
   flex: 20%;
 
   background-image: url("/images/itemdollar.png");
-  height: 20vh;
-  width: 10vw;
+  height: 16vh;
+  width: 8vw;
+  border-radius: 15%;
   background-size: cover;
 }
 
@@ -157,8 +157,9 @@ export default {
   flex: 20%;
 
   background-image: url("/images/itemdollar2.png");
-  height: 20vh;
-  width: 10vw;
+  height: 16vh;
+  width: 8vw;
+  border-radius: 15%;
   background-size: cover;
 }
  /*
@@ -178,8 +179,9 @@ export default {
   flex: 20%;
 
   background-image: url("/images/itemdollar3.png");
-  height: 20vh;
-  width: 10vw;
+  height: 16vh;
+  width: 8vw;
+  border-radius: 15%;
   background-size: cover;
 }
 

@@ -71,7 +71,7 @@
           </div>
         </div>
 
-        <div class="footer">
+        <div class="player">
           <div class="playerHand">
             PLAYERHAND {{ playerId }}
             <!--
@@ -108,12 +108,99 @@
             </div>
           </div>
         </div>
-      </div>
-      
 
-      {{ buyPlacement }} {{ chosenPlacementCost }}
+<!-- ny spelare -->
 
-      <!--
+<div class="player1">
+  <div class="playersHands">
+    PLAYER 1 {{ playerId }}
+
+  </div>
+
+  <div class="playerItem">
+    PLAYER1 ITEM
+
+    <div class="PlayerBoardCards" v-if="players[playerId]">
+      <CollectorsCard
+        v-for="(card, index) in players[playerId].items"
+        :card="card"
+        :key="index"
+      />
+    </div>
+    player skills
+    <div class="PlayerBoardCards" v-if="players[playerId]">
+      <CollectorsCard
+        v-for="(card, index) in players[playerId].skills"
+        :card="card"
+        :key="index"
+      />
+    </div>
+  </div>
+</div>
+
+<!-- ny spelare -->
+
+<div class="player2">
+  <div class="playersHands">
+    PLAYER 2 {{ playerId }}
+
+  </div>
+
+  <div class="playerItem">
+    PLAYER 2 ITEM
+
+    <div class="PlayerBoardCards" v-if="players[playerId]">
+      <CollectorsCard
+        v-for="(card, index) in players[playerId].items"
+        :card="card"
+        :key="index"
+      />
+    </div>
+    player skills
+    <div class="PlayerBoardCards" v-if="players[playerId]">
+      <CollectorsCard
+        v-for="(card, index) in players[playerId].skills"
+        :card="card"
+        :key="index"
+      />
+    </div>
+  </div>
+</div>
+
+<!-- ny spelare -->
+
+<div class="player3">
+  <div class="playersHands">
+    PLAYER 3 {{ playerId }}
+
+  </div>
+
+  <div class="playerItem">
+    PLAYER3 ITEM
+
+    <div class="PlayerBoardCards" v-if="players[playerId]">
+      <CollectorsCard
+        v-for="(card, index) in players[playerId].items"
+        :card="card"
+        :key="index"
+      />
+    </div>
+    player skills
+    <div class="PlayerBoardCards" v-if="players[playerId]">
+      <CollectorsCard
+        v-for="(card, index) in players[playerId].skills"
+        :card="card"
+        :key="index"
+      />
+    </div>
+  </div>
+</div>
+
+
+        </div>
+
+
+<!--
       <div class="buttons">
         <button @click="drawCard">
           {{ labels.draw }}
@@ -123,11 +210,13 @@
       -->
     </main>
 
+    {{ buyPlacement }} {{ chosenPlacementCost }}
     {{ players }}
     {{ marketValues }}
     <button v-if="players[playerId]" @click="players[playerId].money += 1">
       fake more money
     </button>
+
     <footer>
       <p>
         {{ labels.invite }}
@@ -317,60 +406,78 @@ export default {
 </script>
 <style scoped>
 header {
-  user-select: none;
+/*  user-select: none;
   position: fixed;
   width: 100%;
-  pointer-events: none;
+  pointer-events: none; */
 }
 main {
-  user-select: none;
+  /*user-select: none;*/
 }
 .table {
   padding-left: 20px;
   padding-right: 20px;
-  background-color: #b3ffff;
+  background-color: #ffff;
 }
 .board {
+  box-sizing: border-box;     /*huvudgriden, hänvisa till kod här*/
   display: grid;
-  background-color: #6699ff;
-  width: auto;
-  height: 100vh;
-  column-gap: 0.5rem;
-  row-gap: 0.5rem; 
+  grid-gap: 10px;
+  grid-template-rows: 1fr 1fr 1fr 2fr);
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas: "itemPool itemPool"
+                       "skillPool skillPool"
+                       "marketPool marketPool"
+                       "workPool auctionPool";
+}
+  @media (max-width: 600px) { /*För mindre skärmar*/
+      grid-gap: 2px;
+      grid-template-rows: repeat(5, 1fr);
+      grid-template-columns: 1fr;
+      grid-template-areas: "itemPool "
+                           "skillPool"
+                           "marketPool"
+                           "workPool "
+                           "auctionPool";
 }
 
+.itemPool {
+  grid-area: itemPool;
+  background-color: #ffb3b3;
+  max-height: 80vh;
+
+}
 .skillPool {
-  grid-column: 1 / span 4;
-  grid-row: 1;
-  height: 80%;
-  background-color: #3399ff;
-  display: flex;
+  grid-area: skillPool;
+  background-color: #c2f0c2;
+  max-height: 50vh;
+
 }
 .workPool {
-  grid-column: 2 / span 2;
-  grid-row: 2 / span 3; 
-  background-color: #80ffff;
+  grid-area: workPool;
+  background-color: #ffe6b3;
+  max-height: 100vh;
 }
 .marketPool {
-  grid-column: 2 / span 4;
-  grid-row: 5; 
-  background-color: #4d4dff;
+  grid-area: marketPool;
+  background-color: #66a3ff;
+  max-height: 40vh;
 }
 .auctionPool {
-  grid-column: 4 / span 2;
-  grid-row: 2 / span 3; 
-  background-color: #99ccff;
+  grid-area: auctionPool;
+  background-color: #ecd9c6;
+  max-height: 100vh;
 }
 .bottlePlacement {
-  float: left;
+  /*float: left;
   display: inline;
-  width: 49%;
+  width: 49%;*/
 }
 
 .quarterTiles{
     border-style: dotted;
     border-color: black;
-    background-color: #ffffcc;
+    background-color: #ffff;
     width: 50%;
     height: 10%;
 }
@@ -410,23 +517,68 @@ main {
   z-index: 1;
 }
 .playerItem {
-  grid-column: 2 / span 2;
-  grid-row: 15 / span 3;
-  background-color: #99ccff;
+  display: none;
+  background-color: #b3ecff;
 }
-.playerHand {
-  grid-column: 2 / span 2;
-  grid-row: 6;
-  background-color: #b366ff;
+
+.playersHands {
+  background-color: #80dfff;
   height: 100%;
 }
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 80%;
-  width: 20%;
-  margin-right: 40%;
+
+.playersHands:hover + .playerItem {
+  display: block
 }
+
+.playerHand {
+  background-color: #e6ccff
+;
+  height: 100%;
+}
+.playerHand:hover + .playerItem {
+  display: block
+}
+
+.player {
+  position:fixed;
+  right:0%;
+  top:0%;
+  width: 25vw;
+  height: 4vh;
+}
+
+/*spelare1*/
+
+
+.player1 {
+  position:fixed;
+  right:25%;
+  top:0%;
+  width: 25vw;
+  height: 4vh;
+}
+
+/*spelare2*/
+
+.player2 {
+  position:fixed;
+  right:50%;
+  top:0%;
+  width: 25vw;
+  height: 4vh;
+}
+
+/*spelare2*/
+
+.player3 {
+  position:fixed;
+  right:75%;
+  top:0%;
+  width: 25vw;
+  height: 4vh;
+}
+
+
 footer {
   margin-top: 5em auto;
 }
@@ -453,9 +605,9 @@ footer a:visited {
   transform: scale(1) translate(-25%, 0);
   z-index: 1;
 }
-@media screen and (max-width: 800px) {
+/* @media screen and (max-width: 800px) {
   main {
     width: 90vw;
   }
-}
+}*/
 </style>
