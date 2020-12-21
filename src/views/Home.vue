@@ -14,8 +14,15 @@
     <div class="Collectors" align="center">
           <img src="/images/collectors.png">
           <h1>Collectors</h1>
+
+
+    <h4>Start a game with:</h4>
+    <button class="button1" id="startGame" type="start" @click="setupCollectors(2, 'en')">2 Players</button><br>
+    <button class="button1" id="startGame" type="start" @click="setupCollectors(3, 'en')">3 Players</button><br>
+    <button class="button1" id="startGame" type="start" @click="setupCollectors(4, 'en')">4 Players</button><br>
     </div>
 
+<!--
     <div class="center" align="center">
       <ul>
         <div v-for="i in 3" :key="i">
@@ -23,19 +30,15 @@
           </a>.
         </div>
       </ul>
-
-      <div v-for="i in 3" :key="i">
-        <button id="startGame" type="start" @click="setupCollectors(i+1, 'en')">Start Game!</button>
-      </div>
     </div>
+-->
+
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-/*
-import collectors-en from "@/data/collectors-en.json";
-import collectors-se from "@/data/collectors-se.json"; */
+
 
 export default {
   name: 'Home',
@@ -67,7 +70,7 @@ export default {
     float: left;
 
   }
-  
+
   .infoButton{
     position: absolute;
     margin-top: 5px;
@@ -76,6 +79,9 @@ export default {
   }
   #info{
     width: 100px;
+  }
+  #startGame{
+
   }
   .collectors{
     display: flex;
@@ -89,7 +95,20 @@ export default {
     height: 100vh;
     padding: 1em;
   }
+
+.button1{
+  border-radius: 12px;
+  font-size: 17px;
+  padding: 8px 10px;
+  border: 2px solid white;
+  background-color: rgba(212, 207, 207, 0.1);
+  color: white;
+}
+
   button:hover {
   background-color: #B9B4B3;
 }
+
+
+
 </style>
