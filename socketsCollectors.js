@@ -10,6 +10,7 @@ function sockets(io, socket, data) {
             players: data.getPlayers(d.roomId),
             itemsOnSale: data.getItemsOnSale(d.roomId),
             marketValues: data.getMarketValues(d.roomId),
+            market: data.getMarket(d.roomId),
             skillsOnSale: data.getSkillsOnSale(d.roomId),
             auctionCards: data.getAuctionCards(d.roomId),
             placements: data.getPlacements(d.roomId)

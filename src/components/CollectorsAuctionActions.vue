@@ -22,7 +22,7 @@
           </div>
         </div>
       </div>
-
+      {{ auctionCards }}
       <div class="buttons2">
         <button @click="drawCard">
           {{ labels.draw }}
@@ -35,7 +35,6 @@
           :key="index"
           :availableAction="card.available"
           @doAction="initiateAuction(card)"
-        />
         />
       </div>
       <div class="cardToAuction"> 
@@ -56,8 +55,8 @@ export default {
   props: {
     labels: Object,
     player: Object,
+    upForAuction: Object,
     auctionCards: Array,
-    upForAuction: Array, 
     marketValues: Object,
     placement: Array,
   },
@@ -93,6 +92,9 @@ export default {
         this.highlightAvailableCards()
       }
     },
+    drawCard: function () {
+
+    }
   },
 };
 </script> -->

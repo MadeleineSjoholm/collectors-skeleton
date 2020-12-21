@@ -26,7 +26,8 @@
                 :auctionCards="auctionCards"
                 :marketValues="marketValues"
                 :placement="auctionPlacement"
-                @initiateAuction="initiateAuction($event)"
+                :upForAuction="upForAuction"
+                @initiateAuction="handleEvent($event)"
                 @placeBottle="placeBottle('auction', $event)"
               />
           </div>
@@ -168,6 +169,7 @@ export default {
       maxSizes: { x: 0, y: 0 },
       labels: {},
       players: {},
+      market: [],
       // playerId: {
       //   hand: [],
       //   money: 1,
@@ -182,6 +184,7 @@ export default {
       auctionPlacement: [],
       marketPlacement: [],
       chosenPlacementCost: null,
+      chosenAction: null,
       marketValues: {
         fastaval: 0,
         movie: 0,
@@ -227,6 +230,7 @@ export default {
       function (d) {
         this.labels = d.labels;
         this.players = d.players;
+        this.market = d.market;
         this.itemsOnSale = d.itemsOnSale;
         this.marketValues = d.marketValues;
         this.skillsOnSale = d.skillsOnSale;
@@ -281,6 +285,7 @@ export default {
     },
     placeBottle: function (action, p) {
       this.chosenPlacementCost = p.cost;
+      this.chosenAction = action;
       this.$store.state.socket.emit("collectorsPlaceBottle", {
         roomId: this.$route.params.id,
         playerId: this.playerId,
@@ -312,6 +317,20 @@ export default {
         cost: this.chosenPlacementCost,
       });
     },
+    handleEvent: function (card) {
+      if (this.chosenAction === "buy") {
+        this.buyCard(card)
+      }
+      if (this.chosenAction === "skill") {
+        this.skillsCard(card)
+      }
+      if (this.chosenAction === "auction") {
+        this.auctionCard(card)
+      }
+      if (this.chosenAction === "market") {
+        this.marketCards(card)
+      }
+    } 
   },
 };
 </script>

@@ -69,8 +69,10 @@ export default {
     },
     highlightAvailableCards: function () {
       for (let i = this.skillsOnSale.length -1; i >= 0; i -= 1) {
-        this.$set(this.skillsOnSale[i], "available", true); 
-        break;
+          if (this.skillsOnSale[i].x > 0) {                  
+          this.$set(this.skillsOnSale[i], "available", true);
+          break;
+      }
       }
       /* kolla att x attribut finns innan for
       for (let i = 0; i < this.player.hand.length; i += 1) {
@@ -82,7 +84,7 @@ export default {
    
     },
   },
-};
+}
 </script> -->
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 

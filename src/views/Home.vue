@@ -80,9 +80,7 @@ export default {
   #info{
     width: 100px;
   }
-  #startGame{
 
-  }
   .collectors{
     display: flex;
     align-items: center;
