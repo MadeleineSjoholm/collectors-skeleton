@@ -1,11 +1,16 @@
 function sockets(io, socket, data) {
     socket.on('setupCollectors', function(d) {
       data.createRoom(d.roomId, d.playerCount, d.lang);
-    })
+    });
+    socket.on('getLabels', function(lang) {
+      socket.emit('languageLabels',
+        data.getUILabelsLang(lang));
+      }
+      );
     socket.on('collectorsLoaded', function(d) {
       socket.join(d.roomId);
       if (data.joinGame(d.roomId, d.playerId)) {
-        socket.emit('collectorsInitialize', { 
+        socket.emit('collectorsInitialize', {
             labels: data.getUILabels(d.roomId),
             players: data.getPlayers(d.roomId),
             itemsOnSale: data.getItemsOnSale(d.roomId),
@@ -19,31 +24,31 @@ function sockets(io, socket, data) {
       }
     });
     socket.on('collectorsDrawCard', function(d) {
-      io.to(d.roomId).emit('collectorsCardDrawn', 
+      io.to(d.roomId).emit('collectorsCardDrawn',
         data.drawCard(d.roomId, d.playerId)
       );
     });
     socket.on('collectorsBuyCard', function(d) {
       data.buyCard(d.roomId, d.playerId, d.card, d.cost)
-      io.to(d.roomId).emit('collectorsCardBought', { 
+      io.to(d.roomId).emit('collectorsCardBought', {
           playerId: d.playerId,
           players: data.getPlayers(d.roomId),
-          itemsOnSale: data.getItemsOnSale(d.roomId) 
+          itemsOnSale: data.getItemsOnSale(d.roomId)
         }
       );
     });
     socket.on('collectorsSkillsCard', function(d) {
       data.skillsCard(d.roomId, d.playerId, d.card, d.cost)
-      io.to(d.roomId).emit('collectorsSkillBought', { 
+      io.to(d.roomId).emit('collectorsSkillBought', {
           playerId: d.playerId,
           players: data.getPlayers(d.roomId),
-          skillsOnSale: data.getSkillsOnSale(d.roomId)  
+          skillsOnSale: data.getSkillsOnSale(d.roomId)
         }
       );
     });
     socket.on('collectorsMarketCard', function(d) {
       data.marketEvent(d.roomId, d.playerId, d.card, d.cost) //d.cost bort?
-      io.to(d.roomId).emit('collectorsMarketStarted', { 
+      io.to(d.roomId).emit('collectorsMarketStarted', {
           playerId: d.playerId,
           players: data.getPlayers(d.roomId),
           marketValues: data.getMarketValues(d.roomId),

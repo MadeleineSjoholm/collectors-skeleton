@@ -7,6 +7,11 @@
 	"marketLabel": "Market",
 	"auctionLabel": "Auction",
 	"itemLabel": "Item",
+<<<<<<< HEAD
 	"setUpGame": "Set up game of Collectors for",
 	"players": "players"
 }
+=======
+	"setUpGame": "Set up game of Collectors for"
+}
+>>>>>>> 16f74d410ef5dbe4b4ba29219f6a7baee102ae53

@@ -6,7 +6,7 @@
           <div class="swedish" @click="language('se')"><img src="/images/swedish.png" width="40"></div>
       </div>
       <div class="infoButton" id="info" align="right">
-          <img src="/images/question.png" width= "60"><br>
+          <router-link :to="{ name: 'Rules', params: {} }"><img src="/images/question.png" width= "60"></router-link>
           Game Rules
       </div>
     </div>
@@ -16,7 +16,7 @@
           <h1>Collectors</h1>
 
 
-    <h4>Start a game with:</h4>
+    <h4>{{ labels.setUpGame }}</h4>
     <button class="button1" id="startGame" type="start" @click="setupCollectors(2, 'en')">2 Players</button><br>
     <button class="button1" id="startGame" type="start" @click="setupCollectors(3, 'en')">3 Players</button><br>
     <button class="button1" id="startGame" type="start" @click="setupCollectors(4, 'en')">4 Players</button><br>
@@ -42,8 +42,22 @@
 
 export default {
   name: 'Home',
+  data: function() {
+    return {
+      labels: {
+
+      }
+    }
+  },
   created: function () {
+    this.language('en');
     this.$store.commit('SET_ROOM_ID');
+    this.$store.state.socket.on(
+      "languageLabels",
+      function (labels) {
+        this.labels = labels;
+      }.bind(this)
+    );
   },
   methods: {
     setupCollectors: function (playerCount, lang="en") {
@@ -54,6 +68,7 @@ export default {
     },
     language: function (lang) {
       this.$store.commit('SET_LANG', lang);
+      this.$store.state.socket.emit('getLabels', lang);
     },
   }
 }
