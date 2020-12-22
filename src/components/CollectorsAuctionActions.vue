@@ -38,7 +38,7 @@
           @doAction="initiateAuction(card)"
         />
       </div>
-      <div class="cardToAuction"> 
+      <div class="cardToAuction">
          <CollectorsCard :card="upForAuction"/>
 
         <div class="buttons2">
@@ -69,8 +69,8 @@
 export default {
   name: "CollectorsMarketActions",
   components: {
-    CollectorsCard, 
-  }, 
+    CollectorsCard,
+  },
   props: {
     labels: Object,
     player: Object,
@@ -144,7 +144,6 @@ export default {
 </script> -->
 <!-- Add "scoped" attribute to limit CSS to this component only -->
   };
-  </script> -->
   <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 
