@@ -72,10 +72,11 @@
           </div>
         </div>
 
+
         <div class="player">
           <div class="playerHand">
             PLAYERHAND {{ playerId }}
-            <!--
+
       Hand
       <div class="cardslots" v-if="players[playerId]">
         <CollectorsCard
@@ -86,7 +87,7 @@
         :key="index"
         />
       </div>
-      -->
+
           </div>
 
           <div class="playerItem">
@@ -109,9 +110,38 @@
             </div>
           </div>
         </div>
+        
+        <div class="player1" v-for="(player, pid) in players" :key="pid">
+
+          <div class="playersHands">
+            PLAYER 1 {{ pid }}
+
+          </div>
+
+          <div class="playerItem">
+            PLAYER1 ITEM
+
+            <div class="PlayerBoardCards">
+              <CollectorsCard
+                v-for="(card, index) in player.items"
+                :card="card"
+                :key="index"
+              />
+            </div>
+            player skills
+            <div class="PlayerBoardCards">
+              <CollectorsCard
+                v-for="(card, index) in player.skills"
+                :card="card"
+                :key="index"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
 
 <!-- ny spelare -->
-
+<!--
 <div class="player1">
   <div class="playersHands">
     PLAYER 1 {{ playerId }}
@@ -138,8 +168,9 @@
     </div>
   </div>
 </div>
-
+-->
 <!-- ny spelare -->
+<!--
 
 <div class="player2">
   <div class="playersHands">
@@ -168,7 +199,8 @@
   </div>
 </div>
 
-<!-- ny spelare -->
+
+
 
 <div class="player3">
   <div class="playersHands">
@@ -199,7 +231,7 @@
 
 
         </div>
-
+-->
 
 <!--
       <div class="buttons">
@@ -377,7 +409,7 @@ export default {
       }.bind(this)
     );
   },
-  
+
 
   methods: {
     selectAll: function (n) {
@@ -430,7 +462,7 @@ export default {
       if (this.chosenAction === "market") {
         this.marketCards(card)
       }
-    } 
+    }
   },
 };
 </script>
@@ -453,7 +485,7 @@ main {
   box-sizing: border-box;     /*huvudgriden, hänvisa till kod här*/
   display: grid;
   grid-gap: 10px;
-  grid-template-rows: 1fr 1fr 1fr 2fr);
+  grid-template-rows: 1fr 1fr 1fr 2fr;
   grid-template-columns: 1fr 2fr;
   grid-template-areas: "itemPool itemPool"
                        "skillPool skillPool"
@@ -480,7 +512,7 @@ main {
 .skillPool {
   grid-area: skillPool;
   background-color: #c2f0c2;
-  max-height: 50vh;
+  max-height: 80vh;
 
 }
 .workPool {
@@ -491,7 +523,7 @@ main {
 .marketPool {
   grid-area: marketPool;
   background-color: #66a3ff;
-  max-height: 40vh;
+  max-height: 80vh;
 }
 .auctionPool {
   grid-area: auctionPool;

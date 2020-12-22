@@ -1,4 +1,5 @@
 <template>
+
 <div>
 
       <h3>{{ labels.buyCard }}</h3>
