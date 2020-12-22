@@ -183,6 +183,7 @@ export default {
       skillPlacement: [],
       auctionPlacement: [],
       marketPlacement: [],
+      upForAuction: {},
       chosenPlacementCost: null,
       chosenAction: null,
       marketValues: {
@@ -271,6 +272,14 @@ export default {
       }.bind(this)
     );
     this.$store.state.socket.on(
+      "collectorsAuctionStarted",
+      function (d) {
+        console.log(d.playerId, "Initiated auction");
+        this.players = d.players;
+        this.upForAuction = d.upForAuction;
+      }.bind(this)
+    );
+    this.$store.state.socket.on(
       "collectorsSkillBought",
       function (d) {
         console.log(d.playerId, "bought a skill");
@@ -279,6 +288,8 @@ export default {
       }.bind(this)
     );
   },
+  
+
   methods: {
     selectAll: function (n) {
       n.target.select();
