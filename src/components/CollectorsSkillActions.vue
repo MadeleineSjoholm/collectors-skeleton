@@ -1,7 +1,9 @@
 <template>
-  <div>
+
     <div class="skillPool">
-      <h3>{{ labels.skillLabel }}</h3>
+      <div class="label">
+        <h3>{{ labels.skillLabel }}</h3>
+      </div>
       <div class="bottlePlacement">
         <div class="buttons" v-for="(p, index) in placement" :key="index">
           <button
@@ -32,8 +34,6 @@
       </div>
     </div>
 
-    <div></div>
-  </div>
 </template>
 
 <script>
@@ -87,37 +87,47 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.buttons {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 130px);
-}
 .skillPool {
-  grid-column: 1 / span 2;
-  height: 70%;
-  background-color: #3399ff;
-  display: flex;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 5vh 25vh 20vh;
+  grid-template-columns: 1fr;
+  grid-template-areas:  "label"
+                        "skillCards"
+                        "bottlePlacement";
 }
+
+.label {
+  grid-area: label;
+}
+
+.buttons {
+  display: inline-grid;
+    grid-template-columns: repeat(auto-fill, 15vw);
+}
+
 .greenEnergy {
   background-image: url("/images/greenflaska.png");
-  height: 20vh;
-  width: 10vw;
+  height: 16vh;
+  width: 8vw;
   background-size: cover;
+  border-radius: 15%;
+
 }
 .dollarEnergy {
   background-image: url("/images/dollarr.png");
-  height: 20vh;
-  width: 9.5vw;
+  height: 16vh;
+  width: 8vw;
   background-size: cover;
+  border-radius: 15%;
 }
 .bottlePlacement {
-  float: left;
-  display: inline;
-  width: 49%;
+  grid-area: bottlePlacement;
 }
 .skillCards {
+  grid-area:skillCards;
   display: grid;
-  grid-column: 2;
-  grid-template-columns: repeat(auto-fill, 80px);
+  grid-template-columns: repeat(auto-fill, 15vw);
   grid-template-rows: repeat(10, 120px);
 }
 .skillCards div {

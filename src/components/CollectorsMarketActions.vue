@@ -1,6 +1,6 @@
 <template>
     <div class="marketPool">
-      <h3>{{ labels.marketLabel }}</h3>
+      <h3 class="label">{{ labels.marketLabel }}</h3>
        <div class="iconPlacement">
       <div class="iconFastaval"></div>
       <div class="iconMovie"></div>
@@ -28,10 +28,10 @@
         </div>
       </div>
       <div class="chategoryVal" v-for="(value,chategory) in marketValues" :key = "chategory">
-      
+
         {{chategory}}: <br>
         {{value}}
-      
+
     </div>
     </div>
 </template>
@@ -80,8 +80,8 @@ export default {
       }
         this.chosenPlacementCost = cost;
     },  */
-        
-   
+
+
     },
   },
 }
@@ -90,67 +90,86 @@ export default {
 
 
 <style scoped>
+
 .marketPool {
-  grid-column: 2 / span 4;
-  grid-row: 5;
-  background-color: #4d4dff;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 5vh 20vh 15vh;
+  grid-template-columns: 1fr;
+  grid-template-areas:  "label"
+                        "bottlePlacement"
+                        "icons";
+
 }
+
+
+.label {
+grid-area: label;
+
+}
+
 .doubleblueEnergy {
   background-image: url("/images/marketbluee.png");
-  height: 20vh;
-  width: 12vw;
+  height: 15vh;
+  width: 9vw;
   background-size: cover;
-} 
+  border-radius: 15%;
+}
 .marketDollar {
   background-image: url("/images/dollarmarket.png");
-  height: 20vh;
-  width: 12vw;
+  height: 15vh;
+  width: 9vw;
   background-size: cover;
+  border-radius: 15%;
 }
 .blueEnergy {
   background-image: url("/images/markeblue.png");
-  height: 20vh;
-  width: 10vw;
+  height: 16vh;
+  width: 9vw;
   background-size: cover;
+  border-radius: 15%;
 }
 .bottlePlacement {
-  float: left;
-  display: inline;
-  width: 49%;
+  grid-area: bottlePlacement;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 15vw);
+
+
 }
 .iconPlacement {
-  float: right;
-  display: inline;
-  width: 49%;
+  grid-area: icons;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 15vw);
+
 }
 .iconFastaval {
   background-image: url("/images/market2.png");
-  height: 20vh;
-  width: 9.5vw;
+  height: 15vh;
+  width: 15vw;
   background-size: cover;
 }
 .iconMovie {
   background-image: url("/images/market3.png");
-  height: 20vh;
-  width: 9.5vw;
+  height: 15vh;
+  width: 15vw;
   background-size: cover;
 }
 .iconTech {
   background-image: url("/images/market1.png");
-  height: 20vh;
-  width: 9.5vw;
+  height: 15vh;
+  width: 15vw;
   background-size: cover;
 }
 .iconFigures {
   background-image: url("/images/market5.png");
-  height: 20vh;
-  width: 9.5vw;
+  height: 15vh;
+  width: 15vw;
   background-size: cover;
 }
 .iconMusic {
   background-image: url("/images/market4.png");
-  height: 20vh;
-  width: 9.5vw;
+  height: 15vh;
+  width: 15vw;
   background-size: cover;
 }
 </style>
