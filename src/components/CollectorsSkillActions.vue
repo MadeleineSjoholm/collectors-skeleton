@@ -125,10 +125,10 @@ export default {
   grid-area: bottlePlacement;
 }
 .skillCards {
-  grid-area:skillCards;
+  grid-area: skillCards;
   display: grid;
   grid-template-columns: repeat(auto-fill, 15vw);
-  grid-template-rows: repeat(10, 120px);
+  grid-template-rows: repeat(10, 200px);
 }
 .skillCards div {
   transform: scale(0.5) translate(-50%, -50%);
