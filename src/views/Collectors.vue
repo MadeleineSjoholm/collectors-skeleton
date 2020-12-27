@@ -434,6 +434,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 header {
 /*  user-select: none;
@@ -453,7 +454,7 @@ main {
   box-sizing: border-box;     /*huvudgriden, hänvisa till kod här*/
   display: grid;
   grid-gap: 10px;
-  grid-template-rows: 1fr 1fr 1fr 2fr);
+  grid-template-rows: 1fr 1fr 1fr 2fr;
   grid-template-columns: 1fr 2fr;
   grid-template-areas: "itemPool itemPool"
                        "skillPool skillPool"
@@ -465,10 +466,10 @@ main {
       grid-template-rows: repeat(5, 1fr);
       grid-template-columns: 1fr;
       grid-template-areas: "itemPool "
-                           "skillPool"
-                           "marketPool"
+                           "skillPool "
+                           "marketPool "
                            "workPool "
-                           "auctionPool";
+                           "auctionPool ";
 }
 
 .itemPool {
