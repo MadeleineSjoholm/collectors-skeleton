@@ -8,5 +8,9 @@
 	"auctionLabel": "Auction",
 	"itemLabel": "Item",
 	"setUpGame": "Set up game of Collectors for",
-	"players": "players"
+	"players": "players",
+
+	"gameRules": "Game Rules",
+	"homepage": "Back to homepage"
+
 }
