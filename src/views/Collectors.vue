@@ -110,11 +110,15 @@
             </div>
           </div>
         </div>
-        
+
+        <div class = "test" >
+
         <div class="player1" v-for="(player, pid) in players" :key="pid">
 
           <div class="playersHands">
-            PLAYER 1 {{ pid }}
+            PLAYER {{ pid }}
+
+
 
           </div>
 
@@ -139,108 +143,9 @@
           </div>
         </div>
       </div>
-
-<!-- ny spelare -->
-<!--
-<div class="player1">
-  <div class="playersHands">
-    PLAYER 1 {{ playerId }}
-
-  </div>
-
-  <div class="playerItem">
-    PLAYER1 ITEM
-
-    <div class="PlayerBoardCards" v-if="players[playerId]">
-      <CollectorsCard
-        v-for="(card, index) in players[playerId].items"
-        :card="card"
-        :key="index"
-      />
-    </div>
-    player skills
-    <div class="PlayerBoardCards" v-if="players[playerId]">
-      <CollectorsCard
-        v-for="(card, index) in players[playerId].skills"
-        :card="card"
-        :key="index"
-      />
-    </div>
-  </div>
-</div>
--->
-<!-- ny spelare -->
-<!--
-
-<div class="player2">
-  <div class="playersHands">
-    PLAYER 2 {{ playerId }}
-
-  </div>
-
-  <div class="playerItem">
-    PLAYER 2 ITEM
-
-    <div class="PlayerBoardCards" v-if="players[playerId]">
-      <CollectorsCard
-        v-for="(card, index) in players[playerId].items"
-        :card="card"
-        :key="index"
-      />
-    </div>
-    player skills
-    <div class="PlayerBoardCards" v-if="players[playerId]">
-      <CollectorsCard
-        v-for="(card, index) in players[playerId].skills"
-        :card="card"
-        :key="index"
-      />
-    </div>
-  </div>
-</div>
-
-
-
-
-<div class="player3">
-  <div class="playersHands">
-    PLAYER 3 {{ playerId }}
-
-  </div>
-
-  <div class="playerItem">
-    PLAYER3 ITEM
-
-    <div class="PlayerBoardCards" v-if="players[playerId]">
-      <CollectorsCard
-        v-for="(card, index) in players[playerId].items"
-        :card="card"
-        :key="index"
-      />
-    </div>
-    player skills
-    <div class="PlayerBoardCards" v-if="players[playerId]">
-      <CollectorsCard
-        v-for="(card, index) in players[playerId].skills"
-        :card="card"
-        :key="index"
-      />
-    </div>
-  </div>
-</div>
-
-
-        </div>
--->
-
-<!--
-      <div class="buttons">
-        <button @click="drawCard">
-          {{ labels.draw }}
-        </button>
       </div>
 
-      -->
+
     </main>
 
     {{ buyPlacement }} {{ chosenPlacementCost }}
@@ -603,42 +508,21 @@ main {
 }
 
 .player {
-  position:fixed;
+  position: fixed;
   right:0%;
   top:0%;
   width: 25vw;
   height: 4vh;
+
 }
 
-/*spelare1*/
-
-
-.player1 {
-  position:fixed;
+.test {
+  position: absolute;
   right:25%;
   top:0%;
   width: 25vw;
   height: 4vh;
-}
 
-/*spelare2*/
-
-.player2 {
-  position:fixed;
-  right:50%;
-  top:0%;
-  width: 25vw;
-  height: 4vh;
-}
-
-/*spelare2*/
-
-.player3 {
-  position:fixed;
-  right:75%;
-  top:0%;
-  width: 25vw;
-  height: 4vh;
 }
 
 
