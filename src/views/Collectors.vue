@@ -154,6 +154,9 @@
     <button v-if="players[playerId]" @click="players[playerId].money += 1">
       fake more money
     </button>
+    <button v-if="players[playerId]" @click="players[playerId].bottles += 1">
+      fake more Bottles
+    </button>
 
     <footer>
       <p>

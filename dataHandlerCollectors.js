@@ -109,6 +109,7 @@ Data.prototype.joinGame = function (roomId, playerId) {
       console.log("Player", playerId, "joined for the first time");
       room.players[playerId] = { hand: [],
                                  money: 1,
+                                 bottles: 2,
                                  points: 0,
                                  skills: [],
                                  items: [],
@@ -209,6 +210,10 @@ Data.prototype.skillsCard = function (roomId, playerId, card, cost) {
     room.players[playerId].money -= cost;
 
   }
+
+  if (card.skill === "bottle") {
+      room.players[playerId].bottles += 1;
+    }
 }
 Data.prototype.initiateAuction = function (roomId, playerId, card, auctionCard) {
   let room = this.rooms[roomId];
