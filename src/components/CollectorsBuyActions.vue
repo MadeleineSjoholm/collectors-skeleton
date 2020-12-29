@@ -129,24 +129,16 @@ export default {
     grid-template-columns: repeat(auto-fill, 15vw);
     grid-template-rows: repeat(10, 20px);
 
-
-
-
   }
 
 .bottles {
   grid-area: bottles;
 
-
 }
   .buttons {
     display: inline-grid;
     grid-template-columns: repeat(auto-fill, 15vw);
-
-
   }
-
-
 
 .itemdollar {
   background-image: url("/images/itemdollar.png");
@@ -156,8 +148,6 @@ export default {
   background-size: cover;
 }
 
-
-
 .itemdollartwo {
   background-image: url("/images/itemdollar2.png");
   height: 16vh;
@@ -166,7 +156,6 @@ export default {
   background-size: cover;
 }
 
-
 .itemdollarthree {
   background-image: url("/images/itemdollar3.png");
   height: 16vh;
@@ -174,8 +163,4 @@ export default {
   border-radius: 15%;
   background-size: cover;
 }
-
-
-
-
 </style>

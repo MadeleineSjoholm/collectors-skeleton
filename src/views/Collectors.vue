@@ -430,8 +430,8 @@
   .board {
     box-sizing: border-box;     /*huvudgriden, hänvisa till kod här*/
     display: grid;
-    grid-gap: 10px;
-    grid-template-rows: 1fr 1fr 1fr 2fr;
+    grid-gap: 2px;
+    grid-template-rows: 0.5fr 0.5fr 0.5fr 2fr;
     grid-template-columns: 1fr 2fr;
     grid-template-areas: "itemPool itemPool"
     "skillPool skillPool"
@@ -452,13 +452,13 @@
   .itemPool {
     grid-area: itemPool;
     background-color: #ffb3b3;
-    max-height: 80vh;
+    max-height: 50vh;
 
   }
   .skillPool {
     grid-area: skillPool;
     background-color: #c2f0c2;
-    max-height: 80vh;
+    max-height: 50vh;
 
   }
   .workPool {
