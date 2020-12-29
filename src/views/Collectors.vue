@@ -72,12 +72,19 @@
           </div>
         </div>
 
-        <div @click="showPlayerBoard=playerId"> {{ playerId }} </div> <!-- Class=""? -->
-        <div :class="['player', {'hiddenPlayer': isHidden(playerId)}]">
+
+
+          <div class="clickable" @click="togglePlayerBoard('player1')">
+          YOUR PLAYERHAND
+          </div>
+
+          <div :class="['player', {'ishidden' : isHidden('player1')}]">
+
           <div class="playerHand">
             PLAYERHAND {{ playerId }} <br>
 
             Hand
+            <!-- Vad gör den här????
             <div class="cardslots" v-if="players[playerId]">
               <CollectorsCard
               v-for="(card, index) in players[playerId].hand"
@@ -86,12 +93,7 @@
               @doAction="buyCard(card)"
               :key="index"
               />
-            </div>
-
-          </div>
-
-          <div class="playerItem">
-
+            </div> -->
             PLAYERITEM
 
             <div class="PlayerBoardCards" v-if="players[playerId]">
@@ -170,6 +172,7 @@
     <button v-if="players[playerId]" @click="players[playerId].bottles += 1">
       fake more Bottles
     </button>
+
 
     <footer>
       <p>
@@ -387,6 +390,13 @@
       },
       isHidden: function(playerId){
         return this.showPlayerBoard!==playerId
+      },
+      togglePlayerBoard: function(playerId){
+        if (this.showPlayerBoard === playerId) {
+          this.showPlayerBoard = "";
+        }
+        else
+        this.showPlayerBoard = playerId;
       }
 
     },
@@ -464,8 +474,8 @@
   }
 
   .quarterTiles{
-    border-style: dotted;
-    border-color: black;
+   border-style: dotted;
+   border-color: black;
     background-color: #ffff;
     width: 50%;
     height: 10%;
@@ -527,16 +537,23 @@
   .money{
     height: 100;
   }
+  /*
   .playerHand:hover + .playerItem {
     display: block
-  }
+  }*/
 
-  .player {
+
+  .player{
+    background: #e6ccff;
     position: fixed;
     right:0%;
-    top:0%;
-    width: 25vw;
-    height: 4vh;
+    top:5%;
+    width: 23vw;
+    height: 100vh;
+    margin-right: 1em;
+    transition: 1s;
+    overflow: hidden;
+    font-size: 15pt;
 
   }
   .hiddenPlayer{
@@ -584,4 +601,31 @@
   width: 90vw;
 }
 }*/
+.playerboard {
+  background: yellow;
+  height: 50vh;
+  overflow: hidden;
+  transition: 1s;
+  width: 50vw;
+  font-size: 15pt;
+}
+
+.ishidden {
+  height: 0;
+  width: 0;
+  font-size: 0;
+}
+
+.clickable {
+  position: fixed;
+  right:0%;
+  top: 0%;
+  cursor: pointer;
+  background: #4d94ff;
+  margin-right: 1.5em;
+  width: 23vw;
+}
+
+
+
 </style>
