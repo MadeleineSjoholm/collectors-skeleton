@@ -77,11 +77,6 @@
           <div class="playerHand">
             PLAYERHAND {{ playerId }} <br>
 
-            <div class="money">
-                {{ labels.numberMoney }} <span v-if="players[playerId]"> {{ players[playerId].money }} </span><br>
-                {{ labels.numberBottles }} <span v-if="players[playerId]"> {{ players[playerId].bottles }} </span>
-            </div>
-
             Hand
             <div class="cardslots" v-if="players[playerId]">
               <CollectorsCard
@@ -96,6 +91,7 @@
           </div>
 
           <div class="playerItem">
+
             PLAYERITEM
 
             <div class="PlayerBoardCards" v-if="players[playerId]">
@@ -113,6 +109,18 @@
               :key="index"
               />
             </div>
+
+            <div class="money">
+                {{ labels.numberMoney }} <span v-if="players[playerId]"> {{ players[playerId].money }} </span>
+                <button v-if="players[playerId]" @click="players[playerId].money += 1">
+                  fake more money
+                </button><br>
+                {{ labels.numberBottles }} <span v-if="players[playerId]"> {{ players[playerId].bottles }} </span>
+                <button v-if="players[playerId]" @click="players[playerId].bottles += 1">
+                  fake more Bottles
+                </button>
+            </div>
+
           </div>
         </div>
 
