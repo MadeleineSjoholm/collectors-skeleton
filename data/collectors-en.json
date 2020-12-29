@@ -9,6 +9,8 @@
 	"itemLabel": "Item",
 	"setUpGame": "Set up game of Collectors for",
 	"players": "players",
+	"numberMoney": "Money: ",
+	"numberBottles": "Number of bottles: ",
 
 	"gameRules": "Game Rules",
 	"homepage": "Back to homepage"

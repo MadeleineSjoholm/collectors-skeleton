@@ -75,7 +75,12 @@
         <div @click="showPlayerBoard=playerId"> {{ playerId }} </div> <!-- Class=""? -->
         <div :class="['player', {'hiddenPlayer': isHidden(playerId)}]">
           <div class="playerHand">
-            PLAYERHAND {{ playerId }}
+            PLAYERHAND {{ playerId }} <br>
+
+            <div class="money">
+                {{ labels.numberMoney }} <span v-if="players[playerId]"> {{ players[playerId].money }} </span><br>
+                {{ labels.numberBottles }} <span v-if="players[playerId]"> {{ players[playerId].bottles }} </span>
+            </div>
 
             Hand
             <div class="cardslots" v-if="players[playerId]">
@@ -158,7 +163,6 @@
       fake more Bottles
     </button>
 
-    <span v-if="players[playerId]"> {{ players[playerId].money }} </span>
     <footer>
       <p>
         {{ labels.invite }}
@@ -511,6 +515,9 @@
     background-color: #e6ccff
     ;
     height: 100%;
+  }
+  .money{
+    height: 100;
   }
   .playerHand:hover + .playerItem {
     display: block
