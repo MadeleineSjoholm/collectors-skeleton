@@ -113,14 +113,22 @@
             </div>
 
             <div class="money">
-                {{ labels.numberMoney }} <span v-if="players[playerId]"> {{ players[playerId].money }} </span>
-                <button v-if="players[playerId]" @click="players[playerId].money += 1">
-                  fake more money
-                </button><br>
-                {{ labels.numberBottles }} <span v-if="players[playerId]"> {{ players[playerId].bottles }} </span>
-                <button v-if="players[playerId]" @click="players[playerId].bottles += 1">
-                  fake more Bottles
-                </button>
+
+              <div v-if="players[playerId]" @click="players[playerId].money += 1" ><img src="/images/mynt.png" width="50">
+              </div>
+                <span v-if="players[playerId]"> {{ players[playerId].money }} </span>
+                <div v-if="players[playerId]" @click="players[playerId].money += 1" >
+
+                </div>
+
+                <br>
+
+                <span v-if="players[playerId]"> {{ players[playerId].bottles }} </span>
+                <div v-if="players[playerId]" @click="players[playerId].bottles += 1">
+                  <img src="/images/flskaa.png" width="50">
+
+
+                </div>
             </div>
 
           </div>
@@ -166,6 +174,7 @@
     {{ buyPlacement }} {{ chosenPlacementCost }}
     {{ players }}
     {{ marketValues }}
+
     <button v-if="players[playerId]" @click="players[playerId].money += 1">
       fake more money
     </button>
@@ -506,13 +515,13 @@
     grid-template-rows: repeat(auto-fill, 180px);
   }
   .PlayerBoardCards div {
-    transform: scale(0.5) translate(-50%, -50%);
+    transform: scale(0.75) translate(-50%, -50%);
     transition: 0.2s;
     transition-timing-function: ease-out;
     z-index: 0;
   }
   .PlayerBoardCards div:hover {
-    transform: scale(1) translate(-25%, 0);
+    transform: scale(1) translate(-50%, 0);
     z-index: 1;
   }
   .playerItem {
@@ -582,25 +591,29 @@
   }
   .cardslots {
     display: grid;
+
     grid-template-columns: repeat(auto-fill, 130px);
     grid-template-rows: repeat(auto-fill, 180px);
     /*column-gap: 10px;*/
   }
   .cardslots div {
-    transform: scale(0.5) translate(-50%, -50%);
+    transform: scale(0.2) translate(-50%, -50%);
     transition: 0.2s;
     transition-timing-function: ease-out;
     z-index: 0;
   }
+
   .cardslots div:hover {
-    transform: scale(1) translate(-25%, 0);
+    transform: scale(0.75) translate(-25%, 0);
     z-index: 1;
   }
-  /* @media screen and (max-width: 800px) {
+/*
+ @media screen and (max-width: 300px) {
   main {
   width: 90vw;
+  }
 }
-}*/
+*/
 .playerboard {
   background: yellow;
   height: 50vh;
@@ -628,4 +641,4 @@
 
 
 
-</style>
+</style >

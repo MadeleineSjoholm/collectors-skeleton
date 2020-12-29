@@ -1,6 +1,6 @@
 <template>
 
-<div>
+<div class="itemPool">
 
       <h3>{{ labels.buyCard }}</h3>
       <div class="buy-cards">
@@ -14,6 +14,7 @@
         </div>
       </div>
       <div>
+        <div class = "bottles" >
         <div class="buttons" v-for="(p, index) in placement" :key="index">
           <button
             v-if="p.playerId===null"
@@ -39,6 +40,7 @@
             <div class="itemdollarthree"></div>
         </div> -->
       </div>
+    </div>
     </div>
 </template>
 
@@ -104,33 +106,49 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .buy-cards{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 130px);
-    grid-template-rows: 30px -20px;
-  }
 
-  .buttons {
-    display:inline-block;
-    grid-template-columns: repeat(auto-fill, 15vw);
-    grid-template-rows: 0px -20px;
-  }
-
-  /*.itemPool {
-
-  padding-right: 10px;
-  grid-column: 2 / span 4;
-  grid-row: 1;
-  background-color: #ccb3ff;
+.itemPool {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 5vh 25vh 20vh;
+  grid-template-columns: 1fr;
+  grid-template-areas:  "label"
+                        "buy-cards"
+                        "bottles";
 }
 
-*/
+
+.label {
+  grid-area: label;
+}
+
+  .buy-cards{
+    grid-area: buy-cards;
+    display: grid;
+    transform: scale(0.5) translate(-50%, -50%);
+    grid-template-columns: repeat(auto-fill, 15vw);
+    grid-template-rows: repeat(10, 20px);
+
+
+
+
+  }
+
+.bottles {
+  grid-area: bottles;
+
+
+}
+  .buttons {
+    display: inline-grid;
+    grid-template-columns: repeat(auto-fill, 15vw);
+
+
+  }
+
+
 
 .itemdollar {
-  grid-column: 2;
-  grid-row: 1;
-  flex: 20%;
-
   background-image: url("/images/itemdollar.png");
   height: 16vh;
   width: 8vw;
@@ -138,47 +156,18 @@ export default {
   background-size: cover;
 }
 
-/*
-.itemdollarone {
-  grid-column: 2;
-  grid-row:2;
-  flex: 20%;
 
-  background-image: url("/images/itemdollar.png");
-  height: 20vh;
-  width: 10vw;
-  background-size: cover;
-}
-
-*/
 
 .itemdollartwo {
-  grid-column: 3;
-  grid-row:2;
-  flex: 20%;
-
   background-image: url("/images/itemdollar2.png");
   height: 16vh;
   width: 8vw;
   border-radius: 15%;
   background-size: cover;
 }
- /*
-.itemdollar2 {
-  grid-column: 2;
-  flex: 20%;
 
-  background-image: url("/images/itemdollar2.png");
-  height: 20vh;
-  width: 10vw;
-  background-size: cover;
-}
-*/
 
 .itemdollarthree {
-  grid-column: 5;
-  flex: 20%;
-
   background-image: url("/images/itemdollar3.png");
   height: 16vh;
   width: 8vw;
