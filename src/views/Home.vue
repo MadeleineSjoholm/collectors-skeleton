@@ -7,7 +7,7 @@
       </div>
       <div class="infoButton" id="info" align="right">
           <router-link :to="{ name: 'Rules', params: {} }"><img src="/images/question.png" width= "60"></router-link>
-          Game Rules
+          {{ labels.gameRules }}
       </div>
     </div>
 
@@ -17,9 +17,9 @@
 
 
     <h4>{{ labels.setUpGame }}</h4>
-    <button class="button1" id="startGame" type="start" @click="setupCollectors(2, 'en')">2 Players</button><br>
-    <button class="button1" id="startGame" type="start" @click="setupCollectors(3, 'en')">3 Players</button><br>
-    <button class="button1" id="startGame" type="start" @click="setupCollectors(4, 'en')">4 Players</button><br>
+    <button class="button1" id="startGame" type="start" @click="setupCollectors(2, 'en')">2 {{ labels.players }}</button><br>
+    <button class="button1" id="startGame" type="start" @click="setupCollectors(3, 'en')">3 {{ labels.players }}</button><br>
+    <button class="button1" id="startGame" type="start" @click="setupCollectors(4, 'en')">4 {{ labels.players }}</button><br>
     </div>
 
 <!--
