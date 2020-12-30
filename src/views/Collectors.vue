@@ -457,20 +457,7 @@ main {
     "marketPool marketPool"
     "workPool auctionPool";
 }
-@media (max-width: 600px) {
-  /*För mindre skärmar*/
-  .board {
-    grid-gap: 2px;
-    grid-template-rows: repeat(5, 1fr);
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "itemPool "
-      "skillPool "
-      "marketPool "
-      "workPool "
-      "auctionPool ";
-  }
-}
+
 .itemPool {
   grid-area: itemPool;
   background-color: #ffb3b3;
@@ -596,9 +583,7 @@ main {
     background: #4d94ff;
     margin-right: 1.5em;
     width: 23vw;
-
   }
-
 
   .money{
     height: 100;
@@ -615,10 +600,7 @@ main {
     transition: 1s;
     overflow: hidden;
     font-size: 15pt;
-
   }
-
-
 /* ekvivalent med player för motståndare */
 
   .player1     {
@@ -700,5 +682,20 @@ main {
   height: 0;
   width: 0;
   font-size: 0;
+}
+
+@media (max-width: 600px) {
+  /*För mindre skärmar*/
+  .board {
+    grid-gap: 2px;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "itemPool "
+      "skillPool "
+      "marketPool "
+      "workPool "
+      "auctionPool ";
+  }
 }
 </style >
