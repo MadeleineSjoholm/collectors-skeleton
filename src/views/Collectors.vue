@@ -103,7 +103,7 @@
               :key="index"
               />
             </div>
-            PLAYER SKILLS
+            PLAYER SKILLSS
             <div class="PlayerBoardCards" v-if="players[playerId]">
               <CollectorsCard
               v-for="(card, index) in players[playerId].skills"
