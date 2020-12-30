@@ -74,11 +74,11 @@
 
 
 
-          <div class="clickable" @click="togglePlayerBoard('player1')">
+          <div class="clickable" @click="togglePlayerBoard('player')">
           YOUR PLAYERHAND
           </div>
 
-          <div :class="['player', {'ishidden' : isHidden('player1')}]">
+          <div :class="['player', {'ishidden' : isHidden('player')}]">
 
           <div class="playerHand">
             PLAYERHAND {{ playerId }} <br>
@@ -137,19 +137,22 @@
           </div>
         </div>
 
-        <div class = "test" >
+
+
+        <div class = "clickable1" @click="togglePlayerBoard('player1')" >
+          MOTSTÅNDARE
+        </div>
+        <div :class="['player1', {'ishidden' : isHidden('player1')}]">
 
           <div class="player1" v-for="(player, pid) in players" :key="pid">
 
-            <div class="playersHands">
+            <div class="playerHands">
               PLAYER {{ pid }}
 
 
 
-            </div>
 
-            <div class="playerItem">
-              PLAYER1 ITEM
+              PLAYER ITEM
 
               <div class="PlayerBoardCards">
                 <CollectorsCard
@@ -158,7 +161,7 @@
                 :key="index"
                 />
               </div>
-              player skills
+                    PLAYER SKILLS
               <div class="PlayerBoardCards">
                 <CollectorsCard
                 v-for="(card, index) in player.skills"
@@ -493,25 +496,7 @@
     height: 10%;
   }
 
-  .workDollarWhite{
-    background-image: url("/images/auctionvit.png");
-    height: 20vh;
-    width: 9.5vw;
-    background-size: cover;
 
-  }
-  .workDollarBlack{
-    background-image: url("/images/auctionblack.png");
-    height: 20vh;
-    width: 9.5vw;
-    background-size: cover;
-  }
-  .energyBottle{
-    background-image: url("/images/flaska.png");
-    height: 20vh;
-    width: 9.5vw;
-    background-size: cover;
-  }
   .PlayerBoardCards {
     display: grid;
     grid-template-columns: repeat(auto-fill, 130px);
@@ -532,27 +517,39 @@
     background-color: #b3ecff;
   }
 
-  .playersHands {
-    background-color: #80dfff;
-    height: 100%;
-  }
-
-  .playersHands:hover + .playerItem {
-    display: block
-  }
-
-  .playerHand {
-    background-color: #e6ccff
-    ;
-    height: 100%;
-  }
   .money{
     height: 100;
   }
-  /*
-  .playerHand:hover + .playerItem {
-    display: block
-  }*/
+
+  .clickable {
+    position: fixed;
+    right:0%;
+    top: 0%;
+    cursor: pointer;
+    background: #4d94ff;
+    margin-right: 1.5em;
+    width: 23vw;
+  }
+
+
+/* clickable för motståndare*/
+  .clickable1 {
+    position: fixed;
+    right:25%;
+    top: 0%;
+    cursor: pointer;
+    background: #4d94ff;
+    margin-right: 1.5em;
+    width: 23vw;
+
+  }
+
+  .ishidden {
+    height: 0;
+    width: 0;
+    font-size: 0;
+  }
+
 
 
   .player{
@@ -568,19 +565,53 @@
     font-size: 15pt;
 
   }
-  .hiddenPlayer{
-    height: 0vh;
-  }
 
-  .test {
+
+/* ekvivalent med player för motståndare */
+
+  .player1     {
+    background: #ffe6ff;
     position: absolute;
-    right:25%;
-    top:0%;
-    width: 25vw;
-    height: 4vh;
+    right:30%;
+    top:5%;
+    width: 23vw;
+    height: 100vh;
+    margin-right: 1em;
+    transition: 1s;
+    overflow: hidden;
+    font-size: 15pt;
 
   }
 
+
+    .playerHand {
+      background-color: #e6ccff;
+      ;
+      height: 100%;
+    }
+
+
+    .workDollarWhite{
+      background-image: url("/images/auctionvit.png");
+      height: 20vh;
+      width: 9.5vw;
+      background-size: cover;
+
+    }
+    .workDollarBlack {
+      background-image: url("/images/auctionblack.png");
+      height: 20vh;
+      width: 9.5vw;
+      background-size: cover;
+    }
+
+
+    .energyBottle{
+      background-image: url("/images/flaska.png");
+      height: 20vh;
+      width: 9.5vw;
+      background-size: cover;
+    }
 
   footer {
     margin-top: 5em auto;
@@ -617,30 +648,11 @@
   }
 }
 */
-.playerboard {
-  background: yellow;
-  height: 50vh;
-  overflow: hidden;
-  transition: 1s;
-  width: 50vw;
-  font-size: 15pt;
-}
 
-.ishidden {
-  height: 0;
-  width: 0;
-  font-size: 0;
-}
 
-.clickable {
-  position: fixed;
-  right:0%;
-  top: 0%;
-  cursor: pointer;
-  background: #4d94ff;
-  margin-right: 1.5em;
-  width: 23vw;
-}
+
+
+
 
 
 
