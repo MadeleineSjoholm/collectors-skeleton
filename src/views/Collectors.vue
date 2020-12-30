@@ -456,6 +456,7 @@ main {
     "skillPool skillPool"
     "marketPool marketPool"
     "workPool auctionPool";
+<<<<<<< HEAD
 }
 @media (max-width: 600px) {
   /*För mindre skärmar*/
@@ -469,6 +470,49 @@ main {
       "marketPool "
       "workPool "
       "auctionPool ";
+=======
+  }
+
+  .itemPool {
+    grid-area: itemPool;
+    background-color: #ffb3b3;
+    max-height: 50vh;
+
+  }
+  .skillPool {
+    grid-area: skillPool;
+    background-color: #c2f0c2;
+    max-height: 50vh;
+
+  }
+  .workPool {
+    grid-area: workPool;
+    background-color: #ffe6b3;
+    max-height: 100vh;
+  }
+  .marketPool {
+    grid-area: marketPool;
+    background-color: #66a3ff;
+    max-height: 80vh;
+  }
+  .auctionPool {
+    grid-area: auctionPool;
+    background-color: #ecd9c6;
+    max-height: 80vh;
+  }
+  .bottlePlacement {
+    /*float: left;
+    display: inline;
+    width: 49%;*/
+  }
+
+  .quarterTiles{
+   border-style: dotted;
+   border-color: black;
+    background-color: #ffff;
+    width: 50%;
+    height: 10%;
+>>>>>>> 7439b8dfbd05b83aa416f174ad34daaa6ed37b94
   }
 }
 .itemPool {
@@ -510,6 +554,7 @@ main {
   height: 10%;
 }
 
+<<<<<<< HEAD
 .workDollarWhite {
   background-image: url("/images/auctionvit.png");
   height: 20vh;
@@ -548,6 +593,8 @@ main {
   background-color: #b3ecff;
 }
 
+=======
+>>>>>>> 7439b8dfbd05b83aa416f174ad34daaa6ed37b94
   .energyBottle{
     background-image: url("/images/flskaa.png");
     height: 20vh;
@@ -556,7 +603,7 @@ main {
   }
   .PlayerBoardCards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 130px);
+    grid-template-columns: repeat(auto-fill, 15vw);
     grid-template-rows: repeat(auto-fill, 180px);
   }
   .PlayerBoardCards div {
@@ -565,16 +612,15 @@ main {
     transition-timing-function: ease-out;
     z-index: 0;
   }
+
   .PlayerBoardCards div:hover {
-    transform: scale(1) translate(-50%, 0);
-    z-index: 1;
+    transform: scale(1) translate(-25%, 0%);
+    z-index: 0;
   }
   .playerItem {
     display: none;
     background-color: #b3ecff;
   }
-
-
 
   .clickable {
     position: fixed;
@@ -599,7 +645,6 @@ main {
 
   }
 
-
   .money{
     height: 100;
   }
@@ -618,7 +663,6 @@ main {
 
   }
 
-
 /* ekvivalent med player för motståndare */
 
   .player1     {
@@ -634,14 +678,11 @@ main {
     font-size: 15pt;
 
   }
-
-
     .playerHand {
       background-color: #e6ccff;
       ;
       height: 100%;
     }
-
 
     .workDollarWhite{
       background-image: url("/images/auctionvit.png");
@@ -683,7 +724,7 @@ main {
   }
 
   .cardslots div:hover {
-    transform: scale(0.75) translate(-25%, 0);
+    transform: scale(0.75) translate(-75%, 0);
     z-index: 1;
   }
 
@@ -702,8 +743,41 @@ main {
   font-size: 0;
 }
 
+@media (max-width: 600px) { /*För mindre skärmar*/
+  .board {
+  grid-gap: 2px;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: 1fr;
+  grid-template-areas: "itemPool "
+  "skillPool "
+  "marketPool "
+  "workPool "
+  "auctionPool ";
+}
+}
 
+@media (max-width: 300px) { /*För mindre skärmar*/
+  .board {
+  grid-gap: 2px;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: 1fr;
+  grid-template-areas: "itemPool "
+  "skillPool "
+  "marketPool "
+  "workPool "
+  "auctionPool ";
+}
+}
 
+/* Lägg till fler villkor vid ändrad storlek + olika storlekar. Hur många behövs?
+
+/*
+   @media screen and (max-width: 300px) {
+    main {
+    width: 90vw;
+    }
+  }
+*/
 
 
 
