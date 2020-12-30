@@ -3,7 +3,6 @@
     <main>
       <div class="table">
         <div class="board">
-
           <div class="skillPool">
             <CollectorsSkillActions
               v-if="players[playerId]"
@@ -18,18 +17,20 @@
           </div>
 
           <div class="auctionPool">
-           <!-- lägg till vems tur -->
+            <!-- lägg till vems tur -->
             <CollectorsAuctionActions
-                v-if="players[playerId]"
-                :labels="labels"
-                :player="players[playerId]"
-                :auctionCards="auctionCards"
-                :marketValues="marketValues"
-                :placement="auctionPlacement"
-                :upForAuction="upForAuction"
-                @initiateAuction="handleEvent($event)"
-                @placeBottle="placeBottle('auction', $event)"
-              />
+              v-if="players[playerId]"
+              :labels="labels"
+              :player="players[playerId]"
+              :auctionCards="auctionCards"
+              :marketValues="marketValues"
+              :placement="auctionPlacement"
+              :upForAuction="upForAuction"
+              :leadingBid="leadingBid"
+              @initiateAuction="handleEvent($event)"
+              @currentBid="currentBid($event)"
+              @placeBottle="placeBottle('auction', $event)"
+            />
           </div>
 
           <div class="itemPool">
@@ -63,31 +64,28 @@
 
           <div class="workPool">
             <h1>Work</h1>
-                <div class="quarterTiles" align="center">
-                </div>
-                <div class="workDollarWhite"></div>
-                <div class="workDollarBlack"></div>
-                <div class="energyBottle"></div>
-                <div class="energyBottle"></div>
+            <div class="quarterTiles" align="center"></div>
+            <div class="workDollarWhite"></div>
+            <div class="workDollarBlack"></div>
+            <div class="energyBottle"></div>
+            <div class="energyBottle"></div>
           </div>
         </div>
-
 
         <div class="player">
           <div class="playerHand">
             PLAYERHAND {{ playerId }}
 
-      Hand
-      <div class="cardslots" v-if="players[playerId]">
-        <CollectorsCard
-        v-for="(card, index) in players[playerId].hand"
-        :card="card"
-        :availableAction="card.available"
-        @doAction="buyCard(card)"
-        :key="index"
-        />
-      </div>
-
+            Hand
+            <div class="cardslots" v-if="players[playerId]">
+              <CollectorsCard
+                v-for="(card, index) in players[playerId].hand"
+                :card="card"
+                :availableAction="card.available"
+                @doAction="buyCard(card)"
+                :key="index"
+              />
+            </div>
           </div>
 
           <div class="playerItem">
@@ -111,41 +109,32 @@
           </div>
         </div>
 
-        <div class = "test" >
+        <div class="test">
+          <div class="player1" v-for="(player, pid) in players" :key="pid">
+            <div class="playersHands">PLAYER {{ pid }}</div>
 
-        <div class="player1" v-for="(player, pid) in players" :key="pid">
+            <div class="playerItem">
+              PLAYER1 ITEM
 
-          <div class="playersHands">
-            PLAYER {{ pid }}
-
-
-
-          </div>
-
-          <div class="playerItem">
-            PLAYER1 ITEM
-
-            <div class="PlayerBoardCards">
-              <CollectorsCard
-                v-for="(card, index) in player.items"
-                :card="card"
-                :key="index"
-              />
-            </div>
-            player skills
-            <div class="PlayerBoardCards">
-              <CollectorsCard
-                v-for="(card, index) in player.skills"
-                :card="card"
-                :key="index"
-              />
+              <div class="PlayerBoardCards">
+                <CollectorsCard
+                  v-for="(card, index) in player.items"
+                  :card="card"
+                  :key="index"
+                />
+              </div>
+              player skills
+              <div class="PlayerBoardCards">
+                <CollectorsCard
+                  v-for="(card, index) in player.skills"
+                  :card="card"
+                  :key="index"
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
-      </div>
-
-
     </main>
 
     {{ buyPlacement }} {{ chosenPlacementCost }}
@@ -179,7 +168,6 @@ import CollectorsSkillActions from "@/components/CollectorsSkillActions.vue";
 import CollectorsMarketActions from "@/components/CollectorsMarketActions.vue";
 import CollectorsAuctionActions from "@/components/CollectorsAuctionActions.vue";
 
-
 //import Sidebar from "@/components/Sidebar.vue";
 export default {
   name: "Collectors",
@@ -188,7 +176,7 @@ export default {
     CollectorsBuyActions,
     CollectorsSkillActions,
     CollectorsMarketActions,
-    CollectorsAuctionActions
+    CollectorsAuctionActions,
     // Sidebar,
   },
   data: function () {
@@ -225,12 +213,15 @@ export default {
       itemsOnSale: [],
       skillsOnSale: [],
       auctionCards: [],
-      playerid: 0,
+      leadingBid: { bid: null, playerId: null },
     };
   },
   computed: {
     playerId: function () {
       return this.$store.state.playerId;
+    },
+    keyPlayersId: function () {
+      return Object.keys(this.players);
     },
   },
   watch: {
@@ -309,6 +300,14 @@ export default {
       }.bind(this)
     );
     this.$store.state.socket.on(
+      "collectorsCurrentBidStarted",
+      function (d) {
+        console.log(d.playerId, "Initiated auction");
+        this.players = d.players;
+        this.leadingBid = { bid: d.leadingBid, playerId: d.playerId };
+      }.bind(this)
+    );
+    this.$store.state.socket.on(
       "collectorsSkillBought",
       function (d) {
         console.log(d.playerId, "bought a skill");
@@ -317,7 +316,6 @@ export default {
       }.bind(this)
     );
   },
-
 
   methods: {
     selectAll: function (n) {
@@ -357,27 +355,34 @@ export default {
         cost: this.chosenPlacementCost,
       });
     },
+    currentBid: function (bid) {
+      this.$store.state.socket.emit("collectorsCurrentBid", {
+        roomId: this.$route.params.id,
+        playerId: this.playerId,
+        currentBid: bid,
+      });
+    },
     handleEvent: function (card) {
       if (this.chosenAction === "buy") {
-        this.buyCard(card)
+        this.buyCard(card);
       }
       if (this.chosenAction === "skill") {
-        this.skillsCard(card)
+        this.skillsCard(card);
       }
       if (this.chosenAction === "auction") {
-        this.auctionCard(card)
+        this.auctionCard(card);
       }
       if (this.chosenAction === "market") {
-        this.marketCards(card)
+        this.marketCards(card);
       }
-    }
+    },
   },
 };
 </script>
 
 <style scoped>
 header {
-/*  user-select: none;
+  /*  user-select: none;
   position: fixed;
   width: 100%;
   pointer-events: none; */
@@ -391,38 +396,40 @@ main {
   background-color: #ffff;
 }
 .board {
-  box-sizing: border-box;     /*huvudgriden, hänvisa till kod här*/
+  box-sizing: border-box; /*huvudgriden, hänvisa till kod här*/
   display: grid;
   grid-gap: 10px;
   grid-template-rows: 1fr 1fr 1fr 2fr;
   grid-template-columns: 1fr 2fr;
-  grid-template-areas: "itemPool itemPool"
-                       "skillPool skillPool"
-                       "marketPool marketPool"
-                       "workPool auctionPool";
+  grid-template-areas:
+    "itemPool itemPool"
+    "skillPool skillPool"
+    "marketPool marketPool"
+    "workPool auctionPool";
 }
-  @media (max-width: 600px) { /*För mindre skärmar*/
-      grid-gap: 2px;
-      grid-template-rows: repeat(5, 1fr);
-      grid-template-columns: 1fr;
-      grid-template-areas: "itemPool "
-                           "skillPool "
-                           "marketPool "
-                           "workPool "
-                           "auctionPool ";
+@media (max-width: 600px) {
+  /*För mindre skärmar*/
+  .board {
+    grid-gap: 2px;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "itemPool "
+      "skillPool "
+      "marketPool "
+      "workPool "
+      "auctionPool ";
+  }
 }
-
 .itemPool {
   grid-area: itemPool;
   background-color: #ffb3b3;
   max-height: 80vh;
-
 }
 .skillPool {
   grid-area: skillPool;
   background-color: #c2f0c2;
   max-height: 80vh;
-
 }
 .workPool {
   grid-area: workPool;
@@ -445,28 +452,27 @@ main {
   width: 49%;*/
 }
 
-.quarterTiles{
-    border-style: dotted;
-    border-color: black;
-    background-color: #ffff;
-    width: 50%;
-    height: 10%;
+.quarterTiles {
+  border-style: dotted;
+  border-color: black;
+  background-color: #ffff;
+  width: 50%;
+  height: 10%;
 }
 
-.workDollarWhite{
+.workDollarWhite {
   background-image: url("/images/auctionvit.png");
   height: 20vh;
   width: 9.5vw;
   background-size: cover;
-
 }
-.workDollarBlack{
+.workDollarBlack {
   background-image: url("/images/auctionblack.png");
   height: 20vh;
   width: 9.5vw;
   background-size: cover;
 }
-.energyBottle{
+.energyBottle {
   background-image: url("/images/flaska.png");
   height: 20vh;
   width: 9.5vw;
@@ -498,36 +504,32 @@ main {
 }
 
 .playersHands:hover + .playerItem {
-  display: block
+  display: block;
 }
 
 .playerHand {
-  background-color: #e6ccff
-;
+  background-color: #e6ccff;
   height: 100%;
 }
 .playerHand:hover + .playerItem {
-  display: block
+  display: block;
 }
 
 .player {
   position: fixed;
-  right:0%;
-  top:0%;
+  right: 0%;
+  top: 0%;
   width: 25vw;
   height: 4vh;
-
 }
 
 .test {
   position: absolute;
-  right:25%;
-  top:0%;
+  right: 25%;
+  top: 0%;
   width: 25vw;
   height: 4vh;
-
 }
-
 
 footer {
   margin-top: 5em auto;

@@ -31,6 +31,7 @@
 
         {{chategory}}: <br>
         {{value}}
+        <!-- <p> {{ index }} : {{ type }} </p> -->
 
     </div>
     </div>

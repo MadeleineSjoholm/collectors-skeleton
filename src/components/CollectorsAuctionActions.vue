@@ -23,7 +23,7 @@
       </div>
     </div>
   </div>
-  {{ auctionCards }}
+ <!-- {{ auctionCards }} -->
   <div class="buttons2">
     <button @click="drawCard">
       {{ labels.draw }}
@@ -40,7 +40,23 @@
   </div>
   <div class="cardToAuction">
     <CollectorsCard :card="upForAuction"/>
+  </div>
+  <div  class="raiseBid"> 
+  {{ leadingBid }}
+  {{ currentBid }}
 
+    <button id="raiseButton" @click="currentBid += 1">
+      +
+    </button>
+    <button id="submitBidButton" :disabled="player.money < currentBid" @click="submitCurrentBid()">
+      Submit bid
+    </button>
+    <!-- <button id="resetButton" @click="currentBid">
+      Reset your bid
+    </button> -->
+    <button id="passButton" @click="passBidding()">
+      Pass
+    </button>
   </div>
 </div>
 </template>
@@ -60,6 +76,13 @@ export default {
     upForAuction: Object,
     marketValues: Object,
     placement: Array,
+    leadingBid: Object,
+  
+  },
+  data: function () {
+    return {
+      currentBid: 0,
+    }
   },
   methods: {
     cannotAfford: function (cost) {
@@ -93,9 +116,13 @@ export default {
       this.highlightAvailableCards()
     }
   },
-
+  submitCurrentBid: function() {
+     this.$emit('currentBid', this.currentBid);
+  },
+  passBidding: function() {
+   //när alla players utom en tryckt pass, avslutas auktionen och vinnaren får kortet till playerboard
+  },
   drawCard: function () {
-
   }
 
 }
@@ -111,7 +138,8 @@ export default {
   grid-template-areas:  "label"
   "bottlePlacement"
   "auctionCards"
-  "cardToAuction";
+  "cardToAuction"
+  "raiseBid";
 }
 
 .label {
@@ -169,4 +197,30 @@ export default {
   grid-template-columns: repeat(auto-fill, 15vw);
 
 }
+.raiseBid{
+  background-color: black;
+grid-area: raiseBid;
+display: grid;
+  grid-template-columns: repeat(auto-fill, 8vw);
+}
+#submitBidButton {
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid Blue
+  }
+#resetButton {
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid Blue
+  }  
+  #raiseButton {
+    background-color: rgb(135, 220, 241);
+    width: 10vh;
+    border: 2px solid Blue
+  }  
+  #passButton {
+background-color: rgb(135, 220, 241);
+    width: 10vh;
+    border: 2px solid Blue
+  }
 </style>

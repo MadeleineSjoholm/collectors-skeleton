@@ -66,6 +66,15 @@ function sockets(io, socket, data) {
         }
       );
     });
+    socket.on('collectorsCurrentBid', function(d){
+      data.currentBid(d.roomId, d.playerId, d.currentBid)
+      io.to(d.roomId).emit('collectorsCurrentBidStarted', {
+        playerId: d.playerId,
+        players: data.getPlayers(d.roomId),
+        leadingBid: data.getLeadingBid(d.roomId)
+        }
+      );
+    });
     socket.on('collectorsPlaceBottle', function(d) {
       data.placeBottle(d.roomId, d.playerId, d.action, d.id);
       io.to(d.roomId).emit('collectorsBottlePlaced', data.getPlacements(d.roomId)

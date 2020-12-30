@@ -69,6 +69,7 @@ Data.prototype.createRoom = function(roomId, playerCount, lang="en") {
   room.skillsOnSale = room.deck.splice(0, 5);
   room.auctionCards = room.deck.splice(0, 4);
   room.upForAuction = {};
+  room.leadingBid = 0;
   room.market = [];
   room.buyPlacement = [ {cost:1, playerId: null, id:0 },
                         {cost:1, playerId: null, id:0},
@@ -111,6 +112,7 @@ Data.prototype.joinGame = function (roomId, playerId) {
                                  money: 1,
                                  bottles: 2,
                                  points: 0,
+                                 currentBid: 0,
                                  skills: [],
                                  items: [],
                                  income: [],
@@ -227,6 +229,18 @@ Data.prototype.initiateAuction = function (roomId, playerId, card, auctionCard) 
       }
     }
   }
+}
+Data.prototype.currentBid = function (roomId, playerId, currentBid) {
+  let room = this.rooms[roomId];
+  if (typeof room !== 'undefined') {
+  room.players[playerId].currentBid = currentBid;
+  for (let i in room.players){
+    if (room.leadingBid < room.players[i].currentBid){
+        room.leadingBid = room.players[i].currentBid;
+      }
+    }
+    }
+    console.log (room.leadingBid, currentBid)
 }
 
 Data.prototype.getUpForAuction = function(roomId){
@@ -364,6 +378,14 @@ Data.prototype.getAuctionCards = function(roomId){
     return room.auctionCards;
   }
   else return [];
+}
+
+Data.prototype.getLeadingBid = function(roomId){
+  let room = this.rooms[roomId];
+  if (typeof room !== 'undefined') {
+    return room.leadingBid;
+  }
+  else return []; //eller 0 för att försäkra sig om att det alltid kommer vara mindre än leading
 }
 
 module.exports = Data;
