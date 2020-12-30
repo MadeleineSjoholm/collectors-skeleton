@@ -452,6 +452,15 @@
     "auctionPool ";
   }
 
+
+/*
+   @media screen and (max-width: 300px) {
+    main {
+    width: 90vw;
+    }
+  }
+*/
+
   .itemPool {
     grid-area: itemPool;
     background-color: #ffb3b3;
@@ -496,7 +505,7 @@
 
 
   .energyBottle{
-    background-image: url("/images/flaska.png");
+    background-image: url("/images/flskaa.png");
     height: 20vh;
     width: 9.5vw;
     background-size: cover;
@@ -633,13 +642,7 @@
     transform: scale(0.75) translate(-25%, 0);
     z-index: 1;
   }
-/*
- @media screen and (max-width: 300px) {
-  main {
-  width: 90vw;
-  }
-}
-*/
+
 .playerboard {
   background: yellow;
   height: 50vh;
