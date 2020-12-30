@@ -441,25 +441,6 @@
     "marketPool marketPool"
     "workPool auctionPool";
   }
-  @media (max-width: 600px) { /*För mindre skärmar*/
-    grid-gap: 2px;
-    grid-template-rows: repeat(5, 1fr);
-    grid-template-columns: 1fr;
-    grid-template-areas: "itemPool "
-    "skillPool "
-    "marketPool "
-    "workPool "
-    "auctionPool ";
-  }
-
-
-/*
-   @media screen and (max-width: 300px) {
-    main {
-    width: 90vw;
-    }
-  }
-*/
 
   .itemPool {
     grid-area: itemPool;
@@ -486,7 +467,7 @@
   .auctionPool {
     grid-area: auctionPool;
     background-color: #ecd9c6;
-    max-height: 100vh;
+    max-height: 80vh;
   }
   .bottlePlacement {
     /*float: left;
@@ -503,7 +484,6 @@
   }
 
 
-
   .energyBottle{
     background-image: url("/images/flskaa.png");
     height: 20vh;
@@ -512,7 +492,7 @@
   }
   .PlayerBoardCards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 130px);
+    grid-template-columns: repeat(auto-fill, 15vw);
     grid-template-rows: repeat(auto-fill, 180px);
   }
   .PlayerBoardCards div {
@@ -521,16 +501,15 @@
     transition-timing-function: ease-out;
     z-index: 0;
   }
+
   .PlayerBoardCards div:hover {
-    transform: scale(1) translate(-50%, 0);
-    z-index: 1;
+    transform: scale(1) translate(-25%, 0%);
+    z-index: 0;
   }
   .playerItem {
     display: none;
     background-color: #b3ecff;
   }
-
-
 
   .clickable {
     position: fixed;
@@ -555,7 +534,6 @@
 
   }
 
-
   .money{
     height: 100;
   }
@@ -574,7 +552,6 @@
 
   }
 
-
 /* ekvivalent med player för motståndare */
 
   .player1     {
@@ -590,14 +567,11 @@
     font-size: 15pt;
 
   }
-
-
     .playerHand {
       background-color: #e6ccff;
       ;
       height: 100%;
     }
-
 
     .workDollarWhite{
       background-image: url("/images/auctionvit.png");
@@ -639,7 +613,7 @@
   }
 
   .cardslots div:hover {
-    transform: scale(0.75) translate(-25%, 0);
+    transform: scale(0.75) translate(-75%, 0);
     z-index: 1;
   }
 
@@ -658,8 +632,41 @@
   font-size: 0;
 }
 
+@media (max-width: 600px) { /*För mindre skärmar*/
+  .board {
+  grid-gap: 2px;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: 1fr;
+  grid-template-areas: "itemPool "
+  "skillPool "
+  "marketPool "
+  "workPool "
+  "auctionPool ";
+}
+}
 
+@media (max-width: 300px) { /*För mindre skärmar*/
+  .board {
+  grid-gap: 2px;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: 1fr;
+  grid-template-areas: "itemPool "
+  "skillPool "
+  "marketPool "
+  "workPool "
+  "auctionPool ";
+}
+}
 
+/* Lägg till fler villkor vid ändrad storlek + olika storlekar. Hur många behövs?
+
+/*
+   @media screen and (max-width: 300px) {
+    main {
+    width: 90vw;
+    }
+  }
+*/
 
 
 </style >

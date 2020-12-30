@@ -106,12 +106,13 @@ export default {
 .auctionPool {
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 5vh 25vh 10vh;
+  grid-template-rows: 5vh 25vh;
   grid-template-columns: 1fr;
   grid-template-areas:  "label"
   "bottlePlacement"
-  "auctionCards"
-  "cardToAuction";
+  "auctionCards" "cardToAuction";
+
+
 }
 
 .label {
@@ -121,7 +122,7 @@ export default {
 .auctionCards {
   grid-area: auctionCards;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 15vw);
+  grid-template-columns: repeat(auto-fill, 5vw);
   grid-template-rows: repeat(auto-fill, 180px);
 }
 .auctionCards div {
@@ -139,8 +140,11 @@ export default {
   border-style: dotted;
   border-color: black;
   background-color: #ffff;
-  width: 150px;
-  height: 200px;
+  height: 100px;
+  width: 20px;
+
+
+
 }
 .doubleDollarEnergy {
   background-image: url("/images/auctiondollar2.png");
