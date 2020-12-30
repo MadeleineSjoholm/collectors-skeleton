@@ -103,7 +103,7 @@
               :key="index"
               />
             </div>
-            player skills
+            PLAYER SKILLS
             <div class="PlayerBoardCards" v-if="players[playerId]">
               <CollectorsCard
               v-for="(card, index) in players[playerId].skills"
@@ -115,22 +115,20 @@
             <div class="money">
 
               <div v-if="players[playerId]" @click="players[playerId].money += 1" ><img src="/images/mynt.png" width="50">
+              </div>
                 <span v-if="players[playerId]"> {{ players[playerId].money }} </span>
                 <div v-if="players[playerId]" @click="players[playerId].money += 1" >
+
                 </div>
-                </div>
+
+                <br>
+
+                <span v-if="players[playerId]"> {{ players[playerId].bottles }} </span>
                 <div v-if="players[playerId]" @click="players[playerId].bottles += 1">
                   <img src="/images/flskaa.png" width="50">
-                  <span v-if="players[playerId]"> {{ players[playerId].bottles }} </span>
+
+
                 </div>
-            </div>
-            Secret Card
-            <div class="secretCard">
-              <CollectorsCard
-              v-for="(card, index) in players[playerId].secret"
-              :card="card"
-              :key="index"
-              />
             </div>
 
           </div>
@@ -435,8 +433,8 @@
   .board {
     box-sizing: border-box;     /*huvudgriden, hänvisa till kod här*/
     display: grid;
-    grid-gap: 10px;
-    grid-template-rows: 1fr 1fr 1fr 2fr;
+    grid-gap: 2px;
+    grid-template-rows: 0.5fr 0.5fr 0.5fr 2fr;
     grid-template-columns: 1fr 2fr;
     grid-template-areas: "itemPool itemPool"
     "skillPool skillPool"
@@ -457,13 +455,13 @@
   .itemPool {
     grid-area: itemPool;
     background-color: #ffb3b3;
-    max-height: 80vh;
+    max-height: 50vh;
 
   }
   .skillPool {
     grid-area: skillPool;
     background-color: #c2f0c2;
-    max-height: 80vh;
+    max-height: 50vh;
 
   }
   .workPool {
@@ -496,6 +494,13 @@
   }
 
 
+
+  .energyBottle{
+    background-image: url("/images/flaska.png");
+    height: 20vh;
+    width: 9.5vw;
+    background-size: cover;
+  }
   .PlayerBoardCards {
     display: grid;
     grid-template-columns: repeat(auto-fill, 130px);
@@ -516,9 +521,7 @@
     background-color: #b3ecff;
   }
 
-  .money{
-    height: 100;
-  }
+
 
   .clickable {
     position: fixed;
@@ -543,13 +546,10 @@
 
   }
 
-  .ishidden {
-    height: 0;
-    width: 0;
-    font-size: 0;
+
+  .money{
+    height: 100;
   }
-
-
 
   .player{
     background: #e6ccff;
@@ -597,22 +597,15 @@
       background-size: cover;
 
     }
-    .workDollarBlack {
+    .workDollarBlack{
       background-image: url("/images/auctionblack.png");
       height: 20vh;
       width: 9.5vw;
       background-size: cover;
+
     }
 
-
-    .energyBottle{
-      background-image: url("/images/flaska.png");
-      height: 20vh;
-      width: 9.5vw;
-      background-size: cover;
-    }
-
-  footer {
+   footer {
     margin-top: 5em auto;
   }
   footer a {
@@ -647,9 +640,20 @@
   }
 }
 */
+.playerboard {
+  background: yellow;
+  height: 50vh;
+  overflow: hidden;
+  transition: 1s;
+  width: 50vw;
+  font-size: 15pt;
+}
 
-
-
+.ishidden {
+  height: 0;
+  width: 0;
+  font-size: 0;
+}
 
 
 

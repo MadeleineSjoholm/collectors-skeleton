@@ -125,9 +125,10 @@ export default {
   .buy-cards{
     grid-area: buy-cards;
     display: grid;
-    transform: scale(0.5) translate(-50%, -50%);
+    transform: scale(0.5) translate(-10%, -40%);
+
     grid-template-columns: repeat(auto-fill, 15vw);
-    grid-template-rows: repeat(10, 20px);
+    /*grid-template-rows: repeat(10, 20px);*/
 
   }
 
