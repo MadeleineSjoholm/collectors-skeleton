@@ -125,13 +125,14 @@
                 </div>
             </div>
             Secret Card
+            <!--
             <div class="secretCard">
               <CollectorsCard
               v-for="(card, index) in players[playerId].secret"
               :card="card"
               :key="index"
               />
-            </div>
+            </div> -->
 
           </div>
         </div>
