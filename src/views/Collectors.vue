@@ -235,6 +235,7 @@ export default {
       //   income: [],
       //   secret: []
       // }
+      showPlayerBoard: "",
       buyPlacement: [],
       skillPlacement: [],
       auctionPlacement: [],
@@ -426,7 +427,7 @@ export default {
         this.showPlayerBoard = playerId;
       }
   },
-  
+
 };
 </script>
 
