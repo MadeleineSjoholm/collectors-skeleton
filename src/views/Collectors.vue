@@ -115,20 +115,22 @@
             <div class="money">
 
               <div v-if="players[playerId]" @click="players[playerId].money += 1" ><img src="/images/mynt.png" width="50">
-              </div>
                 <span v-if="players[playerId]"> {{ players[playerId].money }} </span>
                 <div v-if="players[playerId]" @click="players[playerId].money += 1" >
-
                 </div>
-
-                <br>
-
-                <span v-if="players[playerId]"> {{ players[playerId].bottles }} </span>
+                </div>
                 <div v-if="players[playerId]" @click="players[playerId].bottles += 1">
                   <img src="/images/flskaa.png" width="50">
-
-
+                  <span v-if="players[playerId]"> {{ players[playerId].bottles }} </span>
                 </div>
+            </div>
+            Secret Card
+            <div class="secretCard">
+              <CollectorsCard
+              v-for="(card, index) in players[playerId].secret"
+              :card="card"
+              :key="index"
+              />
             </div>
 
           </div>
@@ -430,8 +432,8 @@
   .board {
     box-sizing: border-box;     /*huvudgriden, hänvisa till kod här*/
     display: grid;
-    grid-gap: 2px;
-    grid-template-rows: 0.5fr 0.5fr 0.5fr 2fr;
+    grid-gap: 10px;
+    grid-template-rows: 1fr 1fr 1fr 2fr;
     grid-template-columns: 1fr 2fr;
     grid-template-areas: "itemPool itemPool"
     "skillPool skillPool"
@@ -452,13 +454,13 @@
   .itemPool {
     grid-area: itemPool;
     background-color: #ffb3b3;
-    max-height: 50vh;
+    max-height: 80vh;
 
   }
   .skillPool {
     grid-area: skillPool;
     background-color: #c2f0c2;
-    max-height: 50vh;
+    max-height: 80vh;
 
   }
   .workPool {
