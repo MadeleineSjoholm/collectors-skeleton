@@ -27,6 +27,7 @@
               :placement="auctionPlacement"
               :upForAuction="upForAuction"
               :leadingBid="leadingBid"
+              @drawCard="drawCard(card)"
               @initiateAuction="handleEvent($event)"
               @currentBid="currentBid($event)"
               @placeBottle="placeBottle('auction', $event)"
@@ -84,16 +85,17 @@
             PLAYERHAND {{ playerId }} <br>
 
             Hand
-            <!-- Vad gör den här????
+
             <div class="cardslots" v-if="players[playerId]">
               <CollectorsCard
               v-for="(card, index) in players[playerId].hand"
               :card="card"
-              :availableAction="card.available"
-              @doAction="buyCard(card)"
+
+
               :key="index"
               />
-            </div> -->
+            </div>
+            <!-- :availableAction="card.available" -->
             PLAYERITEM
 
             <div class="PlayerBoardCards" v-if="players[playerId]">

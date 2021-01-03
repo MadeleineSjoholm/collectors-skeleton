@@ -41,7 +41,7 @@
   <div class="cardToAuction">
     <CollectorsCard :card="upForAuction"/>
   </div>
-  <div  class="raiseBid"> 
+  <div  class="raiseBid">
   {{ leadingBid }}
   {{ currentBid }}
 
@@ -77,7 +77,7 @@ export default {
     marketValues: Object,
     placement: Array,
     leadingBid: Object,
-  
+
   },
   data: function () {
     return {
@@ -122,7 +122,9 @@ export default {
   passBidding: function() {
    //när alla players utom en tryckt pass, avslutas auktionen och vinnaren får kortet till playerboard
   },
-  drawCard: function () {
+  drawCard: function (card) {
+
+    this.$emit('drawCard', card);
   }
 
 }
@@ -215,12 +217,12 @@ display: grid;
     background-color: white;
     border-radius: 5px;
     border: 2px solid Blue
-  }  
+  }
   #raiseButton {
     background-color: rgb(135, 220, 241);
     width: 10vh;
     border: 2px solid Blue
-  }  
+  }
   #passButton {
 background-color: rgb(135, 220, 241);
     width: 10vh;
