@@ -179,7 +179,6 @@ Data.prototype.buyCard = function (roomId, playerId, card, cost) {
     }
     room.players[playerId].items.push(...c);
     room.players[playerId].money -= cost;
-    //room.players[playerId].bottles -= 1;
 
   }
 }
@@ -211,7 +210,6 @@ Data.prototype.skillsCard = function (roomId, playerId, card, cost) {
     }
     room.players[playerId].skills.push(...c);
     room.players[playerId].money -= cost;
-    //room.players[playerId].bottles -= 1;
 
   }
 

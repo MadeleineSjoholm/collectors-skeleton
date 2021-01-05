@@ -27,7 +27,7 @@
               :placement="auctionPlacement"
               :upForAuction="upForAuction"
               :leadingBid="leadingBid"
-              @drawCard="drawCard(card)"
+              @drawCard="drawCard($event)"
               @initiateAuction="handleEvent($event)"
               @currentBid="currentBid($event)"
               @placeBottle="placeBottle('auction', $event)"
@@ -116,34 +116,31 @@
 
             <div class="money">
 
-              <div v-if="players[playerId]" @click="players[playerId].money += 1" ><img src="/images/mynt.png" width="50">
-              </div>
+              <div v-if="players[playerId]" @click="players[playerId].money += 1" ><img src="/images/mynt.png" width="50"></div>
                 <span v-if="players[playerId]"> {{ players[playerId].money }} </span>
-                <div v-if="players[playerId]" @click="players[playerId].money += 1" >
-
-                </div>
+                <div v-if="players[playerId]" @click="players[playerId].money += 1" ></div>
 
                 <br>
 
                 <span v-if="players[playerId]"> {{ players[playerId].bottles }} </span>
                 <div v-if="players[playerId]" @click="players[playerId].bottles += 1">
-                  <img src="/images/flskaa.png" width="50">
+                  <img src="/images/flskaa.png" width="50"></div>
 
-
-                </div>
+                Points: <span v-if="players[playerId]"> {{ players[playerId].points }} </span>
             </div>
 
           </div>
         </div>
 
 
-
-        <div class = "clickable1" @click="togglePlayerBoard('player1')" >
-          MOTSTÅNDARE
+      <div class="clickable1">
+        <div v-for="(player, pid) in players"  :key="pid" @click="togglePlayerBoard(pid)" >
+          <div v-if="pid!=playerId"> MOTSTÅNDARE </div>
         </div>
-        <div :class="['player1', {'ishidden' : isHidden('player1')}]">
+      </div>
+        <div>
 
-          <div class="player1" v-for="(player, pid) in players" :key="pid">
+          <div  v-for="(player, pid) in players" :key="pid" :class="['player1', {'ishidden' : isHidden(pid)}]">
 
             <div class="playerHands">
               PLAYER {{ pid }}
@@ -168,6 +165,11 @@
                 :key="index"
                 />
               </div>
+                Bottles: <span v-if="players[pid]"> {{ players[pid].bottles }} </span>
+                Money: <span v-if="players[pid]"> {{ players[pid].money }} </span>
+                Points: <span v-if="players[pid]"> {{ players[pid].points }} </span>
+
+
             </div>
           </div>
         </div>
@@ -186,6 +188,10 @@
     <button v-if="players[playerId]" @click="players[playerId].bottles += 1">
       fake more Bottles
     </button>
+    <button v-if="players[playerId]" @click="players[playerId].points += 1">
+      fake more points
+    </button>
+    <router-link :to="{ name: 'Rules', params: {} }"><img src="/images/question.png" width= "60"></router-link>
 
 
     <footer>
@@ -594,7 +600,7 @@ main {
 
   .player{
     background: #e6ccff;
-    position: fixed;
+    position: absolute;
     right:0%;
     top:5%;
     width: 23vw;
@@ -607,13 +613,13 @@ main {
 /* ekvivalent med player för motståndare */
 
   .player1     {
-    background: #ffe6ff;
+    background: #e6ccff;
     position: absolute;
-    right:30%;
+    right:0%;
     top:5%;
-    width: 23vw;
+    width: 20vw;
     height: 100vh;
-    margin-right: 1em;
+    margin-right: 0em;
     transition: 1s;
     overflow: hidden;
     font-size: 15pt;
@@ -661,7 +667,7 @@ main {
     /*column-gap: 10px;*/
   }
   .cardslots div {
-    transform: scale(0.2) translate(-50%, -50%);
+    transform: scale(0.5) translate(-50%, -50%);
     transition: 0.2s;
     transition-timing-function: ease-out;
     z-index: 0;
