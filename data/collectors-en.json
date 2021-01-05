@@ -12,7 +12,12 @@
 	"numberMoney": "Money: ",
 	"numberBottles": "Number of bottles: ",
 
-	"gameRules": "Game Rules",
-	"homepage": "Back to homepage"
-
+	"gameRules": "Spelregler",
+	"homepage": "Back to homepage",
+	"workDollar": "Gain $2 whenever you place a worker in the work area.",
+	"workCard": "Draw a card whenever you place a worker in the work area.",
+	"skillBottle": "Immediately gain a new bottle. You may use it this quarter.",
+	"skillDollar": "Gain $1 whenever an auction is started by any player.",
+	"skillStar": "Get 1 extra VP for each item you own of the specific category at the end of the game.",
+	"skillStars": "Get 5 VP if you own at least one item from each category at the send of the game."
 }
