@@ -5,14 +5,14 @@
         <div class="board">
           <div class="skillPool">
             <CollectorsSkillActions
-            v-if="players[playerId]"
-            :labels="labels"
-            :player="players[playerId]"
-            :skillsOnSale="skillsOnSale"
-            :marketValues="marketValues"
-            :placement="skillPlacement"
-            @skillsCard="skillsCard($event)"
-            @placeBottle="placeBottle('skill', $event)"
+              v-if="players[playerId]"
+              :labels="labels"
+              :player="players[playerId]"
+              :skillsOnSale="skillsOnSale"
+              :marketValues="marketValues"
+              :placement="skillPlacement"
+              @skillsCard="skillsCard($event)"
+              @placeBottle="placeBottle('skill', $event)"
             />
           </div>
 
@@ -28,6 +28,7 @@
               :upForAuction="upForAuction"
               :leadingBid="leadingBid"
               @initiateAuction="handleEvent($event)"
+              @passBidding="passBidding($event)"
               @currentBid="currentBid($event)"
               @placeBottle="placeBottle('auction', $event)"
             />
@@ -36,28 +37,28 @@
           <div class="itemPool">
             <div class="itemPoolcontent">
               <CollectorsBuyActions
-              v-if="players[playerId]"
-              :labels="labels"
-              :player="players[playerId]"
-              :itemsOnSale="itemsOnSale"
-              :marketValues="marketValues"
-              :placement="buyPlacement"
-              @buyCard="buyCard($event)"
-              @placeBottle="placeBottle('buy', $event)"
+                v-if="players[playerId]"
+                :labels="labels"
+                :player="players[playerId]"
+                :itemsOnSale="itemsOnSale"
+                :marketValues="marketValues"
+                :placement="buyPlacement"
+                @buyCard="buyCard($event)"
+                @placeBottle="placeBottle('buy', $event)"
               />
             </div>
           </div>
 
           <div class="marketPool">
             <CollectorsMarketActions
-            v-if="players[playerId]"
-            :labels="labels"
-            :player="players[playerId]"
-            :marketValues="marketValues"
-            :placement="marketPlacement"
-            :market="market"
-            @marketEvent="marketEvent($event)"
-            @placeBottle="placeBottle('market', $event)"
+              v-if="players[playerId]"
+              :labels="labels"
+              :player="players[playerId]"
+              :marketValues="marketValues"
+              :placement="marketPlacement"
+              :market="market"
+              @marketEvent="marketEvent($event)"
+              @placeBottle="placeBottle('market', $event)"
             />
             <!--:itemsOnSale="itemsOnSale" -->
           </div>
@@ -72,16 +73,13 @@
           </div>
         </div>
 
-
-
-          <div class="clickable" @click="togglePlayerBoard('player')">
+        <div class="clickable" @click="togglePlayerBoard('player')">
           YOUR PLAYERHAND
-          </div>
+        </div>
 
-          <div :class="['player', {'ishidden' : isHidden('player')}]">
-
+        <div :class="['player', { ishidden: isHidden('player') }]">
           <div class="playerHand">
-            PLAYERHAND {{ playerId }} <br>
+            PLAYERHAND {{ playerId }} <br />
 
             Hand
             <!-- Vad gör den här????
@@ -98,80 +96,79 @@
 
             <div class="PlayerBoardCards" v-if="players[playerId]">
               <CollectorsCard
-              v-for="(card, index) in players[playerId].items"
-              :card="card"
-              :key="index"
+                v-for="(card, index) in players[playerId].items"
+                :card="card"
+                :key="index"
               />
             </div>
             PLAYER SKILLSS
             <div class="PlayerBoardCards" v-if="players[playerId]">
               <CollectorsCard
-              v-for="(card, index) in players[playerId].skills"
-              :card="card"
-              :key="index"
+                v-for="(card, index) in players[playerId].skills"
+                :card="card"
+                :key="index"
               />
             </div>
 
             <div class="money">
-
-              <div v-if="players[playerId]" @click="players[playerId].money += 1" ><img src="/images/mynt.png" width="50">
+              <div
+                v-if="players[playerId]"
+                @click="players[playerId].money += 1"
+              >
+                <img src="/images/mynt.png" width="50" />
               </div>
-                <span v-if="players[playerId]"> {{ players[playerId].money }} </span>
-                <div v-if="players[playerId]" @click="players[playerId].money += 1" >
+              <span v-if="players[playerId]">
+                {{ players[playerId].money }}
+              </span>
+              <div
+                v-if="players[playerId]"
+                @click="players[playerId].money += 1"
+              ></div>
 
-                </div>
+              <br />
 
-                <br>
-
-                <span v-if="players[playerId]"> {{ players[playerId].bottles }} </span>
-                <div v-if="players[playerId]" @click="players[playerId].bottles += 1">
-                  <img src="/images/flskaa.png" width="50">
-
-
-                </div>
+              <span v-if="players[playerId]">
+                {{ players[playerId].bottles }}
+              </span>
+              <div
+                v-if="players[playerId]"
+                @click="players[playerId].bottles += 1"
+              >
+                <img src="/images/flskaa.png" width="50" />
+              </div>
             </div>
-
           </div>
         </div>
 
-
-
-        <div class = "clickable1" @click="togglePlayerBoard('player1')" >
+        <div class="clickable1" @click="togglePlayerBoard('player1')">
           MOTSTÅNDARE
         </div>
-        <div :class="['player1', {'ishidden' : isHidden('player1')}]">
-
+        <div :class="['player1', { ishidden: isHidden('player1') }]">
           <div class="player1" v-for="(player, pid) in players" :key="pid">
-
             <div class="playerHands">
               PLAYER {{ pid }}
-
-
-
 
               PLAYER ITEM
 
               <div class="PlayerBoardCards">
                 <CollectorsCard
-                v-for="(card, index) in player.items"
-                :card="card"
-                :key="index"
+                  v-for="(card, index) in player.items"
+                  :card="card"
+                  :key="index"
                 />
               </div>
-                    PLAYER SKILLS
+              PLAYER SKILLS
               <div class="PlayerBoardCards">
                 <CollectorsCard
-                v-for="(card, index) in player.skills"
-                :card="card"
-                :key="index"
+                  v-for="(card, index) in player.skills"
+                  :card="card"
+                  :key="index"
                 />
               </div>
             </div>
           </div>
         </div>
       </div>
-
-
     </main>
 
     {{ buyPlacement }} {{ chosenPlacementCost }}
@@ -185,15 +182,14 @@
       fake more Bottles
     </button>
 
-
     <footer>
       <p>
         {{ labels.invite }}
         <input
-        type="text"
-        :value="publicPath + $route.path"
-        @click="selectAll"
-        readonly="readonly"
+          type="text"
+          :value="publicPath + $route.path"
+          @click="selectAll"
+          readonly="readonly"
         />
       </p>
     </footer>
@@ -241,6 +237,7 @@ export default {
       auctionPlacement: [],
       marketPlacement: [],
       upForAuction: {},
+      inAuction: true,
       chosenPlacementCost: null,
       chosenAction: null,
       marketValues: {
@@ -271,22 +268,22 @@ export default {
         for (let c = 0; c < this.players[p].hand.length; c += 1) {
           if (typeof this.players[p].hand[c].item !== "undefined")
             this.$set(this.players[p].hand[c], "available", false);
-          }
         }
-      },
+      }
     },
-    created: function () {
-      this.$store.commit("SET_PLAYER_ID", this.$route.query.id);
-      //TODO! Fix this ugly hack
-      //background: https://github.com/quasarframework/quasar/issues/5672
-      const newRoute = this.$route.params.id + "?id=" + this.playerId;
-      if (this.$route.params.id + "?id=" + this.$route.query.id !== newRoute)
+  },
+  created: function () {
+    this.$store.commit("SET_PLAYER_ID", this.$route.query.id);
+    //TODO! Fix this ugly hack
+    //background: https://github.com/quasarframework/quasar/issues/5672
+    const newRoute = this.$route.params.id + "?id=" + this.playerId;
+    if (this.$route.params.id + "?id=" + this.$route.query.id !== newRoute)
       this.$router.push(newRoute);
-      this.$store.state.socket.emit("collectorsLoaded", {
-        roomId: this.$route.params.id,
-        playerId: this.playerId,
-      });
-      this.$store.state.socket.on(
+    this.$store.state.socket.emit("collectorsLoaded", {
+      roomId: this.$route.params.id,
+      playerId: this.playerId,
+    });
+    this.$store.state.socket.on(
       "collectorsInitialize",
       function (d) {
         this.labels = d.labels;
@@ -301,8 +298,8 @@ export default {
         this.marketPlacement = d.placements.marketPlacement;
         this.auctionPlacement = d.placements.auctionPlacement;
       }.bind(this)
-      );
-      this.$store.state.socket.on(
+    );
+    this.$store.state.socket.on(
       "collectorsBottlePlaced",
       function (d) {
         this.buyPlacement = d.buyPlacement;
@@ -310,28 +307,28 @@ export default {
         this.marketPlacement = d.marketPlacement;
         this.auctionPlacement = d.auctionPlacement;
       }.bind(this)
-      );
-      this.$store.state.socket.on(
+    );
+    this.$store.state.socket.on(
       "collectorsPointsUpdated",
       (d) => (this.points = d)
-      );
-      this.$store.state.socket.on(
+    );
+    this.$store.state.socket.on(
       "collectorsCardDrawn",
       function (d) {
         //this has been refactored to not single out one player's cards
         //better to update the state of all cards
         this.players = d;
       }.bind(this)
-      );
-      this.$store.state.socket.on(
+    );
+    this.$store.state.socket.on(
       "collectorsCardBought",
       function (d) {
         console.log(d.playerId, "bought a card");
         this.players = d.players;
         this.itemsOnSale = d.itemsOnSale;
       }.bind(this)
-      );
-      this.$store.state.socket.on(
+    );
+    this.$store.state.socket.on(
       "collectorsAuctionStarted",
       function (d) {
         console.log(d.playerId, "Initiated auction");
@@ -348,14 +345,22 @@ export default {
       }.bind(this)
     );
     this.$store.state.socket.on(
+      "collectorsPassStarted",
+      function (d) {
+        console.log(d.playerId, "Ended auction");
+        this.players = d.players;
+        this.upForAuction = d.upForAuction;
+      }.bind(this)
+    );
+    this.$store.state.socket.on(
       "collectorsSkillBought",
       function (d) {
         console.log(d.playerId, "bought a skill");
         this.players = d.players;
         this.skillsOnSale = d.skillsOnSale;
       }.bind(this)
-      );
-    },
+    );
+  },
 
   methods: {
     selectAll: function (n) {
@@ -402,6 +407,15 @@ export default {
         currentBid: bid,
       });
     },
+    passBidding: function () {
+        this.$store.state.socket.emit('collectorsPassBidding', {
+        roomId: this.$route.params.id,
+        playerId: this.playerId,
+        card: this.upForAuction,
+          }
+    );
+},
+
     handleEvent: function (card) {
       if (this.chosenAction === "buy") {
         this.buyCard(card);
@@ -416,18 +430,15 @@ export default {
         this.marketCards(card);
       }
     },
-     isHidden: function(playerId){
-        return this.showPlayerBoard!==playerId
-      },
-      togglePlayerBoard: function(playerId){
-        if (this.showPlayerBoard === playerId) {
-          this.showPlayerBoard = "";
-        }
-        else
-        this.showPlayerBoard = playerId;
-      }
+    isHidden: function (playerId) {
+      return this.showPlayerBoard !== playerId;
+    },
+    togglePlayerBoard: function (playerId) {
+      if (this.showPlayerBoard === playerId) {
+        this.showPlayerBoard = "";
+      } else this.showPlayerBoard = playerId;
+    },
   },
-
 };
 </script>
 
@@ -536,139 +547,129 @@ main {
   background-color: #b3ecff;
 }
 
-  .energyBottle{
-    background-image: url("/images/flskaa.png");
-    height: 20vh;
-    width: 9.5vw;
-    background-size: cover;
-  }
-  .PlayerBoardCards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 130px);
-    grid-template-rows: repeat(auto-fill, 180px);
-  }
-  .PlayerBoardCards div {
-    transform: scale(0.75) translate(-50%, -50%);
-    transition: 0.2s;
-    transition-timing-function: ease-out;
-    z-index: 0;
-  }
-  .PlayerBoardCards div:hover {
-    transform: scale(1) translate(-50%, 0);
-    z-index: 1;
-  }
-  .playerItem {
-    display: none;
-    background-color: #b3ecff;
-  }
+.energyBottle {
+  background-image: url("/images/flskaa.png");
+  height: 20vh;
+  width: 9.5vw;
+  background-size: cover;
+}
+.PlayerBoardCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 130px);
+  grid-template-rows: repeat(auto-fill, 180px);
+}
+.PlayerBoardCards div {
+  transform: scale(0.75) translate(-50%, -50%);
+  transition: 0.2s;
+  transition-timing-function: ease-out;
+  z-index: 0;
+}
+.PlayerBoardCards div:hover {
+  transform: scale(1) translate(-50%, 0);
+  z-index: 1;
+}
+.playerItem {
+  display: none;
+  background-color: #b3ecff;
+}
 
-
-
-  .clickable {
-    position: fixed;
-    right:0%;
-    top: 0%;
-    cursor: pointer;
-    background: #4d94ff;
-    margin-right: 1.5em;
-    width: 23vw;
-  }
-
+.clickable {
+  position: fixed;
+  right: 0%;
+  top: 0%;
+  cursor: pointer;
+  background: #4d94ff;
+  margin-right: 1.5em;
+  width: 23vw;
+}
 
 /* clickable för motståndare*/
-  .clickable1 {
-    position: fixed;
-    right:25%;
-    top: 0%;
-    cursor: pointer;
-    background: #4d94ff;
-    margin-right: 1.5em;
-    width: 23vw;
-  }
+.clickable1 {
+  position: fixed;
+  right: 25%;
+  top: 0%;
+  cursor: pointer;
+  background: #4d94ff;
+  margin-right: 1.5em;
+  width: 23vw;
+}
 
-  .money{
-    height: 100;
-  }
+.money {
+  height: 100;
+}
 
-  .player{
-    background: #e6ccff;
-    position: fixed;
-    right:0%;
-    top:5%;
-    width: 23vw;
-    height: 100vh;
-    margin-right: 1em;
-    transition: 1s;
-    overflow: hidden;
-    font-size: 15pt;
-  }
+.player {
+  background: #e6ccff;
+  position: fixed;
+  right: 0%;
+  top: 5%;
+  width: 23vw;
+  height: 100vh;
+  margin-right: 1em;
+  transition: 1s;
+  overflow: hidden;
+  font-size: 15pt;
+}
 /* ekvivalent med player för motståndare */
 
-  .player1     {
-    background: #ffe6ff;
-    position: absolute;
-    right:30%;
-    top:5%;
-    width: 23vw;
-    height: 100vh;
-    margin-right: 1em;
-    transition: 1s;
-    overflow: hidden;
-    font-size: 15pt;
+.player1 {
+  background: #ffe6ff;
+  position: absolute;
+  right: 30%;
+  top: 5%;
+  width: 23vw;
+  height: 100vh;
+  margin-right: 1em;
+  transition: 1s;
+  overflow: hidden;
+  font-size: 15pt;
+}
 
-  }
+.playerHand {
+  background-color: #e6ccff;
+  height: 100%;
+}
 
+.workDollarWhite {
+  background-image: url("/images/auctionvit.png");
+  height: 20vh;
+  width: 9.5vw;
+  background-size: cover;
+}
+.workDollarBlack {
+  background-image: url("/images/auctionblack.png");
+  height: 20vh;
+  width: 9.5vw;
+  background-size: cover;
+}
 
-    .playerHand {
-      background-color: #e6ccff;
-      ;
-      height: 100%;
-    }
+footer {
+  margin-top: 5em auto;
+}
+footer a {
+  text-decoration: none;
+  border-bottom: 2px dotted ivory;
+}
+footer a:visited {
+  color: ivory;
+}
+.cardslots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 130px);
+  grid-template-rows: repeat(auto-fill, 180px);
+  /*column-gap: 10px;*/
+}
+.cardslots div {
+  transform: scale(0.2) translate(-50%, -50%);
+  transition: 0.2s;
+  transition-timing-function: ease-out;
+  z-index: 0;
+}
 
-
-    .workDollarWhite{
-      background-image: url("/images/auctionvit.png");
-      height: 20vh;
-      width: 9.5vw;
-      background-size: cover;
-
-    }
-    .workDollarBlack{
-      background-image: url("/images/auctionblack.png");
-      height: 20vh;
-      width: 9.5vw;
-      background-size: cover;
-
-    }
-
-   footer {
-    margin-top: 5em auto;
-  }
-  footer a {
-    text-decoration: none;
-    border-bottom: 2px dotted ivory;
-  }
-  footer a:visited {
-    color: ivory;
-  }
-  .cardslots {
-    display: grid;
-
-    grid-template-columns: repeat(auto-fill, 130px);
-    grid-template-rows: repeat(auto-fill, 180px);
-    /*column-gap: 10px;*/
-  }
-  .cardslots div {
-    transform: scale(0.2) translate(-50%, -50%);
-    transition: 0.2s;
-    transition-timing-function: ease-out;
-    z-index: 0;
-  }
-
-  .cardslots div:hover {
-    transform: scale(0.75) translate(-25%, 0);
-    z-index: 1;
-  }
+.cardslots div:hover {
+  transform: scale(0.75) translate(-25%, 0);
+  z-index: 1;
+}
 
 .playerboard {
   background: yellow;

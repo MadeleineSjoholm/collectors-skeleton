@@ -113,6 +113,7 @@ Data.prototype.joinGame = function (roomId, playerId) {
                                  bottles: 2,
                                  points: 0,
                                  currentBid: 0,
+                                 inAuction: true,
                                  skills: [],
                                  items: [],
                                  income: [],
@@ -232,6 +233,27 @@ Data.prototype.initiateAuction = function (roomId, playerId, card, auctionCard) 
     }
   }
 }
+Data.prototype.passBidding = function (roomId, playerId, card) {
+  let room = this.rooms[roomId]
+  let playersInAuction = 0
+  let auc = room.upForAuction;
+  if (typeof room !== 'undefined') {
+    room.inAuction[playerId] === false;
+    for (let i in room.players){
+     if (room.players[players[i]].currentBid === room.leadingBid){
+       highestBidId = i;
+     }
+      if (room.players[i].inAuction === true) {
+        playersInAuction += 1;
+      }
+    }
+    if (playersInAuction < 2) {
+      room.players[highestBidId].hand.push(auc);
+      room.upForAuction = {};
+    }
+  }
+}
+
 Data.prototype.currentBid = function (roomId, playerId, currentBid) {
   let room = this.rooms[roomId];
   if (typeof room !== 'undefined') {
@@ -244,6 +266,7 @@ Data.prototype.currentBid = function (roomId, playerId, currentBid) {
     }
     console.log (room.leadingBid, currentBid)
 }
+
 
 Data.prototype.getUpForAuction = function(roomId){
   let room = this.rooms[roomId];

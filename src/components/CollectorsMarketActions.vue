@@ -34,6 +34,23 @@
         <!-- <p> {{ index }} : {{ type }} </p> -->
 
     </div>
+    <div class="changeValue">
+      <button class="raiseButton" @click="figures +=1">
+      Raise Fastaval
+    </button>
+    <button class="raiseButton" @click="currentBid -= 1">
+      Raise Movie
+    </button>
+    <button class="raiseButton" @click="currentBid -= 1">
+      Raise Technology
+    </button>
+    <button class="raiseButton" @click="currentBid -= 1">
+      Raise Figures
+    </button>
+    <button class="raiseButton" @click="currentBid -= 1">
+      Raise Movies
+    </button>
+    </div>
     </div>
 </template>
 
@@ -98,15 +115,10 @@ export default {
   grid-template-areas:  "label"
                         "bottlePlacement"
                         "icons";
-
 }
-
-
 .label {
 grid-area: label;
-
 }
-
 .doubleblueEnergy {
   background-image: url("/images/marketbluee.png");
   height: 15vh;
@@ -132,14 +144,11 @@ grid-area: label;
   grid-area: bottlePlacement;
   display: grid;
   grid-template-columns: repeat(auto-fill, 15vw);
-
-
 }
 .iconPlacement {
   grid-area: icons;
   display: grid;
   grid-template-columns: repeat(auto-fill, 15vw);
-
 }
 .iconFastaval {
   background-image: url("/images/market2.png");
@@ -171,6 +180,20 @@ grid-area: label;
   width: 15vw;
   background-size: cover;
 }
+.raiseValue{
+  background-color: black;
+grid-area: raiseBid;
+display: grid;
+  grid-template-columns: repeat(auto-fill, 8vw);
+}
+.raiseButton {
+  background-color:  rgb(137, 199, 214);
+    width: auto;
+    border:1px solid gray;
+    border-radius:7%;
+    
+    font-size:0.875;
+}
 </style>
 
--->
+
