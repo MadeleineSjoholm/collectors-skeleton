@@ -41,20 +41,39 @@
   <div class="cardToAuction">
     <CollectorsCard :card="upForAuction"/>
   </div>
-  <div  class="raiseBid">
+  <!--  <div>
+   <button
+        class="payHandButton"
+        v-if="players[playerId]"
+        @click="payWithHand()"
+      >Payment from hand</button>
+      <div class="payHand">
+        <CollectorsCard
+          v-for="(card, index) in players[playerId].hand"
+          :card="card"
+          :availableAction="card.available"
+          @doAction="bidWithHand(card)"
+          :key="index"
+        />
+      </div>
+  </div>
+  lägg till i methods osv
+  -->
+
+  <div  class="raiseBid"> 
+   
   {{ leadingBid }}
   {{ currentBid }}
-
-    <button id="raiseButton" @click="currentBid += 1">
-      +
+ <button class="bidButton" @click="currentBid -= 1">
+      -
     </button>
     <button id="submitBidButton" :disabled="player.money < currentBid" @click="submitCurrentBid()">
       Submit bid
     </button>
-    <!-- <button id="resetButton" @click="currentBid">
-      Reset your bid
-    </button> -->
-    <button id="passButton" @click="passBidding()">
+    <button class="bidButton" @click="currentBid += 1">
+      +
+    </button>
+    <button class="bidButton" @click="passBidding()">
       Pass
     </button>
   </div>
@@ -77,11 +96,11 @@ export default {
     marketValues: Object,
     placement: Array,
     leadingBid: Object,
-
   },
   data: function () {
     return {
       currentBid: 0,
+      //inAuction: true,
     }
   },
   methods: {
@@ -120,13 +139,14 @@ export default {
      this.$emit('currentBid', this.currentBid);
   },
   passBidding: function() {
+    //return this.inAuction = false;
+    this.$emit('passBidding', this.upForAuction);
    //när alla players utom en tryckt pass, avslutas auktionen och vinnaren får kortet till playerboard
   },
   drawCard: function (card) {
 
     this.$emit('drawCard', card);
   }
-
 }
 }
 </script>
@@ -171,9 +191,6 @@ export default {
   background-color: #ffff;
   height: 100px;
   width: 20px;
-
-
-
 }
 .doubleDollarEnergy {
   background-image: url("/images/auctiondollar2.png");
@@ -208,24 +225,28 @@ grid-area: raiseBid;
 display: grid;
   grid-template-columns: repeat(auto-fill, 8vw);
 }
-#submitBidButton {
+ .payHandButton {
+    background-color:  rgb(137, 199, 214);
+    width: auto;
+    border:1px solid gray;
+    border-radius:7%;
+    
+    font-size:0.875;
+  }
+.bidButton {
     background-color: white;
-    border-radius: 5px;
-    border: 2px solid Blue
+    width: auto;
+    border:2px solid rgb(216, 70, 70);
+    border-radius:7%;
+    word-wrap: break-word;
+    font-size:0.5;
   }
-#resetButton {
-    background-color: white;
-    border-radius: 5px;
-    border: 2px solid Blue
-  }
-  #raiseButton {
-    background-color: rgb(135, 220, 241);
-    width: 10vh;
-    border: 2px solid Blue
-  }
-  #passButton {
-background-color: rgb(135, 220, 241);
-    width: 10vh;
-    border: 2px solid Blue
-  }
+  .changeBidButton {
+    background-color: rgb(137, 199, 214);
+    width: auto;
+    border:1px solid gray;
+    border-radius:7%;
+    
+    font-size:0.875;
+  }  
 </style>
