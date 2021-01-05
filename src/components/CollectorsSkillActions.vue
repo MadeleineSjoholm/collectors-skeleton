@@ -127,8 +127,8 @@ export default {
 .skillCards {
   grid-area: skillCards;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 15vw);
-  grid-template-rows: repeat(10, 200px);
+  grid-template-columns: repeat(auto-fill, 130px);
+  grid-template-rows: repeat(auto-fill, 180px);
 }
 .skillCards div {
   transform: scale(0.5) translate(-50%, -50%);
@@ -137,7 +137,7 @@ export default {
   z-index: 0;
 }
 .skillCards div:hover {
-  transform: scale(1) translate(-25%, 0);
+  transform: scale(0.5) translate(-25%, 0);
   z-index: 1;
 }
 </style>

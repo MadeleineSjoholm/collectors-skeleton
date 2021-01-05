@@ -96,7 +96,6 @@ export default {
     marketValues: Object,
     placement: Array,
     leadingBid: Object,
-    inAuction: Boolean,
   },
   data: function () {
     return {
@@ -144,7 +143,9 @@ export default {
     this.$emit('passBidding', this.upForAuction);
    //när alla players utom en tryckt pass, avslutas auktionen och vinnaren får kortet till playerboard
   },
-  drawCard: function () {
+  drawCard: function (card) {
+
+    this.$emit('drawCard', card);
   }
 }
 }

@@ -27,6 +27,7 @@
               :placement="auctionPlacement"
               :upForAuction="upForAuction"
               :leadingBid="leadingBid"
+              @drawCard="drawCard($event)"
               @initiateAuction="handleEvent($event)"
               @passBidding="passBidding($event)"
               @currentBid="currentBid($event)"
@@ -82,16 +83,17 @@
             PLAYERHAND {{ playerId }} <br />
 
             Hand
-            <!-- Vad gör den här????
+
             <div class="cardslots" v-if="players[playerId]">
               <CollectorsCard
               v-for="(card, index) in players[playerId].hand"
               :card="card"
-              :availableAction="card.available"
-              @doAction="buyCard(card)"
+
+
               :key="index"
               />
-            </div> -->
+            </div>
+            <!-- :availableAction="card.available" -->
             PLAYERITEM
 
             <div class="PlayerBoardCards" v-if="players[playerId]">
@@ -111,40 +113,32 @@
             </div>
 
             <div class="money">
-              <div
-                v-if="players[playerId]"
-                @click="players[playerId].money += 1"
-              >
-                <img src="/images/mynt.png" width="50" />
-              </div>
-              <span v-if="players[playerId]">
-                {{ players[playerId].money }}
-              </span>
-              <div
-                v-if="players[playerId]"
-                @click="players[playerId].money += 1"
-              ></div>
 
-              <br />
+              <div v-if="players[playerId]" @click="players[playerId].money += 1" ><img src="/images/mynt.png" width="50"></div>
+                <span v-if="players[playerId]"> {{ players[playerId].money }} </span>
+                <div v-if="players[playerId]" @click="players[playerId].money += 1" ></div>
 
-              <span v-if="players[playerId]">
-                {{ players[playerId].bottles }}
-              </span>
-              <div
-                v-if="players[playerId]"
-                @click="players[playerId].bottles += 1"
-              >
-                <img src="/images/flskaa.png" width="50" />
-              </div>
+                <br>
+
+                <span v-if="players[playerId]"> {{ players[playerId].bottles }} </span>
+                <div v-if="players[playerId]" @click="players[playerId].bottles += 1">
+                  <img src="/images/flskaa.png" width="50"></div>
+
+                Points: <span v-if="players[playerId]"> {{ players[playerId].points }} </span>
             </div>
           </div>
         </div>
 
-        <div class="clickable1" @click="togglePlayerBoard('player1')">
-          MOTSTÅNDARE
+
+      <div class="clickable1">
+        <div v-for="(player, pid) in players"  :key="pid" @click="togglePlayerBoard(pid)" >
+          <div v-if="pid!=playerId"> MOTSTÅNDARE </div>
         </div>
-        <div :class="['player1', { ishidden: isHidden('player1') }]">
-          <div class="player1" v-for="(player, pid) in players" :key="pid">
+      </div>
+        <div>
+
+          <div  v-for="(player, pid) in players" :key="pid" :class="['player1', {'ishidden' : isHidden(pid)}]">
+
             <div class="playerHands">
               PLAYER {{ pid }}
 
@@ -165,6 +159,11 @@
                   :key="index"
                 />
               </div>
+                Bottles: <span v-if="players[pid]"> {{ players[pid].bottles }} </span>
+                Money: <span v-if="players[pid]"> {{ players[pid].money }} </span>
+                Points: <span v-if="players[pid]"> {{ players[pid].points }} </span>
+
+
             </div>
           </div>
         </div>
@@ -181,6 +180,10 @@
     <button v-if="players[playerId]" @click="players[playerId].bottles += 1">
       fake more Bottles
     </button>
+    <button v-if="players[playerId]" @click="players[playerId].points += 1">
+      fake more points
+    </button>
+    <router-link :to="{ name: 'Rules', params: {} }"><img src="/images/question.png" width= "60"></router-link>
 
     <footer>
       <p>
