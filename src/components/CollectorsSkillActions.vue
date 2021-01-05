@@ -6,7 +6,9 @@
       </div>
       <div class="bottlePlacement">
         <div class="buttons" v-for="(p, index) in placement" :key="index">
+
           <button
+
             v-if="p.playerId === null"
             :class="[
               { greenEnergy: p.id == 3 },
@@ -15,8 +17,12 @@
             :disabled="cannotAfford(p.cost)"
             @click="placeBottle(p)"
           >
+
             ${{ p.cost }}
+
           </button>
+
+
           <div v-if="p.playerId !== null">
             {{ p.playerId }}
           </div>
@@ -90,7 +96,7 @@ export default {
 .skillPool {
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 5vh 25vh 20vh;
+  grid-template-rows: 5vh 15vh 35vh;
   grid-template-columns: 1fr;
   grid-template-areas:  "label"
                         "skillCards"
@@ -102,8 +108,7 @@ export default {
 }
 
 .buttons {
-  display: inline-grid;
-    grid-template-columns: repeat(auto-fill, 15vw);
+
 }
 
 .greenEnergy {
@@ -123,6 +128,19 @@ export default {
 }
 .bottlePlacement {
   grid-area: bottlePlacement;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display:   -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+
+
 }
 .skillCards {
   grid-area: skillCards;

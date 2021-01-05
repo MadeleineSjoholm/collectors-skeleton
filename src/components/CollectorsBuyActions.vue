@@ -1,8 +1,16 @@
 <template>
 
+
 <div class="itemPool">
 
-      <h3>{{ labels.buyCard }}</h3>
+  <div class="infoButton">
+  <router-link :to="{ name: 'Rules', params: {} }"><img src="/images/question.png" width= "50"></router-link>
+</div>
+
+<div class="labell">
+  <h3>{{ labels.buyCard }}</h3>
+</div>
+
       <div class="buy-cards">
 
         <div v-for="(card, index) in itemsOnSale" :key="index">
@@ -13,8 +21,8 @@
           {{ cardCost(card) }}
         </div>
       </div>
-      <div>
-        <div class = "bottles" >
+
+        <div class ="bottles" >
         <div class="buttons" v-for="(p, index) in placement" :key="index">
           <button
             v-if="p.playerId===null"
@@ -32,15 +40,9 @@
             {{p.playerId}}
           </div>
         </div>
-        <!-- <div class="placeBottle">
-            <div class="itemdollar"></div>
-            <div class="itemdollarone"></div>
-            <div class="itemdollartwo"></div>
-            <div class="itemdollar2"></div>
-            <div class="itemdollarthree"></div>
-        </div> -->
+
       </div>
-    </div>
+
     </div>
 </template>
 
@@ -110,35 +112,52 @@ export default {
 .itemPool {
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 5vh 25vh 20vh;
+  grid-template-rows: 5vh 1vh 25vh;
   grid-template-columns: 1fr;
-  grid-template-areas:  "label"
+  grid-template-areas:  "label" "infoButton"
                         "buy-cards"
                         "bottles";
 }
 
 
-.label {
+.labell {
   grid-area: label;
 }
 
-  .buy-cards{
+.buy-cards {
     grid-area: buy-cards;
     display: grid;
     transform: scale(0.5) translate(-10%, -40%);
-
-    grid-template-columns: repeat(auto-fill, 15vw);
-    /*grid-template-rows: repeat(10, 20px);*/
-
+    grid-template-columns: repeat(auto-fill, 130px);
+    grid-template-rows: repeat(auto-fill, 180px);
   }
+
+
+
 
 .bottles {
   grid-area: bottles;
 
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display:   -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 }
-  .buttons {
-    display: inline-grid;
-    grid-template-columns: repeat(auto-fill, 15vw);
+
+.buttons {
+
+  }
+
+.infoButton {
+    grid-area: infoButton;
+    right: 50%;
   }
 
 .itemdollar {

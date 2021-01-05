@@ -34,6 +34,7 @@
             />
           </div>
 
+
           <div class="itemPool">
             <div class="itemPoolcontent">
               <CollectorsBuyActions
@@ -64,7 +65,7 @@
           </div>
 
           <div class="workPool">
-            <h1>Work</h1>
+            <h1>Work </h1>
             <div class="quarterTiles" align="center"></div>
             <div class="workDollarWhite"></div>
             <div class="workDollarBlack"></div>
@@ -191,7 +192,8 @@
     <button v-if="players[playerId]" @click="players[playerId].points += 1">
       fake more points
     </button>
-    <router-link :to="{ name: 'Rules', params: {} }"><img src="/images/question.png" width= "60"></router-link>
+
+
 
 
     <footer>
@@ -458,11 +460,11 @@ main {
   box-sizing: border-box; /*huvudgriden, hänvisa till kod här*/
   display: grid;
   grid-gap: 10px;
-  grid-template-rows: 1fr 1fr 1fr 2fr;
-  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    "itemPool itemPool"
-    "skillPool skillPool"
+    "itemPool skillPool"
+
     "marketPool marketPool"
     "workPool auctionPool";
 }
@@ -470,12 +472,12 @@ main {
 .itemPool {
   grid-area: itemPool;
   background-color: #ffb3b3;
-  max-height: 80vh;
+  max-height: 50vh;
 }
 .skillPool {
   grid-area: skillPool;
   background-color: #c2f0c2;
-  max-height: 80vh;
+  max-height: 50vh;
 }
 .workPool {
   grid-area: workPool;
@@ -485,7 +487,7 @@ main {
 .marketPool {
   grid-area: marketPool;
   background-color: #66a3ff;
-  max-height: 80vh;
+  max-height: 50vh;
 }
 .auctionPool {
   grid-area: auctionPool;
