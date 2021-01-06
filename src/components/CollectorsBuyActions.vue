@@ -151,9 +151,6 @@ export default {
   align-items: center;
 }
 
-.buttons {
-
-}
 
 .infoButton {
   grid-area: infoButton;

@@ -66,11 +66,13 @@ socket.on('collectorsAuctionCard', function(d){
     playerId: d.playerId,
     players: data.getPlayers(d.roomId),
     auctionCards: data.getAuctionCards(d.roomId),
-    upForAuction: data.getUpForAuction(d.roomId)
-    io.to(d.roomId).emit('collectorsUpdatePlayers',
-    data.drawCard(d.roomId, d.playerId)
+    upForAuction: data.getUpForAuction(d.roomId),
+    /*io.to(d.roomId).emit('collectorsUpdatePlayers'),
+    data.drawCard(d.roomId, d.playerId), */
+  }
   );
 });
+
 socket.on('collectorsCardForIncome', function(d) {
   io.to(d.roomId).emit('collectorsUpdatePlayers',
   data.cardForIncome(d.roomId, d.playerId, d.card)
