@@ -24,11 +24,7 @@
     </div>
   </div>
  <!-- {{ auctionCards }} -->
-  <div class="buttons2">
-    <button @click="drawCard">
-      {{ labels.draw }}
-    </button>
-  </div>
+
   <div class="auctionCards">
     <CollectorsCard
     v-for="(card, index) in auctionCards"
@@ -40,7 +36,9 @@
   </div>
   <div class="cardToAuction">
     <CollectorsCard :card="upForAuction"/>
+
   </div>
+
   <!--  <div>
    <button
         class="payHandButton"
@@ -60,8 +58,8 @@
   lägg till i methods osv
   -->
 
-  <div  class="raiseBid"> 
-   
+  <div  class="raiseBid">
+
   {{ leadingBid }}
   {{ currentBid }}
  <button class="bidButton" @click="currentBid -= 1">
@@ -155,7 +153,7 @@ export default {
 .auctionPool {
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 5vh 25vh;
+  grid-template-rows: 5vh 25vh 20vh 5vh;
   grid-template-columns: 1fr;
   grid-template-areas:  "label"
   "bottlePlacement"
@@ -170,8 +168,10 @@ export default {
 .auctionCards {
   grid-area: auctionCards;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 5vw);
+
+  grid-template-columns: repeat(auto-fill, 130px);
   grid-template-rows: repeat(auto-fill, 180px);
+
 }
 .auctionCards div {
   transform: scale(0.5) translate(-50%, -50%);
@@ -185,37 +185,43 @@ export default {
 }
 .cardToAuction {
   grid-area: cardToAuction;
-  border-style: dotted;
-  border-color: black;
-  background-color: #ffff;
-  height: 100px;
-  width: 20px;
+  background-image: url("/images/auction.png");
+
 }
 .doubleDollarEnergy {
   background-image: url("/images/auctiondollar2.png");
-  height: 18vh;
-  width: 10vw;
+  height: 16vh;
+  width: 8vw;
   background-size: cover;
   border-radius: 15%;
 }
 .dollarAuction {
   background-image: url("/images/auctiondollar.png");
-  height: 18vh;
-  width: 10vw;
+  height: 16vh;
+  width: 8vw;
   background-size: cover;
   border-radius: 15%;
 }
 .orangeEnergy {
   background-image: url("/images/auctionorange.png");
-  height: 18vh;
-  width: 10vw;
+  height: 16vh;
+  width: 9vw;
   background-size: cover;
   border-radius: 15%;
 }
 .bottlePlacement {
   grid-area: bottlePlacement;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 15vw);
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display:   -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 
 }
 .raiseBid{
@@ -229,7 +235,7 @@ display: grid;
     width: auto;
     border:1px solid gray;
     border-radius:7%;
-    
+
     font-size:0.875;
   }
 .bidButton {
@@ -245,7 +251,7 @@ display: grid;
     width: auto;
     border:1px solid gray;
     border-radius:7%;
-    
+
     font-size:0.875;
-  }  
+  }
 </style>
