@@ -57,7 +57,7 @@ function sockets(io, socket, data) {
       );
     });
     socket.on('collectorsAuctionCard', function(d){
-      data.initiateAuction(d.roomId, d.playerId, d.card, d.auctionCard)
+      data.initiateAuction(d.roomId, d.playerId, d.card)
       io.to(d.roomId).emit('collectorsAuctionStarted', {
         playerId: d.playerId,
         players: data.getPlayers(d.roomId),

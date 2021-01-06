@@ -29,8 +29,7 @@
       </div>
       <div class="chategoryVal" v-for="(value,chategory) in marketValues" :key = "chategory">
 
-        {{chategory}}: <br>
-        {{value}}
+        {{chategory}}: {{value}}
         <!-- <p> {{ index }} : {{ type }} </p> -->
 
     </div>

@@ -218,7 +218,7 @@ Data.prototype.skillsCard = function (roomId, playerId, card, cost) {
       room.players[playerId].bottles += 1;
     }
 }
-Data.prototype.initiateAuction = function (roomId, playerId, card, auctionCard) {
+Data.prototype.initiateAuction = function (roomId, playerId, card) {
   let room = this.rooms[roomId];
   if (typeof room !== 'undefined') {
     for (let i = 0; i < room.auctionCards.length; i += 1) {
@@ -234,18 +234,21 @@ Data.prototype.initiateAuction = function (roomId, playerId, card, auctionCard) 
 Data.prototype.passBidding = function (roomId, playerId, card) {
   let room = this.rooms[roomId]
   let playersInAuction = 0
-  let auc = room.upForAuction;
   if (typeof room !== 'undefined') {
-    room.inAuction[playerId] === false;
+    room.players[playerId].inAuction === false;
+    let auc = room.upForAuction;
+    let highestBidId = playerId;
     for (let i in room.players){
-     if (room.players[players[i]].currentBid === room.leadingBid){
+     if (room.players[i].currentBid === room.leadingBid){
        highestBidId = i;
+       console.log (highestbidId)
      }
       if (room.players[i].inAuction === true) {
         playersInAuction += 1;
       }
     }
     if (playersInAuction < 2) {
+     // console.log(auc)
       room.players[highestBidId].hand.push(auc);
       room.upForAuction = {};
     }

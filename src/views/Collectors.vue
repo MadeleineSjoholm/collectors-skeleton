@@ -337,6 +337,7 @@ export default {
       "collectorsAuctionStarted",
       function (d) {
         console.log(d.playerId, "Initiated auction");
+        this.auctionCards = d.auctionCards;
         this.players = d.players;
         this.upForAuction = d.upForAuction;
       }.bind(this)
@@ -420,6 +421,14 @@ export default {
           }
     );
 },
+initiateAuction: function (card) {
+        this.$store.state.socket.emit('collectorsAuctionCard', {
+        roomId: this.$route.params.id,
+        playerId: this.playerId,
+        card: card,
+          }
+    );
+},
 
     handleEvent: function (card) {
       if (this.chosenAction === "buy") {
@@ -429,7 +438,7 @@ export default {
         this.skillsCard(card);
       }
       if (this.chosenAction === "auction") {
-        this.auctionCard(card);
+        this.initiateAuction(card);
       }
       if (this.chosenAction === "market") {
         this.marketCards(card);
@@ -493,7 +502,7 @@ main {
 .marketPool {
   grid-area: marketPool;
   background-color: #66a3ff;
-  max-height: 50vh;
+  max-height: 90vh;
 }
 .auctionPool {
   grid-area: auctionPool;

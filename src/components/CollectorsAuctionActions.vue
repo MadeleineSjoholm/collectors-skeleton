@@ -67,7 +67,7 @@
  <button class="bidButton" @click="currentBid -= 1">
       -
     </button>
-    <button id="submitBidButton" :disabled="player.money < currentBid" @click="submitCurrentBid()">
+    <button id="submitBidButton" :disabled="player.money < currentBid || currentBid < leadingBid + 1" @click="submitCurrentBid()">
       Submit bid
     </button>
     <button class="bidButton" @click="currentBid += 1">
@@ -159,8 +159,7 @@ export default {
   grid-template-columns: 1fr;
   grid-template-areas:  "label"
   "bottlePlacement"
-  "auctionCards"
-  "cardToAuction"
+  "auctionCards" "cardToAuction"
   "raiseBid";
 }
 
