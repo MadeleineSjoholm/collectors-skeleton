@@ -1,44 +1,44 @@
 <template>
 
-    <div class="skillPool">
-      <div class="label">
-        <h3>{{ labels.skillLabel }}</h3>
-      </div>
-      <div class="bottlePlacement">
-        <div class="buttons" v-for="(p, index) in placement" :key="index">
+  <div class="skillPool">
+    <div class="label">
+      <h3>{{ labels.skillLabel }}</h3>
+    </div>
+    <div class="bottlePlacement">
+      <div class="buttons" v-for="(p, index) in placement" :key="index">
 
-          <button
+        <button
 
-            v-if="p.playerId === null"
-            :class="[
-              { greenEnergy: p.id == 3 },
-              { dollarEnergy: p.id == 4 },
-            ]"
-            :disabled="cannotAfford(p.cost)"
-            @click="placeBottle(p)"
-          >
+        v-if="p.playerId === null"
+        :class="[
+        { greenEnergy: p.id == 3 },
+        { dollarEnergy: p.id == 4 },
+        ]"
+        :disabled="cannotAfford(p.cost)"
+        @click="placeBottle(p)"
+        >
 
-            ${{ p.cost }}
+        ${{ p.cost }}
 
-          </button>
+      </button>
 
 
-          <div v-if="p.playerId !== null">
-            {{ p.playerId }}
-          </div>
-        </div>
-      </div>
-
-      <div class="skillCards">
-        <CollectorsCard
-          v-for="(card, index) in skillsOnSale"
-          :card="card"
-          :availableAction="card.available"
-          :key="index"
-          @doAction="skillsCard(card)"
-        />
+      <div v-if="p.playerId !== null">
+        {{ p.playerId }}
       </div>
     </div>
+  </div>
+
+  <div class="skillCards">
+    <CollectorsCard
+    v-for="(card, index) in skillsOnSale"
+    :card="card"
+    :availableAction="card.available"
+    :key="index"
+    @doAction="skillsCard(card)"
+    />
+  </div>
+</div>
 
 </template>
 
@@ -61,7 +61,7 @@ export default {
       let minCost = 100;
       for (let key in this.marketValues) {
         if (cost + this.marketValues[key] < minCost)
-          minCost = cost + this.marketValues[key];
+        minCost = cost + this.marketValues[key];
       }
       return this.player.money < minCost;
     },
@@ -99,8 +99,8 @@ export default {
   grid-template-rows: 5vh 15vh 35vh;
   grid-template-columns: 1fr;
   grid-template-areas:  "label"
-                        "skillCards"
-                        "bottlePlacement";
+  "skillCards"
+  "bottlePlacement";
 }
 
 .label {
@@ -132,13 +132,13 @@ export default {
   display: -moz-box;
   display: -ms-flexbox;
   display:   -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    -moz-flex-direction: row;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 
 
 }

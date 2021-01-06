@@ -1,47 +1,47 @@
 <template>
-    <div class="marketPool">
-      <h3 class="label">{{ labels.marketLabel }}</h3>
-       <div class="iconPlacement">
+  <div class="marketPool">
+    <h3 class="label">{{ labels.marketLabel }}</h3>
+    <div class="iconPlacement">
       <div class="iconFastaval"></div>
       <div class="iconMovie"></div>
       <div class="iconTech"></div>
       <div class="iconFigures"></div>
       <div class="iconMusic"></div>
-      </div>
-      <div class="bottlePlacement">
-        <div class="buttons" v-for="(p, index) in placement" :key="index">
-          <button
-            v-if="p.playerId === null"
-            :class="[
-              { doubleblueEnergy: p.id == 8 },
-              { marketDollar: p.id == 9 },
-              { blueEnergy: p.id == 10 },
-            ]"
-            :disabled="cannotAfford(p.cost)"
-            @click="placeBottle(p)"
-          >
-            ${{ p.cost }}
-          </button>
-          <div v-if="p.playerId !== null">
-            {{ p.playerId }}
-          </div>
-        </div>
-      </div>
-      <div class="chategoryVal" v-for="(value,chategory) in marketValues" :key = "chategory">
-
-        {{chategory}}: {{value}}
-        <!-- <p> {{ index }} : {{ type }} </p> -->
-
     </div>
-
-    <div class="buttons2">
-      <button @click="drawCard">
-        {{ labels.draw }}
+    <div class="bottlePlacement">
+      <div class="buttons" v-for="(p, index) in placement" :key="index">
+        <button
+        v-if="p.playerId === null"
+        :class="[
+        { doubleblueEnergy: p.id == 8 },
+        { marketDollar: p.id == 9 },
+        { blueEnergy: p.id == 10 },
+        ]"
+        :disabled="cannotAfford(p.cost)"
+        @click="placeBottle(p)"
+        >
+        ${{ p.cost }}
       </button>
+      <div v-if="p.playerId !== null">
+        {{ p.playerId }}
+      </div>
     </div>
+  </div>
+  <div class="chategoryVal" v-for="(value,chategory) in marketValues" :key = "chategory">
 
-    <div class="changeValue">
-      <button class="raiseButton" @click="figures +=1">
+    {{chategory}}: {{value}}
+    <!-- <p> {{ index }} : {{ type }} </p> -->
+
+  </div>
+
+  <div class="buttons2">
+    <button @click="drawCard">
+      {{ labels.draw }}
+    </button>
+  </div>
+
+  <div class="changeValue">
+    <button class="raiseButton" @click="figures +=1">
       Raise Fastaval
     </button>
     <button class="raiseButton" @click="currentBid -= 1">
@@ -56,8 +56,8 @@
     <button class="raiseButton" @click="currentBid -= 1">
       Raise Movies
     </button>
-    </div>
-    </div>
+  </div>
+</div>
 </template>
 
 <script>
@@ -65,49 +65,49 @@
 export default {
   name: "CollectorsMarketActions",
   /*components: {
-    CollectorsCard, //kommentera bort hela?
-  }, */
-  props: {
-    labels: Object,
-    player: Object,
-    market: Array,
-    skillsOnSale: Array, //?? + auction??
-    marketValues: Object,
-    placement: Array,
+  CollectorsCard, //kommentera bort hela?
+}, */
+props: {
+  labels: Object,
+  player: Object,
+  market: Array,
+  skillsOnSale: Array, //?? + auction??
+  marketValues: Object,
+  placement: Array,
+},
+methods: {
+  cannotAfford: function (cost) {
+    let minCost = 100;
+    for (let key in this.marketValues) {
+      if (cost + this.marketValues[key] < minCost)
+      minCost = cost + this.marketValues[key];
+    }
+    return this.player.money < minCost;
   },
-  methods: {
-    cannotAfford: function (cost) {
-      let minCost = 100;
-      for (let key in this.marketValues) {
-        if (cost + this.marketValues[key] < minCost)
-          minCost = cost + this.marketValues[key];
+  cardCost: function (card) {
+    return this.marketValues[card.market];
+  },
+  placeBottle: function (p) {
+    this.$emit("placeBottle", p);
+    this.highlightAvailableCards();
+  },
+  highlightAvailableCards: function () {
+    for (let i = this.skillsOnSale.length -1; i >= 0; i -= 1) {
+      if (this.skillsOnSale[i].x > 0) {
+        this.$set(this.skillsOnSale[i], "available", true);
+        break;
       }
-      return this.player.money < minCost;
-    },
-    cardCost: function (card) {
-      return this.marketValues[card.market];
-    },
-    placeBottle: function (p) {
-      this.$emit("placeBottle", p);
-      this.highlightAvailableCards();
-    },
-    highlightAvailableCards: function () {
-      for (let i = this.skillsOnSale.length -1; i >= 0; i -= 1) {
-          if (this.skillsOnSale[i].x > 0) {
-          this.$set(this.skillsOnSale[i], "available", true);
-          break;
-      }
-      }
-      /* kolla att x attribut finns innan for
-      for (let i = 0; i < this.player.hand.length; i += 1) {
-        this.$set(this.player.hand[i], "available", true);
-      }
-        this.chosenPlacementCost = cost;
-    },  */
+    }
+    /* kolla att x attribut finns innan for
+    for (let i = 0; i < this.player.hand.length; i += 1) {
+    this.$set(this.player.hand[i], "available", true);
+  }
+  this.chosenPlacementCost = cost;
+},  */
 
 
-    },
-  },
+},
+},
 }
 </script>
 
@@ -119,11 +119,11 @@ export default {
   grid-template-rows: 5vh 10vh 5vh 5vh;
   grid-template-columns: 1fr;
   grid-template-areas:  "label"
-                        "bottlePlacement" "value" "button"
-                        "icons"
-                        "counter"
+  "bottlePlacement" "value" "button"
+  "icons"
+  "counter"
 
-                        ;
+  ;
 }
 
 /*.chategoryVal {
@@ -133,13 +133,13 @@ display: -webkit-box;
 display: -moz-box;
 display: -ms-flexbox;
 display:   -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  -moz-flex-direction: row;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
+display: flex;
+-webkit-flex-direction: row;
+-moz-flex-direction: row;
+flex-direction: row;
+flex-wrap: nowrap;
+justify-content: center;
+align-items: center;
 
 }*/
 
@@ -148,7 +148,7 @@ display:   -webkit-flex;
 }
 
 .label {
-grid-area: label;
+  grid-area: label;
 }
 .doubleblueEnergy {
   background-image: url("/images/marketbluee.png");
@@ -182,13 +182,13 @@ grid-area: label;
   display: -moz-box;
   display: -ms-flexbox;
   display:   -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    -moz-flex-direction: row;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 
 }
 .iconPlacement {
@@ -198,13 +198,13 @@ grid-area: label;
   display: -moz-box;
   display: -ms-flexbox;
   display:   -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    -moz-flex-direction: row;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 
 }
 .iconFastaval {
@@ -239,21 +239,21 @@ grid-area: label;
 }
 .raiseValue{
   background-color: black;
-grid-area: raiseBid;
-display: grid;
+  grid-area: raiseBid;
+  display: grid;
   grid-template-columns: repeat(auto-fill, 8vw);
 }
 .raiseButton {
   background-color:  rgb(137, 199, 214);
-    width: auto;
-    border:1px solid gray;
-    border-radius:7%;
+  width: auto;
+  border:1px solid gray;
+  border-radius:7%;
 
-    font-size:0.875;
+  font-size:0.875;
 }
 
 .buttons2 {
-grid-area:button;
+  grid-area:button;
 
 }
 </style>
