@@ -90,6 +90,10 @@ function sockets(io, socket, data) {
       io.to(d.roomId).emit('collectorsBottlePlaced', data.getPlacements(d.roomId)
       );
     });
+
+    //socket.on('colledtorsGetMonet', function(d) {
+    //  data.p
+    //})
 }
 
 module.exports = sockets;
