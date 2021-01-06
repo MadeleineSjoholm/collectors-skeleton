@@ -34,6 +34,13 @@
         <!-- <p> {{ index }} : {{ type }} </p> -->
 
     </div>
+
+    <div class="buttons2">
+      <button @click="drawCard">
+        {{ labels.draw }}
+      </button>
+    </div>
+
     <div class="changeValue">
       <button class="raiseButton" @click="figures +=1">
       Raise Fastaval
@@ -110,12 +117,37 @@ export default {
 .marketPool {
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 5vh 20vh 15vh;
+  grid-template-rows: 5vh 10vh 5vh 5vh;
   grid-template-columns: 1fr;
   grid-template-areas:  "label"
-                        "bottlePlacement"
-                        "icons";
+                        "bottlePlacement" "value" "button"
+                        "icons"
+                        "counter"
+
+                        ;
 }
+
+/*.chategoryVal {
+grid-area: counter;
+
+display: -webkit-box;
+display: -moz-box;
+display: -ms-flexbox;
+display:   -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+
+}*/
+
+.changeValue {
+  grid-area: value;
+}
+
 .label {
 grid-area: label;
 }
@@ -141,43 +173,69 @@ grid-area: label;
   border-radius: 15%;
 }
 .bottlePlacement {
-  grid-area: bottlePlacement;
+  /*grid-area: bottlePlacement;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 15vw);
+  grid-template-columns: repeat(auto-fill, 15vw);*/
+
+  grid-area: bottlePlacement;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display:   -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+
 }
 .iconPlacement {
   grid-area: icons;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 15vw);
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display:   -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+
 }
 .iconFastaval {
   background-image: url("/images/market2.png");
-  height: 15vh;
-  width: 15vw;
+  height: 10vh;
+  width: 10vw;
   background-size: cover;
 }
 .iconMovie {
   background-image: url("/images/market3.png");
-  height: 15vh;
-  width: 15vw;
+  height: 10vh;
+  width: 10vw;
   background-size: cover;
 }
 .iconTech {
   background-image: url("/images/market1.png");
-  height: 15vh;
-  width: 15vw;
+  height: 10vh;
+  width: 10vw;
   background-size: cover;
 }
 .iconFigures {
   background-image: url("/images/market5.png");
-  height: 15vh;
-  width: 15vw;
+  height: 10vh;
+  width: 10vw;
   background-size: cover;
 }
 .iconMusic {
   background-image: url("/images/market4.png");
-  height: 15vh;
-  width: 15vw;
+  height: 10vh;
+  width: 10vw;
   background-size: cover;
 }
 .raiseValue{
@@ -191,9 +249,12 @@ display: grid;
     width: auto;
     border:1px solid gray;
     border-radius:7%;
-    
+
     font-size:0.875;
 }
+
+.buttons2 {
+grid-area:button;
+
+}
 </style>
-
-

@@ -130,12 +130,13 @@
           </div>
         </div>
 
-
+<div class="test" >
       <div class="clickable1">
         <div v-for="(player, pid) in players"  :key="pid" @click="togglePlayerBoard(pid)" >
           <div v-if="pid!=playerId"> MOTSTÅNDARE </div>
         </div>
       </div>
+    </div>
         <div>
 
           <div  v-for="(player, pid) in players" :key="pid" :class="['player1', {'ishidden' : isHidden(pid)}]">
@@ -466,7 +467,7 @@ main {
   box-sizing: border-box; /*huvudgriden, hänvisa till kod här*/
   display: grid;
   grid-gap: 10px;
-  grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr;
+  grid-template-rows: 0.5fr 0.5fr 0fr 0fr;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "itemPool skillPool"
@@ -493,7 +494,7 @@ main {
 .marketPool {
   grid-area: marketPool;
   background-color: #66a3ff;
-  max-height: 50vh;
+  max-height: 40vh;
 }
 .auctionPool {
   grid-area: auctionPool;
@@ -590,15 +591,20 @@ main {
 
 /* clickable för motståndare*/
 .clickable1 {
-  position: fixed;
-  right: 25%;
-  top: 0%;
-  cursor: pointer;
-  background: #4d94ff;
-  margin-right: 1.5em;
-  width: 23vw;
+
+
 }
 
+.test{
+position: absolute;
+right: 25%;
+top: 0%;
+cursor: pointer;
+background: #4d94ff;
+margin-right: 1.5em;
+width: 23vw;
+
+}
 .money {
   height: 100;
 }
