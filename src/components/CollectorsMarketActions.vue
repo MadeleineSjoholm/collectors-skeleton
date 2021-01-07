@@ -41,19 +41,19 @@
   </div>
 
   <div class="changeValue">
-    <button class="raiseButton" @click="figures +=1">
+    <button class="raiseButton" >
       Raise Fastaval
     </button>
-    <button class="raiseButton" @click="currentBid -= 1">
+    <button class="raiseButton">
       Raise Movie
     </button>
-    <button class="raiseButton" @click="currentBid -= 1">
+    <button class="raiseButton" >
       Raise Technology
     </button>
-    <button class="raiseButton" @click="currentBid -= 1">
+    <button class="raiseButton" >
       Raise Figures
     </button>
-    <button class="raiseButton" @click="currentBid -= 1">
+    <button class="raiseButton">
       Raise Movies
     </button>
   </div>
