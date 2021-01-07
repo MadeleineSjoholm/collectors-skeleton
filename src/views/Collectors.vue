@@ -1,6 +1,9 @@
 <template>
   <div>
     <main>
+      {{ players }}
+      {{ workPlacement}}
+
       <div class="table">
         <div class="board">
           <div class="skillPool">
@@ -70,7 +73,7 @@
             <CollectorsWorkActions
             v-if="players[playerId]"
             :labels="labels"
-            
+
             :player="players[playerId]"
             :placement="workPlacement"
             @placeBottle="placeBottle('market', $event)"
@@ -371,12 +374,14 @@ created: function () {
         this.players = d.players;
       }
       //this.buyplacement = d.placements.buyplacement ?????
-      this.buyPlacement = d.buyPlacement;
-      this.skillPlacement = d.skillPlacement;
-      this.marketPlacement = d.marketPlacement;
-      this.auctionPlacement = d.auctionPlacement;
 
-      this.workPlacement = d.workPlacement;
+      console.log("placement",d.placements);
+      this.buyPlacement = d.placements.buyPlacement;
+      this.skillPlacement = d.placements.skillPlacement;
+      this.marketPlacement = d.placements.marketPlacement;
+      this.auctionPlacement = d.placements.auctionPlacement;
+
+      this.workPlacement = d.placements.workPlacement;
       this.playOrder = d.playOrder;
       this.actingPlayer = d.actingPlayer;
       if (this.numberOfActions === 0) {
@@ -426,7 +431,8 @@ this.$store.state.socket.on(
 this.$store.state.socket.on(
   "collectorsAuctionStarted",
   function (d) {
-    console.log(d.playerId, "Initiated auction");
+    console.log(d.playerId, "Initiated auction", d.upForAuction);
+
     this.auctionCards = d.auctionCards;
     this.players = d.players;
     this.upForAuction = d.upForAuction;
@@ -462,8 +468,8 @@ methods: {
   selectAll: function (n) {
     n.target.select();
   },
-  placeBottle: function (action, id) {
-
+  placeBottle: function (action, p) {
+    let id = p.id;
 
     if (action === "work" && id <= 3 || action === "market" && id <= 2) {
       this.numberOfActions = 2;
@@ -854,4 +860,3 @@ footer a:visited {
   }
 }
 </style >
-

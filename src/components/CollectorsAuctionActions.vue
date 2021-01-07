@@ -2,8 +2,23 @@
   <div>
     <div class="auctionPool">
       <h3 class="label">{{ labels.auctionLabel }}</h3>
+      <div class="auctionCards">
+        <CollectorsCard
+        v-for="(card, index) in auctionCards"
+        :card="card"
+        :key="index"
+        :availableAction="card.available"
+        @doAction="initiateAuction(card)"
+        />
+      </div>
+      <div class="cardToAuction">
+        <CollectorsCard :card="upForAuction"/>
+
+      </div>
       <div class="bottlePlacement">
+
         <div class="buttons" v-for="(p, index) in placement" :key="index">
+
           <button
           v-if="p.playerId === null"
           :class="[
@@ -20,24 +35,12 @@
           {{ p.playerId }}
 
         </div>
+
       </div>
     </div>
   </div>
  <!-- {{ auctionCards }} -->
 
-  <div class="auctionCards">
-    <CollectorsCard
-    v-for="(card, index) in auctionCards"
-    :card="card"
-    :key="index"
-    :availableAction="card.available"
-    @doAction="initiateAuction(card)"
-    />
-  </div>
-  <div class="cardToAuction">
-    <CollectorsCard :card="upForAuction"/>
-
-  </div>
 
   <!--  <div>
    <button
@@ -154,11 +157,11 @@ export default {
   box-sizing: border-box;
   display: grid;
   grid-template-rows: 5vh 25vh 20vh 5vh;
-  grid-template-columns: 1fr;
-  grid-template-areas:  "label"
-  "bottlePlacement"
-  "auctionCards" "cardToAuction"
-  "raiseBid";
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:  "label label"
+  "bottlePlacement bottlePlacement"
+  "auctionCards cardToAuction"
+  "raiseBid raiseBid";
 }
 
 .label {

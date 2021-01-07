@@ -37,7 +37,6 @@
     {{ cardCost(card) }}
   </div>
 </div>
-
 <div class ="bottles" >
   <div class="buttons" v-for="(p, index) in placement" :key="index">
     <button

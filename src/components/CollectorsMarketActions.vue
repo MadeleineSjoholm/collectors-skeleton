@@ -34,11 +34,6 @@
 
   </div>
 
-  <div class="buttons2">
-    <button @click="drawCard">
-      {{ labels.draw }}
-    </button>
-  </div>
 
   <div class="changeValue">
     <button class="raiseButton" >

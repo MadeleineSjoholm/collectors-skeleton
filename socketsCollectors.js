@@ -52,19 +52,20 @@ function sockets(io, socket, data) {
     io.to(d.roomId).emit('collectorsCardBought', {
       playerId: d.playerId,
       players: data.getPlayers(d.roomId),
-      itemsOnSale: data.getItemsOnSale(d.roomId)
+      itemsOnSale: data.getItemsOnSale(d.roomId),
+      actingPlayer: data.getActingPlayer(d.roomId)
     }
     );
   });
   /* socket.on('collectorsBuyItem', function(d) {
       data.buyItem(d.roomId, d.playerId, d.card, d.cost)
-      io.to(d.roomId).emit('collectorsItemBought', { 
+      io.to(d.roomId).emit('collectorsItemBought', {
           playerId: d.playerId,
           players: data.getPlayers(d.roomId),
           itemsOnSale: data.getItemsOnSale(d.roomId)
         }
       );
-    }); 
+    });
     samma men ändrade namn
     */
   socket.on('collectorsSkillsCard', function (d) {
@@ -115,11 +116,7 @@ function sockets(io, socket, data) {
     );
   }
   );
-  socket.on('collectorsPlaceBottle', function (d) {
-    data.placeBottle(d.roomId, d.playerId, d.action, d.id);
-    io.to(d.roomId).emit('collectorsBottlePlaced', data.getPlacements(d.roomId)
-    );
-  });
+  
 
 socket.on('collectorsPlaceBottle', function (d) {
   data.placeBottle(d.roomId, d.playerId, d.action, d.id);
