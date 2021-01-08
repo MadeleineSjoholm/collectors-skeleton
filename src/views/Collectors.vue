@@ -739,7 +739,13 @@ main {
 
 /* clickable för motståndare*/
 .clickable1 {
-
+  /*position: absolute;
+  right: 25%;
+  top: 0%;
+  cursor: pointer;
+  background: #4d94ff;
+  margin-right: 1.5em;
+  width: 23vw; */
 
 }
 
