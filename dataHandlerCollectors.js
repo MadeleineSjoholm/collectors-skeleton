@@ -279,20 +279,22 @@ Data.prototype.passBidding = function (roomId, playerId, card) {
     room.players[playerId].inAuction === false;
     let auc = room.upForAuction;
     let highestBidId = playerId;
+    
     for (let i in room.players) {
       if (room.players[i].currentBid === room.leadingBid) {
         highestBidId = i;
-        console.log(highestbidId)
+        
       }
       if (room.players[i].inAuction === true) {
         playersInAuction += 1;
       }
     }
-    if (playersInAuction < 2) {
-      // console.log(auc)
+    if (playersInAuction === 1) {
       room.players[highestBidId].hand.push(auc);
       room.upForAuction = {};
+      
     }
+    console.log("playerId and card", highestBidId, auc)
   }
 }
 

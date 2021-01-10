@@ -11,6 +11,11 @@
 	"players": "players",
 	"numberMoney": "Money: ",
 	"numberBottles": "Number of bottles: ",
+	
+	"leadingLabel:": "The leading bid is:",
+	"leadingPlayer": "Submitted by player:",
+	"ownBid": "Your bid:",
+	"subBid": "Submit bid",
 
 	"gameRules": "Spelregler",
 	"homepage": "Back to homepage",
@@ -20,4 +25,6 @@
 	"skillDollar": "Gain $1 whenever an auction is started by any player.",
 	"skillStar": "Get 1 extra VP for each item you own of the specific category at the end of the game.",
 	"skillStars": "Get 5 VP if you own at least one item from each category at the send of the game."
+
+	
 }
