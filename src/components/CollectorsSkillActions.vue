@@ -96,7 +96,7 @@ export default {
 .skillPool {
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 5vh 15vh 35vh;
+  grid-template-rows: 5vw 15vw 35vw;
   grid-template-columns: 1fr;
   grid-template-areas:  "label"
   "skillCards"
@@ -145,17 +145,18 @@ export default {
 .skillCards {
   grid-area: skillCards;
   display: grid;
+  transform: scale(0.7);
   grid-template-columns: repeat(auto-fill, 130px);
   grid-template-rows: repeat(auto-fill, 180px);
 }
 .skillCards div {
-  transform: scale(0.5) translate(-50%, -50%);
+  transform: scale(0.7) ;
   transition: 0.2s;
   transition-timing-function: ease-out;
   z-index: 0;
 }
 .skillCards div:hover {
-  transform: scale(0.5) translate(-25%, 0);
+  transform: scale(0.7) ;
   z-index: 1;
 }
 </style>

@@ -27,6 +27,11 @@
 
   </div>
 
+  <div class="buttons2">
+    <button @click="drawCard">
+      {{ labels.draw }}
+    </button>
+  </div>
 
   <div class="changeValue">
     <button class="iconFastaval" >
@@ -107,7 +112,7 @@ methods: {
 .marketPool {
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 5vh 10vh 5vh 5vh;
+  grid-template-rows: 5vw 10vw 5vw 5vw;
   grid-template-columns: 1fr;
   grid-template-areas:  "label"
   "bottlePlacement" "value" "value"
@@ -119,7 +124,7 @@ methods: {
   grid-area: icons;
   grid-column: auto;
   grid-row: auto;
-  font-size: 90%;
+
 }
 /*.chategoryVal {
 grid-area: counter;
