@@ -1,8 +1,6 @@
 <template>
   <div>
     <main>
-      {{ players }}
-      {{ workPlacement}}
 
       <div class="table">
         <div class="board">
@@ -547,7 +545,7 @@ initiateAuction: function (card) {
   }
 );
 },
-//Kommentar i vårt dokument om HandleEvent (Vi tror att det är rätt namn)
+//Kommentar i vårt dokument om HandleEvent
 handleEvent: function (card) {
   if (this.numberOfActions > 0) {
     this.numberOfActions -= 1;

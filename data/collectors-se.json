@@ -23,6 +23,7 @@
 	"skillDollar": "Få $1 när en auktion startas av någon spelare.",
 	"skillStar": "Få en extra VP i slutet av spelet för varje artikel av varje kategori som du äger.",
 	"skillStars": "Få 5 VP i slutet av spelet om du äger åtminstone en artikel från varje kategori.",
+<<<<<<< HEAD
 	"workDescription": "I work-sektionen kan du öka dina inkomster, återvinna flaskor, dra kort och bli den första spelaren. Om du placerar din flaska i den översta rutan (quarter tiles) måste du placera två kort upp och ner från din hand bredvid spelarkortet på höger sida. Observera att detta quarter tile-rutan ändrar egenskaper under fjärde kvartalet.",
 	"auctionDescription": "Välj ett av de fyra korten som finns utlagda i auktions-sektionen eller välj ett kort från din hand och placera det i det utrymme som är reserverat för auktionsobjekt. Spelaren som valde att starta auktionen får bjuda valfritt antal mynt med minst ett. Nu måste spelaren till vänster lägga ett högre bud eller passa. Fortsätt medurs tills alla spelare utom en har passat. Spelaren som vann auktionen måste betala budbeloppet som den budade sist med. Spelaren som vinner auktionen får placera kortet var de vill; som ett föremål i deras Player Hand, som en marknadsandel i marknads-sektionen eller som en skill i deras Player Hand.",
 	"marketDescription": "I market-sektionen placerar du kort i marknadspoolen lika med antalet blåa kort på flaskorna (ett eller två kort). Du kan placera kort från din hand, från kortet i den sista positionen i skill-sektionen eller från det lägsta kortet i auktions-sektionen. När du placerar ett kort i marknadspollen höjer du värdet på den ikonen som kortet har längst ner till vänster på kortet.",
@@ -30,4 +31,11 @@
 	"scoringOne": "Varje item ger spelaren en poäng per marknadskort i marknadspoolen som delar symbol med item-kortet. Om det inte finns några matchande kort i marknads-sektionen till ett föremål är det noll poäng värt.",
 	"scoringTwo": "Var tredje $1 ger spelaren en poäng.",
 	"scoringThree": "Vissa skillskort ger fler poäng (se special skills)"
+=======
+
+	"leadingBid": "Ledande budet är",
+	"leadingPlayer": "Lagt av",
+	"ownBid": "Ditt bud",
+	"subBid": "Lägg bud"
+>>>>>>> 6caa0fb2bc7a667dec09c96210f43c82bdd200b1
 }
