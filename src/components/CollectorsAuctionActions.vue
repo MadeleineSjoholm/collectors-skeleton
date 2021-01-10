@@ -15,6 +15,11 @@
         <CollectorsCard :card="upForAuction"/>
 
       </div>
+      <div class="buttons2">
+         <button @click="drawCard">
+          {{ labels.draw }}
+        </button>
+      </div>
       <div class="bottlePlacement">
 
         <div class="buttons" v-for="(p, index) in placement" :key="index">
@@ -62,8 +67,8 @@
   -->
 
   <div  class="raiseBid">
- {{ labels.leadingLabel }} {{ leadingBid.bid }} {{ labels.leadingPlayer }} {{ leadingBid.playerId }} 
- 
+ {{ labels.leadingLabel }} {{ leadingBid.bid }} {{ labels.leadingPlayer }} {{ leadingBid.playerId }}
+
   {{ labels.ownBid }}: {{ currentBid }}
  <button class="bidButton" @click="currentBid -= 1">
       -

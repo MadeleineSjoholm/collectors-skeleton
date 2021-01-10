@@ -98,15 +98,26 @@
     <div :class="['player', { ishidden: isHidden('player') }]">
       <div class="playerHand">
         PLAYERHAND {{ playerId }} <br />
-
+        <div class="money">
+          <div class="column">
+            <div v-if="players[playerId]" @click="players[playerId].money += 1" ><img src="/images/mynt.png" width="50"></div>
+            <span v-if="players[playerId]"> {{ players[playerId].money }} </span>
+          </div>
+          <div class="column">
+            <div v-if="players[playerId]" @click="players[playerId].bottles += 1"><img src="/images/flskaa.png" width="50"></div>
+            <span v-if="players[playerId]"> {{ players[playerId].bottles }} </span> <br>
+          </div>
+          <div class="column">
+            <div v-if="players[playerId]" @click="players[playerId].points += 1"><img src="/images/collectors.png" width="50"></div>
+            <span v-if="players[playerId]"> {{ players[playerId].points }} </span> <br>
+          </div>
+          </div>
         Hand
 
         <div class="cardslots" v-if="players[playerId]">
           <CollectorsCard
           v-for="(card, index) in players[playerId].hand"
           :card="card"
-
-
           :key="index"
           />
         </div>
@@ -129,20 +140,6 @@
           />
         </div>
 
-        <div class="money">
-
-          <div v-if="players[playerId]" @click="players[playerId].money += 1" ><img src="/images/mynt.png" width="50"></div>
-          <span v-if="players[playerId]"> {{ players[playerId].money }} </span>
-          <div v-if="players[playerId]" @click="players[playerId].money += 1" ></div>
-
-          <br>
-
-          <span v-if="players[playerId]"> {{ players[playerId].bottles }} </span>
-          <div v-if="players[playerId]" @click="players[playerId].bottles += 1">
-            <img src="/images/flskaa.png" width="50"></div>
-
-            Points: <span v-if="players[playerId]"> {{ players[playerId].points }} </span>
-          </div>
         </div>
       </div>
 
@@ -728,8 +725,20 @@ main {
 }
 .money {
   height: 100;
-}
+  display: flex;
 
+}
+.column{
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+/* Clear floats after image containers */
+.money::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 .player {
   background: #e6ccff;
   position: fixed;
