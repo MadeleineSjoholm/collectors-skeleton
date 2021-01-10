@@ -17,15 +17,9 @@
 	"ownBid": "Your bid:",
 	"subBid": "Submit bid",
 
-	"leadingLabel:": "The leading bid is:",
-	"leadingPlayer": "Submitted by player:",
-	"ownBid": "Your bid:",
-	"subBid": "Submit bid",
-
 	"gameRules": "Spelregler",
 	"homepage": "Back to homepage",
 
-	"workDescription": "In the item section, you buy one of the available item cards and get the card to your player hand. There is no upper limit in the number of items you may own. In addition to the cost in the action space, you must pay $1 per card in the Market pool that has the same symbol as the item you just bought.",
 	"skillDescription": "In the skills section, you buy one of the available skill cards and get the card to your player hand. If you own more than one card of the same skill type you use that skill once per card you own. There are six skills available in collectors:",
 	"workDollar": "Gain $2 whenever you place a worker in the work area.",
 	"workCard": "Draw a card whenever you place a worker in the work area.",
