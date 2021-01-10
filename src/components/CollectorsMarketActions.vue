@@ -1,7 +1,7 @@
 <template>
   <div class="marketPool">
     <h3 class="label">{{ labels.marketLabel }}</h3>
-  
+
     <div class="bottlePlacement">
       <div class="buttons" v-for="(p, index) in placement" :key="index">
         <button
@@ -28,9 +28,9 @@
   </div>
 
   <div class="buttons2">
-    <button @click="drawCard">
+    <!-- <button @click="drawCard">
       {{ labels.draw }}
-    </button>
+    </button> -->
   </div>
 
   <div class="changeValue">
@@ -69,7 +69,7 @@ props: {
   placement: Array,
 },
 methods: {
-  
+
   cannotAfford: function (cost) {
     let minCost = 100;
     for (let key in this.marketValues) {
@@ -94,7 +94,7 @@ methods: {
       }
       console.log(this.skillsOnSale);
     }
-    
+
     /* kolla att x attribut finns innan for
     for (let i = 0; i < this.player.hand.length; i += 1) {
     this.$set(this.player.hand[i], "available", true);
