@@ -27,11 +27,11 @@
 
   </div>
 
-  <div class="buttons2">
+  <!--<div class="buttons2">
     <button @click="drawCard">
       {{ labels.draw }}
     </button>
-  </div>
+  </div> -->
 
   <div class="changeValue">
     <button class="iconFastaval" >
