@@ -14,10 +14,21 @@
 
 	"gameRules": "Spelregler",
 	"homepage": "Back to homepage",
+
+	"workDescription": "In the item section, you buy one of the available item cards and get the card to your player hand. There is no upper limit in the number of items you may own. In addition to the cost in the action space, you must pay $1 per card in the Market pool that has the same symbol as the item you just bought.",
+	"skillDescription": "In the skills section, you buy one of the available skill cards and get the card to your player hand. If you own more than one card of the same skill type you use that skill once per card you own. There are six skills available in collectors:",
 	"workDollar": "Gain $2 whenever you place a worker in the work area.",
 	"workCard": "Draw a card whenever you place a worker in the work area.",
 	"skillBottle": "Immediately gain a new bottle. You may use it this quarter.",
 	"skillDollar": "Gain $1 whenever an auction is started by any player.",
 	"skillStar": "Get 1 extra VP for each item you own of the specific category at the end of the game.",
-	"skillStars": "Get 5 VP if you own at least one item from each category at the send of the game."
+	"skillStars": "Get 5 VP if you own at least one item from each category at the send of the game.",
+	"workDescription": "In the work area, you perform actions to increase your income, recycle bottles, draw cards and become the first player. If you place your bottle in the uppermost action space (on the quarter tile), you must place two cards upside down from your hand next to your player board on its right side. Note that this action space changes characteristics during the fourth quarter to resemble the action spot below it.",
+	"auctionDescription": "Choose one of the four cards in the Auction pool or one card from your hand and place it in the space reserved for auctioned items.The player who chose this action may bid any number of coins with a minimum of one. Now the player to their left must place a higher bid or pass. Continue in clockwise order until all players but one has passed. The player that won the auction must pay the bid amount to the supply. The player that wins the auction may place the card wherever they want; as an item under their player board, as a market share in the market pool, or as a skill under their player board.",
+	"marketDescription": "When executing this action, you must place cards in the market pool equal to the number of seals on your action space (one or two cards). You may place cards from your hand, from the card in the lowest position in the skill pool, or from the lowest card in the auction pool. When you place a card in the market pool, you tuck the cards under the icon on the game board that matches the icon on the bottom left of the card.",
+
+	"scoringDescription": "At the end of the game, you total your points. The player with the most points is the winner of the game. In the case of a tie, the player with the most cards in their hand wins. If there’s still a tie, the victory is shared. Count your number of points as follows:",
+	"scoringOne": "Each item gives their owner one point per market card in the market pool sharing the item symbol with the item. If there are no matching cards in the market pool to an item it is worth zero points.",
+	"scoringTwo": "Every third $1 gives their owner one point.",
+	"scoringThree": "Some skill cards give further points (see the section on Special skills)."
 }
