@@ -1,5 +1,8 @@
 <template>
+
+
   <div class="itemPool">
+
     <div class="infoButton">
       <router-link :to="{ name: 'Rules', params: {} }"><img src="/images/question.png" width= "50"></router-link>
     </div>
@@ -37,6 +40,7 @@
     {{ cardCost(card) }}
   </div>
 </div>
+
 <div class ="bottles" >
   <div class="buttons" v-for="(p, index) in placement" :key="index">
     <button
@@ -104,18 +108,18 @@ export default {
       for (let i = 0; i < this.player.hand.length; i += 1) {
         if (this.marketValues[this.player.hand[i].item] <= this.player.money - cost) {
           this.$set(this.player.hand[i], "available", true);
-          this.chosenPlacementCost = cost; //Denna kod har inte han
+          this.chosenPlacementCost = cost;
         }
         else {
           this.$set(this.player.hand[i], "available", false);
-          this.chosenPlacementCost = cost; //Denna kod har inte han
+          this.chosenPlacementCost = cost;
         }
       }
     },
     buyCard: function (card) {
       if (card.available) {
         this.$emit('buyCard', card)
-        this.highlightAvailableCards() //Denna kod har inte han
+        this.highlightAvailableCards()
       }
     }
 
@@ -129,7 +133,7 @@ export default {
 .itemPool {
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 5vh 1vh 25vh;
+  grid-template-rows: 3vw 4vw 9vw;
   grid-template-columns: 1fr;
   grid-template-areas:  "label" "infoButton"
   "buy-cards"
@@ -144,7 +148,7 @@ export default {
 .buy-cards {
   grid-area: buy-cards;
   display: grid;
-  transform: scale(0.5) translate(-10%, -40%);
+  transform: scale(0.7) translate(-10%, -40%);
   grid-template-columns: repeat(auto-fill, 130px);
   grid-template-rows: repeat(auto-fill, 180px);
 }
