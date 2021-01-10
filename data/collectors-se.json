@@ -19,5 +19,10 @@
 	"skillBottle": "Få genast en ny flaska. Du får använda den i den här rundan.",
 	"skillDollar": "Få $1 när en auktion startas av någon spelare.",
 	"skillStar": "Få en extra VP i slutet av spelet för varje artikel av varje kategori som du äger.",
-	"skillStars": "Få 5 VP i slutet av spelet om du äger åtminstone en artikel från varje kategori."
+	"skillStars": "Få 5 VP i slutet av spelet om du äger åtminstone en artikel från varje kategori.",
+
+	"leadingBid": "Ledande budet är",
+	"leadingPlayer": "Lagt av",
+	"ownBid": "Ditt bud",
+	"subBid": "Lägg bud"
 }

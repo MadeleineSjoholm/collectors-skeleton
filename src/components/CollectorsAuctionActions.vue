@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="auctionPool">
-      <h3 class="label">{{ labels.auctionLabel }}</h3>
+      <h3 class="label">{{ labels.auctionLabel }} </h3>
       <div class="auctionCards">
         <CollectorsCard
         v-for="(card, index) in auctionCards"
@@ -62,14 +62,14 @@
   -->
 
   <div  class="raiseBid">
-
-  {{ leadingBid }}
-  {{ currentBid }}
+ {{ labels.leadingLabel }} {{ leadingBid.bid }} {{ labels.leadingPlayer }} {{ leadingBid.playerId }} 
+ 
+  {{ labels.ownBid }}: {{ currentBid }}
  <button class="bidButton" @click="currentBid -= 1">
       -
     </button>
     <button id="submitBidButton" :disabled="player.money < currentBid || currentBid < leadingBid + 1" @click="submitCurrentBid()">
-      Submit bid
+      {{ labels.subBid }} (<strong>{{ currentBid }}</strong>)
     </button>
     <button class="bidButton" @click="currentBid += 1">
       +
@@ -101,7 +101,6 @@ export default {
   data: function () {
     return {
       currentBid: 0,
-      //inAuction: true,
     }
   },
   methods: {
@@ -188,6 +187,8 @@ export default {
 }
 .cardToAuction {
   grid-area: cardToAuction;
+  height: auto;
+  width: auto;
   background-image: url("/images/auction.png");
 
 }
@@ -233,14 +234,14 @@ grid-area: raiseBid;
 display: grid;
   grid-template-columns: repeat(auto-fill, 8vw);
 }
- .payHandButton {
+/* .payHandButton {
     background-color:  rgb(137, 199, 214);
     width: auto;
     border:1px solid gray;
     border-radius:7%;
 
     font-size:0.875;
-  }
+  }*/
 .bidButton {
     background-color: white;
     width: auto;
