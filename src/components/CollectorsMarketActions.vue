@@ -1,13 +1,7 @@
 <template>
   <div class="marketPool">
     <h3 class="label">{{ labels.marketLabel }}</h3>
-    <div class="iconPlacement">
-      <div class="iconFastaval"></div>
-      <div class="iconMovie"></div>
-      <div class="iconTech"></div>
-      <div class="iconFigures"></div>
-      <div class="iconMusic"></div>
-    </div>
+  
     <div class="bottlePlacement">
       <div class="buttons" v-for="(p, index) in placement" :key="index">
         <button
@@ -30,25 +24,29 @@
   <div class="chategoryVal" v-for="(value,chategory) in marketValues" :key = "chategory">
 
     {{chategory}}: {{value}}
-    <!-- <p> {{ index }} : {{ type }} </p> -->
 
   </div>
 
+  <div class="buttons2">
+    <button @click="drawCard">
+      {{ labels.draw }}
+    </button>
+  </div>
 
   <div class="changeValue">
-    <button class="raiseButton" >
+    <button class="iconFastaval" >
       Raise Fastaval
     </button>
-    <button class="raiseButton">
+    <button class="iconMovie" @click="value.fastaval += 1">
       Raise Movie
     </button>
-    <button class="raiseButton" >
+    <button class="iconTech" >
       Raise Technology
     </button>
-    <button class="raiseButton" >
+    <button class="iconFigures" >
       Raise Figures
     </button>
-    <button class="raiseButton">
+    <button class="iconMusic">
       Raise Movies
     </button>
   </div>
@@ -71,6 +69,7 @@ props: {
   placement: Array,
 },
 methods: {
+  
   cannotAfford: function (cost) {
     let minCost = 100;
     for (let key in this.marketValues) {
@@ -79,6 +78,7 @@ methods: {
     }
     return this.player.money < minCost;
   },
+
   cardCost: function (card) {
     return this.marketValues[card.market];
   },
@@ -92,7 +92,9 @@ methods: {
         this.$set(this.skillsOnSale[i], "available", true);
         break;
       }
+      console.log(this.skillsOnSale);
     }
+    
     /* kolla att x attribut finns innan for
     for (let i = 0; i < this.player.hand.length; i += 1) {
     this.$set(this.player.hand[i], "available", true);
@@ -107,23 +109,25 @@ methods: {
 </script>
 
 <style scoped>
-
 .marketPool {
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 5vh 10vh 5vh 5vh;
+  grid-template-rows: 5vw 10vw 5vw 5vw;
   grid-template-columns: 1fr;
   grid-template-areas:  "label"
-  "bottlePlacement" "value" "button"
+  "bottlePlacement" "value" "value"
   "icons"
   "counter"
-
   ;
 }
+.chategoryVal {
+  grid-area: icons;
+  grid-column: auto;
+  grid-row: auto;
 
+}
 /*.chategoryVal {
 grid-area: counter;
-
 display: -webkit-box;
 display: -moz-box;
 display: -ms-flexbox;
@@ -135,13 +139,10 @@ flex-direction: row;
 flex-wrap: nowrap;
 justify-content: center;
 align-items: center;
-
 }*/
-
 .changeValue {
-  grid-area: value;
+   grid-area: value;
 }
-
 .label {
   grid-area: label;
 }
@@ -170,9 +171,7 @@ align-items: center;
   /*grid-area: bottlePlacement;
   display: grid;
   grid-template-columns: repeat(auto-fill, 15vw);*/
-
   grid-area: bottlePlacement;
-
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -184,7 +183,6 @@ align-items: center;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-
 }
 .iconPlacement {
   grid-area: icons;
@@ -200,37 +198,61 @@ align-items: center;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-
 }
 .iconFastaval {
   background-image: url("/images/market2.png");
   height: 10vh;
   width: 10vw;
   background-size: cover;
+  background-color:  rgb(137, 199, 214);
+  width: auto;
+  border:1px solid gray;
+  border-radius:7%;
+  font-size:0.875;
 }
 .iconMovie {
   background-image: url("/images/market3.png");
   height: 10vh;
   width: 10vw;
   background-size: cover;
+  background-color:  rgb(137, 199, 214);
+  width: auto;
+  border:1px solid gray;
+  border-radius:7%;
+  font-size:0.875;
 }
 .iconTech {
   background-image: url("/images/market1.png");
   height: 10vh;
   width: 10vw;
   background-size: cover;
+  background-color:  rgb(137, 199, 214);
+  width: auto;
+  border:1px solid gray;
+  border-radius:7%;
+  font-size:0.875;
 }
 .iconFigures {
   background-image: url("/images/market5.png");
   height: 10vh;
   width: 10vw;
   background-size: cover;
+  background-color:  rgb(137, 199, 214);
+  width: auto;
+  border:1px solid gray;
+  border-radius:7%;
+  font-size:0.875;
 }
 .iconMusic {
   background-image: url("/images/market4.png");
   height: 10vh;
   width: 10vw;
   background-size: cover;
+  background-color:  rgb(137, 199, 214);
+  width: auto;
+  border:1px solid gray;
+  border-radius:7%;
+  font-size:0.875;
 }
 .raiseValue{
   background-color: black;
@@ -238,17 +260,5 @@ align-items: center;
   display: grid;
   grid-template-columns: repeat(auto-fill, 8vw);
 }
-.raiseButton {
-  background-color:  rgb(137, 199, 214);
-  width: auto;
-  border:1px solid gray;
-  border-radius:7%;
 
-  font-size:0.875;
-}
-
-.buttons2 {
-  grid-area:button;
-
-}
 </style>
