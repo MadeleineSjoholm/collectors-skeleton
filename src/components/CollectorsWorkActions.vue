@@ -1,5 +1,8 @@
 <template>
     <div>
+
+
+
       <button :disabled="player.hand.length <2" v-if="round==1 && placement[0].playerId===null" @click="placeBottle(0)">
         Put two cards from hand as future income
       </button>
@@ -24,7 +27,10 @@
       <button v-if="placement[7] && placement[7].playerId===null" @click="placeBottle(7)">
         Draw one card and put one card from hand as future income
       </button>
-    </div>
+
+
+</div>
+
 </template>
 
 <script>
@@ -50,7 +56,24 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+
+.workPool {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows:15vw 5vw 5vw 5vw 5vw;
+  grid-template-columns: 1fr;
+  grid-template-areas:  "label"
+  "test"
+
+}
+
+.label {
+  grid-area: label;
+}
+
   button {
+    grid-area:test;
     display: grid;
     grid-template-columns: repeat(auto-fill, 200px);
   }

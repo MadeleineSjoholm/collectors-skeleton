@@ -596,7 +596,7 @@ addMoney: function () {
 };
 </script>
 
-<style scoped>
+<style >
 header {
   /*  user-select: none;
   position: fixed;
@@ -619,9 +619,8 @@ main {
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
   "itemPool skillPool"
-
-  "marketPool marketPool"
-  "workPool auctionPool";
+  "workPool auctionPool"
+  "marketPool marketPool";
 }
 
 .itemPool {
@@ -637,17 +636,17 @@ main {
 .workPool {
   grid-area: workPool;
   background-color: #ffe6b3;
-  max-height: 100vh;
+  max-height: 60vh;
 }
 .marketPool {
   grid-area: marketPool;
   background-color: #66a3ff;
-  max-height: 90vh;
+  max-height: 70vh;
 }
 .auctionPool {
   grid-area: auctionPool;
   background-color: #ecd9c6;
-  max-height: 100vh;
+  max-height: 60vh;
 }
 .bottlePlacement {
   /*float: left;
@@ -655,32 +654,7 @@ main {
   width: 49%;*/
 }
 
-.quarterTiles {
-  border-style: dotted;
-  border-color: black;
-  background-color: #ffff;
-  width: 50%;
-  height: 10%;
-}
 
-.workDollarWhite {
-  background-image: url("/images/auctionvit.png");
-  height: 20vh;
-  width: 9.5vw;
-  background-size: cover;
-}
-.workDollarBlack {
-  background-image: url("/images/auctionblack.png");
-  height: 20vh;
-  width: 9.5vw;
-  background-size: cover;
-}
-.energyBottle {
-  background-image: url("/images/flaska.png");
-  height: 20vh;
-  width: 9.5vw;
-  background-size: cover;
-}
 .PlayerBoardCards {
   display: grid;
   grid-template-columns: repeat(auto-fill, 130px);
@@ -701,12 +675,7 @@ main {
   background-color: #b3ecff;
 }
 
-.energyBottle {
-  background-image: url("/images/flskaa.png");
-  height: 20vh;
-  width: 9.5vw;
-  background-size: cover;
-}
+
 .PlayerBoardCards {
   display: grid;
   grid-template-columns: repeat(auto-fill, 130px);
@@ -795,18 +764,7 @@ main {
   height: 100%;
 }
 
-.workDollarWhite {
-  background-image: url("/images/auctionvit.png");
-  height: 20vh;
-  width: 9.5vw;
-  background-size: cover;
-}
-.workDollarBlack {
-  background-image: url("/images/auctionblack.png");
-  height: 20vh;
-  width: 9.5vw;
-  background-size: cover;
-}
+
 
 footer {
   margin-top: 5em auto;
@@ -851,6 +809,21 @@ footer a:visited {
   font-size: 0;
 }
 
+@media (max-width: 800px) {
+  /*För mindre skärmar*/
+  .board {
+    grid-gap: 2px;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "itemPool "
+    "skillPool "
+    "marketPool "
+    "workPool "
+    "auctionPool ";
+  }
+}
+
 @media (max-width: 600px) {
   /*För mindre skärmar*/
   .board {
@@ -865,4 +838,24 @@ footer a:visited {
     "auctionPool ";
   }
 }
+
+@media (max-width: 400px) {
+  /*För mindre skärmar*/
+  .board {
+    grid-gap: 2px;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "itemPool "
+    "skillPool "
+    "marketPool "
+    "workPool "
+    "auctionPool ";
+  }
+}
+
+
+
+
+
 </style >
