@@ -105,6 +105,8 @@ export default {
 
 .label {
   grid-area: label;
+  font-size: 20px;
+  padding-left: 20px;
 }
 
 .buttons {
@@ -128,13 +130,11 @@ export default {
 }
 .bottlePlacement {
   grid-area: bottlePlacement;
+  grid-gap: 10px;
   display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
   display:   -webkit-flex;
   display: flex;
   -webkit-flex-direction: row;
-  -moz-flex-direction: row;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
@@ -145,10 +145,11 @@ export default {
 .skillCards {
   grid-area: skillCards;
   display: grid;
-  transform: scale(0.9)translate(-10%, -30%);
+  transform: scale(0.7)translate(-10%, -40%);
   grid-template-columns: repeat(auto-fill, 130px);
   grid-template-rows: repeat(auto-fill, 180px);
 }
+/*
 .skillCards div {
   transform: scale(0.7) ;
   transition: 0.2s;
@@ -158,5 +159,5 @@ export default {
 .skillCards div:hover {
   transform: scale(0.7) ;
   z-index: 1;
-}
+}*/
 </style>

@@ -133,7 +133,7 @@ export default {
 .itemPool {
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 3vw 4vw 9vw;
+  grid-template-rows: 3vw 3vw 9vw;
   grid-template-columns: 1fr;
   grid-template-areas:  "label" "infoButton"
   "buy-cards"
@@ -143,6 +143,8 @@ export default {
 
 .labell {
   grid-area: label;
+  font-size: 20px;
+  padding-left: 20px;
 }
 
 .buy-cards {
@@ -158,14 +160,11 @@ export default {
 
 .bottles {
   grid-area: bottles;
-
+  grid-gap: 10px;
   display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
   display:   -webkit-flex;
   display: flex;
   -webkit-flex-direction: row;
-  -moz-flex-direction: row;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;

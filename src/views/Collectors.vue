@@ -108,7 +108,7 @@
             <span v-if="players[playerId]"> {{ players[playerId].bottles }} </span> <br>
           </div>
           <div class="column">
-            <div v-if="players[playerId]" @click="players[playerId].points += 1"><img src="/images/collectors.png" width="50"></div>
+            <div v-if="players[playerId]" @click="players[playerId].points += 1"><img src="/images/collectorpoints.png" width="50"></div>
             <span v-if="players[playerId]"> {{ players[playerId].points }} </span> <br>
           </div>
           </div>
@@ -699,6 +699,7 @@ main {
   background: #4d94ff;
   margin-right: 1.5em;
   width: 23vw;
+  
 }
 
 /* clickable för motståndare*/
@@ -743,7 +744,7 @@ main {
   background: #e6ccff;
   position: fixed;
   right: 0%;
-  top: 5%;
+  top: 3%;
   width: 23vw;
   height: 100vh;
   margin-right: 1em;
@@ -769,6 +770,7 @@ main {
 .playerHand {
   background-color: #e6ccff;
   height: 100%;
+
 }
 
 
@@ -785,19 +787,22 @@ footer a:visited {
 }
 .cardslots {
   display: grid;
+  transform: scale(0.8) translate(10%, 5%);
   grid-template-columns: repeat(auto-fill, 130px);
   grid-template-rows: repeat(auto-fill, 180px);
   /*column-gap: 10px;*/
 }
+
+
 .cardslots div {
-  transform: scale(0.2) translate(-50%, -50%);
+  transform: scale(1);
   transition: 0.2s;
   transition-timing-function: ease-out;
   z-index: 0;
 }
 
 .cardslots div:hover {
-  transform: scale(0.75) translate(-25%, 0);
+  transform: scale(1);
   z-index: 1;
 }
 
