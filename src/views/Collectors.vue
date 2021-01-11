@@ -79,7 +79,7 @@
 
         <div :class="['player', { ishidden: isHidden('player') }]">
           <div class="playerHand">
-            {{ labels.playerID}} {{ playerId }} <br/>
+            {{ labels.playerID}} {{ playerId }}<br/>
 
             <div class="money">
               <div class="column">
