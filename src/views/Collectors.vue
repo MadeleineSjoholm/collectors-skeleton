@@ -641,7 +641,7 @@ main {
 .auctionPool {
   grid-area: auctionPool;
   background-color: #ecd9c6;
-  max-height: 60vh;
+  max-height: 80vh;
 }
 .bottlePlacement {
   /*float: left;
@@ -699,7 +699,7 @@ main {
   background: #4d94ff;
   margin-right: 1.5em;
   width: 23vw;
-  
+
 }
 
 /* clickable för motståndare*/

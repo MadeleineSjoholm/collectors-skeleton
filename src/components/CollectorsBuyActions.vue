@@ -231,4 +231,20 @@ box-shadow: -0.5em -0.1em 0.5em rgba(0,0,0,0.5);
 
 */
 
+/*
+@media (max-width: 600px) {
+  /*För mindre skärmar*/
+/*  .board {
+    grid-gap: 1px;
+    grid-template-rows: 3vw 8vw 15vw 15vw;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "label"
+    "infoButton"
+    "buy-cards"
+    "bottles";
+
+  }
+}*/
+
 </style>
