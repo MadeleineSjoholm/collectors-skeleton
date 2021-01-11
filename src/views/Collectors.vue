@@ -74,12 +74,12 @@
         </div>
 
         <div class="clickable" @click="togglePlayerBoard('player')">
-          {{ labels.playerHand }}
+          YOUR PLAYERHAND
         </div>
 
         <div :class="['player', { ishidden: isHidden('player') }]">
           <div class="playerHand">
-            {{ labels.playerID}} {{ playerId }} <br/>
+            PLAYERHAND {{ playerId }} <br/>
 
             <div class="money">
               <div class="column">
@@ -96,7 +96,7 @@
               </div>
             </div>
 
-            {{ labels.hand }}
+            Hand
             <div class="cardslots-wrapper">
               <div class="cardslots" v-if="players[playerId]">
                 <CollectorsCard
@@ -107,7 +107,7 @@
               </div>
             </div>
 
-            {{ labels.playerItem }}
+            PLAYERITEM
             <div class="PlayerBoardCards" v-if="players[playerId]">
               <CollectorsCard
               v-for="(card, index) in players[playerId].items"
@@ -116,7 +116,7 @@
               />
             </div>
 
-            {{ labels.playerSkill }}
+            PLAYER SKILLS
             <div class="PlayerBoardCardss" v-if="players[playerId]">
               <CollectorsCard
               v-for="(card, index) in players[playerId].skills"
@@ -132,11 +132,12 @@
           <div class="clickable1">
             <div v-for="(player, pid) in otherPlayers"  :key="pid" @click="togglePlayerBoard(pid)" >
               <div v-if="pid!=playerId">
-                <div> {{ labels.opponent }} </div>
+                <div> PLAYERHAND </div>
 
                 <div :class="['playerTest', {'ishidden' : isHidden(pid)}]">
                   <div class="playerHands">
                     PLAYER {{ pid }}
+
                     PLAYER ITEM
                     <div class="PlayerBoardCards">
                       <CollectorsCard
@@ -145,6 +146,7 @@
                       :key="index"
                       />
                     </div>
+
                     PLAYER SKILLS
                     <div class="PlayerBoardCards">
                       <CollectorsCard
@@ -156,15 +158,18 @@
                     Bottles: <span v-if="players[pid]"> {{ players[pid].bottles }} </span>
                     Money: <span v-if="players[pid]"> {{ players[pid].money }} </span>
                     Points: <span v-if="players[pid]"> {{ players[pid].points }} </span>
+
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
       </div>
     </main>
 
+    {{ marketValues.fastaval }}
 
     <footer>
       <p>
@@ -215,10 +220,13 @@ export default {
       //   income: [],
       //   secret: []
       // }
+
+
       round: 0,
       actingPlayer: null,
       workPlacement: [],
       numberOfActions: 0,
+
       showPlayerBoard: "",
       buyPlacement: [],
       skillPlacement: [],
@@ -268,6 +276,7 @@ export default {
         }
       }
     },
+
   },
   created: function () {
     this.$store.commit("SET_PLAYER_ID", this.$route.query.id);
@@ -292,12 +301,14 @@ export default {
         this.skillPlacement = d.placements.skillPlacement;
         this.marketPlacement = d.placements.marketPlacement;
         this.auctionPlacement = d.placements.auctionPlacement;
+
         this.round = d.players;
         this.playOrder = d.playOrder;
         this.actingPlayer = d.actingPlayer;
         this.workPlacement = d.placements.workPlacement;
       }.bind(this)
     );
+
     this.$store.state.socket.on('collectorsUpdatePlayers',
     function(players) {
       this.players = players;
@@ -307,6 +318,7 @@ export default {
         }
       })
     }.bind(this));
+
     this.$store.state.socket.on(
       "collectorsBottlePlaced",
       function (d) {
@@ -327,6 +339,7 @@ export default {
         }
       }.bind(this)
     );
+
     this.$store.state.socket.on('collectorsActingPlayer',
     function(d) {
       this.players = d.players;
@@ -341,6 +354,7 @@ export default {
     this.actingPlayer = d.actingPlayer;
   }.bind(this)
 );
+
 this.$store.state.socket.on(
   "collectorsPointsUpdated",
   (d) => (this.points = d)
@@ -560,6 +574,8 @@ addMoney: function () {
   background-color: #ecd9c6;
   max-height: 70vh;
 }
+
+
 .PlayerBoardCards {
   display: grid;
   grid-template-columns: repeat(auto-fill, 6vw);
@@ -579,6 +595,8 @@ addMoney: function () {
   display: none;
   background-color: #b3ecff;
 }
+
+
 .PlayerBoardCardss {
   display: grid;
   grid-template-columns: repeat(auto-fill, 6vw);
@@ -598,6 +616,7 @@ addMoney: function () {
   display: none;
   background-color: #b3ecff;
 }
+
 .clickable {
   position: fixed;
   right: 0%;
@@ -606,7 +625,9 @@ addMoney: function () {
   background: #4d94ff;
   margin-right: 1.5em;
   width: 23vw;
+
 }
+
 /* clickable för motståndare*/
 .clickable1 {
   background-color: #4d94ff;
@@ -616,6 +637,7 @@ addMoney: function () {
 .clickable1 > div {
   position: relative;
 }
+
 .test{
   position: absolute;
   right: 23vw;
@@ -624,10 +646,12 @@ addMoney: function () {
   background: #4d94ff;
   margin-right: 1.5em;
   width: 70vw;
+
 }
 .money {
   height: 100;
   display: flex;
+
 }
 .column{
   float: left;
