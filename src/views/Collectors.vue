@@ -95,7 +95,7 @@
                 <span v-if="players[playerId]"> {{ players[playerId].points }} </span> <br>
               </div>
             </div>
-            Hand
+            {{ labels.hand }}
             <div class="cardslots-wrapper">
               <div class="cardslots" v-if="players[playerId]">
                 <CollectorsCard
@@ -106,7 +106,7 @@
               </div>
             </div>
 
-            PLAYERITEM
+            {{ labels.playerItem }}
             <div class="PlayerBoardCards" v-if="players[playerId]">
               <CollectorsCard
               v-for="(card, index) in players[playerId].items"
@@ -115,7 +115,7 @@
               />
             </div>
 
-            PLAYER SKILLS
+            {{ labels.playerSkills}}
             <div class="PlayerBoardCardss" v-if="players[playerId]">
               <CollectorsCard
               v-for="(card, index) in players[playerId].skills"
@@ -131,13 +131,13 @@
           <div class="clickable1">
             <div v-for="(player, pid) in otherPlayers"  :key="pid" @click="togglePlayerBoard(pid)" >
               <div v-if="pid!=playerId">
-                <div> PLAYERHAND </div>
+                <div> {{labels.opponent }} </div>
 
                 <div :class="['playerTest', {'ishidden' : isHidden(pid)}]">
                   <div class="playerHands">
-                    PLAYER {{ pid }}
+                    {{ labels.playerID}} {{ pid }}
 
-                    PLAYER ITEM
+                    {{ labels.playerItem }}
                     <div class="PlayerBoardCards">
                       <CollectorsCard
                       v-for="(card, index) in player.items"
@@ -146,7 +146,7 @@
                       />
                     </div>
 
-                    PLAYER SKILLS
+                    {{ labels.playerItem }}
                     <div class="PlayerBoardCards">
                       <CollectorsCard
                       v-for="(card, index) in player.skills"
