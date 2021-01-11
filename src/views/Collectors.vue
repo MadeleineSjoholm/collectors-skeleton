@@ -113,13 +113,14 @@
           </div>
           </div>
         Hand
-
-        <div class="cardslots" v-if="players[playerId]">
-          <CollectorsCard
-          v-for="(card, index) in players[playerId].hand"
-          :card="card"
-          :key="index"
-          />
+        <div class="cardslots-wrapper">
+          <div class="cardslots" v-if="players[playerId]">
+            <CollectorsCard
+            v-for="(card, index) in players[playerId].hand"
+            :card="card"
+            :key="index"
+            />
+          </div>
         </div>
         <!-- :availableAction="card.available" -->
         PLAYERITEM
@@ -789,11 +790,16 @@ footer a:visited {
 .cardslots {
   display: grid;
   grid-template-columns: repeat(auto-fill, 6vw);
-  grid-template-rows: repeat(auto-fill, 15vh);
+  grid-template-rows: 8.4vw;
+  /*grid-template-rows: repeat(auto-fill, 15vh);*/
   column-gap: 0vw;
-
+  height: 8.4vw;
+  width:100vw; /*fixa detta sen! */
 }
 
+.cardslots-wrapper {
+  overflow-x: scroll;
+}
 
 .cardslots div {
   transform: scale(0.7) translate(10%, -10%);
