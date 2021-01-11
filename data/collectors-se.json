@@ -11,10 +11,8 @@
 	"players": "spelare",
 	"numberMoney": "Pengar: ",
 	"numberBottles": "Antal flaskor: ",
-
 	"gameRules": "Spelregler",
 	"homepage": "Tillbaka till förstasidan",
-
 	"itemDescription": "I item-sektionen köper du en av korten som finns tillgängliga och får då item-kortet till din Player Hand. Det finns ingen övre gräns på antal item-kort du har i din Player Hand. Förutom kostnaden som finns i item-sektionen måste du betala $1 per kort i market-sektionen som har samma symbol som det item-korten du just köpte.",
 	"skillDescription": "I skills-sektionen köper du en av korten som finns tillgängliga och får då skill-kortet till din Player Hand. Om du äger mer än ett kort av samma typ av skill använder du den skillen en gång per kort. Det finns sex skills tillgängliga i Collectors.",
 	"workDollar": "Få $2 när du placerar en worker i work-rutan.",
@@ -30,9 +28,22 @@
 	"scoringOne": "Varje item ger spelaren en poäng per marknadskort i marknadspoolen som delar symbol med item-kortet. Om det inte finns några matchande kort i marknads-sektionen till ett föremål är det noll poäng värt.",
 	"scoringTwo": "Var tredje $1 ger spelaren en poäng.",
 	"scoringThree": "Vissa skillskort ger fler poäng (se special skills)",
-
 	"leadingLabel": "Ledande budet är",
 	"leadingPlayer": "Lagt av",
 	"ownBid": "Ditt bud",
-	"subBid": "Lägg bud"
+	"subBid": "Lägg bud",
+	"work1": "Sätt två kort från handen som framtida inkomst",
+	"work2": "Lägg två kort från handen som framtida inkomst och tjäna 1$",
+	"work3": "Lägg två kort från handen som framtida inkomst och tjäna 2$",
+	"work4": "Lägg två kort från handen som framtida inkomst och tjäna 3$",
+	"work5": "Släng en flaska",
+	"work6": "Dra två kort",
+	"work7": "Dra ett kort och bli första spelaren i nästa runda",
+	"work8": "Dra ett kort och sätt ett kort från handen som framtida inkomst",
+	"fastavalLabel": "Höj Fastaval",
+	"movieLabel": "Höj film",
+	"musicLabel": "Höj musik",
+	"techLabel": "Höj teknologi",
+	"figuresLabel": "Höj figurer",
+	"workLabel": "Arbete"
 }

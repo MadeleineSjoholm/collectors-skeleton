@@ -29,19 +29,19 @@
 
   <div class="changeValue">
     <button class="iconFastaval" @click="marketValues.fastaval+=1">
-      Raise Fastaval
+      {{ labels.fastavalLabel }}
     </button>
     <button class="iconMovie" @click="marketValues.movie+=1">
-      Raise Movie
+      {{ labels.movieLabel }}
     </button>
     <button class="iconTech" @click="marketValues.technology+=1">
-      Raise Technology
+      {{ labels.techLabel }}
     </button>
     <button class="iconFigures" @click="marketValues.figures+=1">
-      Raise Figures
+      {{ labels.figuresLabel }}
     </button>
     <button class="iconMusic" @click="marketValues.music+=1">
-      Raise Music
+      {{ labels.musicLabel }}
     </button>
   </div>
 </div>
