@@ -31,7 +31,7 @@
 	"scoringTwo": "Var tredje $1 ger spelaren en poäng.",
 	"scoringThree": "Vissa skillskort ger fler poäng (se special skills)",
 
-	"leadingBid": "Ledande budet är",
+	"leadingLabel": "Ledande budet är",
 	"leadingPlayer": "Lagt av",
 	"ownBid": "Ditt bud",
 	"subBid": "Lägg bud"
