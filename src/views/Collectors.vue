@@ -154,9 +154,9 @@
                       :key="index"
                       />
                     </div>
-                    Bottles: <span v-if="players[pid]"> {{ players[pid].bottles }} </span>
-                    Money: <span v-if="players[pid]"> {{ players[pid].money }} </span>
-                    Points: <span v-if="players[pid]"> {{ players[pid].points }} </span>
+                    {{ labels.bottles}} <span v-if="players[pid]"> {{ players[pid].bottles }} </span>
+                    {{ labels.money}} <span v-if="players[pid]"> {{ players[pid].money }} </span>
+                    {{ labels.points}} <span v-if="players[pid]"> {{ players[pid].points }} </span>
 
                   </div>
                 </div>
