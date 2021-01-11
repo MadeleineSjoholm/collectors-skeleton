@@ -93,11 +93,12 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 .skillPool {
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 5vh 25vh 15vh;
-  grid-template-columns: 50vw;
+  grid-template-rows: 5vh 20vh 15vh;
+  grid-template-columns: 1fr;
   grid-template-areas:  "label"
                         "skillCards"
                         "bottlePlacement";
@@ -115,22 +116,22 @@ export default {
 
 .greenEnergy {
   background-image: url("/images/greenflaska.png");
-  height: 12vh;
-  width: 6vw;
+  height: 7vw;
+  width: 6.6vw;
   background-size: cover;
   border-radius: 15%;
 
 }
 .dollarEnergy {
   background-image: url("/images/dollarr.png");
-  height: 12vh;
-  width: 6vw;
+  height: 7vw;
+  width: 6.5vw;
   background-size: cover;
   border-radius: 15%;
 }
 .bottlePlacement {
   grid-area: bottlePlacement;
-  grid-gap: 10px;
+  grid-gap: 1vw;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -142,9 +143,10 @@ export default {
 .skillCards {
   grid-area: skillCards;
   display: grid;
+  grid-gap:1vw;
   transform: scale(0.7)translate(0%, 0%);
-  grid-template-columns: repeat(auto-fill, 10vw);
-  grid-template-rows: repeat(auto-fill, 25vh);
+  grid-template-columns: repeat(auto-fill, 8vw);
+  grid-template-rows: repeat(auto-fill, 11.2vw);
 }
 /*
 .skillCards div {
@@ -158,10 +160,10 @@ export default {
   z-index: 1;
 }*/
 
-/*
+
 @media (max-width: 800px) {
   /*För mindre skärmar*/
-/* .skillPool {
+ .skillPool {
     box-sizing: border-box;
     display: grid;
     grid-template-rows: 10vh 20vh 10vh;
@@ -171,6 +173,28 @@ export default {
     "bottlePlacement";
   }
 
-}*/
+  .skillCards {
+    grid-area: skillCards;
+    display: grid;
+    grid-gap: 2vw;
+    transform: scale(0.7)translate(10%, 0%);
+    grid-template-columns: repeat(auto-fill, 15vw);
+    grid-template-rows: repeat(auto-fill, 21vw);
+  }
+  .bottlePlacement {
+    grid-area: bottlePlacement;
+    grid-gap: 2vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+
+
+  }
+
+}
+
+
 
 </style>

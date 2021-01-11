@@ -179,7 +179,7 @@ export default {
   grid-area: auctionCards;
   display: grid;
   grid-template-columns: repeat(auto-fill, 10vw);
-  grid-template-rows: repeat(auto-fill, 25vh);
+  grid-template-rows: repeat(auto-fill, 14vw);
 
 }
 .auctionCards div {
@@ -206,22 +206,22 @@ export default {
 }
 .doubleDollarEnergy {
   background-image: url("/images/auctiondollar2.png");
-  height: 12vh;
+  height: 7vw;
   width: 6vw;
   background-size: cover;
   border-radius: 15%;
 }
 .dollarAuction {
   background-image: url("/images/auctiondollar.png");
-  height: 12vh;
+  height: 7vw;
   width: 6vw;
   background-size: cover;
   border-radius: 15%;
 }
 .orangeEnergy {
   background-image: url("/images/auctionorange.png");
-  height: 12vh;
-  width: 6.45vw;
+  height: 7vw;
+  width: 7vw;
   background-size: cover;
   border-radius: 15%;
 }

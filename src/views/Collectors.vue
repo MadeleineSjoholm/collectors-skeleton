@@ -914,9 +914,10 @@ footer a:visited {
   }
 }
 
+/*
 @media (max-width: 400px) {
-  /*För mindre skärmar*/
-  .board {
+  /*400 borde inte behövas*/
+ /*.board {
     grid-gap: 2px;
     grid-template-rows: repeat(5, 50vh);
     grid-template-columns: 100vw;
@@ -927,7 +928,7 @@ footer a:visited {
     "workPool "
     "auctionPool ";
   }
-}
+}*/
 
 
 
