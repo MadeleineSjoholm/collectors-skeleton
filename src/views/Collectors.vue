@@ -74,7 +74,7 @@
         </div>
 
         <div class="clickable" @click="togglePlayerBoard('player')">
-          {{ labels.playerHand }}
+          YOUR PLAYERHAND
         </div>
 
         <div :class="['player', { ishidden: isHidden('player') }]">
@@ -96,7 +96,7 @@
               </div>
             </div>
 
-            {{ labels.hand }}
+            Hand
             <div class="cardslots-wrapper">
               <div class="cardslots" v-if="players[playerId]">
                 <CollectorsCard
@@ -107,7 +107,7 @@
               </div>
             </div>
 
-            {{ labels.playerItem }}
+            PLAYERITEM
             <div class="PlayerBoardCards" v-if="players[playerId]">
               <CollectorsCard
               v-for="(card, index) in players[playerId].items"
@@ -116,7 +116,7 @@
               />
             </div>
 
-            {{ labels.playerSkill }}
+            PLAYER SKILLS
             <div class="PlayerBoardCardss" v-if="players[playerId]">
               <CollectorsCard
               v-for="(card, index) in players[playerId].skills"
@@ -132,7 +132,7 @@
           <div class="clickable1">
             <div v-for="(player, pid) in otherPlayers"  :key="pid" @click="togglePlayerBoard(pid)" >
               <div v-if="pid!=playerId">
-                <div> {{ labels.opponent }} </div>
+                <div> PLAYERHAND </div>
 
                 <div :class="['playerTest', {'ishidden' : isHidden(pid)}]">
                   <div class="playerHands">
@@ -532,16 +532,6 @@ addMoney: function () {
 </script>
 
 <style>
-
-header {
-  /*  user-select: none;
-  position: fixed;
-  width: 100%;
-  pointer-events: none; */
-}
-main {
-  /*user-select: none;*/
-}
 .table {
   padding-left: 20px;
   padding-right: 20px;
@@ -551,7 +541,7 @@ main {
   box-sizing: border-box;
   display: grid;
   grid-gap: 10px;
-  grid-template-rows: 0.5fr 0.5fr 0fr 0fr;
+  grid-template-rows: 0.8fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-areas:
   "itemPool itemPool skillPool skillPool"
@@ -562,12 +552,12 @@ main {
 .itemPool {
   grid-area: itemPool;
   background-color: #ffb3b3;
-  max-height: 60vh;
+  max-height: 70vh;
 }
 .skillPool {
   grid-area: skillPool;
   background-color: #c2f0c2;
-  max-height: 60vh;
+  max-height: 70vh;
 }
 .workPool {
   grid-area: workPool;
@@ -583,11 +573,6 @@ main {
   grid-area: auctionPool;
   background-color: #ecd9c6;
   max-height: 70vh;
-}
-.bottlePlacement {
-  /*float: left;
-  display: inline;
-  width: 49%;*/
 }
 
 
