@@ -562,12 +562,12 @@ main {
 .itemPool {
   grid-area: itemPool;
   background-color: #ffb3b3;
-  max-height: 50vh;
+  max-height: 60vh;
 }
 .skillPool {
   grid-area: skillPool;
   background-color: #c2f0c2;
-  max-height: 50vh;
+  max-height: 60vh;
 }
 .workPool {
   grid-area: workPool;

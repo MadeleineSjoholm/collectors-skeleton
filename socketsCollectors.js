@@ -7,18 +7,15 @@ function sockets(io, socket, data) {
       data.getUILabelsLang(lang));
   }
   );
-  //getLabels finns inte med i LogicPlus
   socket.on('collectorsLoaded', function (d) {
     socket.join(d.roomId);
     if (data.joinGame(d.roomId, d.playerId)) {
       socket.emit('collectorsInitialize', {
-        //io.to(d.roomId).emit('collectorsInitialize', {  istället för emit
         labels: data.getUILabels(d.roomId),
         players: data.getPlayers(d.roomId),
         itemsOnSale: data.getItemsOnSale(d.roomId),
         marketValues: data.getMarketValues(d.roomId),
         market: data.getMarket(d.roomId),
-        //get market ej med
         placements: data.getPlacements(d.roomId),
         playOrder: data.getPlayOrder(d.roomId),
         actingPlayer: data.getActingPlayer(d.roomId),
@@ -57,17 +54,6 @@ function sockets(io, socket, data) {
     }
     );
   });
-  /* socket.on('collectorsBuyItem', function(d) {
-      data.buyItem(d.roomId, d.playerId, d.card, d.cost)
-      io.to(d.roomId).emit('collectorsItemBought', {
-          playerId: d.playerId,
-          players: data.getPlayers(d.roomId),
-          itemsOnSale: data.getItemsOnSale(d.roomId)
-        }
-      );
-    });
-    samma men ändrade namn
-    */
   socket.on('collectorsSkillsCard', function (d) {
     data.skillsCard(d.roomId, d.playerId, d.card, d.cost)
     io.to(d.roomId).emit('collectorsSkillBought', {
@@ -116,8 +102,6 @@ function sockets(io, socket, data) {
     );
   }
   );
-  
-
 socket.on('collectorsPlaceBottle', function (d) {
   data.placeBottle(d.roomId, d.playerId, d.action, d.id);
   io.to(d.roomId).emit('collectorsBottlePlaced', {
@@ -134,6 +118,4 @@ socket.on('collectorsAddMoney', function (d) {
   );
 });
 }
-
-
 module.exports = sockets;
