@@ -756,10 +756,10 @@ main {
 /* ekvivalent med player för motståndare */
 
 .player1 {
-  background: #ffe6ff;
+  background: #b3b3ff;
   position: absolute;
   right: 30%;
-  top: 5%;
+  top: 3%;
   width: 23vw;
   height: 100vh;
   margin-right: 1em;
