@@ -110,11 +110,4 @@ export default {
   margin-left: 20px;
 
 }
-#infoo{
-
-}
-
-
-
-
 </style>

@@ -137,7 +137,6 @@
                 <div :class="['playerTest', {'ishidden' : isHidden(pid)}]">
                   <div class="playerHands">
                     PLAYER {{ pid }}
-
                     PLAYER ITEM
                     <div class="PlayerBoardCards">
                       <CollectorsCard
@@ -146,7 +145,6 @@
                       :key="index"
                       />
                     </div>
-
                     PLAYER SKILLS
                     <div class="PlayerBoardCards">
                       <CollectorsCard
@@ -158,18 +156,15 @@
                     Bottles: <span v-if="players[pid]"> {{ players[pid].bottles }} </span>
                     Money: <span v-if="players[pid]"> {{ players[pid].money }} </span>
                     Points: <span v-if="players[pid]"> {{ players[pid].points }} </span>
-
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       </div>
     </main>
 
-    {{ marketValues.fastaval }}
 
     <footer>
       <p>
@@ -220,13 +215,10 @@ export default {
       //   income: [],
       //   secret: []
       // }
-
-
       round: 0,
       actingPlayer: null,
       workPlacement: [],
       numberOfActions: 0,
-
       showPlayerBoard: "",
       buyPlacement: [],
       skillPlacement: [],
@@ -276,7 +268,6 @@ export default {
         }
       }
     },
-
   },
   created: function () {
     this.$store.commit("SET_PLAYER_ID", this.$route.query.id);
@@ -301,14 +292,12 @@ export default {
         this.skillPlacement = d.placements.skillPlacement;
         this.marketPlacement = d.placements.marketPlacement;
         this.auctionPlacement = d.placements.auctionPlacement;
-
         this.round = d.players;
         this.playOrder = d.playOrder;
         this.actingPlayer = d.actingPlayer;
         this.workPlacement = d.placements.workPlacement;
       }.bind(this)
     );
-
     this.$store.state.socket.on('collectorsUpdatePlayers',
     function(players) {
       this.players = players;
@@ -318,7 +307,6 @@ export default {
         }
       })
     }.bind(this));
-
     this.$store.state.socket.on(
       "collectorsBottlePlaced",
       function (d) {
@@ -339,7 +327,6 @@ export default {
         }
       }.bind(this)
     );
-
     this.$store.state.socket.on('collectorsActingPlayer',
     function(d) {
       this.players = d.players;
@@ -354,7 +341,6 @@ export default {
     this.actingPlayer = d.actingPlayer;
   }.bind(this)
 );
-
 this.$store.state.socket.on(
   "collectorsPointsUpdated",
   (d) => (this.points = d)
@@ -532,16 +518,6 @@ addMoney: function () {
 </script>
 
 <style>
-
-header {
-  /*  user-select: none;
-  position: fixed;
-  width: 100%;
-  pointer-events: none; */
-}
-main {
-  /*user-select: none;*/
-}
 .table {
   padding-left: 20px;
   padding-right: 20px;
@@ -551,7 +527,7 @@ main {
   box-sizing: border-box;
   display: grid;
   grid-gap: 10px;
-  grid-template-rows: 0.5fr 0.5fr 0fr 0fr;
+  grid-template-rows: 0.8fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-areas:
   "itemPool itemPool skillPool skillPool"
@@ -562,12 +538,12 @@ main {
 .itemPool {
   grid-area: itemPool;
   background-color: #ffb3b3;
-  max-height: 60vh;
+  max-height: 70vh;
 }
 .skillPool {
   grid-area: skillPool;
   background-color: #c2f0c2;
-  max-height: 60vh;
+  max-height: 70vh;
 }
 .workPool {
   grid-area: workPool;
@@ -584,13 +560,6 @@ main {
   background-color: #ecd9c6;
   max-height: 70vh;
 }
-.bottlePlacement {
-  /*float: left;
-  display: inline;
-  width: 49%;*/
-}
-
-
 .PlayerBoardCards {
   display: grid;
   grid-template-columns: repeat(auto-fill, 6vw);
@@ -610,8 +579,6 @@ main {
   display: none;
   background-color: #b3ecff;
 }
-
-
 .PlayerBoardCardss {
   display: grid;
   grid-template-columns: repeat(auto-fill, 6vw);
@@ -631,7 +598,6 @@ main {
   display: none;
   background-color: #b3ecff;
 }
-
 .clickable {
   position: fixed;
   right: 0%;
@@ -640,9 +606,7 @@ main {
   background: #4d94ff;
   margin-right: 1.5em;
   width: 23vw;
-
 }
-
 /* clickable för motståndare*/
 .clickable1 {
   background-color: #4d94ff;
@@ -652,7 +616,6 @@ main {
 .clickable1 > div {
   position: relative;
 }
-
 .test{
   position: absolute;
   right: 23vw;
@@ -661,12 +624,10 @@ main {
   background: #4d94ff;
   margin-right: 1.5em;
   width: 70vw;
-
 }
 .money {
   height: 100;
   display: flex;
-
 }
 .column{
   float: left;
