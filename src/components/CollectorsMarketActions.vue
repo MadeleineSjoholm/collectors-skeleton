@@ -114,8 +114,8 @@ methods: {
   display: grid;
   grid-template-rows: 5vw 10vw 5vw 5vw;
   grid-template-columns: 1fr;
-  grid-template-areas:  "label"
-  "bottlePlacement" "value" "value"
+  grid-template-areas:   "label"
+  "bottlePlacement" "value" "button"
   "icons"
   "counter"
   ;

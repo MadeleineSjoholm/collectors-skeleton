@@ -13,7 +13,6 @@
       </div>
       <div class="cardToAuction">
         <CollectorsCard :card="upForAuction"/>
-
       </div>
       <div class="buttons2">
          <button @click="drawCard">
@@ -164,7 +163,8 @@ export default {
   grid-template-columns: 1fr 1fr;
   grid-template-areas:  "label label"
   "bottlePlacement bottlePlacement"
-  "auctionCards cardToAuction"
+  "auctionCards cardToAuction" 
+  /*"cardToAuction cardToAuction"*/
   "raiseBid raiseBid";
 }
 
@@ -175,7 +175,7 @@ export default {
 .auctionCards {
   grid-area: auctionCards;
   display: grid;
-
+transform: scale(0.8) translate(-0%, -30%);
   grid-template-columns: repeat(auto-fill, 130px);
   grid-template-rows: repeat(auto-fill, 180px);
 
@@ -186,13 +186,18 @@ export default {
   transition-timing-function: ease-out;
   z-index: 0;
 }
+
 .auctionCards div:hover {
   transform: scale(1) translate(-25%, 0);
   z-index: 1;
 }
 .cardToAuction {
   grid-area: cardToAuction;
-  height: auto;
+   transform: scale(0.25) translate(-60%, -150%);
+  transition: 0.2s;
+  transition-timing-function: ease-out;
+  z-index: 0;
+  height: 100vh;
   width: auto;
   background-image: url("/images/auction.png");
 
@@ -234,22 +239,16 @@ export default {
 
 }
 .raiseBid{
-  background-color: black;
-grid-area: raiseBid;
-display: grid;
-  grid-template-columns: repeat(auto-fill, 8vw);
+  background-color: #ecd9c6;
+  grid-area: raiseBid;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 10vw);
 }
-/* .payHandButton {
-    background-color:  rgb(137, 199, 214);
-    width: auto;
-    border:1px solid gray;
-    border-radius:7%;
 
-    font-size:0.875;
-  }*/
 .bidButton {
     background-color: white;
     width: auto;
+    
     border:2px solid rgb(216, 70, 70);
     border-radius:7%;
     word-wrap: break-word;

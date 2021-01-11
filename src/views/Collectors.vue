@@ -611,11 +611,11 @@ main {
   display: grid;
   grid-gap: 10px;
   grid-template-rows: 0.5fr 0.5fr 0fr 0fr;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-areas:
-  "itemPool skillPool"
-  "workPool auctionPool"
-  "marketPool marketPool";
+  "itemPool itemPool skillPool skillPool"
+  "workPool auctionPool auctionPool auctionPool"
+  "marketPool marketPool marketPool marketPool";
 }
 
 .itemPool {
@@ -631,7 +631,7 @@ main {
 .workPool {
   grid-area: workPool;
   background-color: #ffe6b3;
-  max-height: 60vh;
+  max-height: 70vh;
 }
 .marketPool {
   grid-area: marketPool;
@@ -641,7 +641,7 @@ main {
 .auctionPool {
   grid-area: auctionPool;
   background-color: #ecd9c6;
-  max-height: 80vh;
+  max-height: 70vh;
 }
 .bottlePlacement {
   /*float: left;
