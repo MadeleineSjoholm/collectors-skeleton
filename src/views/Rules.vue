@@ -7,7 +7,7 @@
         {{ labels.homepage }}
       </div>
 
-     
+
     </div>
     <div class="itemInfo">
       <h1>Item</h1>
@@ -108,13 +108,6 @@ export default {
   height: 10vh;
   margin-top: 0px;
   margin-left: 20px;
-
 }
-#infoo{
-
-}
-
-
-
 
 </style>
