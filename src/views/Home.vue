@@ -17,9 +17,9 @@
       
 
       <h4>{{ labels.setUpGame }}</h4>
-      <button class="button1" id="startGame" type="start" @click="setupCollectors(2, 'en')">2 {{ labels.players }}</button><br>
-      <button class="button1" id="startGame" type="start" @click="setupCollectors(3, 'en')">3 {{ labels.players }}</button><br>
-      <button class="button1" id="startGame" type="start" @click="setupCollectors(4, 'en')">4 {{ labels.players }}</button><br>
+      <button class="button1" id="startGame" type="start" @click="setupCollectors(2)">2 {{ labels.players }}</button><br>
+      <button class="button1" id="startGame" type="start" @click="setupCollectors(3)">3 {{ labels.players }}</button><br>
+      <button class="button1" id="startGame" type="start" @click="setupCollectors(4)">4 {{ labels.players }}</button><br>
     </div>
 
     <!--
@@ -67,10 +67,10 @@ export default {
     );
   },
   methods: {
-    setupCollectors: function (playerCount, lang="en") {
+    setupCollectors: function (playerCount) {
       this.$store.commit('SETUP_GAME', {roomId: this.$store.state.roomId,
         playerCount: playerCount,
-        lang: lang });
+        lang: this.$store.state.lang });
         this.$router.push("/room/" + this.$store.state.roomId);
       },
       language: function (lang) {

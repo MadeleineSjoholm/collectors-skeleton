@@ -34,20 +34,20 @@
   </div> -->
 
   <div class="changeValue">
-    <button class="iconFastaval" >
+    <button class="iconFastaval" @click="marketValues.fastaval+=1">
       Raise Fastaval
     </button>
-    <button class="iconMovie" @click="value.fastaval += 1">
+    <button class="iconMovie" @click="marketValues.movie+=1">
       Raise Movie
     </button>
-    <button class="iconTech" >
+    <button class="iconTech" @click="marketValues.technology+=1">
       Raise Technology
     </button>
-    <button class="iconFigures" >
+    <button class="iconFigures" @click="marketValues.figures+=1">
       Raise Figures
     </button>
-    <button class="iconMusic">
-      Raise Movies
+    <button class="iconMusic" @click="marketValues.music+=1">
+      Raise Music
     </button>
   </div>
 </div>

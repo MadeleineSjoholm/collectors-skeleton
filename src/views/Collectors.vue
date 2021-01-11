@@ -132,7 +132,7 @@
           :key="index"
           />
         </div>
-        PLAYER SKILLSS
+        PLAYER SKILLS
         <div class="PlayerBoardCardss" v-if="players[playerId]">
           <CollectorsCard
           v-for="(card, index) in players[playerId].skills"
@@ -146,14 +146,47 @@
 
       <div class="test" >
         <div class="clickable1">
-          <div v-for="(player, pid) in players"  :key="pid" @click="togglePlayerBoard(pid)" >
-            <div v-if="pid!=playerId"> PLAYERHAND </div>
+          <div v-for="(player, pid) in otherPlayers"  :key="pid" @click="togglePlayerBoard(pid)" >
+            <div v-if="pid!=playerId">
+              <div> PLAYERHAND </div>
+
+              <div :class="['playerTest', {'ishidden' : isHidden(pid)}]">
+
+                <div class="playerHands">
+                  PLAYER {{ pid }}
+
+                  PLAYER ITEM
+
+                  <div class="PlayerBoardCards">
+                    <CollectorsCard
+                    v-for="(card, index) in player.items"
+                    :card="card"
+                    :key="index"
+                    />
+                  </div>
+                  PLAYER SKILLS
+                  <div class="PlayerBoardCards">
+                    <CollectorsCard
+                    v-for="(card, index) in player.skills"
+                    :card="card"
+                    :key="index"
+                    />
+                  </div>
+                  Bottles: <span v-if="players[pid]"> {{ players[pid].bottles }} </span>
+                  Money: <span v-if="players[pid]"> {{ players[pid].money }} </span>
+                  Points: <span v-if="players[pid]"> {{ players[pid].points }} </span>
+
+
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
       <div>
 
-        <div  v-for="(player, pid) in players" :key="pid" :class="['player1', {'ishidden' : isHidden(pid)}]">
+        <!-- <div  v-for="(player, pid) in players" :key="pid" :class="['player1', {'ishidden' : isHidden(pid)}]">
 
           <div class="playerHands">
             PLAYER {{ pid }}
@@ -181,14 +214,14 @@
 
 
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </main>
 
-  {{ buyPlacement }} {{ chosenPlacementCost }}
-  {{ players }}
-  {{ marketValues }}
+  <!-- {{ buyPlacement }} {{ chosenPlacementCost }}
+  {{ players }} -->
+  {{ marketValues.fastaval }}
 
   <button v-if="players[playerId]" @click="players[playerId].money += 1">
     fake more money
@@ -289,6 +322,15 @@ export default {
     keyPlayersId: function () {
       return Object.keys(this.players);
     },
+    otherPlayers: function () {
+    let otherPlayers = {};
+      for (let playerId in this.players) {
+        if (playerId !== this.playerId) {
+          otherPlayers[playerId] = this.players[playerId];
+        }
+      }
+      return otherPlayers;
+    }
   },
   watch: {
     players: function (newP, oldP) {
@@ -706,6 +748,9 @@ main {
 
 /* clickable för motståndare*/
 .clickable1 {
+  background-color: #4d94ff;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,23vw);
   /*position: absolute;
   right: 25%;
   top: 0%;
@@ -715,15 +760,18 @@ main {
   width: 23vw; */
 
 }
+.clickable1 > div {
+  position: relative;
+}
 
 .test{
   position: absolute;
-  right: 25%;
+  right: 23vw;
   top: 0%;
   cursor: pointer;
   background: #4d94ff;
   margin-right: 1.5em;
-  width: 23vw;
+  width: 70vw;
 
 }
 .money {
@@ -757,7 +805,7 @@ main {
 /* ekvivalent med player för motståndare */
 
 .player1 {
-  background: #b3b3ff;
+  background: #b3d1ff;
   position: absolute;
   right: 30%;
   top: 3%;
@@ -769,6 +817,18 @@ main {
   font-size: 15pt;
 }
 
+.playerTest {
+  background: #b3b3ff;
+  position: absolute;
+  right: 0;
+  top: 3%;
+  width: 23vw;
+  height: 100vh;
+  transition: 1s;
+  transition-property: height;
+  overflow: hidden;
+  font-size: 15pt;
+}
 .playerHand {
   background-color: #e6ccff;
   height: 100%;
@@ -790,8 +850,12 @@ footer a:visited {
 .cardslots {
   display: grid;
   grid-template-columns: repeat(auto-fill, 6vw);
+<<<<<<< HEAD
   grid-template-rows: 8.4vw;
   /*grid-template-rows: repeat(auto-fill, 15vh);*/
+=======
+  grid-template-rows: repeat(auto-fill, 15vw);
+>>>>>>> 6dea480d4db322d676a8cb1ba3c9cf3e7a8c795b
   column-gap: 0vw;
   height: 8.4vw;
   width:100vw; /*fixa detta sen! */
@@ -839,24 +903,24 @@ footer a:visited {
     grid-template-areas:
     "itemPool "
     "skillPool "
-    "marketPool "
     "workPool "
-    "auctionPool ";
+    "auctionPool "
+    "marketPool ";
   }
 }
 
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
   /*För mindre skärmar*/
   .board {
     grid-gap: 0px;
-    grid-template-rows: repeat(5, 50vh);
+    grid-template-rows: repeat(5, 70vh);
     grid-template-columns: 100vw;
     grid-template-areas:
     "itemPool "
     "skillPool "
-    "marketPool "
     "workPool "
-    "auctionPool ";
+    "auctionPool "
+    "marketPool ";
   }
 }
 
@@ -868,15 +932,11 @@ footer a:visited {
     grid-template-columns: 100vw;
     grid-template-areas:
     "itemPool "
-    "skillPool "
-    "marketPool "
+    "skillPool"
     "workPool "
-    "auctionPool ";
+    "auctionPool "
+    "marketPool ";
   }
 }
-
-
-
-
 
 </style >
