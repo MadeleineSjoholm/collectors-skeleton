@@ -62,15 +62,13 @@
         />
       </div>
   </div>
-  lägg till i methods osv
-  -->
+    -->
 
   <div  class="raiseBid">
     <div class="auctionStats">
  {{ labels.leadingBidLabel }} <strong>{{ leadingBid.bid }}</strong> <br>
  {{ labels.leadingPlayer }} {{ leadingBid.playerId }}<br>
 
- 
   {{ labels.ownBid }} {{ currentBid }}
     </div>
  <button class="bidButton" @click="currentBid -= 1">
