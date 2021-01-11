@@ -79,7 +79,7 @@ export default {
       for (let i = 0; i < this.player.hand.length; i += 1) {
         this.$set(this.player.hand[i], "available", true);
       }
-      //  this.chosenPlacementCost = cost;
+
     },
     skillsCard: function (card) {
       if (card.available) {
@@ -91,7 +91,7 @@ export default {
 
 };
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 
 .skillPool {
@@ -100,18 +100,14 @@ export default {
   grid-template-rows: 5vh 20vh 15vh;
   grid-template-columns: 1fr;
   grid-template-areas:  "label"
-                        "skillCards"
-                        "bottlePlacement";
+  "skillCards"
+  "bottlePlacement";
 }
 
 .label {
   grid-area: label;
   font-size: 1.5vw;
   margin-left: 1vw;
-}
-
-.buttons {
-
 }
 
 .greenEnergy {
@@ -148,22 +144,22 @@ export default {
   grid-template-columns: repeat(auto-fill, 8vw);
   grid-template-rows: repeat(auto-fill, 11.2vw);
 }
-/*
+
 .skillCards div {
-  transform: scale(0.7) ;
+  transform: scale(1);
   transition: 0.2s;
   transition-timing-function: ease-out;
-  z-index: 0;
 }
+
 .skillCards div:hover {
-  transform: scale(0.7) ;
-  z-index: 1;
-}*/
+  transform: scale(1.2) translate(0%, 0);
+}
 
 
 @media (max-width: 800px) {
-  /*För mindre skärmar*/
- .skillPool {
+  /*För mindre skärmar, anpassat för Skill*/
+
+  .skillPool {
     box-sizing: border-box;
     display: grid;
     grid-template-rows: 10vh 20vh 10vh;
@@ -190,11 +186,8 @@ export default {
     justify-content: center;
     align-items: center;
 
-
   }
 
 }
-
-
 
 </style>
