@@ -7,7 +7,7 @@
         {{ labels.homepage }}
       </div>
 
-     
+
     </div>
     <div class="itemInfo">
       <h1>Item</h1>

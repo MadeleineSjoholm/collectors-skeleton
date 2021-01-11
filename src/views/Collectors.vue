@@ -74,12 +74,12 @@
         </div>
 
         <div class="clickable" @click="togglePlayerBoard('player')">
-          YOUR PLAYERHAND
+          {{ labels.playerHand }}
         </div>
 
         <div :class="['player', { ishidden: isHidden('player') }]">
           <div class="playerHand">
-            PLAYERHAND {{ playerId }} <br/>
+            {{ labels.playerID}} {{ playerId }} <br/>
 
             <div class="money">
               <div class="column">
@@ -96,7 +96,7 @@
               </div>
             </div>
 
-            Hand
+            {{ labels.hand }}
             <div class="cardslots-wrapper">
               <div class="cardslots" v-if="players[playerId]">
                 <CollectorsCard
@@ -107,7 +107,7 @@
               </div>
             </div>
 
-            PLAYERITEM
+            {{ labels.playerItem }}
             <div class="PlayerBoardCards" v-if="players[playerId]">
               <CollectorsCard
               v-for="(card, index) in players[playerId].items"
@@ -116,7 +116,7 @@
               />
             </div>
 
-            PLAYER SKILLS
+            {{ labels.playerSkill }}
             <div class="PlayerBoardCardss" v-if="players[playerId]">
               <CollectorsCard
               v-for="(card, index) in players[playerId].skills"
@@ -132,7 +132,7 @@
           <div class="clickable1">
             <div v-for="(player, pid) in otherPlayers"  :key="pid" @click="togglePlayerBoard(pid)" >
               <div v-if="pid!=playerId">
-                <div> PLAYERHAND </div>
+                <div> {{ labels.opponent }} </div>
 
                 <div :class="['playerTest', {'ishidden' : isHidden(pid)}]">
                   <div class="playerHands">
