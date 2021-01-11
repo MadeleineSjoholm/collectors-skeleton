@@ -48,17 +48,16 @@
 </template>
 
 <script>
-//import CollectorsCard from "@/components/CollectorsCard.vue";
+
 export default {
   name: "CollectorsMarketActions",
-  /*components: {
-  CollectorsCard, //kommentera bort hela?
-}, */
+
+
 props: {
   labels: Object,
   player: Object,
   market: Array,
-  skillsOnSale: Array, //?? + auction??
+  skillsOnSale: Array,
   marketValues: Object,
   placement: Array,
 },
@@ -89,14 +88,6 @@ methods: {
       console.log(this.skillsOnSale);
     }
 
-    /* kolla att x attribut finns innan for
-    for (let i = 0; i < this.player.hand.length; i += 1) {
-    this.$set(this.player.hand[i], "available", true);
-  }
-  this.chosenPlacementCost = cost;
-},  */
-
-
 },
 },
 }
@@ -109,29 +100,8 @@ methods: {
   grid-template-rows: 5vw 10vw 10vw;
   grid-template-columns: 1fr;
   grid-template-areas: "label"
-    "bottlePlacement"
-      "value";
-    }
-
-
-.chategoryVal {
-  display: grid;
-  -webkit-flex-direction: row;
-
-  justify-content: center;
-  align-items: center;
-
-}
-
-.changeValue {
-   grid-area: value;
-   grid-gap: 1vw;
-   display: flex;
-   flex-direction: row;
-   flex-wrap: nowrap;
-   justify-content: center;
-   align-items: center;
-
+  "bottlePlacement"
+  "value";
 }
 
 .label {
@@ -139,6 +109,37 @@ methods: {
   font-size: 2vw;
   margin-left: 1vw;
 }
+
+
+
+.bottlePlacement {
+  grid-area: bottlePlacement;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.changeValue {
+  grid-area: value;
+  grid-gap: 1vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.chategoryVal {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+
+}
+
 .doubleblueEnergy {
   background-image: url("/images/marketbluee.png");
   height: 6vw;
@@ -160,32 +161,8 @@ methods: {
   background-size: cover;
   border-radius: 15%;
 }
-.bottlePlacement {
-  /*grid-area: bottlePlacement;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 15vw);*/
-  grid-area: bottlePlacement;
-  display: -webkit-box;
-  display:   -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-}
-.iconPlacement {
-  grid-area: icons;
-  display: grid;
-  display: -webkit-box;
-  display:   -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-}
+
+
 .iconFastaval {
   background-image: url("/images/market2.png");
   height: 10vh;
@@ -241,11 +218,6 @@ methods: {
   border-radius:7%;
   font-size:0.875;
 }
-.raiseValue{
-  background-color: black;
-  grid-area: raiseBid;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 8vw);
-}
+
 
 </style>
