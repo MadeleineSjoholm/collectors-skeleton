@@ -67,7 +67,7 @@
           </div>
 
           <div class="workPool">
-            <h1>Work </h1>
+      
             <CollectorsWorkActions
             v-if="players[playerId]"
             :labels="labels"
@@ -222,18 +222,6 @@
   <!-- {{ buyPlacement }} {{ chosenPlacementCost }}
   {{ players }} -->
   {{ marketValues.fastaval }}
-
-  <button v-if="players[playerId]" @click="players[playerId].money += 1">
-    fake more money
-  </button>
-  <button v-if="players[playerId]" @click="players[playerId].bottles += 1">
-    fake more Bottles
-  </button>
-  <button v-if="players[playerId]" @click="players[playerId].points += 1">
-    fake more points
-  </button>
-
-
 
   <footer>
     <p>
@@ -849,11 +837,15 @@ footer a:visited {
 }
 .cardslots {
   display: grid;
+  grid-template-columns: repeat(1000,6vw);
+  height: 8.4vw;
+
+  /*
   grid-template-columns: repeat(auto-fill, 6vw);
 
   grid-template-rows: 8.4vw;
   /*grid-template-rows: repeat(auto-fill, 15vh);*/
-
+  /*
   grid-template-rows: repeat(auto-fill, 8.4vw);
   column-gap: 0vw;
   height: 8.4vw;
