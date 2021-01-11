@@ -53,7 +53,6 @@
           </div>
 
           <div class="marketPool">
-            <h3>{{ labels.WorkLabel }}</h3>
             <CollectorsMarketActions
             v-if="players[playerId]"
             :labels="labels"
