@@ -73,7 +73,6 @@ export default {
   .english{
     float: left;
   }
-
   .infoButton{
     position: absolute;
     margin-top: 5px;
@@ -84,7 +83,6 @@ export default {
   #info{
     width: 100px;
   }
-
   .collectors{
     display: flex;
     align-items: center;
@@ -99,7 +97,6 @@ export default {
     background-color: rgba(212, 207, 207, 0.1);
     color: white;
   }
-
   button:hover {
     background-color: #B9B4B3;
   }

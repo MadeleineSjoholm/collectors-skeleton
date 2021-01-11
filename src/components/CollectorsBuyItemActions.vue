@@ -7,7 +7,7 @@
       <router-link :to="{ name: 'Rules', params: {} }"><img src="/images/question.png" width= "50"></router-link>
     </div>
 
-    <div class="labell">
+    <div class="labelItem">
       <h3>{{ labels.buyCard }}</h3>
     </div>
 
@@ -207,4 +207,5 @@ export default {
   box-shadow: -0.5em -0.1em 0.5em rgba(0,0,0,0.5);
 }
 */
+
 </style>

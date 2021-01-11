@@ -218,6 +218,4 @@ methods: {
   border-radius:7%;
   font-size:0.875;
 }
-
-
 </style>
