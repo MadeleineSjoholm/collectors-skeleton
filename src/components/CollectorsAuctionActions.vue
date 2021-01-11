@@ -66,13 +66,15 @@
   -->
 
   <div  class="raiseBid">
- <p>{{ labels.leadingLabel }} <strong>{{ leadingBid.bid }}</strong>
- {{ labels.leadingPlayer }} {{ leadingBid.playerId }}
+    <div class="auctionStats">
+ {{ labels.leadingBidLabel }} <strong>{{ leadingBid.bid }}</strong> <br>
+ {{ labels.leadingPlayer }} {{ leadingBid.playerId }}<br>
 
-  {{ labels.ownBid }} {{ currentBid }}</p>
  
+  {{ labels.ownBid }} {{ currentBid }}
+    </div>
  <button class="bidButton" @click="currentBid -= 1">
-      -
+      - 
     </button>
     <button id="submitBidButton" :disabled="player.money < currentBid || currentBid < leadingBid + 1" @click="submitCurrentBid()">
       {{ labels.subBid }} (<strong>{{ currentBid }}</strong>)

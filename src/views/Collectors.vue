@@ -53,7 +53,6 @@
           </div>
 
           <div class="marketPool">
-            <h3>{{ labels.WorkLabel }}</h3>
             <CollectorsMarketActions
             v-if="players[playerId]"
             :labels="labels"
@@ -686,7 +685,7 @@ main {
 .PlayerBoardCards {
   display: grid;
   grid-template-columns: repeat(auto-fill, 6vw);
-  grid-template-rows: repeat(auto-fill,   15vh);
+  grid-template-rows: repeat(auto-fill,   8.4vw);
 }
 .PlayerBoardCards div {
   transform: scale(0.7) translate(10%, -10%);
@@ -707,7 +706,7 @@ main {
 .PlayerBoardCardss {
   display: grid;
   grid-template-columns: repeat(auto-fill, 6vw);
-  grid-template-rows: repeat(auto-fill, 15vh);
+  grid-template-rows: repeat(auto-fill, 8.4vw);
 }
 .PlayerBoardCardss div {
   transform: scale(0.7) translate(10%, -10%);
@@ -905,7 +904,7 @@ footer a:visited {
   /*För mindre skärmar*/
   .board {
     grid-gap: 0px;
-    grid-template-rows: repeat(5, 70vh);
+    grid-template-rows: repeat(5, 50vh);
     grid-template-columns: 100vw;
     grid-template-areas:
     "itemPool "

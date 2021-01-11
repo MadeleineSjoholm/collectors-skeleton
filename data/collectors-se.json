@@ -28,7 +28,7 @@
 	"scoringOne": "Varje item ger spelaren en poäng per marknadskort i marknadspoolen som delar symbol med item-kortet. Om det inte finns några matchande kort i marknads-sektionen till ett föremål är det noll poäng värt.",
 	"scoringTwo": "Var tredje $1 ger spelaren en poäng.",
 	"scoringThree": "Vissa skillskort ger fler poäng (se special skills)",
-	"leadingLabel": "Ledande budet är",
+	"leadingBidLabel": "Ledande budet är",
 	"leadingPlayer": "Lagt av",
 	"ownBid": "Ditt bud",
 	"subBid": "Lägg bud",

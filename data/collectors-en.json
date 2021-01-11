@@ -11,7 +11,7 @@
 	"players": "players",
 	"numberMoney": "Money: ",
 	"numberBottles": "Number of bottles: ",
-	"leadingLabel:": "The leading bid is:",
+	"leadingBidLabel:": "The leading bid is:",
 	"leadingPlayer": "Submitted by player:",
 	"ownBid": "Your bid:",
 	"subBid": "Submit bid",

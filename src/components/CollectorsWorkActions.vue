@@ -1,7 +1,9 @@
 <template>
     <div>
      
-<h3 class="workLabel">{{ labels.WorkLabel }}</h3>
+<h3 class="workLabel">
+  {{ labels.workLabel }}
+</h3>
       
 
 <div class="workPlacement">
