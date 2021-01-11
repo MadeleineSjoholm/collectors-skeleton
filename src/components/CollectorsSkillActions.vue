@@ -96,17 +96,17 @@ export default {
 .skillPool {
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 5vw 9vw 11vw;
-  grid-template-columns: 1fr;
+  grid-template-rows: 5vh 25vh 15vh;
+  grid-template-columns: 50vw;
   grid-template-areas:  "label"
-  "skillCards"
-  "bottlePlacement";
+                        "skillCards"
+                        "bottlePlacement";
 }
 
 .label {
   grid-area: label;
-  font-size: 20px;
-  padding-left: 20px;
+  font-size: 1.5vw;
+  margin-left: 1vw;
 }
 
 .buttons {
@@ -115,26 +115,23 @@ export default {
 
 .greenEnergy {
   background-image: url("/images/greenflaska.png");
-  height: 16vh;
-  width: 8vw;
+  height: 12vh;
+  width: 6vw;
   background-size: cover;
   border-radius: 15%;
 
 }
 .dollarEnergy {
   background-image: url("/images/dollarr.png");
-  height: 16vh;
-  width: 8vw;
+  height: 12vh;
+  width: 6vw;
   background-size: cover;
   border-radius: 15%;
 }
 .bottlePlacement {
   grid-area: bottlePlacement;
   grid-gap: 10px;
-  display: -webkit-box;
-  display:   -webkit-flex;
   display: flex;
-  -webkit-flex-direction: row;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
@@ -145,9 +142,9 @@ export default {
 .skillCards {
   grid-area: skillCards;
   display: grid;
-  transform: scale(0.7)translate(-10%, -40%);
-  grid-template-columns: repeat(auto-fill, 130px);
-  grid-template-rows: repeat(auto-fill, 180px);
+  transform: scale(0.7)translate(0%, 0%);
+  grid-template-columns: repeat(auto-fill, 10vw);
+  grid-template-rows: repeat(auto-fill, 25vh);
 }
 /*
 .skillCards div {
@@ -160,4 +157,20 @@ export default {
   transform: scale(0.7) ;
   z-index: 1;
 }*/
+
+/*
+@media (max-width: 800px) {
+  /*För mindre skärmar*/
+/* .skillPool {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: 10vh 20vh 10vh;
+    grid-template-columns: 100vw;
+    grid-template-areas:  "label"
+    "skillCards"
+    "bottlePlacement";
+  }
+
+}*/
+
 </style>

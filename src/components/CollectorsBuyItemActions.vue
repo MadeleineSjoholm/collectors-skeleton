@@ -110,11 +110,11 @@ export default {
 .itemPool {
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 5vh 1vh 25vh;
-  grid-template-columns: 1fr;
-  grid-template-areas:  "label" "infoButton"
-  "buy-cards"
-  "bottles";
+  grid-template-rows: 10vh 20vh 20vh;
+  grid-template-columns: 40vw 10vw;
+  grid-template-areas:  "label infoButton"
+                        "buy-cards buy-cards"
+                        "bottles bottles";
 }
 
 
@@ -181,6 +181,8 @@ export default {
   border-radius: 15%;
   background-size: cover;
 }
+
+/*
 .buttons {
   display: grid;
   grid-template-columns: repeat(auto-fill, 50px);
@@ -204,5 +206,5 @@ export default {
   border: 2px dotted yellow;
   box-shadow: -0.5em -0.1em 0.5em rgba(0,0,0,0.5);
 }
-
+*/
 </style>

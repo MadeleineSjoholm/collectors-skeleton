@@ -133,26 +133,36 @@ export default {
 .itemPool {
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 3vw 3vw 9vw;
-  grid-template-columns: 1fr;
-  grid-template-areas:  "label" "infoButton"
-  "buy-cards"
-  "bottles";
+  grid-template-rows: 5vh 25vh 20vh;
+  grid-template-columns: 40vw 10vw;
+  grid-template-areas:  "label infoButton"
+                        "buy-cards buy-cards"
+                        "bottles bottles";
 }
 
 
 .labell {
   grid-area: label;
-  font-size: 20px;
-  padding-left: 20px;
+  font-size: 1.5vw;
+  margin-left: 1vw;
 }
 
 .buy-cards {
   grid-area: buy-cards;
   display: grid;
-  transform: scale(0.7) translate(-10%, -40%);
-  grid-template-columns: repeat(auto-fill, 130px);
-  grid-template-rows: repeat(auto-fill, 180px);
+  transform: scale(0.7) translate(0%, 0%);
+  grid-template-columns: repeat(auto-fill, 10vw);
+  grid-template-rows: repeat(auto-fill, 25vh);
+}
+
+.buy-cards div {
+  transform: scale(1);
+  transition: 0.2s;
+  transition-timing-function: ease-out;
+}
+
+.buy-cards div:hover {
+  transform: scale(1.2) translate(0%, 0);
 }
 
 
@@ -182,24 +192,24 @@ export default {
 
 .itemdollar {
   background-image: url("/images/itemdollar.png");
-  height: 16vh;
-  width: 8vw;
+  height: 12vh;
+  width: 6vw;
   border-radius: 15%;
   background-size: cover;
 }
 
 .itemdollartwo {
   background-image: url("/images/itemdollar2.png");
-  height: 16vh;
-  width: 8vw;
+  height: 12vh;
+  width: 6vw;
   border-radius: 15%;
   background-size: cover;
 }
 
 .itemdollarthree {
   background-image: url("/images/itemdollar3.png");
-  height: 16vh;
-  width: 8vw;
+  height: 12vh;
+  width: 6vw;
   border-radius: 15%;
   background-size: cover;
 }
@@ -230,21 +240,21 @@ box-shadow: -0.5em -0.1em 0.5em rgba(0,0,0,0.5);
 
 
 */
-
 /*
-@media (max-width: 600px) {
-  /*För mindre skärmar*/
-/*  .board {
-    grid-gap: 1px;
-    grid-template-rows: 3vw 8vw 15vw 15vw;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-    "label"
-    "infoButton"
-    "buy-cards"
-    "bottles";
 
+@media (max-width: 800px) {
+  /*För mindre skärmar*/
+ /*.itemPool {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: 5vh 5vh 20vh 15vh;
+    grid-template-columns: 100vw;
+    grid-template-areas:  "label"
+                          "infoButton"
+                          "buy-cards"
+                          "bottles";
   }
+
 }*/
 
 </style>

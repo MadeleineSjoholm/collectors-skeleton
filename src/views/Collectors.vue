@@ -132,7 +132,7 @@
           />
         </div>
         PLAYER SKILLSS
-        <div class="PlayerBoardCards" v-if="players[playerId]">
+        <div class="PlayerBoardCardss" v-if="players[playerId]">
           <CollectorsCard
           v-for="(card, index) in players[playerId].skills"
           :card="card"
@@ -146,7 +146,7 @@
       <div class="test" >
         <div class="clickable1">
           <div v-for="(player, pid) in players"  :key="pid" @click="togglePlayerBoard(pid)" >
-            <div v-if="pid!=playerId"> MOTSTÅNDARE </div>
+            <div v-if="pid!=playerId"> PLAYERHAND </div>
           </div>
         </div>
       </div>
@@ -591,7 +591,8 @@ addMoney: function () {
 };
 </script>
 
-<style >
+<style>
+
 header {
   /*  user-select: none;
   position: fixed;
@@ -652,17 +653,17 @@ main {
 
 .PlayerBoardCards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 130px);
-  grid-template-rows: repeat(auto-fill, 180px);
+  grid-template-columns: repeat(auto-fill, 6vw);
+  grid-template-rows: repeat(auto-fill,   15vh);
 }
 .PlayerBoardCards div {
-  transform: scale(0.5) translate(-50%, -50%);
+  transform: scale(0.7) translate(10%, -10%);
   transition: 0.2s;
   transition-timing-function: ease-out;
   z-index: 0;
 }
 .PlayerBoardCards div:hover {
-  transform: scale(1) translate(-25%, 0);
+  transform: scale(1) translate(0, 0);
   z-index: 1;
 }
 .playerItem {
@@ -671,19 +672,19 @@ main {
 }
 
 
-.PlayerBoardCards {
+.PlayerBoardCardss {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 130px);
-  grid-template-rows: repeat(auto-fill, 180px);
+  grid-template-columns: repeat(auto-fill, 6vw);
+  grid-template-rows: repeat(auto-fill, 15vh);
 }
-.PlayerBoardCards div {
-  transform: scale(0.75) translate(-50%, -50%);
+.PlayerBoardCardss div {
+  transform: scale(0.7) translate(10%, -10%);
   transition: 0.2s;
   transition-timing-function: ease-out;
   z-index: 0;
 }
-.PlayerBoardCards div:hover {
-  transform: scale(1) translate(-50%, 0);
+.PlayerBoardCardss div:hover {
+  transform: scale(1) translate(0, 0);
   z-index: 1;
 }
 .playerItem {
@@ -755,10 +756,10 @@ main {
 /* ekvivalent med player för motståndare */
 
 .player1 {
-  background: #ffe6ff;
+  background: #b3b3ff;
   position: absolute;
   right: 30%;
-  top: 5%;
+  top: 3%;
   width: 23vw;
   height: 100vh;
   margin-right: 1em;
@@ -787,24 +788,26 @@ footer a:visited {
 }
 .cardslots {
   display: grid;
-  transform: scale(0.8) translate(10%, 5%);
-  grid-template-columns: repeat(auto-fill, 130px);
-  grid-template-rows: repeat(auto-fill, 180px);
-  /*column-gap: 10px;*/
+  grid-template-columns: repeat(auto-fill, 6vw);
+  grid-template-rows: repeat(auto-fill, 15vh);
+  column-gap: 0vw;
+
 }
 
 
 .cardslots div {
-  transform: scale(1);
+  transform: scale(0.7) translate(10%, -10%);
   transition: 0.2s;
   transition-timing-function: ease-out;
   z-index: 0;
 }
 
 .cardslots div:hover {
-  transform: scale(1);
+  transform: scale(1) translate(0, 0);
   z-index: 1;
 }
+
+
 
 .playerboard {
   background: yellow;
@@ -824,9 +827,9 @@ footer a:visited {
 @media (max-width: 800px) {
   /*För mindre skärmar*/
   .board {
-    grid-gap: 2px;
-    grid-template-rows: repeat(5, 1fr);
-    grid-template-columns: 1fr;
+    grid-gap: 0px;
+    grid-template-rows: repeat(5, 50vh);
+    grid-template-columns: 100vw;
     grid-template-areas:
     "itemPool "
     "skillPool "
@@ -839,9 +842,9 @@ footer a:visited {
 @media (max-width: 600px) {
   /*För mindre skärmar*/
   .board {
-    grid-gap: 2px;
-    grid-template-rows: repeat(5, 1fr);
-    grid-template-columns: 1fr;
+    grid-gap: 0px;
+    grid-template-rows: repeat(5, 50vh);
+    grid-template-columns: 100vw;
     grid-template-areas:
     "itemPool "
     "skillPool "
@@ -855,8 +858,8 @@ footer a:visited {
   /*För mindre skärmar*/
   .board {
     grid-gap: 2px;
-    grid-template-rows: repeat(5, 1fr);
-    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 50vh);
+    grid-template-columns: 100vw;
     grid-template-areas:
     "itemPool "
     "skillPool "
