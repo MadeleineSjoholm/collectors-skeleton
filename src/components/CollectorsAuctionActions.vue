@@ -1,71 +1,63 @@
 <template>
   <div>
     <div class="auctionPool">
-      <h3 class="label">{{ labels.auctionLabel }} </h3>
+      <h3 class="label">{{ labels.auctionLabel }}</h3>
       <div class="auctionCards">
         <CollectorsCard
-        v-for="(card, index) in auctionCards"
-        :card="card"
-        :key="index"
-        :availableAction="card.available"
-        @doAction="initiateAuction(card)"
+          v-for="(card, index) in auctionCards"
+          :card="card"
+          :key="index"
+          :availableAction="card.available"
+          @doAction="initiateAuction(card)"
         />
       </div>
       <div class="cardToAuction">
-        <CollectorsCard :card="upForAuction"/>
+        <CollectorsCard :card="upForAuction" />
       </div>
       <div class="buttons2">
-         <button @click="drawCard">
+        <button @click="drawCard">
           {{ labels.draw }}
         </button>
       </div>
       <div class="bottlePlacement">
-
         <div class="buttons" v-for="(p, index) in placement" :key="index">
-
           <button
-          v-if="p.playerId === null"
-          :class="[
-          { doubleDollarEnergy: p.id == 5 },
-          { dollarAuction: p.id == 6 },
-          { orangeEnergy: p.id == 7 },
-          ]"
-          :disabled="cannotAfford(p.cost)"
-          @click="placeBottle(p)"
+            v-if="p.playerId === null"
+            :class="[
+              { doubleDollarEnergy: p.id == 5 },
+              { dollarAuction: p.id == 6 },
+              { orangeEnergy: p.id == 7 },
+            ]"
+            :disabled="cannotAfford(p.cost)"
+            @click="placeBottle(p)"
           >
-          ${{ p.cost }}
-        </button>
-        <div v-if="p.playerId !== null">
-          {{ p.playerId }}
-
+            ${{ p.cost }}
+          </button>
+          <div v-if="p.playerId !== null">
+            {{ p.playerId }}
+          </div>
         </div>
-
       </div>
     </div>
-  </div>
- 
-
-  <div  class="raiseBid">
     <div class="auctionStats">
- {{ labels.leadingBidLabel }} <strong>{{ leadingBid.bid }}</strong> <br>
- {{ labels.leadingPlayer }} {{ leadingBid.playerId }}<br>
-
-  {{ labels.ownBid }} {{ currentBid }}
+      {{ labels.leadingBidLabel }} <strong>{{ leadingBid.bid }}</strong> <br />
+      {{ labels.leadingPlayer }} {{ leadingBid.playerId }}<br />
+      {{ labels.ownBid }} {{ currentBid }}
     </div>
- <button class="bidButton" @click="currentBid -= 1">
-      - 
-    </button>
-    <button id="submitBidButton" :disabled="player.money < currentBid || currentBid < leadingBid + 1" @click="submitCurrentBid()">
-      {{ labels.subBid }} (<strong>{{ currentBid }}</strong>)
-    </button>
-    <button class="bidButton" @click="currentBid += 1">
-      +
-    </button>
-    <button class="bidButton" @click="passBidding()">
-      Pass
-    </button>
+    <div class="raiseBid">
+      <button class="bidButton" @click="currentBid -= 1">-</button>
+      <button
+        id="submitBidButton"
+        :disabled="player.money < currentBid || currentBid < leadingBid + 1"
+        @click="submitCurrentBid()"
+      >
+        {{ labels.subBid }} (<strong>{{ currentBid }}</strong
+        >)
+      </button>
+      <button class="bidButton" @click="currentBid += 1">+</button>
+      <button class="bidButton" @click="passBidding()">Pass</button>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -88,14 +80,14 @@ export default {
   data: function () {
     return {
       currentBid: 0,
-    }
+    };
   },
   methods: {
     cannotAfford: function (cost) {
       let minCost = 100;
       for (let key in this.marketValues) {
         if (cost + this.marketValues[key] < minCost)
-        minCost = cost + this.marketValues[key];
+          minCost = cost + this.marketValues[key];
       }
       return this.player.money < minCost;
     },
@@ -109,34 +101,32 @@ export default {
     highlightAvailableCards: function () {
       for (let i = 0; i < this.auctionCards.length; i += 1) {
         this.$set(this.auctionCards[i], "available", true);
-        /* if marketvalues
+        /*
         if (this.skillsOnSale[i].x > 0) {
         this.$set(this.skillsOnSale[i], "available", true);
         break;
       }    */
-    }
+      }
+    },
+    initiateAuction: function (card) {
+      if (card.available) {
+        this.$emit("initiateAuction", card);
+        this.highlightAvailableCards();
+      }
+    },
+    submitCurrentBid: function () {
+      this.$emit("currentBid", this.currentBid);
+    },
+    passBidding: function () {
+      this.$emit("passBidding", this.upForAuction);
+    },
+    drawCard: function (card) {
+      this.$emit("drawCard", card);
+    },
   },
-  initiateAuction: function(card) {
-    if (card.available) {
-      this.$emit('initiateAuction', card);
-      this.highlightAvailableCards()
-    }
-  },
-  submitCurrentBid: function() {
-     this.$emit('currentBid', this.currentBid);
-  },
-  passBidding: function() {
-    //return this.inAuction = false;
-    this.$emit('passBidding', this.upForAuction);
-   //när alla players utom en tryckt pass, avslutas auktionen och vinnaren får kortet till playerboard
-  },
-  drawCard: function (card) {
-
-    this.$emit('drawCard', card);
-  }
-}
-}
+};
 </script>
+
 
 <style scoped>
 .auctionPool {
@@ -144,25 +134,26 @@ export default {
   display: grid;
   grid-template-rows: 5vh 25vh 20vh 5vh;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas:  "label label"
-  "bottlePlacement bottlePlacement"
-  "auctionCards cardToAuction"
-  /*"cardToAuction cardToAuction"*/
-  "raiseBid raiseBid";
+  grid-template-areas:
+    "label label"
+    "bottlePlacement bottlePlacement"
+    "auctionCards cardToAuction"
+    "raiseBid auctionStats";
 }
-
+.auctionStats {
+  grid-area: auctionStats;
+  align-items: right;
+}
 .label {
   grid-area: label;
   font-size: 2vw;
   margin-left: 1vw;
-
 }
 .auctionCards {
   grid-area: auctionCards;
   display: grid;
   grid-template-columns: repeat(auto-fill, 10vw);
   grid-template-rows: repeat(auto-fill, 14vw);
-
 }
 .auctionCards div {
   transform: scale(0.7) translate(0%, -20%);
@@ -170,21 +161,19 @@ export default {
   transition-timing-function: ease-out;
   z-index: 0;
 }
-
 .auctionCards div:hover {
   transform: scale(1) translate(-25%, 0);
   z-index: 1;
 }
 .cardToAuction {
   grid-area: cardToAuction;
-   transform: scale(0.25) translate(-60%, -150%);
+  transform: scale(0.25) translate(-60%, -150%);
   transition: 0.2s;
   transition-timing-function: ease-out;
   z-index: 0;
   height: 70vh;
   width: 50vh;
   background-image: url("/images/auction.png");
-
 }
 .doubleDollarEnergy {
   background-image: url("/images/auctiondollar2.png");
@@ -212,38 +201,42 @@ export default {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
-  display:   -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    -moz-flex-direction: row;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 }
-.raiseBid{
+.raiseBid {
   background-color: #ecd9c6;
   grid-area: raiseBid;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 10vw);
+  height: auto;
+  grid-template-columns: 7vw 15vw 7vw 10vw;
+  align-items: right;
+  grid-gap: 1vw;
 }
-
 .bidButton {
-    background-color: white;
-    width: auto;
-
-    border:2px solid rgb(216, 70, 70);
-    border-radius:7%;
-    word-wrap: break-word;
-    font-size:0.5;
+  background-color: white;
+  width: auto;
+  border: 2px solid rgb(216, 70, 70);
+  border-radius: 7%;
+}
+.changeBidButton {
+  background-color: rgb(137, 199, 214);
+  width: auto;
+  border: 1px solid gray;
+  border-radius: 7%;
+}
+@media (max-width: 800px) {
+  .label {
+    font-size: 100%;
   }
-  .changeBidButton {
-    background-color: rgb(137, 199, 214);
-    width: auto;
-    border:1px solid gray;
-    border-radius:7%;
-
-    font-size:0.875;
+  .raiseBid {
+    grid-template-columns: 15vw 15vw 15vw 15vw;
   }
+}
 </style>
