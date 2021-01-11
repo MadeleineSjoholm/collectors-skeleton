@@ -106,37 +106,34 @@ methods: {
 .marketPool {
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 5vw 10vw 5vw 5vw;
+  grid-template-rows: 5vw 10vw 10vw;
   grid-template-columns: 1fr;
-  grid-template-areas:   "label"
-  "bottlePlacement" "value" "button"
-  "icons"
-  "counter"
-  ;
-}
+  grid-template-areas: "label"
+    "bottlePlacement"
+      "value";
+    }
+
+
 .chategoryVal {
-  grid-area: icons;
-  grid-column: auto;
-  grid-row: auto;
+  display: grid;
+  -webkit-flex-direction: row;
+
+  justify-content: center;
+  align-items: center;
 
 }
-/*.chategoryVal {
-grid-area: counter;
-display: -webkit-box;
-display: -moz-box;
-display: -ms-flexbox;
-display:   -webkit-flex;
-display: flex;
--webkit-flex-direction: row;
--moz-flex-direction: row;
-flex-direction: row;
-flex-wrap: nowrap;
-justify-content: center;
-align-items: center;
-}*/
+
 .changeValue {
    grid-area: value;
+   grid-gap: 1vw;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: nowrap;
+   justify-content: center;
+   align-items: center;
+
 }
+
 .label {
   grid-area: label;
   font-size: 2vw;
@@ -203,7 +200,7 @@ align-items: center;
 .iconMovie {
   background-image: url("/images/market3.png");
   height: 10vh;
-  width: 10vw;
+  width: 20vw;
   background-size: cover;
   background-color:  rgb(137, 199, 214);
   width: auto;
