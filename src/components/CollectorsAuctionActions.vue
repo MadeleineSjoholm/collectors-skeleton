@@ -66,7 +66,8 @@
   -->
 
   <div  class="raiseBid">
- {{ labels.leadingLabel }} {{ leadingBid.bid }} {{ labels.leadingPlayer }} {{ leadingBid.playerId }}
+ {{ labels.leadingLabel }} {{ leadingBid.bid }} <br>
+ {{ labels.leadingPlayer }} {{ leadingBid.playerId }} <br>
 
   {{ labels.ownBid }}: {{ currentBid }}
  <button class="bidButton" @click="currentBid -= 1">
