@@ -854,7 +854,7 @@ footer a:visited {
   grid-template-rows: 8.4vw;
   /*grid-template-rows: repeat(auto-fill, 15vh);*/
 
-  grid-template-rows: repeat(auto-fill, 15vw);
+  grid-template-rows: repeat(auto-fill, 8.4vw);
   column-gap: 0vw;
   height: 8.4vw;
   width:100vw; /*fixa detta sen! */
