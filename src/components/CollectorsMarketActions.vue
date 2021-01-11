@@ -150,22 +150,22 @@ align-items: center;
 }
 .doubleblueEnergy {
   background-image: url("/images/marketbluee.png");
-  height: 12vh;
-  width: 6vw;
+  height: 6vw;
+  width: 7vw;
   background-size: cover;
   border-radius: 15%;
 }
 .marketDollar {
   background-image: url("/images/dollarmarket.png");
-  height: 12vh;
-  width: 6vw;
+  height: 6vw;
+  width: 7vw;
   background-size: cover;
   border-radius: 15%;
 }
 .blueEnergy {
   background-image: url("/images/markeblue.png");
-  height: 12vh;
-  width: 6vw;
+  height: 6vw;
+  width: 7vw;
   background-size: cover;
   border-radius: 15%;
 }

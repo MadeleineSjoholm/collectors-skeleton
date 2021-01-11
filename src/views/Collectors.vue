@@ -114,13 +114,14 @@
           </div>
           </div>
         Hand
-
-        <div class="cardslots" v-if="players[playerId]">
-          <CollectorsCard
-          v-for="(card, index) in players[playerId].hand"
-          :card="card"
-          :key="index"
-          />
+        <div class="cardslots-wrapper">
+          <div class="cardslots" v-if="players[playerId]">
+            <CollectorsCard
+            v-for="(card, index) in players[playerId].hand"
+            :card="card"
+            :key="index"
+            />
+          </div>
         </div>
         <!-- :availableAction="card.available" -->
         PLAYERITEM
@@ -222,18 +223,6 @@
   <!-- {{ buyPlacement }} {{ chosenPlacementCost }}
   {{ players }} -->
   {{ marketValues.fastaval }}
-
-  <button v-if="players[playerId]" @click="players[playerId].money += 1">
-    fake more money
-  </button>
-  <button v-if="players[playerId]" @click="players[playerId].bottles += 1">
-    fake more Bottles
-  </button>
-  <button v-if="players[playerId]" @click="players[playerId].points += 1">
-    fake more points
-  </button>
-
-
 
   <footer>
     <p>
@@ -849,12 +838,24 @@ footer a:visited {
 }
 .cardslots {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 6vw);
-  grid-template-rows: repeat(auto-fill, 15vw);
-  column-gap: 0vw;
+  grid-template-columns: repeat(1000,6vw);
+  height: 8.4vw;
 
+  /*
+  grid-template-columns: repeat(auto-fill, 6vw);
+
+  grid-template-rows: 8.4vw;
+  /*grid-template-rows: repeat(auto-fill, 15vh);*/
+  /*
+  grid-template-rows: repeat(auto-fill, 8.4vw);
+  column-gap: 0vw;
+  height: 8.4vw;
+  width:100vw; /*fixa detta sen! */
 }
 
+.cardslots-wrapper {
+  overflow-x: scroll;
+}
 
 .cardslots div {
   transform: scale(0.7) translate(10%, -10%);
@@ -915,9 +916,10 @@ footer a:visited {
   }
 }
 
+/*
 @media (max-width: 400px) {
-  /*För mindre skärmar*/
-  .board {
+  /*400 borde inte behövas*/
+ /*.board {
     grid-gap: 2px;
     grid-template-rows: repeat(5, 50vh);
     grid-template-columns: 100vw;
@@ -928,6 +930,6 @@ footer a:visited {
     "auctionPool "
     "marketPool ";
   }
-}
+}*/
 
 </style >
