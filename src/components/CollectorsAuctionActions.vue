@@ -66,7 +66,7 @@
   -->
 
   <div  class="raiseBid">
- {{ labels.leadingLabel }} {{ leadingBid.bid }} <br>
+ {{ labels.leadingLabel }} <strong>{{ leadingBid.bid }}</strong> <br>
  {{ labels.leadingPlayer }} {{ leadingBid.playerId }} <br>
 
   {{ labels.ownBid }}: {{ currentBid }}

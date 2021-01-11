@@ -7,10 +7,7 @@
         {{ labels.homepage }}
       </div>
 
-      <div class="languageSelectorr" align="right">
-        <div class="english" @click="language('en')"><img src="/images/english.png" width="40"></div>
-        <div class="swedish" @click="language('se')"><img src="/images/swedish.png" width="40"></div>
-      </div>
+     
     </div>
     <div class="itemInfo">
       <h1>Item</h1>
@@ -70,21 +67,14 @@ export default {
     }
   },
   created: function () {
-    this.language('en');
-    this.$store.commit('SET_ROOM_ID');
-    this.$store.state.socket.on(
+      this.$store.state.socket.emit('getLabels', this.$store.state.lang);
+      this.$store.state.socket.on(
       "languageLabels",
       function (labels) {
         this.labels = labels;
       }.bind(this)
     );
   },
-  methods: {
-    language: function (lang) {
-      this.$store.commit('SET_LANG', lang);
-      this.$store.state.socket.emit('getLabels', lang);
-    },
-  }
 
 }
 </script>

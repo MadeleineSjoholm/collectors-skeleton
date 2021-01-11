@@ -185,9 +185,9 @@
     </div>
   </main>
 
-  {{ buyPlacement }} {{ chosenPlacementCost }}
-  {{ players }}
-  {{ marketValues }}
+  <!-- {{ buyPlacement }} {{ chosenPlacementCost }}
+  {{ players }} -->
+  {{ marketValues.fastaval }}
 
   <button v-if="players[playerId]" @click="players[playerId].money += 1">
     fake more money
