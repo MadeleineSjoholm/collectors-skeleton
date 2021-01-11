@@ -850,12 +850,11 @@ footer a:visited {
 .cardslots {
   display: grid;
   grid-template-columns: repeat(auto-fill, 6vw);
-<<<<<<< HEAD
+
   grid-template-rows: 8.4vw;
   /*grid-template-rows: repeat(auto-fill, 15vh);*/
-=======
+
   grid-template-rows: repeat(auto-fill, 15vw);
->>>>>>> 6dea480d4db322d676a8cb1ba3c9cf3e7a8c795b
   column-gap: 0vw;
   height: 8.4vw;
   width:100vw; /*fixa detta sen! */
