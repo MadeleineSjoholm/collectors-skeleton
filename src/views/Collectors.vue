@@ -115,7 +115,7 @@
               />
             </div>
 
-            {{ labels.playerSkills}}
+            {{ labels.playerSkill}}
             <div class="PlayerBoardCardss" v-if="players[playerId]">
               <CollectorsCard
               v-for="(card, index) in players[playerId].skills"
