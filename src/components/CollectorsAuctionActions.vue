@@ -133,7 +133,7 @@ export default {
   box-sizing: border-box;
   display: grid;
   grid-template-rows: 5vh 25vh 20vh 5vh;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 4fr 1fr;
   grid-template-areas:
     "label label"
     "bottlePlacement bottlePlacement"

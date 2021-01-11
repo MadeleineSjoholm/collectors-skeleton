@@ -80,7 +80,6 @@
         <div :class="['player', { ishidden: isHidden('player') }]">
           <div class="playerHand">
             PLAYERHAND {{ playerId }} <br/>
-
             <div class="money">
               <div class="column">
                 <div v-if="players[playerId]" @click="players[playerId].money += 1" ><img src="/images/mynt.png" width="50"></div>
@@ -95,7 +94,6 @@
                 <span v-if="players[playerId]"> {{ players[playerId].points }} </span> <br>
               </div>
             </div>
-
             Hand
             <div class="cardslots-wrapper">
               <div class="cardslots" v-if="players[playerId]">
@@ -168,8 +166,6 @@
         </div>
       </div>
     </main>
-
-    {{ marketValues.fastaval }}
 
     <footer>
       <p>
@@ -276,7 +272,6 @@ export default {
         }
       }
     },
-
   },
   created: function () {
     this.$store.commit("SET_PLAYER_ID", this.$route.query.id);
