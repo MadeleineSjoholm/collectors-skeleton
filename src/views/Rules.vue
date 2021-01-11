@@ -108,6 +108,6 @@ export default {
   height: 10vh;
   margin-top: 0px;
   margin-left: 20px;
-}
 
+}
 </style>
