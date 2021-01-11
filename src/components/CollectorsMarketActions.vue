@@ -145,25 +145,27 @@ align-items: center;
 }
 .label {
   grid-area: label;
+  font-size: 2vw;
+  margin-left: 1vw;
 }
 .doubleblueEnergy {
   background-image: url("/images/marketbluee.png");
-  height: 15vh;
-  width: 9vw;
+  height: 12vh;
+  width: 6vw;
   background-size: cover;
   border-radius: 15%;
 }
 .marketDollar {
   background-image: url("/images/dollarmarket.png");
-  height: 15vh;
-  width: 9vw;
+  height: 12vh;
+  width: 6vw;
   background-size: cover;
   border-radius: 15%;
 }
 .blueEnergy {
   background-image: url("/images/markeblue.png");
-  height: 16vh;
-  width: 9vw;
+  height: 12vh;
+  width: 6vw;
   background-size: cover;
   border-radius: 15%;
 }

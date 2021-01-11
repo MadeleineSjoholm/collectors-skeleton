@@ -163,25 +163,26 @@ export default {
   grid-template-columns: 1fr 1fr;
   grid-template-areas:  "label label"
   "bottlePlacement bottlePlacement"
-  "auctionCards cardToAuction" 
+  "auctionCards cardToAuction"
   /*"cardToAuction cardToAuction"*/
   "raiseBid raiseBid";
 }
 
 .label {
   grid-area: label;
+  font-size: 2vw;
+  margin-left: 1vw;
 
 }
 .auctionCards {
   grid-area: auctionCards;
   display: grid;
-transform: scale(0.8) translate(-0%, -30%);
-  grid-template-columns: repeat(auto-fill, 130px);
-  grid-template-rows: repeat(auto-fill, 180px);
+  grid-template-columns: repeat(auto-fill, 10vw);
+  grid-template-rows: repeat(auto-fill, 25vh);
 
 }
 .auctionCards div {
-  transform: scale(0.5) translate(-50%, -50%);
+  transform: scale(0.7) translate(0%, -20%);
   transition: 0.2s;
   transition-timing-function: ease-out;
   z-index: 0;
@@ -197,29 +198,29 @@ transform: scale(0.8) translate(-0%, -30%);
   transition: 0.2s;
   transition-timing-function: ease-out;
   z-index: 0;
-  height: 100vh;
-  width: auto;
+  height: 70vh;
+  width: 50vh;
   background-image: url("/images/auction.png");
 
 }
 .doubleDollarEnergy {
   background-image: url("/images/auctiondollar2.png");
-  height: 16vh;
-  width: 8vw;
+  height: 12vh;
+  width: 6vw;
   background-size: cover;
   border-radius: 15%;
 }
 .dollarAuction {
   background-image: url("/images/auctiondollar.png");
-  height: 16vh;
-  width: 8vw;
+  height: 12vh;
+  width: 6vw;
   background-size: cover;
   border-radius: 15%;
 }
 .orangeEnergy {
   background-image: url("/images/auctionorange.png");
-  height: 16vh;
-  width: 9vw;
+  height: 12vh;
+  width: 6.45vw;
   background-size: cover;
   border-radius: 15%;
 }
@@ -248,7 +249,7 @@ transform: scale(0.8) translate(-0%, -30%);
 .bidButton {
     background-color: white;
     width: auto;
-    
+
     border:2px solid rgb(216, 70, 70);
     border-radius:7%;
     word-wrap: break-word;

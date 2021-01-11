@@ -70,6 +70,8 @@ export default {
 
 .label {
   grid-area: label;
+  font-size: 1.5vw;
+  margin-left: 1vw;
 }
 
   button {
