@@ -893,9 +893,9 @@ footer a:visited {
     grid-template-areas:
     "itemPool "
     "skillPool "
-    "marketPool "
     "workPool "
-    "auctionPool ";
+    "auctionPool "
+    "marketPool ";
   }
 }
 
@@ -903,14 +903,14 @@ footer a:visited {
   /*För mindre skärmar*/
   .board {
     grid-gap: 0px;
-    grid-template-rows: repeat(5, 50vh);
+    grid-template-rows: repeat(5, 70vh);
     grid-template-columns: 100vw;
     grid-template-areas:
     "itemPool "
     "skillPool "
-    "marketPool "
     "workPool "
-    "auctionPool ";
+    "auctionPool "
+    "marketPool ";
   }
 }
 
@@ -922,15 +922,11 @@ footer a:visited {
     grid-template-columns: 100vw;
     grid-template-areas:
     "itemPool "
-    "skillPool "
-    "marketPool "
+    "skillPool"
     "workPool "
-    "auctionPool ";
+    "auctionPool "
+    "marketPool ";
   }
 }
-
-
-
-
 
 </style >
