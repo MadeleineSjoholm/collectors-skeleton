@@ -14,38 +14,18 @@
     <div class="Collectors" align="center">
       <img src="/images/collectors.png">
       <h1>Collectors</h1>
-      
+
 
       <h4>{{ labels.setUpGame }}</h4>
-      <button class="button1" id="startGame" type="start" @click="setupCollectors(2)">2 {{ labels.players }}</button><br>
-      <button class="button1" id="startGame" type="start" @click="setupCollectors(3)">3 {{ labels.players }}</button><br>
-      <button class="button1" id="startGame" type="start" @click="setupCollectors(4)">4 {{ labels.players }}</button><br>
+      <button class="buttonstart" id="startGame" type="start" @click="setupCollectors(2)">2 {{ labels.players }}</button><br>
+      <button class="buttonstart" id="startGame" type="start" @click="setupCollectors(3)">3 {{ labels.players }}</button><br>
+      <button class="buttonstart" id="startGame" type="start" @click="setupCollectors(4)">4 {{ labels.players }}</button><br>
     </div>
 
-    <!--
-    <div class="center" align="center">
-    <div>
-    <h1>Collectors</h1>
-    <ul>
-    <li v-for="i in 4" :key="i">
-    <a @click="setupCollectors(i, 'en')">Set up a game of Collectors for {{i}} players</a>.
-  </li>
-</ul>
-<ul>
-<div v-for="i in 3" :key="i">
-<a @click="setupCollectors(i+1, 'en')">Set up a game of Collectors for {{i+1}} players
-</a>.
-</div>
-</ul>
-</div>
--->
-
-</div>
+  </div>
 </template>
 
 <script>
-// @ is an alias to /src
-
 
 export default {
   name: 'Home',
@@ -81,6 +61,7 @@ export default {
   }
   </script>
   <style>
+
   .information{
     display: grid;
     width: auto;
@@ -88,9 +69,9 @@ export default {
     margin-top: 30px;
     margin-left: 20px;
   }
+
   .english{
     float: left;
-
   }
 
   .infoButton{
@@ -99,6 +80,7 @@ export default {
     margin-right: 20px;
     right: 0px;
   }
+
   #info{
     width: 100px;
   }
@@ -108,15 +90,8 @@ export default {
     align-items: center;
     justify-content: center;
   }
-  .center {
-    /*  display: flex; */
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    padding: 1em;
-  }
 
-  .button1{
+  .buttonstart{
     border-radius: 12px;
     font-size: 17px;
     padding: 8px 10px;
@@ -128,8 +103,6 @@ export default {
   button:hover {
     background-color: #B9B4B3;
   }
-
-
 
   canvas{
     display:block;
