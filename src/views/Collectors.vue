@@ -74,7 +74,7 @@
         </div>
 
         <div class="clickable" @click="togglePlayerBoard('player')">
-          YOUR PLAYERHAND
+          {{ labels.playerHand }}
         </div>
 
         <div :class="['player', { ishidden: isHidden('player') }]">
