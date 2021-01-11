@@ -43,26 +43,7 @@
       </div>
     </div>
   </div>
- <!-- {{ auctionCards }} -->
-
-
-  <!--  <div>
-   <button
-        class="payHandButton"
-        v-if="players[playerId]"
-        @click="payWithHand()"
-      >Payment from hand</button>
-      <div class="payHand">
-        <CollectorsCard
-          v-for="(card, index) in players[playerId].hand"
-          :card="card"
-          :availableAction="card.available"
-          @doAction="bidWithHand(card)"
-          :key="index"
-        />
-      </div>
-  </div>
-    -->
+ 
 
   <div  class="raiseBid">
     <div class="auctionStats">

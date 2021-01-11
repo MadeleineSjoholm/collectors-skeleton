@@ -889,7 +889,7 @@ footer a:visited {
   /*För mindre skärmar*/
   .board {
     grid-gap: 0px;
-    grid-template-rows: repeat(5, 50vh);
+    grid-template-rows: 50vh 50vh 50vh 78vh 50vh;
     grid-template-columns: 100vw;
     grid-template-areas:
     "itemPool "
@@ -904,7 +904,7 @@ footer a:visited {
   /*För mindre skärmar*/
   .board {
     grid-gap: 0px;
-    grid-template-rows: repeat(5, 50vh);
+    grid-template-rows: 50vh 50vh 50vh 82vh 50vh;
     grid-template-columns: 100vw;
     grid-template-areas:
     "itemPool "

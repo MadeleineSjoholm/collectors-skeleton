@@ -256,11 +256,4 @@ align-items: center;
   border-radius:7%;
   font-size:0.875;
 }
-.raiseValue{
-  background-color: black;
-  grid-area: raiseBid;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 8vw);
-}
-
 </style>
