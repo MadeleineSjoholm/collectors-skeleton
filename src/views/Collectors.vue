@@ -79,7 +79,8 @@
 
         <div :class="['player', { ishidden: isHidden('player') }]">
           <div class="playerHand">
-            PLAYERHAND {{ playerId }} <br/>
+            {{ labels.playerID}} {{ playerId }}<br/>
+
             <div class="money">
               <div class="column">
                 <div v-if="players[playerId]" @click="players[playerId].money += 1" ><img src="/images/mynt.png" width="50"></div>
@@ -160,7 +161,6 @@
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -216,13 +216,10 @@ export default {
       //   income: [],
       //   secret: []
       // }
-
-
       round: 0,
       actingPlayer: null,
       workPlacement: [],
       numberOfActions: 0,
-
       showPlayerBoard: "",
       buyPlacement: [],
       skillPlacement: [],
@@ -296,7 +293,6 @@ export default {
         this.skillPlacement = d.placements.skillPlacement;
         this.marketPlacement = d.placements.marketPlacement;
         this.auctionPlacement = d.placements.auctionPlacement;
-
         this.round = d.players;
         this.playOrder = d.playOrder;
         this.actingPlayer = d.actingPlayer;
@@ -374,7 +370,6 @@ this.$store.state.socket.on(
   "collectorsAuctionStarted",
   function (d) {
     console.log(d.playerId, "Initiated auction", d.upForAuction);
-
     this.auctionCards = d.auctionCards;
     this.players = d.players;
     this.upForAuction = d.upForAuction;
@@ -515,7 +510,6 @@ cardForIncome: function (card) {
   }
 );
 },
-
 addMoney: function () {
   this.$store.state.socket.emit('collectorsAddMoney', {
     roomId: this.$route.params.id,
@@ -543,7 +537,6 @@ addMoney: function () {
   "workPool auctionPool auctionPool auctionPool"
   "marketPool marketPool marketPool marketPool";
 }
-
 .itemPool {
   grid-area: itemPool;
   background-color: #ffb3b3;
@@ -569,8 +562,6 @@ addMoney: function () {
   background-color: #ecd9c6;
   max-height: 70vh;
 }
-
-
 .PlayerBoardCards {
   display: grid;
   grid-template-columns: repeat(auto-fill, 6vw);
@@ -590,8 +581,6 @@ addMoney: function () {
   display: none;
   background-color: #b3ecff;
 }
-
-
 .PlayerBoardCardss {
   display: grid;
   grid-template-columns: repeat(auto-fill, 6vw);
@@ -611,7 +600,6 @@ addMoney: function () {
   display: none;
   background-color: #b3ecff;
 }
-
 .clickable {
   position: fixed;
   right: 0%;
@@ -620,9 +608,7 @@ addMoney: function () {
   background: #4d94ff;
   margin-right: 1.5em;
   width: 23vw;
-
 }
-
 /* clickable för motståndare*/
 .clickable1 {
   background-color: #4d94ff;
@@ -632,7 +618,6 @@ addMoney: function () {
 .clickable1 > div {
   position: relative;
 }
-
 .test{
   position: absolute;
   right: 23vw;
@@ -641,12 +626,10 @@ addMoney: function () {
   background: #4d94ff;
   margin-right: 1.5em;
   width: 70vw;
-
 }
 .money {
   height: 100;
   display: flex;
-
 }
 .column{
   float: left;
